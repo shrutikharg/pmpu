@@ -806,6 +806,26 @@ function time_elapsed_string($ptime)
 		
 		
 <ul id="nav">
+    <li <?php if(($this->uri->segment(2) == 'brandings') || ($this->uri->segment(2) == 'cmspage')){echo 'class="current open"';}?>>
+						<a href="javascript:void(0);">
+							<i class="icon-home"></i>
+							<?php echo $this->lang->line('nav_master');?>
+						</a>
+						<ul class="sub-menu">
+							<li <?php if($this->uri->segment(2) == 'brandings'){echo 'class="current_menu"';}?>>
+								<a href="<?php echo base_url(); ?>admin_company/brandings/addtheme">
+								<i class="icon-angle-right"></i>
+								<?php echo $this->lang->line('nav_comapny');?>
+								</a>
+							</li>
+							<li <?php if($this->uri->segment(2) == 'cmspage'){echo 'class="current_menu"';}?>>
+								<a href="<?php echo base_url(); ?>admin_company/cmspage">
+								<i class="icon-angle-right"></i>
+								<?php echo $this->lang->line('nav_cms');?>
+								</a>
+							</li>
+						</ul>
+					</li>
 					<li <?php if(($this->uri->segment(2) == 'category') || ($this->uri->segment(2) == 'subcategory')){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);">
 							<i class="icon-list"></i>

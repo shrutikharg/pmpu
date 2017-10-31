@@ -150,6 +150,8 @@ $lang['lbl_sub_confpassword']="Confirm Password";
 $lang['lbl_emp_comp_webaddress']="Web Address";
 
 //form control for  company
+$lang['nav_master']='Master';
+$lang['nav_comapny']='About Company';
 $lang['lbl_company_name']="Company Name";
 $lang['lbl_subdomain_name']="Subdomain Name";
 $lang['lbl_company_desc']="About Company";
@@ -163,6 +165,10 @@ $lang['lbl_comment_text']="Commment";
 $lang['lbl_comment_by']="Commment by";
 $lang['lbl_comment_at']="Commmented At";
 $lang['lbl_comment_list']="Comment List For";
+
+
+//form control for  company cms page
+$lang['nav_cms']="Setting CMS Page";
 
 
 
