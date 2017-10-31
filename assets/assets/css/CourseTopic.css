@@ -1,0 +1,512 @@
+body a {
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;																																												
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  }
+/*-- Topic --*/
+.song {
+    width: 100%;
+    float: left;
+}
+.song-grid-right{
+    width: 16%;
+    float: left;
+    margin-left: 2em;
+}
+.song iframe{
+	width:100%;
+	height:500px;
+}
+.song-info {
+                padding-left: 0;   
+         }
+.song-info h3{
+  color: #272C2E;
+  font-size: 22px;
+  margin: 0;
+  line-height: 1.5em;
+}
+.video-grid iframe {
+    border: none;  
+}
+/*-- shows --*/
+.show-top-grids {
+  padding: 0 1em 0 0;
+}
+.show-grid-right{
+    background: #f7f7f7;
+    padding: 2em 0 0 2em;
+}
+.Topic-right{
+	background: #f7f7f7;
+    padding: 0em 0 0 0;
+	margin-top: 45px;
+}
+.show-right-grids {
+  margin-bottom: 1.5em;
+}
+.show-grid-right h3{
+    font-size: 20px;
+    color: #181818;
+    margin: 0 0 1em 0;
+    font-weight: 600;
+}
+.Topic-right h3{
+	font-size: 20px;
+    color: #181818;
+    margin: 0 0 1em 1em;
+    font-weight: 600;
+}
+.show-right-grids ul {
+  padding: 0;
+  margin: 2em 0 0 0;
+}
+.show-right-grids ul li{
+  display: inline-block;
+  margin-left: 1em;
+}
+.show-right-grids ul li:nth-child(1){
+	margin:0;
+}
+.show-right-grids ul li a{
+    font-size: 13px;
+    color: #9E9E9E;
+    margin: 1em 0;
+}
+.show-right-grids ul li a:hover{
+    text-decoration: underline;
+    color: #21DEEF;
+}
+.show-right-grids ul li a img {
+	width: 100%;
+}
+/*-- Topic --*/
+.Topic-main{
+	      padding: 4em 1em 0 0;
+            }
+.Topic-left {
+  padding-bottom: 2em;
+}
+.song-info-left {
+                  float: left;
+                }
+/*-- published --*/
+.published{
+    margin: 1em 0 0 0;
+    padding-left: 0;
+    background: #f7f7f7;
+    padding: 1em;
+}
+.published h4{
+    color: #717171;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+.published p {
+    font-size: 13px;
+    color: #9E9E9E;
+    margin: 1em 0;
+    line-height: 1.8em;
+}
+/*-- load-more --*/
+#myList ul{
+margin:0;
+}
+#myList li{ 
+	display:none;
+	list-style-type:none;
+  }
+.blog-text:after{
+	clear: both;
+}
+.blog-grid img{
+width:100%;
+}
+.load_more {
+  margin-top:0;
+}
+.load_more ul {
+  padding: 0;
+}
+.g_r{
+	background:none;
+	margin:30px 0 0 0;
+}
+.l_g_r img{
+	width:100%;
+}
+.load-grids{
+	margin:1em 0 0 0;
+}
+.load-grid{
+  float: left;
+  width: 17%;
+}
+.load-grid p{
+	font-size: 14px;
+	color: #9E9E9E;
+	margin:0;
+	line-height: 1.8em;
+}	
+.load-grid a{
+    font-size: 14px;
+    color: #0076CC;
+    margin: 1em 0;
+    line-height: 1.8em;
+}
+.load-grid a:hover{
+	color:#9E9E9E;
+	text-decoration:none;
+}
+.all-comments{
+    margin: 1em 0 0 0;
+    padding-left: 0;
+    padding: 1em 1em;
+    box-shadow: 0px 0 2px #C1C1C1 !important;
+    background: #ffffff;
+}
+.all-comments-info a{
+    font-size: 14px;
+    color: #9E9E9E;
+    text-decoration: none;
+}
+.box {
+  margin: 0em 0;
+}
+.box input[type="text"], .box textarea {
+    outline: none;
+    border: 1px solid #D4D3D3;
+    background: none;
+    padding: 10px 10px;
+    width: 60%;
+    font-size: 13px;
+}
+.box input[type="text"]:nth-child(2) {
+    margin: 1em 0;
+}
+.box textarea {
+    resize: none;
+    min-height: 95px;
+    margin: 1em 0;
+    width: 80%;
+}
+.box input[type="submit"] {
+    outline: none;
+    font-style: normal;
+    padding: 8px 20px;
+    background: #21DEEF;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+}
+.box input[type="submit"]:hover{
+    text-decoration: none;
+    color: #272C2E;
+    background: #E2E2E2;
+}
+.media-grids{
+                margin-top:2em;
+                max-width: 95%;
+            }
+            .comment-nav{                
+                margin-bottom: 15px;
+                height: 20px;
+                margin-right: 5%;
+                width:120px;
+                float:right
+            }
+.media {    width:100%;
+      padding: 5px 10px;
+    margin-top:0px!important;
+    border-bottom: 4px solid #d7e4e9;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.6);
+        margin-bottom:15px;
+}
+.media h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #0076CC;
+}
+.media h5 a {
+  color: #DF2229;
+}
+.media-body b{    
+                   font-size: 12px;
+                    color: #666666; 
+                    margin-right: 10px;          
+           }
+.media-body p{
+               font-size: 18px;
+               color: #757575;
+                margin: 0 0 0.5em 0;
+               line-height: 1.5em;
+}
+.media-body span {
+    color: #C7C7C7;
+    font-size: 12px;
+}
+.media-body  span a {
+    color: #21DEEF;
+    text-decoration: none;
+}
+
+.Topic-grid-right{
+	margin-top:2em;
+}
+.Topic-right-grids {
+  margin: 0 0 1.5em 0;
+  border-bottom: 1px solid #555555;
+}	
+.Topic-right-grid-left a img{
+	width:100%;
+}
+.Topic-right-grid-right a.title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #525254;
+    text-decoration: none;
+}
+.Topic-right-grid-right a.title:hover{
+    text-decoration: underline;
+}
+.Topic-right-grid-right p.author {
+    font-size: 14px;
+  color: #9E9E9E;
+  margin: .5em 0;
+}
+.Topic-right-grid-right p.author {
+    font-size: 13px;
+    color: #9E9E9E;
+    margin: 0em 0;
+}
+.Topic-right-grid-right p.author a {
+    color: #21DEEF;
+    text-decoration: none;
+}
+.Topic-right-grid-right p.views {
+    font-size: 12px;
+    color: #C3C3C3;
+    margin: 0;
+}
+.Topic-right-grid-left {
+  padding-left: 0;
+}
+.Topic-right-grid-right{
+	padding-right:0;
+}
+
+/*-- responsive-design starts-here --*/
+@media (max-width: 1366px) {
+	
+	.show-grid-right {
+		padding: 2em 0 0 2em;
+	}
+	.resent-grid-info p.author-info {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 1080px) {	
+	.show-video-grid {
+		width:33.33% !important;
+		margin-bottom: 2em;
+	}
+	.show-time {
+		top: 90% !important;
+	}
+	.show-clock {
+		right: 17%;
+		bottom: 2%;
+	}
+	.show-grid-right {
+		padding: 1em 0 0 1em;
+	}
+	.show-grid-left {
+		width: 80%;
+	}
+	.show-grid-right {
+		width: 20%;
+	}
+
+  .song-grid-right {
+		width: 18%;
+		margin-left: 1em;
+	     }
+	
+	.song-info h3 {
+		font-size: 20px;
+	}
+	.Topic-right-grid-right {
+		padding: 0;
+	}
+	.Topic-right-grid-right a.title {
+		font-size: 13px;
+	}
+	.callbacks_nav {
+		right: 7%;
+	}
+}
+@media (max-width: 1024px) {
+	
+	.show-grid-right h3 {
+		                font-size: 15px;
+                           }	
+}
+@media (max-width: 991px) {	
+	.show-grid-left {
+		float: left;
+	}
+	.show-grid-right {
+		float: left;
+	}	
+	.Topic-left {
+		float: left;
+		width: 70%;	}
+	.Topic-right {
+		padding: 2em;
+		float: left;
+		width: 30%;
+	}
+	.Topic-right-grid-left {
+		padding: 0;
+		margin-bottom: 1em;
+	}	
+}
+
+@media (max-width: 768px) {
+	
+	
+	.show-clock {
+		right: 20%;
+	}
+	.show-grid-left {
+		width: 75%;
+	}
+	.show-grid-right {
+		width: 25%;
+	}
+	.song {
+		width: 100%;
+		float: none;
+	}
+	.song-grid-right {
+	    width: 100%;
+		margin: 1em 0;
+		float: none;
+	}
+	.share li {
+		display: inline-block;
+		margin: 0.5em 0 0 .8em;
+	}
+	.share li.view {
+		display: inline-block;
+	}
+	.movie-clock {
+		right: 28% !important;
+		bottom: 3%;
+	}
+	.show-time {
+		top: 88% !important;
+	}	
+}
+@media (max-width: 640px) {
+	
+	.video-grid iframe {
+		height: 223px;
+	}
+	.box input[type="text"], .box textarea {
+		width: 100%;
+	}
+	.box textarea {
+		min-height: 130px;
+		width: 100%;
+	}
+	.all-comments-buttons ul li a.top {
+		font-size: 12px;
+		padding: .5em 1em;
+	}
+	.show-grid-left {
+		width: 100%;
+		float: none;
+	}
+	.show-grid-right {
+	    width: 100%;
+		float: none;
+		padding: 2em 0 2em 2em;
+	}
+	.show-time {
+		top: 88% !important;
+	}	
+}
+@media (max-width: 480px) {
+	.Topic-left {
+		float: none;
+		width: 100%;
+	}
+	.Topic-right {
+		float: none;
+		width: 100%;
+	}
+	.show-clock {
+		right: 29%;
+	}
+	.show-time {
+		top: 84% !important;
+	}	
+	.video-info-grid ul li {
+		width: 100%;
+	}
+	.video-info-grid ul li.right-list {
+		text-align: left !important;
+	}	
+	.show-time {
+		top: 91% !important;
+	}	
+}
+@media (max-width: 320px) {
+	
+	.show-video-grid {
+		width: 50% !important;
+	}
+	.show-clock {
+		right: 30%;
+	}
+	.small-time {
+		top: 75% !important;
+	  }
+	.show-top-grids {
+		         padding: 0;
+	              }	
+	.show-time {top: 83% !important;}
+	
+	.song-info h3 {	font-size: 15px;}
+	
+	.video-grid iframe {height: 152px;}
+	
+	.published p {	font-size: 12px;	}
+	
+	.box input[type="text"], .box textarea 
+	{		padding: 6px 10px;	}
+	
+	.box textarea {min-height: 95px;}	
+	.media-body p {	font-size: 12px;}
+	.Topic-right h3 {font-size: 15px;}
+	
+	}

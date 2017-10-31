@@ -1,0 +1,336 @@
+	
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coolacharya |transaction Success</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+		<link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+<script type="text/javascript"  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>			
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>	
+	
+		
+		<style type="text/css">
+		.wizard {
+    margin: 20px auto;
+    background: #fff;
+}
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 100%;
+    height: 45px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 22px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 33.33%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+    width: 100%;
+    height: 40px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 35px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+    .wizard {
+              width: 90%;
+                 height: auto !important;
+           }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+	}
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+		</style>
+		
+		<script type="text/javascript">
+		$(document).ready(function () {
+   $("#btn_verify_email").click(function () {
+
+                    var datastring = {'email_id': $("#email_id").val(), 'status': status};
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: "../admin_company/request_password_reset",
+                        data: datastring,
+                        dataType: 'text',
+                        success: function (data) {
+                                 if(data==='Success'){
+                                //   location.href = "admin/startpageapp";
+                              }
+                              else if(data==="User Fail"){
+                                  alert("user id not available with given email");
+                              }
+                              else if(data==="System Error"){
+                                  alert("System Error,Please contacrt adminstrator");
+                              }
+                              else{
+                                  alert(data);
+                              }
+                        },
+                        error: function () {
+                            alert('error handing here');
+                        }
+                    });
+
+
+                });
+                $("#btn_verify_code").click(function(){
+                    var datastring = {'email_id': $("#email_id").val(), 'code': $("#txt_resetpassword_code").val()};
+                
+                            $.ajax({
+                        type: "POST",
+                        url: "../admin_company/verify_reset_password_code",
+                        data: datastring,
+                        dataType: 'text',
+                        success: function (data) {
+                                 if(data==='Success'){
+                                //   location.href = "admin/startpageapp";
+                              }
+                              else if(data==="User Fail"){
+                                  alert("user id not available with given email");
+                              }
+                              else if(data==="System Error"){
+                                  alert("System Error,Please contacrt adminstrator");
+                              }
+                              else{
+                                  alert(data);
+                              }
+                        },
+                        error: function () {
+                            alert('error handing here');
+                        }
+                    });   
+                });
+                  $("#btn_save_passwoerd").click(function(){
+                    var datastring = {'password': $("#password").val(), 'retype_password': $("#re_password").val(),'email_id':$("#email_id").val()};
+                
+                            $.ajax({
+                        type: "POST",
+                        url: "../admin_company/change_password",
+                        data: datastring,
+                        dataType: 'text',
+                        success: function (data) {
+                                 if(data==='Success'){
+                                //   location.href = "admin/startpageapp";
+                              }
+                              else if(data==="User Fail"){
+                                  alert("user id not available with given email");
+                              }
+                              else if(data==="System Error"){
+                                  alert("System Error,Please contacrt adminstrator");
+                              }
+                              else{
+                                  alert(data);
+                              }
+                        },
+                        error: function () {
+                            alert('error handing here');
+                        }
+                    });   
+                });
+                
+    $('.nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+		</script>
+    </head>
+    <body>
+	<div class="container">
+	<div class="row">
+		<section>
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                               Enter your email ID <i class="fa fa-angle-double-right"></i>
+
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                          Confirm it's you  <i class="fa fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="disabled">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                             Get your new password  <i class="fa fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    </li>                    
+                </ul>
+            </div>
+
+            <form role="form">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h3>Enter mail id and continue</h3>
+						<div class="form-group">
+                       <input type="text" name="email_id" id="email_id" class="form-control" style="max-width: 300px" placeholder="Enter your mail Id">
+					   </div>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" id="btn_verify_email" class="btn btn-primary next-step"> continue >></button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                       <h3>Enter Confirmation Code</h3>
+						<div class="form-group">
+                       <input type="text" id="txt_resetpassword_code" class="form-control" style="max-width: 300px" placeholder="Enter confirmation code">
+					   </div>
+                        <ul class="list-inline pull-right">                        
+                            <li><button type="button" id="btn_verify_code" class="btn btn-primary next-step"> continue >></button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3>Enter Confirmation Code</h3>
+						<div class="form-group">
+                       <input type="password" id="password" class="form-control" style="max-width: 300px" placeholder="Enter new password">
+					   </div>
+					   <div class="form-group">
+                       <input type="password" id="re_password" class="form-control" style="max-width: 300px" placeholder="Confirm new password">
+					   </div>
+                        <ul class="list-inline pull-right">   
+                            <li><button type="button" id="btn_save_passwoerd"  class="btn btn-primary btn-info-full next-step">sign in</button></li>
+                        </ul>
+                    </div>                   
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </section>
+   </div>
+</div>
+    </body>
+</html>

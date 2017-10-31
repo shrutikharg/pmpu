@@ -1,0 +1,64 @@
+ //if save button was clicked, get the data sent via post
+		if ($this->input->server('REQUEST_METHOD') === 'POST')
+        {
+            //form validation
+            $this->form_validation->set_rules('name', 'Course Name', 'required');
+			$this->form_validation->set_rules('subtitle', 'Course Subtitle', 'trim|required|min_length[3]|xss_clean');
+			$this->form_validation->set_rules('courseby', 'Course Author', 'trim|required|min_length[5]|xss_clean');
+			$this->form_validation->set_rules('requirements', 'Course Requirements', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('price', 'Course Price', 'trim|required|numeric|xss_clean');
+			$this->form_validation->set_rules('validity', 'Course Validaty', 'trim|required|numeric|xss_clean');
+			$this->form_validation->set_rules('audience', 'Course Audience', 'trim|xss_clean');
+			$this->form_validation->set_rules('goals', 'Course Name', 'trim|xss_clean');
+			$this->form_validation->set_rules('subcategory', 'Sub Category of Course', 'trim|required|numeric|xss_clean');
+			$this->form_validation->set_rules('description', 'Course Description', 'trim|xss_clean');
+			
+            $this->form_validation->set_error_delimiters('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
+           
+            //if the form has passed through the validation
+            if ($this->form_validation->run())
+            {
+                
+				$file_element_name ='courseimage';
+				$data['imageupload'] = $this->uploadImage($file_element_name);
+				if (!empty($data['imageupload']['file_name'])) 
+				{
+					
+					$imagelogo=$data['imageupload']['file_name'];
+				}
+				elseif(count($this->input->post('courseimagedisp')>4))
+				{					
+					$imagelogo=$this->input->post('courseimagedisp');
+				}
+				else
+				{
+					$imagelogo='default_course.png';
+				}
+				
+				$data_to_store = array(
+                    'course_name' => $this->input->post('name'),
+					'course_subtitle' => $this->input->post('subtitle'),
+					'course_by' => $this->input->post('courseby'),
+					'course_requirements' => $this->input->post('requirements'),
+					'course_price' => $this->input->post('price'),
+					'course_validity' => $this->input->post('validity'),
+					'course_audience' => $this->input->post('audience'),
+					'course_goals' => $this->input->post('goals'),
+					'subcategory_id' => $this->input->post('subcategory'),
+					'course_image' => $imagelogo,					            
+					'course_description' => $this->input->post('description'),
+					'course_createuser'=>$userid,
+					'modify_date' => date('Y-m-d'),
+					'modify_by'=>$this->session->userdata('user_name'),
+					'IsActive'=> 'Y',
+                );
+                //if the insert has returned true then we show the flash message
+                if($this->companycoursesassign_model->update_courses($id, $data_to_store) == TRUE)
+				{
+                    $this->session->set_flashdata('flash_message', 'updated');
+                }else{
+                    $this->session->set_flashdata('flash_message', 'not_updated');
+                }
+				 redirect('admin_company/coursesassign/update/'.$id.'');
+            }
+        }

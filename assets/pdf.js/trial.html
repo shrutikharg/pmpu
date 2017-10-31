@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script>
+$(document).ready(function(){
+   	
+$("#download").css("display", "none");
+});
+ </script>
+</head>
+<body>
+
+<h1>PDF.js Previous/Next example</h1>
+
+<div>
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+  &nbsp; &nbsp;
+  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+</div>
+<iframe src="ngcourse2.pdf" height="1000" width="500"></iframe>
+
+</body>

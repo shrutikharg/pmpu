@@ -1,0 +1,292 @@
+@font-face{font-family:'caviar_dreamsregular';src:url(../font/roboto-regular-webfont.eot);
+src:url(../font/roboto-regular-webfont.eot?#iefix) format('embedded-opentype'),
+url(../font/roboto-regular-webfont.woff) format('woff'),
+url(../font/roboto-regular-webfont.ttf) format('truetype');
+font-weight:normal;font-style:normal}
+
+@font-face {
+    font-family: 'caviar_dreamsbold';
+    src: url('../font/CaviarDreams_Bold-webfont.eot');
+    src: url('../font/CaviarDreams_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/CaviarDreams_Bold-webfont.woff2') format('woff2'),
+         url('../font/CaviarDreams_Bold-webfont.woff') format('woff'),
+         url('../font/CaviarDreams_Bold-webfont.ttf') format('truetype'),
+         url('../font/CaviarDreams_Bold-webfont.svg#caviar_dreamsbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.pricing
+{
+	font-family:"caviar_dreamsregular",sans-serif;
+	
+}
+.pricing h2{
+margin: 10px 0;
+    font-family: "caviar_dreamsbold",sans-serif;
+    
+    line-height: 46px;
+    color: inherit;
+    font-size:32px;
+    text-rendering: optimizelegibility;	
+	
+}
+
+table {border-collapse: collapse;}
+		table {width: 100%; border: none;}
+		th {padding: 5px 15px; border: none; border-bottom: 2px solid #e5e5e5; color: #3f3f3f; font-weight: 700; font-size: 0.923em; text-align: left;}
+		td {padding: 10px 15px; border: none; border-bottom: 1px solid #e5e5e5; text-align: left;}
+		table.alt th {padding: 7px 15px; border-bottom: 3px solid #d97000; background: #ff8400; color: #fff; font: 300 1em "Signika",sans-serif;}
+		h2.version { color:#900; }
+		.table {overflow-x: auto;  overflow-x: auto; border: 1px solid #ddd; }
+		table.pricing th {padding: 4px 0; color: #999; text-align: center;}
+		table.pricing strong {color: #3f3f3f; font-size: 2em;}
+		table.pricing sup {position: relative; top: -0.5em; color: #3f3f3f; font-size: 1.2em;}
+		table.pricing td {color: #3f3f3f; text-align: center;}
+		table.pricing td:first-child {color: #000; font-size:18px; text-align: left;}
+		/*table.pricing td:nth-child(2n+2) {background: #f7f7f7;}
+*/		table.pricing tr.action td {padding: 20px 10px; border-bottom-width: 2px;}
+		table.pricing tr.action td:first-child a {padding-left: 20px; background: url("more.png") 0 50% no-repeat; color: #3f3f3f;}
+		table.pricing tr.action td:first-child a:hover {color: #ff8400;}
+		
+		
+		
+		@media (max-width: 720px) {
+			table.pricing tr.action a.button {padding: 0 5px; white-space: nowrap;}
+		}
+		@media (max-width: 520px) {
+			table.pricing th {font-size: 1em;}
+			table.pricing tr.action a.button {font-size: 0.813em;}
+		}
+		/*
+DEMO 4
+*/
+
+.a_demo_four {
+	background-color:#3bb3e0;
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	text-decoration:none;
+	color:#fff;
+	position:relative;
+	padding:10px 20px;
+	padding-right:50px;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(44,160,202)),
+	color-stop(1, rgb(62,184,229))
+	);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	-moz-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	-o-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+}
+
+.a_demo_four:active {
+	top:3px;
+	background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(62,184,229)),
+	color-stop(1, rgb(44,160,202))
+	);
+	-webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #156785, 0px 5px 3px #999;
+	-moz-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #156785, 0px 5px 3px #999;
+	-o-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #156785, 0px 5px 3px #999;
+	box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #156785, 0px 5px 3px #999;
+}
+
+.a_demo_four::before {
+	background-color:#2591b4;
+	background-image:url(images/right_arrow.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	content:"";
+	width:20px;
+	height:20px;
+	position:absolute;
+	right:15px;
+	top:50%;
+	margin-top:-9px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-box-shadow: inset 0px 1px 0px #052756, 0px 1px 0px #60c9f0;
+	-moz-box-shadow: inset 0px 1px 0px #052756, 0px 1px 0px #60c9f0;
+	-o-box-shadow: inset 0px 1px 0px #052756, 0px 1px 0px #60c9f0;
+	box-shadow: inset 0px 1px 0px #052756, 0px 1px 0px #60c9f0;
+}
+
+.a_demo_four:active::before {
+	top:50%;
+	margin-top:-12px;
+	-webkit-box-shadow: inset 0px 1px 0px #60c9f0, 0px 3px 0px #0e3871, 0px 6px 3px #1a80a6;
+	-moz-box-shadow: inset 0px 1px 0px #60c9f0, 0px 3px 0px #0e3871, 0px 6px 3px #1a80a6;
+	-o-box-shadow: inset 0px 1px 0px #60c9f0, 0px 3px 0px #0e3871, 0px 6px 3px #1a80a6;
+	box-shadow: inset 0px 1px 0px #60c9f0, 0px 3px 0px #0e3871, 0px 6px 3px #1a80a6;
+}
+span.yes
+ {  
+display: block;
+overflow: hidden;
+width: 18px;
+height: 18px;
+margin: 0px auto;
+background: transparent url("../img/msg-success.png") no-repeat scroll 50% 50% !important;
+text-indent: -50em;   
+} 
+span.no
+ {  
+display: block;
+overflow: hidden;
+width: 18px;
+height: 18px;
+margin: 0px auto;
+background: transparent url("../img/no.png") no-repeat scroll 50% 50% !important;
+text-indent: -50em;   
+}  
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+[data-tooltip] a{
+text-decoration: none !important;	
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+.pricing a{
+text-decoration: none !important;	
+}
+
+
+.icon-info.icon-xsmall {
+    width: 17px;
+    height: 12px;
+    background-position: 0px 0px;
+    background-size: 46px 36px; 
+    cursor: pointer;
+}
+.icon-info {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: 72px 72px;
+    cursor: pointer;
+    background-image: url("https://d2yc83ilop69kq.cloudfront.net/images/icons/info-112c7ef36d.svg") !important;
+}
+.icon-checkmark, .icon-info {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+.a_current
+{
+background-color:#39D136;
+font-family: 'Open Sans', sans-serif;
+font-size:12px;
+text-decoration:none;
+color:#fff;
+position:relative;
+padding:10px 20px;
+padding-right:50px;
+background-image: linear-gradient(bottom, rgb(143,208,60) 0%, rgb(88, 187, 85)  100%);
+background-image: -o-linear-gradient(bottom, rgb(143,208,60) 0%, rgb(88, 187, 85)  100%);
+background-image: -moz-linear-gradient(bottom, rgb(143,208,60) 0%, rgb(88, 187, 85)  100%);
+background-image: -webkit-linear-gradient(bottom, rgb(143,208,60) 0%, rgb(88, 187, 85)  100%);
+background-image: -ms-linear-gradient(bottom, rgb(143,208,60) 0%, rgb(88, 187, 85)  100%);
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0, rgb(88, 187, 85)),
+color-stop(1, rgb(143,208,60))
+);
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: inset 0px 1px 0px #8fd03c, 0px 5px 0px 0px #328332, 0px 10px 5px #999;
+-moz-box-shadow: inset 0px 1px 0px#8fd03c, 0px 5px 0px 0px #328332, 0px 10px 5px #999;
+-o-box-shadow: inset 0px 1px 0px #8fd03c, 0px 5px 0px 0px #328332, 0px 10px 5px #999;
+box-shadow: inset 0px 1px 0px #8fd03c, 0px 5px 0px 0px #328332, 0px 10px 5px #999;	
+}
+.current
+{
+background: #f7f7f7;	
+}
+		
