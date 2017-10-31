@@ -1,5 +1,4 @@
 ﻿<?php
-
 class Admin_companycmspage extends CI_Controller {
 
     /**
