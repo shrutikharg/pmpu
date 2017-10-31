@@ -8,8 +8,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
 ----->
 <div id="content">
     <div class="container">
-        <div class="row">				
-            <div class="row">
+        <div class="row">
                 <div class="col-md-12">
                     <div class="widget box">
                         <div class="widget-header">
@@ -17,7 +16,6 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         </div>
                     </div> <!-- /.widget .box -->
                 </div> <!-- /.col-md-12 -->
-            </div> <!-- /.row -->		
         </div> <!-- /.row -->		
         <!-- /Statboxes -->
 
@@ -26,7 +24,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
         <!--=== Statboxes ===-->		
 
         <!--=== Normal ===-->
-        <div class="row">
+        <div class="row" style="margin-left: auto;margin-right: auto;">
             <div class="col-md-12">												
                 <?php
                 //var_dump($count_cmslimit);		

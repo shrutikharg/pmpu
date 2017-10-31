@@ -2891,8 +2891,9 @@ font-size: 14px !important;
 	color:#ffffff !important;	
 }
 .company_logo img {
-	width: 70px;
-	height: 50px;
+        width: 110px;
+        height: auto;
+        padding-top: 10px;
 }
 .res_table {
 	display: table;	/* Defines a Table */
