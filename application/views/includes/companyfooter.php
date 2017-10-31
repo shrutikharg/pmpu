@@ -1,7 +1,6 @@
 <?php
 //var_dump($footerdata);
 ?>   
-
 <div style="margin-left: 0px !important; margin-right: 0px !important; z-index: 8000; position: relative; clear: both; display: block;" class="row">	
     <footer>
         <div class="footer">
