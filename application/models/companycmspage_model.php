@@ -21,7 +21,7 @@ class Companycmspage_model extends CI_Model {
 		$this->db->from('cmspage');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
-		return $query->result_array(); 
+		return $query->row(); 
     }
 	
 	 public function list_cmspage($userid,$usernm)
@@ -78,30 +78,9 @@ class Companycmspage_model extends CI_Model {
 	    
 		$this->db->select('*');
 		$this->db->from('cmspage');
-		$this->db->where('userid', $userid);
-		if($search_string){
-			$this->db->like('emailid', $search_string);
-		}
-		$this->db->group_by('id');
-
-		if($order)
-		{
-			$this->db->order_by($order, $order_type);
-		}else{
-		    $this->db->order_by('id', $order_type);
-		}
-
-        if($limit_start && $limit_end){
-          $this->db->limit($limit_start, $limit_end);	
-        }
-
-        if($limit_start != null){
-          $this->db->limit($limit_start, $limit_end);    
-        }
-        
-		$query = $this->db->get();
-		
-		return $query->result_array(); 	
+                $this->db->where('company_id',  $this->session->userdata('company_id'));
+		$query = $this->db->get();		
+		return $query->row(); 	
     }
 
 
