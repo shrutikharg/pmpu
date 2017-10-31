@@ -10,23 +10,23 @@
 <div id="content">
     <div class="container">
 
-        <ul class="breadcrumb">
-            <li>
-                <a href="<?php echo site_url("admin"); ?>">
-                    <?php echo ucfirst($this->uri->segment(1)); ?>
-                </a> 
-                <span class="divider">/</span>
-            </li>
-            <li>
-                <a href="<?php //echo site_url("admin").'/'.$this->uri->segment(2);  ?>">
-                    <?php echo ucfirst($this->uri->segment(2)); ?>
-                </a> 
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                <a href="#">New</a>
-            </li>
-        </ul>
+           <ul class="breadcrumb">
+                    <li>
+                        <a href="#>">
+                            <?php echo $this->lang->line('nav_master'); ?>
+                        </a> 
+                      
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2). '/' . $this->uri->segment(3); ?>">
+                            <?php echo $this->lang->line('nav_comapny'); ?>
+                        </a> 
+                        
+                    </li>
+                    <li class="active">
+                        <a href="#"><?php echo $this->lang->line('brd_edit');?></a>
+                    </li>
+                </ul>
         <div class="container">
             <div class="page-header">
                 <h2>

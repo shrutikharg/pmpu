@@ -4,19 +4,19 @@
             <div class="col-md-12">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="<?php echo site_url("admin_company"); ?>">
-                            <?php echo ucfirst($this->uri->segment(1)); ?>
+                        <a href="#>">
+                            <?php echo $this->lang->line('nav_master'); ?>
                         </a> 
-                        <span class="divider">/</span>
+                      
                     </li>
                     <li>
                         <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                            <?php echo ucfirst($this->uri->segment(2)); ?>
+                            <?php echo $this->lang->line('nav_cms'); ?>
                         </a> 
-                        <span class="divider">/</span>
+                        
                     </li>
                     <li class="active">
-                        <a href="#">New</a>
+                        <a href="#"><?php echo $this->lang->line('brd_add');?></a>
                     </li>
                 </ul>
 

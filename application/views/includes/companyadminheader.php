@@ -808,7 +808,7 @@ function time_elapsed_string($ptime)
 <ul id="nav">
     <li <?php if(($this->uri->segment(2) == 'brandings') || ($this->uri->segment(2) == 'cmspage')){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);">
-							<i class="icon-home"></i>
+							<i class="icon-cogs"></i>
 							<?php echo $this->lang->line('nav_master');?>
 						</a>
 						<ul class="sub-menu">
