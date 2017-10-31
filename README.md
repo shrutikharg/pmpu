@@ -1,3 +1,4 @@
+
 CodeIgniter-Sample-Project
 ==========================
 
@@ -108,4 +109,3 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-```
