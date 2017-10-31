@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class Admin_companychapters extends CI_Controller {
 
@@ -143,7 +143,7 @@ class Admin_companychapters extends CI_Controller {
                         $upload_data = $this->upload->do_my_upload('chapterimage', $config);
 
                         if ($upload_data['status'] == TRUE) {
-                            $user_course_chapter_image_path = $user_course_chapter_directory . '/' . $upload_data['details']['client_name'];
+                            $user_course_chapter_image_path = $user_course_chapter_directory . '/' . $upload_data['details']['raw_name'].$upload_data['details']['file_ext'];
                             $course_chapter_image_path_data = array('image_path' => substr($user_course_chapter_image_path, 2),
                                 'image_size' => $upload_data['details']['file_size'] * 1024);
                             $this->companychapters_model->update_chapters($inserted_chapter_id, $course_chapter_image_path_data);
@@ -275,9 +275,7 @@ class Admin_companychapters extends CI_Controller {
         if (array_key_exists("name", $_POST)) {
             if ($this->form_validation->run()) {
 
-                $file_element_name = 'chapterattach';
-                $data['chapterattach'] = $this->uploadImagedocuments($file_element_name);
-
+               
                 $data_to_update = array(
                     'name' => $this->input->post('name'),
                     'description' => $this->input->post('description'),
@@ -312,7 +310,7 @@ class Admin_companychapters extends CI_Controller {
                         $upload_data = $this->upload->do_my_upload('chapterimage', $config);
 
                         if ($upload_data['status'] == TRUE) {
-                            $user_course_chapter_image_path = $user_course_chapter_directory . '/' . $upload_data['details']['client_name'];
+                            $user_course_chapter_image_path = $user_course_chapter_directory . '/' . $upload_data['details']['raw_name'].$upload_data['details']['file_ext'];
                             $previous_image_path = './' . $data['chapter_data'][0]['image_path'];
                             unlink($previous_image_path);
                             $course_chapter_image_path_data = array('image_path' => substr($user_course_chapter_image_path, 2),
@@ -542,42 +540,8 @@ class Admin_companychapters extends CI_Controller {
         $this->load->view('includes/template', $data);
     }
 
-    public function upload_image($userid, $file_element_name, $user_course_chapter_directory, $previous_chpter_image_size = 0) {
-        if ($this->upload->check_for_space_availability($userid, $_FILES[$file_element_name]['size'], $previous_chpter_image_size)) {
-            $config['upload_path'] = $user_course_chapter_directory;
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size'] = '1000';
-            $config['max_width'] = '1024';
-            $config['max_height'] = '768';
 
-            $this->upload->initialize($config);
-            if (!($this->upload->do_upload('chapterimage'))) {
-                $this->upload->display_errors();
-                return false;
-            } else {
-
-                $data = $this->upload->data();
-
-                return $data;
-            }
-        } else {
-            return FALSE;
-        }
-    }
-
-    public function uploadImagedocuments($file_element_name) {
-
-        $config['upload_path'] = './assets/chapter_documents/';
-        $config['allowed_types'] = 'ppt|pdf';
-        $config['max_size'] = '1000';
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload($file_element_name)) {
-            return false;
-        } else {
-            $data = $this->upload->data();
-            return $data;
-        }
-    }
+    
 
     public function upload_chapters() {
         $userid = $this->session->userdata('id');

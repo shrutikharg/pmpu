@@ -123,10 +123,16 @@ class Admin_companycourses extends CI_Controller {
                     $user_course_directory_path = $user_directory_path . '/course_' . $course_id;
                     $user_course_directory = create_directory($user_course_directory_path);
                     if ($_FILES['courseimage']['size'] != 0) {
-                        $this->uploadImage('courseimage', $user_course_directory);
-
-                        if ($this->uploadImage('courseimage', $user_course_directory)) {
-                            $user_course_image_path = $user_course_directory . '/' . $_FILES['courseimage']['name'];
+                          $config['upload_path'] = $user_course_directory;
+                        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                        $config['max_size'] = '1000';
+                        $config['max_width'] = '1024';
+                        $config['max_height'] = '768';
+                        $config['overwrite'] = FALSE;
+                        $upload_data = $this->upload->do_my_upload('courseimage', $config);
+                   
+                        if ($upload_data['status']==TRUE) {
+                            $user_course_image_path = $user_course_directory . '/' . $upload_data['details']['raw_name'].$upload_data['details']['file_ext'];
                             $course_image_path_data = array('image_path' => substr($user_course_image_path, 2));
                             $this->companycourses_model->update_courses($course_id, $course_image_path_data);
                         }
@@ -193,14 +199,19 @@ class Admin_companycourses extends CI_Controller {
                         $user_course_directory_path = $user_directory_path . '/course_' . $id;
                         $user_course_directory = create_directory($user_course_directory_path);
                         if ($_FILES['courseimage']['size'] != 0) {
-                            if ($this->uploadImage('courseimage', $user_course_directory)) {
-                                $data['courses'] = $this->companycourses_model->get_courses_by_id($id);
-                                $previous_image_path = './' . $data['courses'][0]['image_path'];
-                                unlink($previous_image_path);
-                                $user_course_image_path = $user_course_directory . '/' . $_FILES['courseimage']['name'];
-                                $course_image_path_data = array('image_path' => substr($user_course_image_path, 2));
-                                $this->companycourses_model->update_courses($id, $course_image_path_data);
-                            }
+                               $config['upload_path'] = $user_course_directory;
+                        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                        $config['max_size'] = '1000';
+                        $config['max_width'] = '1024';
+                        $config['max_height'] = '768';
+                        $config['overwrite'] = FALSE;
+                        $upload_data = $this->upload->do_my_upload('courseimage', $config);
+                   
+                        if ($upload_data['status']==TRUE) {
+                            $user_course_image_path = $user_course_directory . '/' . $upload_data['details']['raw_name'].$upload_data['details']['file_ext'];
+                            $course_image_path_data = array('image_path' => substr($user_course_image_path, 2));
+                            $this->companycourses_model->update_courses($id, $course_image_path_data);
+                        }
                         }
                     
                    $this->session->set_flashdata('message',$this->lang->line('msg_course_update_success'));
@@ -279,28 +290,6 @@ class Admin_companycourses extends CI_Controller {
     }
 
 //edit
-
-    public function uploadImage($file, $upload_path) {
-
-        $config['upload_path'] = $upload_path;
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size'] = '1000';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
-
-        $this->load->library('upload');
-        $this->upload->initialize($config);
-
-        if (!$this->upload->do_upload($file)) {
-            print_r($this->upload->display_errors());
-
-            return false;
-        } else {
-            $data = $this->upload->data();
-            return $data;
-        }
-    }
-
     public function course_dropdown_list() {
         $userid = $this->session->userdata('id');
         $subcategory_id = $this->encryption->decrypt($this->input->post(sub_category));
