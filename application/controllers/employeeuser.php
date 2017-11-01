@@ -17,9 +17,12 @@ class Employeeuser extends CI_Controller {
     }
 
     function index() {
-
-
-        $this->load->view('employee_company/login');
+        $data['course_list'] = $this->employeeuser_model->get_course_list($this->company_details->id);
+        $data['footerdata']=$this->domain->get_company_cms_bydomain();
+        $data['company_details'] = $this->company_details;
+        
+//        $this->load->view('employee_company/login');
+        $this->load->view('employee_company/login', $data);
     }
 
     function home() {

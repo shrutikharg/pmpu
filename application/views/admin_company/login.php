@@ -65,7 +65,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
         <strong>sorry !</strong> you have entered wrong Email Id / Password.
     </div>
     
-   <div style="padding-top:10px; text-align: center; " id="loading" class="loading" /> </div><div class="logo">
+   <div style="padding-top:100px; text-align: center; " id="loading" class="loading" /> </div><div class="logo">
     
     <img src="<?php echo base_url(); ?>assets/assets/img/logo.png" alt="logo" />
 </div>
