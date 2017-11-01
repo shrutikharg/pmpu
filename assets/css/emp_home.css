@@ -95,7 +95,7 @@ border-bottom: 4px solid #99D9EA;}
 .banner-sec{
               float: left; 
               width:100%;
-			  min-height:670px;
+              min-height:670px;
             }
 .banner-sec .news-block{margin-bottom: 20px}
 .banner-sec .news-block:last-child{margin-bottom: 0px}

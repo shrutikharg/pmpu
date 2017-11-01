@@ -46,6 +46,93 @@
             });
 	});
 	</script>
+        <style type="text/css">
+        /***********************************Header Css Start********************************************/
+        .top-head {
+            background:#99D9EA  none repeat scroll 0% 0%;
+            min-height: 48px;
+            filter: none;
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            z-index: 1030;
+            margin-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            box-shadow: none;
+            border-width: medium medium 4px;
+            border-bottom-width: 4px;
+            border-style: none none solid;
+            border-bottom-style: solid;
+            border-color: -moz-use-text-color -moz-use-text-color #00BFFF;
+            -moz-border-top-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            box-shadow: 2px 4px 8px rgba(0,0,0,0.6);
+            border-image: none;
+            border-radius: 0px;
+            border-bottom: 4px solid #99D9EA;
+        }
+        .top-head .logo {
+            max-width: 200px;
+            margin-top: 8px;
+        }
+        .top-head .admin-bar {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .top-head .admin-bar a {
+            color: #555555;
+            line-height: 49px;
+            position: relative;
+            padding: 0 7px;
+        }
+        .top-head .admin-bar a:hover {
+            color: #ff0000;
+        }
+        .login {
+            padding-top: 0;
+        }
+        /***********************************Header Css End********************************************/
+        /***********************************Footer Css Start********************************************/
+        .footer
+        {
+            background: #c0c0c0;
+            width: 100%;
+            float: left;
+
+        }  
+        .footer_inner
+        {
+            margin-top: 20px;	
+        }
+
+        .footer ul
+        {
+            list-style: none;	
+        }
+        .footer li
+        {
+            float: left;
+            padding-left: 4px;	
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer_2
+        {
+            float:left;	
+            width: 100%;
+            text-align: center;
+            background: #f5f5f5;
+            padding-bottom: 10px;
+            padding-top: 10px;	
+        }
+        /***********************************Footer Css End********************************************/
+        </style>
 <body class="bg">
     <header class="top-head left">
         <div class="container">
