@@ -305,7 +305,30 @@ width:100%;
 .Topic-right-grid-right{
 	padding-right:0;
 }
-
+.comment-nav {
+    width: 245px;
+    float: right;
+}
+.comment-nav > span > input {
+    font: 17px/1.5 times new roman;
+    background-color: #1abc9c;
+    padding: 6px 30px;
+    color: #fff;
+    text-decoration: none;
+    -moz-box-shadow: 4px 4px 2px #d4d4d4;
+    -webkit-box-shadow: 4px 4px 2px #d4d4d4;
+    box-shadow: 4px 4px 2px #d4d4d4;
+}
+.comment-nav > span > input:hover {
+    font: 17px/1.5 times new roman;
+    background-color: #1abc9c;
+    padding: 6px 30px;
+    color: #fff;
+    text-decoration: none;
+    -moz-box-shadow: 8px 6px 8px #d4d4d4;
+    -webkit-box-shadow: 8px 6px 8px #d4d4d4;
+    box-shadow: 8px 6px 8px #d4d4d4;
+}
 /*-- responsive-design starts-here --*/
 @media (max-width: 1366px) {
 	

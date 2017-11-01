@@ -630,7 +630,7 @@
                             </div>							
                         </div>
                         <div class="comment-nav">
-                            <span class="pull-left">  <input type="button" id="prev_comment" value="Previous" ></span>  <span class="pull-right"> <input type="button" value="Next" id="nxt_comment"></span>
+                            <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
                         </div>
                     <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
                         <div class="media-grids">
