@@ -387,7 +387,7 @@ function time_elapsed_string($ptime)
 		?>
 		<a href="<?php echo base_url(); ?>admin_company/category" class="navbar-brand">
 		<div class="company_logo">
-		<img src="<?php echo base_url().$this->config->item('company_details')->logo_path; ?>"" alt="company_logo"  />
+                    <img src="<?php echo base_url().$this->config->item('company_details')->logo_path; ?>"" alt="company_logo"  width="70" height="50"/>
 		<!--<img src="<?php echo base_url(); ?>assets/assets/img/logo.png"  />-->
 	</a>
 	</div>
@@ -398,7 +398,7 @@ function time_elapsed_string($ptime)
 	?>
 			<div class="company_logo">
 		<a href="<?php echo base_url(); ?>admin_company/category" class="navbar-brand">
-		<img src="<?php echo base_url(); ?>assets/user_theme/<?php echo $this->session->userdata('logocomp'); ?>"  alt="company_logo"  />
+		<img src="<?php echo base_url(); ?>assets/user_theme/<?php echo $this->session->userdata('logocomp'); ?>"  alt="company_logo" width="70" height="50"/>
 	</a>
 	</div>
 	<?php

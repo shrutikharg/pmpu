@@ -2891,9 +2891,9 @@ font-size: 14px !important;
 	color:#ffffff !important;	
 }
 .company_logo img {
-        width: 110px;
+        max-width: 75px;
         height: 50px;
-        padding-top: 10px;
+        padding-top: 5px;
 }
 .res_table {
 	display: table;	/* Defines a Table */
