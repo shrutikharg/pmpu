@@ -11,18 +11,18 @@
 <body>
     <header class="top-head left">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-							<img class="img-fluid logo " src="<?php echo base_url(). $company_details->logo_path;?>">
-						</div>
-                <div class="col-md-6 col-lg-6  admin-bar hidden-sm-down">
+            <div class="row" style="max-width: 1170px;">
+                <div class="col-md-6 col-lg-4 pull-left">
+                    <img class="img-fluid logo " src="<?php echo base_url() . $company_details->logo_path; ?>">
+                </div>
+                <div class="col-md-6 col-lg-6  admin-bar hidden-sm-down pull-right">
                     <nav class="nav nav-inline  pull-right">  <a href="employee/login" class="nav-link">Login </a> <a href="employee/register" class="nav-link">Register </a> </nav>
-                
-             </div>
+
+                </div>
             </div>
         </div>
 
-</header>
+    </header>
 <section class="banner-sec">
     <div class="container">
               <div class="row">
@@ -95,7 +95,8 @@
 ?>   
 <footer>
 <div class="footer" style="background-color:#99d9ea !important">
-<div class="footer_inner"> 
+<div class="footer_inner">
+    <div class="container"><div class="row">
 <div class="col-md-12">     
 <div class="col-md-4">
 <?php 
@@ -182,7 +183,7 @@ if(!empty($footerdata->contactno))
 </div>
 </div>
 </div>
-</div>
+    </div></div></div>
 <div class="footer_2">
 <dt>&copy; 2015 Cool Acharya, All rights reserved | Terms of Service | Privacy policy</dt>    
 </div>
