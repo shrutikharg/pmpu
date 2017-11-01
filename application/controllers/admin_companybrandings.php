@@ -115,6 +115,9 @@ class Admin_companybrandings extends CI_Controller {
                 return false;
             }
         }
+        else{
+            return TRUE;
+        }
     }
     }
     
