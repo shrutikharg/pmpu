@@ -41,19 +41,19 @@ $('#btnSubmit').click(function (e) {
                                             if (res.status === 'Success') {
                                               
                                                 //$("#userImage").disabled=true;
-                                                $("#userImage").prop("disabled", true);
-                                                $("#btnSubmit").prop("disabled", true);
-                                                $("#btnSubmit").disabled = true;
+                                               // $("#userImage").prop("disabled", true);
+                                                //$("#btnSubmit").prop("disabled", true);
+                                               // $("#btnSubmit").disabled = true;
                                                 $("#file_path").val(res.data);
                                             }
                                         },
-                                        error: function (e) {
+                                        error: function (e) {$("#file_type").val('');
                                             alert(e.status + " error occurred to upload image!");
                                             // window.location.href=window.location.href;
                                         }
                                     });
                                 } else
-                                {
+                                {$("#file_type").val('');
                                     return false;
                                 }
                             }

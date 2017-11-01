@@ -160,7 +160,7 @@
                                                 </div> <!-- /.tab-content -->
                                             </div>
                                             <div class="form-group">                                       
-                                                <div class="col-md-10"><input type="hidden" class="form-control" id="file_type" name="file_type"    /></div>
+                                                <div class="col-md-10"><input type="text" class="form-control" id="file_type" name="file_type"    /></div>
                                                 <div class="col-md-10"><input type="hidden" class="form-control" id="file_path" name="file_path"   /></div>
                                                 <div class="col-md-10"><input type="hidden" class="form-control" id="video_id" name="video_id"  /></div>
                                             </div>
@@ -190,15 +190,18 @@
                                     })
                                     .fail(function () {
                                     });
+                            
                             $("#pdf_file_to_upload").on('change', function() {
 	// Validate whether PDF
-    if(['application/pdf'].indexOf($(this).get(0).files[0].type) == -1) {
+    if(['application/pdf'].indexOf($(this).get(0).files[0].type) == -1) { $("#file_type").val(''); 
         alert('Error : Not a PDF');
         return;
     }
     else{
         $("#file_type").val('pdf');
     }
+  
+    
 
 	
 });
