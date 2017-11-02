@@ -1,12 +1,8 @@
-
-
 <!DOCTYPE html>
 <title> </title>
 <head>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/emp_home.css">
-    <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-   
-  
+    <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />  
 </head>
 <body>
     <header class="top-head left">
@@ -26,11 +22,11 @@
 <section class="banner-sec">
     <div class="container">
               <div class="row">
-            <div class="col-md-6 top-slider">
+            <!--<div class="col-md-6 top-slider">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
-                    <!-- Indicators -->
+                     Indicators 
                                  
-                    <!-- Wrapper for slides -->
+                     Wrapper for slides 
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="news-block">
@@ -50,22 +46,111 @@
 
                     </div>
                 </div>
+            </div>-->
+<!--New Carousal Slider Start-->
+<style type="text/css">
+    .carousel {padding-bottom: 25px}
+    .carousel img{padding-top: 20px;}
+    .carousel h2 {color: #0072b5;}
+    .carousel h2 small{color: #289bde}
+    .carousel col-lg-4 p {text-align: center;}
+</style>
+<div class='container carousel'>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner text-center" role="listbox">
+            <div class="item active">
+                <div class="col-lg-8 pull-right">
+                    <img src="assets/images/banner/1.jpg">
+                </div>
+                <div class="col-lg-4">                            
+                    <h2>Sed vel lectus<br>
+                        <small>by Merovingio in Jun 22, 2017 at 
+                            21:59</small></h2>
+                    <p>
+                        Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. 
+                        Aenean id metus id velit ullamcorper pulvinar. Vestibulum fermentum tortor id mi. 
+                        Pellentesque ipsum. Nulla non arcu lacinia neque faucibus...                            
+                        Pellentesque ipsum. Nulla non arcu lacinia neque faucibus... 
+                        Pellentesque ipsum. Nulla non arcu lacinia neque faucibus... 
+                        Pellentesque ipsum. Nulla non arcu lacinia neque faucibus... 
+                    </p>
+                    <a class='btn btn-info pull-right'
+                       href="/article/show/sed-vel-lectus/9">
+                        <i class="fa fa-long-arrow-right"> </i></a>  
+                </div>
             </div>
+            <div class="item">                    
+                <div class="col-lg-8 pull-right">
+                    <img src="assets/images/banner/2.jpg">
+                </div>
+                <div class="col-lg-4">                            
+                    <h2>Proin porta auctor nisi<br>
+                        <small>by Merovingio in Jun 22, 2017 at 
+                            00:34</small></h2>
+                    <p>
+                        Proin porta auctor nisi in interdum. Praesent a accumsan neque. Quisque ut nulla ac libero egestas tristique. Nunc venenatis elit lorem, ut viverra neque rhoncus a. Proin erat risus, pharetra vitae elementum eget, accumsan ornare mauris.
+                        Praesent...                            
+                    </p>    
+                    <a class='btn btn-info pull-right'
+                       href="/article/show/sed-vel-lectus/9">
+                        <i class="fa fa-long-arrow-right"> </i></a>  
+                </div>                    
+            </div> 
+            <div class="item">                    
+                <div class="col-lg-8 pull-right">
+                    <img src="assets/images/banner/3.jpg">
+                </div>
+                <div class="col-lg-4">                            
+                    <h2>Aenean sodales<br>
+                        <small>by Merovingio in Jun 22, 2017 at 
+                            00:33</small></h2>
+                    <p>
+                        Aenean sodales, leo eu euismod tincidunt, felis odio aliquam velit, 
+                        quis porta lorem erat eget erat. Aliquam porta libero erat, sed aliquet est 
+                        sollicitudin a. Curabitur nec tellus in eros egestas venenatis ac sed nisl. In consectetur nisl eget...                            
+                    </p>       
+                    <a class='btn btn-info pull-right'
+                       href="/article/show/sed-vel-lectus/9">
+                        <i class="fa fa-long-arrow-right"> </i></a>                            
+                </div>                    
+            </div> 
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<!--Carousal Slider End-->
+
         </div>
         <div class="row" style='margin-top:30px;'>
             <?php foreach ($course_list as $row) {
                 ?>
                 <div class="col-md-3">
                     <div class="card">
-                        <div class="hover-div"> <a href="#" class="btn btn-success" id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModal">Read more.... </a> </div>
+                        <div class="hover-div"> <a class="btn btn-success" id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModal">Read more.... </a> </div>
                           <?php
                                                        if (!isset($row['image_path'])) {
                                                 ?>
-                                                 <img class="img-responsive" src="<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg" >
+                                                <span style="background-image: url('<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
+                                                 <!--<img class="img-responsive" src="<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg" >-->
                                                     <?php
                                                         } else {
                                                      ?>
-                                                    <img  class="img-responsive" src="<?php echo base_url().$row['image_path']; ?>" >
+                                                    <!--<img  class="img-responsive" src="<?php echo base_url().$row['image_path']; ?>" >-->
+                                                    <span style="background-image: url('<?php echo base_url().$row['image_path']; ?>');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
                                                     <?php
                                                        }
                                                     ?>
@@ -191,25 +276,34 @@ if(!empty($footerdata->contactno))
 </div>
 </footer>
 <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-   <div class="modal-content">    
-       <button type="button" class="close "  style="margin-left:96%;margin-top:8px;width:20px;" data-dismiss="modal" >X</button>
-       <h4 class="modal-title" id="myModalLabel">What is Lorem Ipsum?</h4>      
-       <div class="modal-body">    
-                    
-
+    <div class="modal-dialog">
+   <!--<div class="modal-content">    
+            <button type="button" class="close "  style="margin-left:96%;margin-top:8px;width:20px;" data-dismiss="modal" >X</button>
+            <h4 class="modal-title" id="myModalLabel">What is Lorem Ipsum?</h4>      
+            <div class="modal-body">    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>      
+            </div>
+        </div>-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p style="word-wrap: break-word;">Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
-       
-     <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>      
-     </div>
-   </div>
- </div>
+    </div>
 </div>
-
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>
-
-<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js" type="text/javascript" ></script>  
+<script src="//code.jquery.com/jquery-1.8.3.min.js" type="text/javascript" ></script>  
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>-->
+<!--<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js" type="text/javascript" ></script>-->  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> 
 <script>
     $('.hover-div > a').click(function(){
                     $.ajax({
@@ -219,7 +313,7 @@ if(!empty($footerdata->contactno))
                     dataType: 'json',
                     success: function (data) {
                          $('#myModal').find('.modal-title').text(data.details.name);
-                       $('#myModal').find('.modal-body').text(data.details.description);
+                       $('#myModal').find('.modal-body > p').text(data.details.description);
                             
                     },
                     error: function () {
