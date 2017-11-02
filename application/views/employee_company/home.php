@@ -103,7 +103,7 @@
                         <div class="card-img-overlay"> <span class="tag tag-pill tag-danger"><?php echo $row['name']; ?></span> </div>
                         <div class="card-block">
                             <div class="news-title">
-                                <h2 class=" title-small"><a href="#"><?php echo substr($row['description'], 0, 15); ?></a></h2>
+                                <h3 class=" title-small"><a href="#"><?php echo substr($row['description'], 0, 15); ?></a></h3>
                             </div>
                             <p class="card-text"><small class="text-time"><em><?php echo $row['created_at']; ?></em></small></p>
                             <p class="card-text"><small class="text-time">By_<em><?php echo $row['course_by']; ?></em></small></p>
