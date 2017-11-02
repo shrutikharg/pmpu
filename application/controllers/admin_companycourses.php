@@ -104,8 +104,7 @@ class Admin_companycourses extends CI_Controller {
 
        $data_to_store = array(
                     'name' => $this->input->post('name'),
-                    'course_by' => $this->input->post('courseby'),
-                    'subcategory_id' => $this->input->post('subcategory'),
+                    'course_by' => $this->input->post('course_by'),                 
                     'description' => $this->input->post('description')
                 );
                 $trim_insert_array = trim_array($data_to_store);
@@ -149,7 +148,7 @@ class Admin_companycourses extends CI_Controller {
             }
         }
 
-        $data['subcategory'] = $this->companysubcategory_model->get_subcategory_list();
+      
         $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
 
         //load the view
@@ -177,8 +176,7 @@ class Admin_companycourses extends CI_Controller {
 
                 $data_to_store = array(
                     'name' => $this->input->post('name'),
-                    'course_by' => $this->input->post('courseby'),
-                    'subcategory_id' => $this->input->post('subcategory_id'),
+                    'course_by' => $this->input->post('course_by'),                    
                     'description' => $this->input->post('description')
                 );
 
@@ -223,8 +221,7 @@ class Admin_companycourses extends CI_Controller {
             }
         }
 
-        $data['subcategory'] = $this->companysubcategory_model->get_subcategory_list();
-
+        
 
 
         $data['course_id'] = $this->input->post(course_id);

@@ -60,14 +60,14 @@ class Companycourses_model extends CI_Model {
 
     public function get_courses($userid, $sidx, $sord, $start, $startd, $endd, $limit, $search_string_array, $count) {
 
-        $this->db->select('course.name as course,course.course_by,course.id,course.start_date,course.end_date,course.description as description,subcat.id as subcat_id,subcat.name as subcategory');
+        $this->db->select('course.name as course,course.course_by,course.id,course.start_date,course.end_date,course.description as description');
         $this->db->from('courses course');
-        $this->db->join("subcategory subcat", "subcat.id=course.subcategory_id");
+      //  $this->db->join("subcategory subcat", "subcat.id=course.subcategory_id");
          $this->db->where('course.company_id', $this->session->userdata('company_id'));
         $this->db->where('course.created_by', $userid);
         if ($search_string_array != "") {
             $this->db->like('course.name', $search_string_array->course);
-            $this->db->like('subcat.id', $search_string_array->sub_department,'after');
+          
         }
         $this->db->order_by("$sidx $sord");
         if ($count == false) {

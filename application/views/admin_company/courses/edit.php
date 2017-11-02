@@ -86,15 +86,12 @@
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_course_desc'); ?></label>
                             <div class="col-md-10"><textarea class="form-control"  name="description" placeholder="<?php echo $this->lang->line('lbl_course_desc'); ?>" cols="5" rows="3"><?php echo $courses[0]['description']; ?></textarea></div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_subdepartment'); ?></label>
-                            <div class="col-md-6"><?php echo form_dropdown('subcategory_id', $subcategory, $courses[0]['subcategory_id']); ?></div>
-                        </div>
+                    
 
 
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_course_by'); ?></label>
-                            <div class="col-md-10"><input type="text" class="form-control"  name="courseby"  value="<?php echo $courses[0]['course_by']; ?>"  placeholder="<?php echo $this->lang->line('lbl_course_by'); ?>"  data-rule-required="true"  data-msg-required="Please enter Author name" /></div>
+                            <div class="col-md-10"><input type="text" class="form-control"  name="course_by"  value="<?php echo $courses[0]['course_by']; ?>"  placeholder="<?php echo $this->lang->line('lbl_course_by'); ?>"  data-rule-required="true"  data-msg-required="Please enter Author name" /></div>
                         </div>
 
 

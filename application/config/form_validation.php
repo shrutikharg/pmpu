@@ -100,9 +100,7 @@ $config = array(
             'label' => 'lang:Description',
             'rules' => 'trim'
         ),
-        array('field' => 'subcategory',
-            'label' => 'lang:lbl_subdepartment',
-            'rules' => 'required'),
+       
         array('field' => 'course_by',
             'label' => 'lang:lbl_course_by',
             'rules' => 'trim')
@@ -118,9 +116,7 @@ $config = array(
             'label' => 'lang:Description',
             'rules' => 'trim'
         ),
-        array('field' => 'subcategory_id',
-            'label' => 'lang:lbl_subdepartment',
-            'rules' => 'required'),
+        
         array('field' => 'course_by',
             'label' => 'lang:lbl_course_by',
             'rules' => 'trim')

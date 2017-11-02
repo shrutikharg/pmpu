@@ -46,9 +46,8 @@
                         var course_id = '"' + row['id'] + '"';
                         $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (i) +
                                 "</div><div class='column' data-label='Course name'>" + row['name'] +
-                                "</div><div class='column' data-label='Sub Category name'>" + row['subcategory'] +
-                                "</div><div class='column' data-label='Author name'>" + row['assigner'] +
-                                "</div><div class='column' data-label='Description'>" +row['description'].substring(0, 15) +
+                                 "</div><div class='column' data-label='Description'>" +row['description'].substring(0, 15) +
+                                "</div><div class='column' data-label='Author name'>" + row['assigner'] +                               
                                 "</div><div class='column' data-label='Description'>" + row['startdate'] +
                                 "</div><div class='column' data-label='Description'>" + row['enddate'] +
                                 "</div><div class='column' data-label='action'><input type='button' name='edit'value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info'  onclick='edit_courses(" + course_id + ")'></button></div>\n\
@@ -124,10 +123,7 @@
                         );
                         echo form_input($data_search, $search_string_selected);
                         echo '</div>';
-                        echo '<label class="col-md-2 col-sm-2  control-label">Sub Department</label>';
-                        echo '<div class="col-md-3 col-sm-4"  >';
-                        echo form_dropdown('Sub Department', $subcategory, 'class="form-control"', 'id="sub_department"');
-                        echo '</div>';
+                      
                         $data_submit = array('type' => "button", 'name' => 'search', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => 'Search');
                         echo '<div class="col-md-2 col-sm-2 searchbtn" >';
                         echo form_submit($data_submit);
@@ -178,7 +174,7 @@
                         <div class="res_table-head">
                             <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
                             <div class="column" data-label="Category name"><?php echo $this->lang->line('lbl_course'); ?></div>
-                            <div class="column"><?php echo $this->lang->line('lbl_subdepartment'); ?></div>
+                           <!-- <div class="column"><?php echo $this->lang->line('lbl_subdepartment'); ?></div>-->
                             <div class="column"><?php echo $this->lang->line('lbl_course_desc'); ?></div>
                             <div class="column"><?php echo $this->lang->line('lbl_course_by'); ?></div>
                             <div class="column"><?php echo $this->lang->line('lbl_start_date'); ?></div>

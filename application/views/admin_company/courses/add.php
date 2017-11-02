@@ -82,10 +82,7 @@
                             <div class="col-md-10"><textarea class="form-control"  required  name="description" placeholder="<?php echo $this->lang->line('lbl_course_desc'); ?>" cols="5" rows="3"><?php echo set_value('description')?></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_subdepartment'); ?></label>
-                            <div class="col-md-6"><?php echo form_dropdown('subcategory', $subcategory,$post_data['subcategory']); ?></div>
-                        </div>
+                        
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_course_by'); ?></label>
                             <div class="col-md-10"><input type="text" class="form-control"  name="course_by"   placeholder="<?php echo $this->lang->line('lbl_course_by'); ?>"  pattern="[a-zA-Z]+.{4,}"   required title="Enter Author Name 5 characters minimum" required data-rule-required="true"  data-msg-required="Please enter Author name" pattern="[a-zA-Z]+" required value="<?php echo set_value('course_by'); ?>"/>
