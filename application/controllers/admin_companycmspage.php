@@ -1,4 +1,5 @@
 ﻿<?php
+
 class Admin_companycmspage extends CI_Controller {
 
     /**
@@ -107,10 +108,7 @@ class Admin_companycmspage extends CI_Controller {
      * @return void
      */
     public function update() {
-        $userid = $this->session->userdata('id');
-        $usernm = $this->session->userdata('user_name');
-        //product id 
-        $id = $this->uri->segment(4);
+      
 
         //if save button was clicked, get the data sent via post
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
@@ -148,9 +146,10 @@ class Admin_companycmspage extends CI_Controller {
                     'linkedin_link' => $this->input->post('linkedinlink'),
                    
                 );
+               
                  $mandate_update_details=  $this->mandate_update->get_update_details();
                 //if the insert has returned true then we show the flash message
-                if ($this->companycmspage_model->update_cmspage($id, array_merge($data_to_store,$mandate_update_details)) == TRUE) {
+                if ($this->companycmspage_model->update_cmspage( array_merge($data_to_store,$mandate_update_details)) == TRUE) {
                     $this->session->set_flashdata('flash_message', 'updated');
                 } else {
                     $this->session->set_flashdata('flash_message', 'not_updated');

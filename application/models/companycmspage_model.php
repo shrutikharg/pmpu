@@ -188,9 +188,9 @@ public function get_noticationdetails($userid,$search_string=null, $order=null, 
     * @param array $data - associative array with data to store
     * @return boolean
     */
-    function update_cmspage($id, $data)
+    function update_cmspage( $data)
     {
-		$this->db->where('id', $id);
+		$this->db->where('company_id', $this->session->userdata('company_id'));
 		$this->db->update('cmspage', $data);
 		$report = array();
 		$report['error'] = $this->db->_error_number();
