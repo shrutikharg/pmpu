@@ -2,22 +2,22 @@
     <div class="container">
         <!-- Breadcrumbs line -->
         <div class="crumbs">
-            <ul class="breadcrumb">
+           <ul class="breadcrumb">
                 <li>
                     <a href="#">
-                        <?php echo $this->lang->line('brd_organization'); ?>
-
-                    </a> 
-
-                </li>
-                <li>
-                    <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                        <?php echo $this->lang->line('brd_department'); ?>
+                        <?php echo $this->lang->line('brd_employee'); ?>
                     </a> 
 
                 </li>
                 <li class="active">
-                    <a href="#">  <?php echo $this->lang->line('brd_edit'); ?></a>
+                    <a href="<?php echo site_url("admin_company") . '/employeelist'; ?>">
+                        <?php echo $this->lang->line('nav_employee_list'); ?>
+                    </a>
+                </li>
+                  <li class="active">
+                    <a href="#">
+                        <?php echo $this->lang->line('btn_details'); ?>
+                    </a>
                 </li>
             </ul>				      
         </div>
