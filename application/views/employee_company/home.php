@@ -30,7 +30,7 @@
 
                                     <div class="news-title">
                                         <h2 class=" title-large">
-                                            <a href="#"><?php echo $company_details->logo_path;?></a>
+                                            <a href="#"><?php echo $company_details->name;?></a>
                                         </h2>
                                     </div>
                                     <div class="news-des"> <?php echo $company_details->description;?>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        <div class="row" style='margin-top:30px;'>
+<!--        <div class="row" style='margin-top:30px;'>
             <?php foreach ($course_list as $row) {
                 ?>
                 <div class="col-md-3">
@@ -90,18 +90,18 @@
                                                        if (!isset($row['image_path'])) {
                                                 ?>
                                                 <span style="background-image: url('<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
-                                                 <!--<img class="img-responsive" src="<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg" >-->
+                                                 <img class="img-responsive" src="<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg" >
                                                     <?php
                                                         } else {
                                                      ?>
-                                                    <!--<img  class="img-responsive" src="<?php echo base_url().$row['image_path']; ?>" >-->
+                                                    <img  class="img-responsive" src="<?php echo base_url().$row['image_path']; ?>" >
                                                     <span style="background-image: url('<?php echo base_url().$row['image_path']; ?>');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
                                                     <?php
                                                        }
                                                     ?>
                         
                         <div class="card-img-overlay"> <span class="tag tag-pill tag-danger"><?php echo $row['name']; ?></span> </div>
-                        <div class="card-block">
+                        <div class="card-block" style="border-top: 2px solid #f50f0f;">
                             <div class="news-title">
                                 <h3 class=" title-small"><a href="#"><?php echo substr($row['description'], 0, 15); ?></a></h3>
                             </div>
@@ -112,8 +112,97 @@
                 </div>
             <?php } ?>
 
+        </div>-->
+        <div class="row" style="margin-top: 30px;">
+            <div class="span12">
+                <div class="well">
+                    <div id="ourCarousel" class="carousel fdi-Carousel slide">
+                     <!-- Carousel items -->
+                        <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
+                            <div class="carousel-inner onebyone-carosel">
+                                     <?php foreach ($course_list as $key=>$row) { ?>
+                                      <div class="item <?php if($key==1){ echo 'active';} ?>">
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="hover-div"> <a class="btn btn-success" id="<?php echo $row['id'];?>" data-toggle="modal" data-target="#myModal">Read more.... </a> </div>
+                                                  <?php
+                                                                               if (!isset($row['image_path'])) {
+                                                                        ?>
+                                                                        <span style="background-image: url('<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
+                                                                         <!--<img class="img-responsive" src="<?php echo base_url(); ?>uploads/chapter_documents/comp_1/default_image/default_course.jpg" >-->
+                                                                            <?php
+                                                                                } else {
+                                                                             ?>
+                                                                            <!--<img  class="img-responsive" src="<?php echo base_url().$row['image_path']; ?>" >-->
+                                                                            <span style="background-image: url('<?php echo base_url().$row['image_path']; ?>');width: auto;height: 225px;background-repeat: no-repeat;background-size: cover;background-position: center;"></span>
+                                                                            <?php
+                                                                               }
+                                                                            ?>
+
+                                                <div class="card-img-overlay"> <span class="tag tag-pill tag-danger"><?php echo $row['name']; ?></span> </div>
+                                                <div class="card-block" style="border-top: 2px solid #f50f0f;">
+                                                    <div class="news-title">
+                                                        <h3 class=" title-small"><a href="#"><?php echo substr($row['description'], 0, 15); ?></a></h3>
+                                                    </div>
+                                                    <p class="card-text"><small class="text-time"><em><?php echo $row['created_at']; ?></em></small></p>
+                                                    <p class="card-text"><small class="text-time">By_<em><?php echo $row['course_by']; ?></em></small></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    <?php } ?>
+                                
+<!--                                <div class="item active">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">1</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">2</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">3</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">4</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">5</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-md-4">
+                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <div class="text-center">6</div>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <a class="left carousel-control" href="#eventCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#eventCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <!--/carousel-inner-->
+                    </div><!--/ourCarousel-->
+                </div><!--/well-->
+            </div>
         </div>
-      
     </div>
 </section>
 
@@ -258,7 +347,38 @@ if(!empty($footerdata->contactno))
                     }
                 });
     });
-    </script>
+    $('#ourCarousel').carousel({
+        interval: 10000
+    })
+    $('.fdi-Carousel .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this));
+        }
+        else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+    });
+</script>
+<style type="text/css">
+    .carousel-inner.onebyone-carosel { margin: auto; width: 90%; }
+    .onebyone-carosel .active.left { left: -33.33%; }
+    .onebyone-carosel .active.right { left: 33.33%; }
+    .onebyone-carosel .next { left: 33.33%; }
+    .onebyone-carosel .prev { left: -33.33%; }
+    .right .glyphicon.glyphicon-chevron-right {
+        right: 0%;
+    }
+    .left .glyphicon.glyphicon-chevron-left {
+        left: 10%;
+    }
+</style>
+</style>
 </body>
 </html>
 
