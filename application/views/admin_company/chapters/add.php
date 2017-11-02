@@ -42,7 +42,7 @@
                     //flash messages
                     if (isset($message)) {
                       
-                            echo '<div class="alert alert-error">';
+                            echo '<div class="alert alert-danger">';
                             echo '<a class="close" data-dismiss="alert">×</a>';
                             echo '<strong>'.$message;
                             echo '</div>';
@@ -130,7 +130,7 @@
                                                     <!--=== Overview ===-->
                                                     <div class="tab-pane " id="tab_overview">
 
-                                                        <div class="col-md-10"><input type="hidden" id="accessToken" readonly class="form-control" placeholder="Vimeo access token" required value="e6085f199f3445356e4f950691bfb904"></input>
+                                                        <div class="col-md-10"><input type="hidden" id="accessToken" readonly class="form-control" placeholder="Vimeo access token" required value="3a657f2c610bea893d1552070a8a8915"></input>
                                                             <div class="checkbox">
                                                             </div>
                                                             <br>

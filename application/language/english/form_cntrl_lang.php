@@ -16,6 +16,8 @@ $lang['btn_reset']='Reset';
 $lang['lbl_search']='Search';
 $lang['btn_view']='View';
 $lang['btn_details']='View Details';
+$lang['lbl_is_active']='Is Active';
+
 
 $lang['error_add']='Error While adding,Please Contact Coolacharya Support Team';
 $lang['error_edit']='Error While updating,Please Contact Coolacharya Support Team';
@@ -108,6 +110,9 @@ $lang['lbl_emp_subdomain_name']="Subdomain Name";
 $lang['lbl_emp_password']="Password";
 $lang['lbl_emp_confpassword']="Confirm Password";
 $lang['lbl_emp_comp_webaddress']="Web Address";
+$lang['lbl_emp_subscribed_at']="Subscribed At";
+$lang['lbl_emp_txn_id']="Transaction Id";
+$lang['lbl_payment_mode']="Payament Through";
 
 //form control for  coursewise reports
 $lang['nav_report']="Report";

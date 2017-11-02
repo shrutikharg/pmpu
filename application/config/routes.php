@@ -80,13 +80,6 @@ $route['admin_company/category/search_by_name'] = 'admin_companycategory/search_
 $route['admin_company/cmspage'] = 'admin_companycmspage/index';
 $route['admin_company/cmspage/add'] = 'admin_companycmspage/add';
 $route['admin_company/cmspage/update'] = 'admin_companycmspage/update';
-$route['admin_company/cmspage/update/(:any)'] = 'admin_companycmspage/update/$1';
-$route['admin_company/cmspage/delete/(:any)'] = 'admin_companycmspage/delete/$1';
-$route['admin_company/cmspage/(:any)'] = 'admin_companycmspage/index/$1'; //$1 = page number
-$route['admin_company/cmspage/notification_process'] = 'admin_companycmspage/notificationprocess';
-$route['admin_company/cmspage/notification_process/(:any)'] = 'admin_companycmspage/notificationprocess/$1';
-$route['admin_company/cmspage/notificationslist'] = 'admin_companycmspage/notificationslist';
-$route['admin_company/cmspage/clearnotification'] = 'admin_companycmspage/clearnotification';
 
 
 $route['admin_company/cmspage/verifyUser'] = 'admin_companycmspage/verifyUser';
@@ -146,23 +139,19 @@ $route['admin_company/quiz/question_list'] = 'admin_CompanyQuiz/question_list';
 
 
 
-$route['admin_company/userassign'] = 'admin_companyuserassign/index';
-$route['admin_company/userassign/add'] = 'admin_companyuserassign/add';
+
 $route['admin_company/userassign/update'] = 'admin_companyuserassign/update';
-$route['admin_company/userassign/update/(:any)'] = 'admin_companyuserassign/update/$1';
-$route['admin_company/userassign/delete/(:any)'] = 'admin_companyuserassign/delete/$1';
+$route['admin_company/employeelist'] = 'admin_companyuserassign/index';
+$route['admin_company/employeelist/list'] = 'admin_companyuserassign/employee_list';
+$route['admin_company/employee_details'] = 'admin_companyuserassign/employee_details';
+$route['admin_company/employee_update'] = 'admin_companyuserassign/update';
 
 
 $route['admin_company/brandings/startpageapp'] = 'admin_companybrandings/startpage_app';
 
 
-$route['admin_company/employeelist'] = 'admin_companyuserassign/index';
-$route['admin_company/employeelist/list'] = 'admin_companyuserassign/employee_list';
-$route['admin_company/employeeprofile/(:any)'] = 'admin_companyuserassign/employeeprofiledtil/$1';
 
-$route['admin_company/emppwdchange/(:any)'] = 'admin_companyuserassign/emppwdchange/$1';
 
-$route['admin_company/employeeprofile/(:any)'] = 'admin_companyuserassign/employeeprofiledtil/$1';
 
 $route['admin_company/coursesassign'] = 'admin_companycoursesassign/index';
 $route['admin_company/coursesassign/list'] = 'admin_companycoursesassign/course_assign_list';

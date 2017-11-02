@@ -1,26 +1,26 @@
 <style>
-   .ajax-loader {
-  visibility: hidden;
-  background-color: rgba(0,0,0,0.7);
-  position: fixed;
-  top:0%;
-  left:0%;
-  bottom:0%;
-  right:0%;
-  z-index: 1000 !important;
-  width: 100%;
-  height:100%;
-}
+    .ajax-loader {
+        visibility: hidden;
+        background-color: rgba(0,0,0,0.7);
+        position: fixed;
+        top:0%;
+        left:0%;
+        bottom:0%;
+        right:0%;
+        z-index: 1000 !important;
+        width: 100%;
+        height:100%;
+    }
 
-.ajax-loader img {
-  
-    top:50%;
-    left:45%;
- 
- 
-} 
-    </style>
-    <script>var is_search = false, page = 1, search_string_array = "";
+    .ajax-loader img {
+
+        top:50%;
+        left:45%;
+
+
+    } 
+</style>
+<script>var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
         fetch_list(page);
@@ -45,6 +45,15 @@
         $(form).attr("method", "POST");
         $(form).attr("id", "form1");
         var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
+        $(form).append($(input));
+        $(form).appendTo("body").submit();
+    }
+    function view_details(employee_id) {
+        var form = $(document.createElement('form'));
+        $(form).attr("action", "<?php echo base_url(); ?>admin_company/employee_details");
+        $(form).attr("method", "POST");
+        $(form).attr("id", "form1");
+        var input = $("<input>").attr("type", "hidden").attr("name", "employee_id").val(employee_id);
         $(form).append($(input));
         $(form).appendTo("body").submit();
     }
@@ -73,14 +82,16 @@
                     $('.res_row').empty();
                     var i = 1;
                     $.each(data.rows, function (i, row) {
-                        var empployee_id = '"' + row['id'] + '"';
+                        var employee_id = '"' + row['id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
-              <div class='column'  data-label='Sr no'>" + (i+1) + "</div>\n\
+          <div class='column'  data-label='Sr no'>" + (i + 1) + "</div>\n\
 <div class='column' data-label='Category name'>" + row['email'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['first_name'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['last_name'] + "</div>\n\
- \n\<div class='column' data-label='Category name'>" + row['phone_no'] + "</div>\n\
-</div>");
+\n\<div class='column' data-label='Category name'>" + row['phone_no'] + "</div>\n\
+\n\<td class='column' data-label='action'>\n\
+<input type='button'  value=' <?php echo $this->lang->line('btn_details'); ?>' class='btn btn-info' onclick='view_details(" + employee_id + ")'></button> \n\
+\n\ </td></div>");
                         i++;
                     });
                     pagination(data);
@@ -92,102 +103,121 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <div id="content">
     <div class="container">
+        <div class="crumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <?php echo $this->lang->line('brd_employee'); ?>
+                    </a> 
 
-        <ul class="breadcrumb">
-            <li>
-                <a href="#">
-                    <?php echo $this->lang->line('brd_employee'); ?>
-                </a> 
-               
-            </li>
-            <li class="active">
-                 <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                <?php echo $this->lang->line('nav_employee_list'); ?>
-                 </a>
-            </li>
-        </ul>
+                </li>
+                <li class="active">
+                    <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
+                        <?php echo $this->lang->line('nav_employee_list'); ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget box">
+                    <div class="widget-header">
+                        <h2><?php echo $this->lang->line('lbl_search') ?></h2>
+                    </div>
+                    <div class="widget-content">
+                        <?php
+                        $attributes = array('class' => 'form-horizontal row-border', 'id' => 'myform');
+                        $options_category = array('name' => 'Chapter Name');
+                        echo form_open('admin_company/userassign', $attributes);
+
+                        echo '<div class="form-group">';
+                        echo '<label class="col-md-1   control-label">Search:</label>';
+
+                        echo '<div class="col-md-3">';
+                        $data_search = array(
+                            'name' => 'search_string',
+                            'id' => 'search_string',
+                            'class' => 'form-control',
+                            'placeholder' => 'Enter Employee name',
+                        );
+                        echo form_input($data_search, $search_string_selected);
+                        echo '</div>';
+
+                        echo '<label class="col-md-2   control-label">Order by:</label>';
+                        //echo form_input('search_string', $search_string_selected);
+                        echo '<div class="col-md-2" style="padding-left:0px !important; padding-right:0px !important;">';
+                        echo form_dropdown('order', $options_category, $order, 'class="form-control"');
+                        echo '</div>';
+
+
+
+                        echo '<div class="col-md-1" style="padding-left:0px !important; padding-right:0px !important;">';
+                        $options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
+                        echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="form-control"');
+                        echo '</div>';
+                        $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => $this->lang->line('btn_search'));
+                        echo form_input($data_submit);
+                        echo '</div>';
+                        echo form_close();
+                        ?>
+
+                    </div> <!-- /.widget-content -->
+                </div> <!-- /.widget .box -->
+            </div> <!-- /.col-md-12 -->
+        </div>
 
         <div class="row">
-            <div class="span12 columns">
-                <div class="well">
+            <div class="col-md-12">
+                <?php
+                if (!empty($this->session->flashdata('flash_message'))) {
+                    //flash messages
 
-
-                    <?php
-                    $attributes = array('class' => 'form-horizontal row-border', 'id' => 'myform');
-
-                    $options_category = array('name' => 'Employee Name');
-                    echo form_open('admin_company/userassign', $attributes);
-
-                    echo '<div class="form-group">';
-                    echo '<label class="col-md-1   control-label">Search:</label>';
-
-                    echo '<div class="col-md-3">';
-                    $data_search = array(
-                        'name' => 'search_string',
-                        'id' => 'search_string',
-                        'class' => 'form-control',
-                        'placeholder' => 'Enter Employee name',
-                    );
-                    echo form_input($data_search, $search_string_selected);
+                    echo '<div class="alert alert-success">';
+                    echo '<a class="close" data-dismiss="alert">×</a>';
+                    echo '<strong>' . $this->session->flashdata('flash_message');
                     echo '</div>';
-
-                    echo '<label class="col-md-2   control-label">Order by:</label>';
-                    //echo form_input('search_string', $search_string_selected);
-                    echo '<div class="col-md-2" style="padding-left:0px !important; padding-right:0px !important;">';
-                    echo form_dropdown('order', $options_category, $order, 'class="form-control"');
-                    echo '</div>';
-
-                   
-
-                    echo '<div class="col-md-1" style="padding-left:0px !important; padding-right:0px !important;">';
-                    $options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
-                    echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="form-control"');
-                    echo '</div>';
-                     $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' =>  $this->lang->line('btn_search'));
-  echo form_input($data_submit);
-                    echo '</div>';
-                    echo form_close();
-                    ?>	
+                }
+                ?>
 
 
-                </div>
 
                 <div class="res_table">
                     <div class="res_table-head">
-                    <div class="column" data-label="SR.no"><?php echo  $this->lang->line('lbl_sr_no'); ?></div>
+                        <div class="column" data-label="SR.no"><?php echo $this->lang->line('lbl_sr_no'); ?></div>
                         <div class="column" data-label="Email"><?php echo $this->lang->line('lbl_email'); ?></div>
                         <div class="column" data-label="First Name"><?php echo $this->lang->line('lbl_emp_first_name'); ?></div>
                         <div class="column" data-label="Last Name"><?php echo $this->lang->line('lbl_emp_last_name'); ?></div>
                         <div class="column" data-label="action"><?php echo $this->lang->line('lbl_emp_phone_no'); ?></div>
+                        <div class="column" data-label="action"><?php echo $this->lang->line('btn_details'); ?></div>
                     </div>
-                         
-                </div>
-                      <div class="pagination"> 
-                        <div class="pagination-widget">
-                            <div class="col-md-3 col-sm-1 col-xs-2">
-                                <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
-                            </div>
-                            <div class="col-md-5 col-sm-6 col-xs-10">
-                                <span id="first_pager" class="glyphicon glyphicon-fast-backward" > </span>
-                                <span id="previous_pager" class="glyphicon glyphicon-step-backward">  </span>
-                                <span>Page </span>
-                                <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"   /></span>
-                                <span>  of </span>
-                                <span><lable class="pagination-lable" id="pageOf" >2 </lable></span>
-                                </span>
-                                <span id="next_pager"class="glyphicon glyphicon-step-forward" > </span>
 
-                                <span id="last_pager"class="glyphicon glyphicon-fast-forward" >      </span>
-                                <span> 
-                                    <select id='rows' style="margin-left: 10px">
-                                        <option value="10">10 </option>
-                                        <option value="20"> 20</option>
-                                        <option value="25"> 25</option>
-                                    </select>
-                                </span>
-                            </div>
-                            <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
-                                <div class="pagination-right">
+                </div>
+                <div class="pagination"> 
+                    <div class="pagination-widget">
+                        <div class="col-md-3 col-sm-1 col-xs-2">
+                            <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-xs-10">
+                            <span id="first_pager" class="glyphicon glyphicon-fast-backward" > </span>
+                            <span id="previous_pager" class="glyphicon glyphicon-step-backward">  </span>
+                            <span>Page </span>
+                            <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"   /></span>
+                            <span>  of </span>
+                            <span><lable class="pagination-lable" id="pageOf" >2 </lable></span>
+                            </span>
+                            <span id="next_pager"class="glyphicon glyphicon-step-forward" > </span>
+
+                            <span id="last_pager"class="glyphicon glyphicon-fast-forward" >      </span>
+                            <span> 
+                                <select id='rows' style="margin-left: 10px">
+                                    <option value="10">10 </option>
+                                    <option value="20"> 20</option>
+                                    <option value="25"> 25</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
+                            <div class="pagination-right">
                                 <span>view</span>
                                 <span ><lable class="pagination-lable" id="rowFrm" > </lable></span>
                                 <span>-</span>
@@ -195,9 +225,9 @@
                                 <span>view</span>
                                 <span id="totalCount">50 </span>
                             </div>
-                            </div>
-                        </div>                        
-                    </div>
+                        </div>
+                    </div>                        
+                </div>
 
             </div>
         </div>
