@@ -12,7 +12,7 @@
                     <img class="img-fluid logo " src="<?php echo base_url() . $company_details->logo_path; ?>">
                 </div>
                 <div class="col-md-6 col-lg-6  admin-bar hidden-sm-down pull-right">
-                    <nav class="nav nav-inline  pull-right">  <a href="employee/login" class="nav-link">Login </a> <a href="employee/register" class="nav-link">Register </a> </nav>
+                    <nav class="nav nav-inline  pull-right">  <a href="employee/login" class="nav-link"><span class="fa fa-user" style="padding-right: 4px;"></span>Login </a> <a href="employee/register" class="nav-link"><span class="fa fa-plus" style="padding-right: 4px;"></span>Register </a> </nav>
 
                 </div>
             </div>
