@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="500">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -258,18 +258,6 @@ if(!empty($footerdata->contactno))
                     }
                 });
     });
-//     $(document).ready(function() {
-//      $("#owl-demo").owlCarousel({
-//          navigation : true, // Show next and prev buttons
-//          slideSpeed : 300,
-//          paginationSpeed : 400,
-//          items : 1, 
-//          itemsDesktop : false,
-//          itemsDesktopSmall : false,
-//          itemsTablet: false,
-//          itemsMobile : false
-//      });
-//    });
     </script>
 </body>
 </html>
