@@ -30,10 +30,10 @@
 
                                     <div class="news-title">
                                         <h2 class=" title-large">
-                                            <a href="#">Conference at PMI</a>
+                                            <a href="#"><?php echo $company_details->logo_path;?></a>
                                         </h2>
                                     </div>
-                                    <div class="news-des">  Rotary International Youth Exchange studentsYou simply give us your VIDEOS and AGENDA and leave the rest to us. We will create Beautiful Webpage with your unique URL. Integrate it with your social networking sites and website. Awesome User Interface and User Experience will make your event a HERO.       
+                                    <div class="news-des"> <?php echo $company_details->description;?>
                                     </div>
 
                                     <div>                    
