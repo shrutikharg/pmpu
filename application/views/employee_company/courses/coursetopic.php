@@ -20,11 +20,11 @@
 </script> 
 <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
 <style type="text/css">
-    .chaptervideo {
+/*    .chaptervideo {
         width: 100%;
         height: 156px;
-    }
-.hover-div {
+    }*/
+    .hover-div {
         min-width:100%;
         min-height:100%;
         margin-bottom: 10px;
@@ -144,7 +144,7 @@
               ?>
         </div>
         <div class="row clearfix" style="margin-top: 20px;">
-            <div class="all-comments">
+            <div class="all-comments col-sm-9 col-xs-12 Topic-left">
                   <div class="all-comments-info">
                       <a href="#">Comments</a>
                       <div class="box">
