@@ -288,7 +288,7 @@ span.red {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  border-bottom: 4px solid #df5b4c;
+  /*border-bottom: 4px solid #df5b4c;*/
 }
 .navbar > .container {
   padding-left: 20px;

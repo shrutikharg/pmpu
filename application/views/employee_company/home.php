@@ -17,7 +17,6 @@
                 </div>
             </div>
         </div>
-
     </header>
 <section class="banner-sec">
     <div class="container">
@@ -376,6 +375,12 @@ if(!empty($footerdata->contactno))
     }
     .left .glyphicon.glyphicon-chevron-left {
         left: 10%;
+    }
+    .well {
+        background: transparent;
+        border: transparent;
+        border-radius: 0;
+        box-shadow: none;
     }
 </style>
 </style>
