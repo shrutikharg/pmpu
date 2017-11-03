@@ -68,7 +68,7 @@ class Employeeuser_model extends CI_Model {
         return $query->result_array();
     }
 
-    function list_footercmspage($empcompid) {
+    function list_footercmspage() {
         $this->db->select('*');
         $this->db->from('cmspage');
         $this->db->where('company_id', $this->session->userdata('company_id'));

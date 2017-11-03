@@ -33,6 +33,7 @@ class Employee_dashboard extends CI_Controller {
     function index() {
         $data['course_status_data'] = $this->Employee_dashboard_model->get_user_courses_status();
         $data['company_details'] = $this->company_details;
+          $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['main_content'] = 'employee_company/courses/user_dashboard';
         $this->load->view('includes/template', $data);
     }

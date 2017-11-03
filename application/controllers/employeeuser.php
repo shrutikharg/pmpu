@@ -17,22 +17,18 @@ class Employeeuser extends CI_Controller {
     }
 
     function index() {
-        $data['course_list'] = $this->employeeuser_model->get_course_list($this->company_details->id);
-        $data['footerdata']=$this->domain->get_company_cms_bydomain();
-        $data['company_details'] = $this->company_details;
-        
-//        $this->load->view('employee_company/login');
+
+        $data['footerdata'] = $this->domain->get_company_cms_bydomain();
         $this->load->view('employee_company/login', $data);
     }
 
     function home() {
         $data['course_list'] = $this->employeeuser_model->get_course_list($this->company_details->id);
-        $data['footerdata']=$this->domain->get_company_cms_bydomain();
+        $data['footerdata'] = $this->domain->get_company_cms_bydomain();
         $data['company_details'] = $this->company_details;
-        
+
         // die();
         $this->load->view('employee_company/home', $data);
-       
     }
 
     /**
@@ -248,6 +244,7 @@ class Employeeuser extends CI_Controller {
         $subscription_link = 'http://' . $this->company_details->domain_name . '.coolacharya.com';
         $subscription_format_details = user_subscription_success_mail_format($email, $firstname, $password, $subscription_link, $this->company_details->domain_name);
         //print_r($subscription_format_details);
+        $this->email->set_newline("\r\n");
         $this->email->from('info@coolacharya.com', $subscription_format_details->from_alias);
         $this->email->to($email);
         $this->email->subject($subscription_format_details->subject);
@@ -255,13 +252,13 @@ class Employeeuser extends CI_Controller {
         if ($this->email->send()) {
             
         } else {
-            
+            die();
         }
         $this->load->view('employee_company/payumoney_success', $data);
     }
 
     function payment_failure() {
-        $data['failed_trans_data']=$this->input->post();
+        $data['failed_trans_data'] = $this->input->post();
         $this->load->view('employee_company/payumoney_failure');
     }
 
@@ -300,7 +297,7 @@ class Employeeuser extends CI_Controller {
         //product data 
 
         $data['users'] = $this->employeeuser_model->get_employeeuser_id($id);
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         //load the view
         $data['main_content'] = 'employee_company/profile/edit';
 
@@ -346,7 +343,7 @@ class Employeeuser extends CI_Controller {
         }
 
         $data['users'] = $this->employeeuser_model->get_employeeuser_id($id);
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         //load the view
         $data['main_content'] = 'employee_company/profile/edit';
         $this->load->view('includes/template', $data);

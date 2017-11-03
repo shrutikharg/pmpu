@@ -136,9 +136,9 @@
 
 
                                 <div class="form-actions">										
-                                    <button type="reset" class="btn">Reset</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                                     <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('btn_save');?></button>
+                                     <a href="<?php echo base_url();?>admin_company/cmspage">   <button  class="btn btn-primary"><?php echo $this->lang->line('btn_cancel');?></a>
+                                       </div>
                                 <?php echo form_close(); ?>
 
                                 <!-- /.widget-content -->

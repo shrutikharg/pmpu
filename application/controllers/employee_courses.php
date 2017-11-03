@@ -159,7 +159,7 @@ class Employee_courses extends CI_Controller {
         }//!isset($search_string) && !isset($order)
         //initializate the panination helper 
         $this->pagination->initialize($config);
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['menu_name'] = 'Course List';
         $data['company_details'] = $this->company_details;
        
@@ -180,7 +180,7 @@ class Employee_courses extends CI_Controller {
 
         $data['courses'] = $this->employeecourses_model->get_assigncourses($userid);
 
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         //load the view
         $data['menu_name'] = 'Course List';
 
@@ -356,7 +356,7 @@ class Employee_courses extends CI_Controller {
             $data['chaptertake'] = $this->employeecourses_model->get_chaptercoursedetails($courseid, $id, $empcompid);
 
             $data['user_slide_details'] = $this->chapter_details_model->get_user_slide_details($userid, $id);
-            $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+            $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
 
 
             $data['chapter_list'] = $this->employeecourses_model->get_assigncoursestopics($empcompid, $course_id);
@@ -388,7 +388,7 @@ class Employee_courses extends CI_Controller {
 
             //var_dump($data['chaptertake']);
         }
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['main_content'] = 'employee_company/courses/schedulecourse';
         $this->load->view('includes/template', $data);
     }
@@ -574,7 +574,7 @@ class Employee_courses extends CI_Controller {
             redirect('employee_company/courses');
         }
         //load the view
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['category'] = $this->category_model->get_category_list();
         $data['subcategory'] = $this->subcategory_model->get_subcategory_dropdownlist();
         $data['courses'] = $this->employeecourses_model->get_courses_by_id($id);
@@ -661,12 +661,12 @@ class Employee_courses extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('flash_message', 'not_Added');
                 }
-                $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+                $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
                 redirect('employee_company/courses');
             }
         }
         //load the view
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['category'] = $this->category_model->get_category_list();
         $data['subcategory'] = $this->subcategory_model->get_subcategory_dropdownlist();
         $data['courses'] = $this->employeecourses_model->get_courses_by_id($id);
@@ -738,7 +738,7 @@ class Employee_courses extends CI_Controller {
         $config['total_rows'] = $data['count_products'];
 
         $this->pagination->initialize($config);
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
          $data['company_details']=$this->company_details ;
         //load the view
         $data['main_content'] = 'employee_company/courses/coursetopic';
@@ -857,7 +857,7 @@ class Employee_courses extends CI_Controller {
         //initializate the panination helper 
         $this->pagination->initialize($config);
 
-        $data['footerdata'] = $this->employeeuser_model->list_footercmspage($empcompid);
+        $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
 
         //load the view
         $data['main_content'] = 'employee_company/courses/notificationslistpage';

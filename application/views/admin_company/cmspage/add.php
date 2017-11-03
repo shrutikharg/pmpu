@@ -118,9 +118,10 @@
                                     <label class="col-md-2 control-label">Linkedin Link </label>
                                     <div class="col-md-10"><input type="text" class="form-control" name="linkedinlink"  placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
                                 </div>
-                                <div class="form-actions">										
-                                    <button type="reset" class="btn">Reset</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('btn_save');?></button>
+                                    <button type="reset" class="btn btn-primary"><?php echo $this->lang->line('btn_reset');?></button>
+                                    
                                 </div>
                                 <?php echo form_close(); ?>
                                 <!-- /.widget-content -->
