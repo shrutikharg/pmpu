@@ -45,8 +45,7 @@ class Employeecourses_model extends CI_Model {
 		$this->db->select('course_chapter.image_path as chapterimage');
 		$this->db->select('course_chapter.file_path as file_name');
                 $this->db->select('course_chapter.file_type ');
-		$this->db->select('courses.name as coursename');
-		$this->db->select('courses.subcategory_id as subcatid');		
+		$this->db->select('courses.name as coursename');			
 		$this->db->select('course_chapter.chapter_slide_details as slide_details');
 		$this->db->select('course_chapter.comments');
 		$this->db->select('courses.Is_Active as coursestatus');

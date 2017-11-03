@@ -247,7 +247,7 @@ $route['employee_company/pdf_courses/(:any)'] = 'employee_courses/index';
 $route['employee_company/courses'] = 'employee_courses/index'; //$1 = page number
 
 $route['employee_company/courses/assigncourses'] = 'employee_courses/assigncourses';
-$route['employee_company/courses/takecourses'] = 'employee_courses/takecourses';
+$route['employee_company/courses/view_chapters'] = 'employee_courses/view_chapters';
 $route['employee_company/courses/certificate/(:any)'] = 'employee_courses/certificate/$1';
 $route['employee_company/courses/update/(:any)'] = 'employee_courses/update/$1';
 $route['employee_company/courses/delete/(:any)'] = 'employee_courses/delete/$1';
@@ -264,7 +264,7 @@ $route['employee_company/courses/clearnotification'] = 'employee_courses/clearno
 $route['employee_company/courses/takechapter/(:any)'] = 'employee_courses/takechapter/$1';
 
 
-$route['employee_company/topiclist'] = 'employee_courses/topiclist';
+$route['employee_company/chapter_list'] = 'employee_courses/topiclist';
 $route['employee_company/completed_course'] = 'employee_dashboard/get_completed_course';
 $route['employee_company/incomplete_course'] = 'employee_dashboard/get_incomplete_course';
 $route['employee_company/notattempted_course'] = 'employee_dashboard/get_notattempted_course';

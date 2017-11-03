@@ -344,7 +344,7 @@ class Employee_courses extends CI_Controller {
      * @return void
      */
 
-    public function takecourses() {
+    public function view_chapters() {
         $this->load->model('chapter_details_model');
         $id = $this->input->post('chapter_id');
         $course_id = $this->input->post('course_id');

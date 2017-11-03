@@ -8,7 +8,7 @@
 <script>
     function view_chapter(chapter_id,course_id) {
         var form = $(document.createElement('form'));
-        $(form).attr("action", "../employee_company/courses/takecourses");
+        $(form).attr("action", "../employee_company/courses/view_chapters");
         $(form).attr("method", "POST");
         $(form).attr("id", "form1");
         var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
@@ -137,7 +137,47 @@
                     echo "<b>No chapters Added Yet</b>";
                 }
               ?>
+               
         </div> 
+                  <div class="all-comments">
+                        <div class="all-comments-info">
+                            <a href="#">Comments</a>
+                            <div class="box">
+                                <form id="comment_form">													
+                                    <textarea placeholder="Post Comment" required=" " id ="comment_text" maxlength="250"></textarea>
+                                    <input type="submit" value="SEND">
+                                    <div class="clearfix"> </div>
+                                </form>
+                            </div>							
+                        </div>
+                        <div class="comment-nav">
+                            <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
+                        </div>
+                    <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
+                        <div class="media-grids">
+                            <?php
+                            $i = 1;
+                           /* foreach (array_reverse(json_decode($chaptertake[0]['comments'])) as $row) {
+                                if ($i <= 5) {
+                                    ?>
+                                    <div class="media">
+
+
+                                        <div class="media-body">
+                                            <p><?php echo $row->comment_text ?></p>
+                                            <span class="pull-left"><b>Commented By:</b> <?php echo $row->comment_by ?> </span>
+                                            <span class="pull-right">    <?php echo $row->commented_at; ?></span>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                $i++;
+                            }*/
+                            ?>
+
+
+                        </div>
+                    </div>
         </div>
        </div>   
         <script src="<?php echo base_url(); ?>assets/assets/datepicker/jquery.datetimepicker.full.js"></script>

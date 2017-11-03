@@ -4,7 +4,7 @@
 <script type="text/javascript">
     function getchapters(course_id) {
         var form = $(document.createElement('form'));
-        $(form).attr("action", "../employee_company/topiclist");
+        $(form).attr("action", "../employee_company/chapter_list");
         $(form).attr("method", "POST");
         $(form).attr("id", "form1");
         var input = $("<input>").attr("type", "hidden").attr("name", "course_id").val(course_id);

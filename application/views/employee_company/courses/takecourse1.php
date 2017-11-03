@@ -145,7 +145,7 @@
 
 
                                 var form = $(document.createElement('form'));
-                                $(form).attr("action", "../courses/takecourses");
+                                $(form).attr("action", "../courses/view_chapters");
                                 $(form).attr("method", "POST");
                                 $(form).attr("id", "form1");
                                 var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
