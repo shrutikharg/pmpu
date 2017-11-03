@@ -135,10 +135,9 @@
                    }
                 }
                 else{
-                    echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #000;'>No chapters Added Yet</h2>";
+                    echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #fff, 3px 3px 5px #ff3f00'>No chapters Added Yet</h2>";
                 }
               ?>
-               
         </div> 
         <div class="all-comments">
               <div class="all-comments-info">
