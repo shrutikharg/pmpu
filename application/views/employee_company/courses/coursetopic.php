@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/css/CourseTopic.css">
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/datepicker/jquery.datetimepicker.css"/>
@@ -134,50 +135,55 @@
                    }
                 }
                 else{
-                    echo "<b>No chapters Added Yet</b>";
+                    echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #000;'>No chapters Added Yet</h2>";
                 }
               ?>
                
         </div> 
-                  <div class="all-comments">
-                        <div class="all-comments-info">
-                            <a href="#">Comments</a>
-                            <div class="box">
-                                <form id="comment_form">													
-                                    <textarea placeholder="Post Comment" required=" " id ="comment_text" maxlength="250"></textarea>
-                                    <input type="submit" value="SEND">
-                                    <div class="clearfix"> </div>
-                                </form>
-                            </div>							
-                        </div>
-                        <div class="comment-nav">
-                            <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
-                        </div>
-                    <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
-                        <div class="media-grids">
-                            <?php
-                            $i = 1;
-                           /* foreach (array_reverse(json_decode($chaptertake[0]['comments'])) as $row) {
-                                if ($i <= 5) {
-                                    ?>
-                                    <div class="media">
-
-
-                                        <div class="media-body">
-                                            <p><?php echo $row->comment_text ?></p>
-                                            <span class="pull-left"><b>Commented By:</b> <?php echo $row->comment_by ?> </span>
-                                            <span class="pull-right">    <?php echo $row->commented_at; ?></span>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                                $i++;
-                            }*/
-                            ?>
-
-
+        <div class="all-comments">
+              <div class="all-comments-info">
+                  <a href="#">Comments</a>
+                  <div class="box">
+                      <form id="comment_form">													
+                          <textarea placeholder="Post Comment" required=" " id ="comment_text" maxlength="250"></textarea>
+                          <input type="submit" value="SEND">
+                          <div class="clearfix"> </div>
+                      </form>
+                  </div>							
+              </div>
+              <div class="comment-nav">
+                  <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
+              </div>
+          <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
+              <div class="media-grids">
+                  <div class="media">
+                        <div class="media-body">
+                            <p>Test Comment</p>
+                            <span class="pull-left"><b>Commented By:</b> shrutikharge@gmail.com </span>
+                            <span class="pull-right">    2017-10-27</span>
                         </div>
                     </div>
+                  <?php
+                  $i = 1;
+                  foreach (array_reverse(json_decode($chaptertake[0]['comments'])) as $row) {
+                      if ($i <= 5) {
+                          ?>
+                          <div class="media">
+
+
+                              <div class="media-body">
+                                  <p><?php echo $row->comment_text ?></p>
+                                  <span class="pull-left"><b>Commented By:</b> <?php echo $row->comment_by ?> </span>
+                                  <span class="pull-right">    <?php echo $row->commented_at; ?></span>
+                              </div>
+                          </div>
+                          <?php
+                      }
+                      $i++;
+                  }
+                  ?>
+              </div>
+          </div>
         </div>
        </div>   
         <script src="<?php echo base_url(); ?>assets/assets/datepicker/jquery.datetimepicker.full.js"></script>
