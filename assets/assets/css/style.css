@@ -1,6 +1,6 @@
 .bg{
   /* Location of the image */
-  background-image: url(../images/home.jpg);
+  background-image: url(../img/login_bg.jpg);
   
   /* Image is centered vertically and horizontally at all times */
   background-position: center center;
