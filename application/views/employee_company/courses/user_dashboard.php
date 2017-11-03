@@ -85,21 +85,23 @@
            
             <div class="dash-box col-md-4">
                 <div class="dash-content">
-                    <span class="glyphicon glyphicon-bookmark"></span><br/>        
+                    <!--<span class="glyphicon glyphicon-bookmark"></span><br/>-->        
+                    <span class="glyphicon" style="background-image: url('../assets/images/icons/task_completed.png');width: 72px; height: 72px;"></span><br/>
                 </div>
-                <a href="completed_course" class="btn btn-warning btn-lg" role="button"> <?php echo $course_status_data->complete;?>-Courses Completed </a>
+                <a href="completed_course" class="btn btn-success btn-lg" role="button"> <?php echo $course_status_data->complete;?>-Courses Completed </a>
             </div>
             <div class="dash-box col-md-4">
                 <div class="dash-content">
-                    <span class="glyphicon glyphicon-user glyphicon-orange "></span><br/>
+<!--                    <span class="glyphicon glyphicon-user glyphicon-orange "></span><br/>-->
+                    <span class="glyphicon" style="background-image: url('../assets/images/icons/grouped_tasks.png');width: 72px; height: 72px;"></span><br/>
                 </div>
-                <a href="notattempted_course" class="btn btn-primary btn-lg" role="button"> <?php echo $course_status_data->not_attempted;?>-Courses Not Attempted </a>                                
+                <a href="notattempted_course" class="btn btn-danger btn-lg" role="button"> <?php echo $course_status_data->not_attempted;?>-Courses Not Attempted </a>                                
             </div>
             <div class="dash-box col-md-4">
                 <div class="dash-content">
-                    <span class="glyphicon glyphicon-signal glyphicon-info"></span><br/>                                  
+                    <!--<span class="glyphicon glyphicon-signal glyphicon-info"></span><br/>-->                                                   <span class="glyphicon" style="background-image: url('../assets/images/icons/progress_bar.png');width: 72px; height: 72px;"></span><br/>   
                 </div>
-                <a href="incomplete_course" class="btn btn-info btn-lg"  role="button"><?php echo $course_status_data->incomplete;?>-Courses In Progress</a>
+                <a href="incomplete_course" class="btn btn-warning btn-lg"  role="button"><?php echo $course_status_data->incomplete;?>-Courses In Progress</a>
             </div>
 
         </div> 
