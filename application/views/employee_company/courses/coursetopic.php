@@ -20,6 +20,10 @@
 </script> 
 <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet"> 
 <style type="text/css">
+    .chaptervideo {
+        width: 100%;
+        height: 156px;
+    }
 .hover-div {
         min-width:100%;
         min-height:100%;
@@ -138,51 +142,53 @@
                     echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #fff, 3px 3px 5px #ff3f00'>No chapters Added Yet</h2>";
                 }
               ?>
-        </div> 
-        <div class="all-comments">
-              <div class="all-comments-info">
-                  <a href="#">Comments</a>
-                  <div class="box">
-                      <form id="comment_form">													
-                          <textarea placeholder="Post Comment" required=" " id ="comment_text" maxlength="250"></textarea>
-                          <input type="submit" value="SEND">
-                          <div class="clearfix"> </div>
-                      </form>
-                  </div>							
-              </div>
-              <div class="comment-nav">
-                  <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
-              </div>
-          <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
-              <div class="media-grids">
-                  <div class="media">
-                        <div class="media-body">
-                            <p>Test Comment</p>
-                            <span class="pull-left"><b>Commented By:</b> shrutikharge@gmail.com </span>
-                            <span class="pull-right">    2017-10-27</span>
+        </div>
+        <div class="row clearfix" style="margin-top: 20px;">
+            <div class="all-comments">
+                  <div class="all-comments-info">
+                      <a href="#">Comments</a>
+                      <div class="box">
+                          <form id="comment_form">													
+                              <textarea placeholder="Post Comment" required=" " id ="comment_text" maxlength="250"></textarea>
+                              <input type="submit" value="SEND">
+                              <div class="clearfix"> </div>
+                          </form>
+                      </div>							
+                  </div>
+                  <div class="comment-nav">
+                      <span class="pull-left">  <input type="button" id="prev_comment" value="&larr; Previous" ></span>  <span class="pull-right"> <input type="button" value="Next &rarr;" id="nxt_comment"></span>
+                  </div>
+              <!--<input type="button" value="View all Comments" id="btn_all_comment"> -->
+                  <div class="media-grids">
+                      <div class="media">
+                            <div class="media-body">
+                                <p>Test Comment</p>
+                                <span class="pull-left"><b>Commented By:</b> shrutikharge@gmail.com </span>
+                                <span class="pull-right">    2017-10-27</span>
+                            </div>
                         </div>
-                    </div>
-                  <?php
-                  $i = 1;
-                  foreach (array_reverse(json_decode($chaptertake[0]['comments'])) as $row) {
-                      if ($i <= 5) {
-                          ?>
-                          <div class="media">
+                      <?php
+                      $i = 1;
+                      foreach (array_reverse(json_decode($chaptertake[0]['comments'])) as $row) {
+                          if ($i <= 5) {
+                              ?>
+                              <div class="media">
 
 
-                              <div class="media-body">
-                                  <p><?php echo $row->comment_text ?></p>
-                                  <span class="pull-left"><b>Commented By:</b> <?php echo $row->comment_by ?> </span>
-                                  <span class="pull-right">    <?php echo $row->commented_at; ?></span>
+                                  <div class="media-body">
+                                      <p><?php echo $row->comment_text ?></p>
+                                      <span class="pull-left"><b>Commented By:</b> <?php echo $row->comment_by ?> </span>
+                                      <span class="pull-right">    <?php echo $row->commented_at; ?></span>
+                                  </div>
                               </div>
-                          </div>
-                          <?php
+                              <?php
+                          }
+                          $i++;
                       }
-                      $i++;
-                  }
-                  ?>
+                      ?>
+                  </div>
               </div>
-          </div>
+        </div>
         </div>
        </div>   
         <script src="<?php echo base_url(); ?>assets/assets/datepicker/jquery.datetimepicker.full.js"></script>
