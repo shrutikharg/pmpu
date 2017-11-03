@@ -51,7 +51,7 @@ class Employee_dashboard extends CI_Controller {
         }
         $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['menu_name'] = 'Complete Course List';
-        //load the view
+      $data['company_details'] = $this->company_details;
         $data['main_content'] = 'employee_company/courses/assignlist';
         $this->load->view('includes/template', $data);
     }
@@ -65,7 +65,7 @@ class Employee_dashboard extends CI_Controller {
         }
         $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['menu_name'] = 'Incomplete Course List';
-        //load the view
+         $data['company_details'] = $this->company_details;
         $data['main_content'] = 'employee_company/courses/assignlist';
         $this->load->view('includes/template', $data);
     }
@@ -80,7 +80,7 @@ class Employee_dashboard extends CI_Controller {
         }
         $data['footerdata'] = $this->employeeuser_model->list_footercmspage();
         $data['menu_name'] = 'Not Attempted Course List';
-        //load the view
+        $data['company_details'] = $this->company_details;
         $data['main_content'] = 'employee_company/courses/assignlist';
         $this->load->view('includes/template', $data);
     }
