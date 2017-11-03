@@ -57,18 +57,6 @@
     .dash-box a {
         width:100%;                     
     }   
-    .dash-box .btn-success{
-        background:#5cb85c!important;
-    }
-    .dash-box .btn-info{
-        background:#39b3d7!important;
-    }
-    .glyphicon-success{
-        color:#5cb85c!important;
-    }
-    .glyphicon-info{
-        color:#39b3d7!important;
-    }
     .glyphicon-orange{
         color:#FF8040!important;
     }

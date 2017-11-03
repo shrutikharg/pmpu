@@ -1328,7 +1328,7 @@ span.red {
 .btn-warning:hover,
 .btn-warning:focus {
   color: #ffffff;
-  background-color: #fed854;
+  background-color: #fefc54;
 }
 .btn-warning:active,
 .btn-warning.active {
@@ -1356,7 +1356,7 @@ span.red {
 .btn-danger:hover,
 .btn-danger:focus {
   color: #ffffff;
-  background-color: #ce3f38;
+  background-color: #f95c54;
 }
 .btn-danger:active,
 .btn-danger.active {
@@ -1412,7 +1412,7 @@ span.red {
 .btn-success:hover,
 .btn-success:focus {
   color: #ffffff;
-  background-color: #5eaf5e;
+  background-color: #6bf86b;
 }
 .btn-success:active,
 .btn-success.active {
