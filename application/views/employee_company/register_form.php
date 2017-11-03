@@ -29,6 +29,7 @@ $first_name = array(
           'id'          => 'first_name',
           'class'       => 'form-control input-lg',
           'Placeholder' => 'First Name',
+          'required'    => '',
 		  'value'=>set_value('first_name')
         );
 echo "<div class='form-group'>";
@@ -41,6 +42,7 @@ $last_name = array(
           'id'          => 'last_name',
           'class'       => 'form-control input-lg',
           'Placeholder' => 'Last Name',
+          'required'    => '',
 		  'value'=>set_value('last_name')
         );
 echo "<div class='form-group'>";
@@ -49,10 +51,12 @@ echo "</div>";
 
 
 $email_address = array(
+          'type'        => 'email',
           'name'        => 'email',
           'id'          => 'email_address',
           'class'       => 'form-control input-lg',
           'Placeholder' => 'Email Address',
+          'required'    => '',
 		   'value'=>set_value('email')
         );
 echo "<div class='form-group'>";
@@ -61,10 +65,12 @@ echo "</div>";
 
 
 $phone = array(
+          'type'        => 'number',
           'name'        => 'phone',
           'id'          => 'phone',
           'class'       => 'form-control input-lg',
           'Placeholder' => 'Phone',
+          'required'    => '',
 		   'value'=>set_value('phone')
         );
 echo "<div class='form-group'>";

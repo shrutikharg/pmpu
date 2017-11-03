@@ -213,11 +213,13 @@ width:100%;
     -moz-transition: .5s all;
     -o-transition: .5s all;
     -ms-transition: .5s all;
+    box-shadow: 4px 4px 2px #d4d4d4;
 }
 .box input[type="submit"]:hover{
     text-decoration: none;
     color: #272C2E;
     background: #E2E2E2;
+    box-shadow: 8px 6px 8px #d4d4d4;
 }
 .media-grids{
                 margin-top:4em;
