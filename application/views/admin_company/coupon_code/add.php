@@ -56,22 +56,34 @@
                     </div>
                     <div class="widget-content">
                         <?php
-                        //form data
+                        $is_active_array=array('Y'=>'Yes','N'=>'No');
                         $attributes = array('class' => 'form-horizontal', 'id' => '');
 
                         //form validation
                       
 
-                        echo form_open('admin_company/category/add', $attributes);
+                        echo form_open('admin_company/coupon_code/add', $attributes);
                         ?>
                         <div class="form-group required">
-                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_department'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" pattern="[a-zA-Z]+.{2,}"   required title="Enter Department Name 3 characters minimum,Special characters not allowed" required  name="name" id="name" class="form-control" value="<?php echo set_value('name');?>"></div>
-                        </div>                                 
+                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_coupon_code'); ?></label>
+                            <div class="col-md-6 col-xs-10"><input type="text"  name="name" pattern="[a-zA-Z]+.{2,}"   required title="Enter Department Name 3 characters minimum,Special characters not allowed" required    class="form-control" value="<?php echo set_value('name');?>"></div>
+                        </div>  
+                       <div class="form-group required">
+                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_coupon_percentage_off'); ?></label>
+                            <div class="col-md-6 col-xs-10"><input type="text"  required  name="percentage_off" id="percentage_off" class="form-control" value="<?php echo set_value('name');?>"></div>
+                        </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_department_desc'); ?></label>
-                            <div class="col-md-6 col-xs-10"><textarea id="" name="description" class="form-control" pattern="[a-zA-Z0-9]+" required ><?php echo set_value('description');?></textarea></div>
+                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_start_date'); ?></label>
+                            <div class="col-md-6 col-xs-10"><input type="date" name="start_date" class="form-control"></div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
+                            <div class="col-md-6 col-xs-10"><input type="date" name="end_date" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_is_active'); ?></label>
+                            <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array,  $emp_details->is_active); ?></div>
                         </div>
 
                         <div class="form-actions">                                    	
