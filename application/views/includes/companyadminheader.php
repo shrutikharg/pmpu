@@ -847,7 +847,7 @@ function time_elapsed_string($ptime)
 						</ul>
 					</li>
 					
-					<li <?php if(($this->uri->segment(2) == 'courses') || ($this->uri->segment(3) == 'schedulecourse')||($this->uri->segment(2) == 'chapters') || ($this->uri->segment(2) == 'coursesassign')){echo 'class="current open"';}?>>
+					<li <?php if(($this->uri->segment(2) == 'courses') || ($this->uri->segment(3) == 'schedulecourse')||($this->uri->segment(2) == 'chapters') || ($this->uri->segment(2) == 'coursesassign'|| ($this->uri->segment(2) == 'coupon_code'))){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);" >
 							<i class="icon-facetime-video"></i>
 							<?php echo $this->lang->line('brd_courses');?>
@@ -871,7 +871,18 @@ function time_elapsed_string($ptime)
 								  <?php echo $this->lang->line('nav_course_assignment');?>
 								</a>
 							</li>	
-                                                      
+                                                       <li <?php if($this->uri->segment(2) == 'coursesassign'){echo 'class="current_menu"';}?>>
+								<a href="<?php echo base_url(); ?>admin_company/coursesassign">
+								<i class="icon-angle-right"></i>
+								  <?php echo $this->lang->line('nav_course_assignment');?>
+								</a>
+							</li>	
+                                                         <li <?php if($this->uri->segment(2) == 'coupon_code'){echo 'class="current_menu"';}?>>
+								<a href="<?php echo base_url(); ?>admin_company/coupon_code">
+								<i class="icon-angle-right"></i>
+								  <?php echo $this->lang->line('nav_coupon_code');?>
+								</a>
+							</li>
 								
 						</ul>
 					</li>

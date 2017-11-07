@@ -121,7 +121,7 @@ $route['admin_company/courses/delete/(:any)'] = 'admin_companycourses/delete/$1'
 $route['admin_company/courses/(:any)'] = 'admin_companycourses/index/$1'; //$1 = page number
 $route['admin_company/courses/dropdown_list'] = 'admin_companycourses/course_dropdown_list';
 $route['admin_company/courses/search_by_name'] = 'admin_companycourses/search_by_name';
-
+$route['admin_company/courses/set_user_chapter_comments']= 'admin_companycourses/set_user_chapter_comments';
 $route['admin_company/question_bank'] = 'admin_Companyquestionbank/index';
 $route['admin_company/question_bank/list'] = 'admin_Companyquestionbank/questionbank_list';
 $route['admin_company/question_bank/chapterquestion_list'] = 'admin_Companyquestionbank/chapterquestion_list';
@@ -285,14 +285,12 @@ $route['admin_company/pie_chart_advanced'] = 'gchart_examples/pie_chart_advanced
 $route['admin_company/column_chart_basic'] = 'gchart_examples/column_chart_basic';
 $route['admin_company/column_chart_advanced'] = 'gchart_examples/column_chart_advanced';
 
-/*
-$route['admin/chapters'] = 'admin_chapters/index';
-$route['admin/chapters/add'] = 'admin_chapters/add';
-$route['admin/chapters/update'] = 'admin_chapters/update';
-$route['admin/chapters/update/(:any)'] = 'admin_chapters/update/$1';
-$route['admin/chapters/delete/(:any)'] = 'admin_chapters/delete/$1';
-$route['admin/chapters/(:any)'] = 'admin_chapters/index/$1'; //$1 = page number
-*/
+
+$route['admin_company/coupon_code']='admin_companycouponcode/index';
+$route['admin_company/coupon_code/list']='admin_companycouponcode/couponcode_list';
+$route['admin_company/coupon_code/add']='admin_companycouponcode/add';
+$route['admin_company/coupon_code/update']='admin_companycouponcode/update';
+$route['employee/coupon_code/check']='employeeuser/apply_couponcode';
 
 
 

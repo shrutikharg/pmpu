@@ -734,6 +734,7 @@ class Employee_courses extends CI_Controller {
         //fetch sql data into arrays
         $data['count_products'] = $this->employeecourses_model->count_assigncoursestopics($empcompid, $courseid);
         $data['course_data'] = $this->employeecourses_model->get_courses_by_id($courseid);
+        $data['course_id']=$courseid;
         $data['topiclist'] = $this->employeecourses_model->get_assigncoursestopics($empcompid, $courseid, '', $order_type, $config['per_page'], $limit_end);
         $config['total_rows'] = $data['count_products'];
 

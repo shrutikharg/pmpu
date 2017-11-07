@@ -335,5 +335,12 @@ class Companycourses_model extends CI_Model {
         $query = $this->db->get();
       return   $query->num_rows();
     }
+     public function get_user_course_comments($chapter_id) {
+        $this->db->select('comments');
+        $this->db->from('course_chapter');
+        $this->db->where('id', $chapter_id);
+        $query = $this->db->get();
+        return $query->row()->comments;
+    }
 }
 ?>	

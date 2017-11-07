@@ -316,5 +316,40 @@ class Admin_companycourses extends CI_Controller {
         $count = $this->companycourses_model->get_course_by_name($userid, $search_string_array);
         echo $count;
     }
+       public function set_user_chapter_comments() {
+        $course_id = $this->input->post('chapter_id');
+        $chapter_comment = $this->input->post('comment');
+        $commment_obj = new stdClass();
+        $commment_obj->comment_text = $chapter_comment;
+        $commment_obj->comment_by = $this->session->userdata('empuser_name');
+        $commment_obj->commented_at = date('Y-m-d');
+        $course_specific_comment_array = $this->companycourses_model->get_user_course_comments($course_id);
+
+        if (empty($course_specific_comment_array) || is_null($course_specific_comment_array)) {
+            $course_comment_array = json_encode(array($commment_obj));
+            
+        } else {
+
+            $course_comment_array = json_decode($course_specific_comment_array);
+            array_push($course_comment_array, $commment_obj);
+            $course_comment_array = json_encode($course_comment_array);
+        }
+
+        $comment_details_array = array('comments' => $course_comment_array, 'id' => $course_id);
+        $this->companycourses_model->update_courses($course_id, $comment_details_array);
+        $query = $this->companycourses_model->get_user_course_comments($course_id);
+        $comments_array = json_decode($query);
+        // print_r($comments_array);
+
+        $response = new stdClass();
+        if ($query != null) {
+            $response->status = 'Success';
+            $response->comments = json_encode(array_reverse(array_slice($comments_array, -5)));
+            $response->commented_at = date('Y-m-d H:I:S');
+        } else {
+            $response->status = "Fail";
+        }
+        echo json_encode($response);
+    }
 
 }

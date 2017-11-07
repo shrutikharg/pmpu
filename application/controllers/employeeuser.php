@@ -462,4 +462,11 @@ class Employeeuser extends CI_Controller {
         echo json_encode($response);
     }
 
+    function apply_couponcode() {
+        $this->load->model('companycoupon_model');
+        $coupon_code = $this->input->post('coupon_code');
+        $company_details = $this->config->item('company_details');  
+        $query = $this->companycoupon_model->apply_coupon($coupon_code, $company_details->id);
+    }
+
 }

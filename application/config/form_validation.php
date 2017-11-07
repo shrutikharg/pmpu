@@ -100,7 +100,6 @@ $config = array(
             'label' => 'lang:Description',
             'rules' => 'trim'
         ),
-       
         array('field' => 'course_by',
             'label' => 'lang:lbl_course_by',
             'rules' => 'trim')
@@ -116,7 +115,6 @@ $config = array(
             'label' => 'lang:Description',
             'rules' => 'trim'
         ),
-        
         array('field' => 'course_by',
             'label' => 'lang:lbl_course_by',
             'rules' => 'trim')
@@ -174,7 +172,7 @@ $config = array(
         ),
         array(
             'field' => 'last_name',
-            'label' => 'lang:lbl_emp_first_name',
+            'label' => 'lang:lbl_emp_last_name',
             'rules' => 'required|trim|min_length[2]|max_length[45]'
         ),
         array('field' => 'email',
@@ -210,5 +208,47 @@ $config = array(
         array('field' => 'logo_image',
             'label' => 'lang:lbl_comp_logo',
             'rules' => "callback_upload_logo"),
+    ),
+    'admin_companycouponcode/add' => array(
+        array(
+            'field' => 'name',
+            'label' => 'lang:lbl_coupon_code',
+            'rules' => 'required|trim|min_length[4]|max_length[45]'
+        ),
+        array(
+            'field' => 'percentage_off',
+            'label' => 'lang:lbl_coupon_percentage_off',
+            'rules' => 'required|numeric|max_length[4]'
+        ),
+        array('field' => 'start_date',
+            'label' => 'lang:lbl_start_date',
+            'rules' => 'required'),
+        array('field' => 'end_date',
+            'label' => 'lang:lbl_end_date',
+            'rules' => 'required'),
+        array('field' => 'is_active',
+            'label' => 'lang:lbl_is_active',
+            'rules' => "required"),
+    ),
+    'admin_companycouponcode/update' => array(
+        array(
+            'field' => 'name',
+            'label' => 'lang:lbl_coupon_code',
+            'rules' => 'required|trim|min_length[4]|max_length[45]'
+        ),
+        array(
+            'field' => 'percentage_off',
+            'label' => 'lang:lbl_coupon_percentage_off',
+            'rules' => 'required|numeric|max_length[4]'
+        ),
+        array('field' => 'start_date',
+            'label' => 'lang:lbl_start_date',
+            'rules' => 'required'),
+        array('field' => 'end_date',
+            'label' => 'lang:lbl_end_date',
+            'rules' => 'required'),
+        array('field' => 'is_active',
+            'label' => 'lang:lbl_is_active',
+            'rules' => "required"),
     )
 );
