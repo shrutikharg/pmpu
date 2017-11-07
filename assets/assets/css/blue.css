@@ -2701,6 +2701,18 @@ ul.stats {
 #credits a:hover {
 	text-decoration: none;
 }
+select {
+    color: #555555;
+    padding: 6px 6px !important;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: #ffffff;
+    background-image: none !important;
+    filter: none !important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
 @media screen and (min-width: 481px) and (max-width: 768px) {
 	#pricePlans #plans .plan {
 		width: 49%;

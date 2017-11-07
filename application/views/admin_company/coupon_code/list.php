@@ -142,7 +142,7 @@
                         echo form_open('#', $attributes);
 
                         echo '<div class="form-group">';
-                        echo "<label class='col-md-1 col-sm-3  control-label'>" . $this->lang->line('lbl_coupon_code') . "</label>";
+                        echo "<label class='col-md-1 col-sm-3  control-label' style='padding-left: 0;padding-right: 0;'>" . $this->lang->line('lbl_coupon_code') . "</label>";
 
                         echo '<div class="col-md-2 col-sm-5">';
                         $data_search = array(
@@ -183,7 +183,7 @@
                         echo '</div>';
                         $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => $this->lang->line('btn_search'));
 
-                        echo '<div class="col-md-2 col-sm-2 searchbtn" >';
+                        echo '<div class="col-md-2 col-sm-2 searchbtn" style="padding-top: 15px; text-align: center; margin-left: auto; margin-right: auto; width: 100%; display: block;">';
                         echo form_input($data_submit);
                         echo '</div>';
                         echo '</div>';
