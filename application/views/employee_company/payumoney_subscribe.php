@@ -74,6 +74,24 @@ $action = 'payment_success';
                 payuForm.submit();
             }
         </script>
+        <style type="text/css">
+            html, body {
+                height: 100%;
+            }
+            .container {
+                display: table;
+                width: 100%;
+                height: 100%;
+                min-height: 100%;
+            }
+            .container .row {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .custom-button {
+                padding: 6px 35px;
+            }
+        </style>
     </head>
     <body onload="submitPayuForm()" class="bg">
         <div class="container">
@@ -185,7 +203,7 @@ $action = 'payment_success';
                                 <tr>
                                     <td>&nbsp;</td>
                                     <?php if (!$hash) { ?>
-                                    <td><br/><input class="btn btn-success" type="submit" style="padding: 6px 35px;" value="Submit" /></td>
+                                    <td><br/><input class="btn btn-large btn-primary custom-button" type="submit" style="padding: 6px 35px;" value="Submit" /></td>
                                         <?php } ?>
                                 </tr>
                             </table>

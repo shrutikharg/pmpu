@@ -2840,7 +2840,7 @@ select {
 .btn-primary {
 	color: #ffffff;
 	background-color: #00bfff;
-	z-index: 2;
+	z-index: 1;
 }
 .btn-primary:hover, .btn-primary:focus {
 	color: #ffffff;
