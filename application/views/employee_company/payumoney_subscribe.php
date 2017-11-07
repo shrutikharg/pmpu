@@ -79,7 +79,7 @@ $action = 'payment_success';
         <div class="container">
             <div class="row">
                 <div class="well col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                    <form action="<?php echo $action; ?>" method="post" name="payuForm">
+                    <form action="<?php echo $action; ?>" method="post" name="payuForm" id="payuForm">
                         <h2 class="form-signin-heading"><?php echo $this->session->userdata['registeration_data']['reg_message'] ?></h2>
                         <div class='form-group'>
                             <input type="hidden" name="key" value="xa6Hhr" />
@@ -103,9 +103,13 @@ $action = 'payment_success';
                                 </tr>
                                 <tr>
                                     <td><b>Product Info:</b> </td>
-                                    <td colspan="3"><input type="text" class="text_style" name="productinfo" id="productinfo" readonly value="Sanskrit for Everyone"></td>
+                                    <td><input type="text" class="text_style" name="productinfo" id="productinfo" readonly value="Sanskrit for Everyone"></td>
                                 </tr>
                                 <tr>
+                                    <td>&nbsp;</td>
+                                    <td><a id="coupenText" style="color: #00b9f5; cursor: pointer; text-decoration: none;">Have a promocode?</a></td>
+                                </tr>
+                                <tr class="coupenDiv" style="display: none;">
                                     <td><b>Coupen Code: </b> </td>
                                     <td><input type="text" class="text_style" name="udf3" id="coupon_code"  placeholder="Coupen Code"></td>
                                     <td><div id="DisableDiv" style="display: block;">
@@ -113,53 +117,60 @@ $action = 'payment_success';
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="msgDiv" style="display: none;">
                                     <td>&nbsp;</td>
-                                    <td colspan="3"><input type="button" id="applyCoupen" name="coupenCode" value="apply coupen" class="btn btn-primary"></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="coupenDiv" style="display: none;">
+                                    <td>&nbsp;</td>
+                                    <td colspan="3"><input type="button" id="applyCoupen" name="coupenCode" value="Apply" class="btn btn-primary"></td>
                                 </tr>
                                 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
                                 <script type="text/javascript">
-        $(document).ready(function () {
-            $('#applyCoupen').click(function () {
-                $('#DisableDiv').fadeTo('slow', .6);
-                $('#DisableDiv').append('<img src="../assets/images/loading.gif">');
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url(); ?>employee/coupon_code/check",
-                    data: {'coupon_code': $('#coupon_code').val()},
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.status == 'Success') {
-                            $("#amount").val(data.discount_cost);
-                            $("#original_price").val(data.original_cost);
-                            $("#coupon_code").val(data.coupon_code);
-                            $("#percentage_off").val(data.percentage_off);
-                            $('#DisableDiv').html('<p style="color: green;">Coupen Applied</p>');
-
-                        } else if (data.status == 'Fail') {
-                            $("#amount").val(data.discount_cost);
-                            $("#original_price").val(data.original_cost);
-                            $("#coupon_code").val(data.coupon_code);
-                            $("#percentage_off").val(data.percentage_off);
-                            $('#DisableDiv').html('<p style="color: red;">Please enter Correct coupon Code</p>');
-                        }
-
-
-
-                    },
-                    error: function () {
-                        $("#wrongcreadential").css("display", "block");
-                        $("#wrongcreadential").text('technical error please contact to system admin');
-
-                    }
-                });
-
-
-            });
-        });
-        function GetData() {
-            $('#DisableDiv').html('<p style="color: green;">Coupen Applied</p>');
-        }
+                                    $(document).ready(function () {
+                                        $('a#coupenText').unbind('click').bind('click', function(){
+                                            $(this).parent().parent().hide();
+                                            $('.coupenDiv').show();
+                                        });
+                                        $('#applyCoupen').unbind('click').bind('click', function() {
+                                            if($('#coupon_code').val() == '') {
+                                                alert('Please enter promocode');
+                                                return false;
+                                            }
+                                            $('#DisableDiv').fadeTo('slow', .6);
+                                            $('#DisableDiv').append('<img src="<?php echo base_url();?>assets/images/loading.gif">');
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "<?php echo base_url(); ?>employee/coupon_code/check",
+                                                data: {'coupon_code': $('#coupon_code').val()},
+                                                dataType: 'json',
+                                                success: function (data) {
+                                                    if (data.status == 'Success') {
+                                                        $('#DisableDiv').hide();
+                                                        $('#msgDiv').show();
+                                                        $("#amount").val(data.discount_cost);
+                                                        $("#original_price").val(data.original_cost);
+                                                        $("#coupon_code").val(data.coupon_code);
+                                                        $("#percentage_off").val(data.percentage_off);
+                                                        $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupen Applied</p>');
+                                                    } 
+                                                    else if (data.status == 'Fail') {
+                                                        $('#msgDiv').show();
+                                                        $('#DisableDiv').hide();
+                                                        $("#amount").val(data.discount_cost);
+                                                        $("#original_price").val(data.original_cost);
+                                                        $("#coupon_code").val(data.coupon_code);
+                                                        $("#percentage_off").val(data.percentage_off);
+                                                        $('#msgDiv > td:last-child').html('<p style="color: maroon;font-size: 1em; font-weight: 700;">Please Enter correct coupen Code</p>');
+                                                    }
+                                                },
+                                                error: function () {
+                                                    $('#msgDiv').show();
+                                                    $('#msgDiv > td:last-child').text('technical error please contact to system admin');
+                                                }
+                                            });
+                                        });
+                                    });
                                 </script>
                                 <tr>
                                     <td colspan="3"><input type="hidden" name="surl" value="<?php echo base_url() . 'employee/'; ?>success.php" size="64" /></td>
@@ -172,8 +183,9 @@ $action = 'payment_success';
                                     <td><input type="hidden" name="service_provider" value="payu_paisa"  /></td>
                                 </tr>
                                 <tr>
+                                    <td>&nbsp;</td>
                                     <?php if (!$hash) { ?>
-                                        <td align="center" colspan="4"><br/><input style="text-align: center; color: #ffffff;" class="btn btn-success" type="submit" value="Submit" /></td>
+                                    <td><br/><input class="btn btn-success" type="submit" style="padding: 6px 35px;" value="Submit" /></td>
                                         <?php } ?>
                                 </tr>
                             </table>

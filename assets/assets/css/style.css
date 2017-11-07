@@ -135,8 +135,19 @@ float:left;
 clear:both;
 margin-bottom:20px;
 }
-
-    
+#payuForm input[type="text"], #payuForm input[type="email"] {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: medium;
+}
+#payuForm td {
+    padding: 3px 2px;
+}    
+#payuForm input#applyCoupen {
+    padding: 6px 35px;
+    background: #00b9f5;
+    color: #fff;
+}
 @media only screen and (min-width : 150px) and (max-width : 780px)
 {
 
