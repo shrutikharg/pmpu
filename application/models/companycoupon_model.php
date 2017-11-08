@@ -22,7 +22,14 @@ class companycoupon_model extends CI_Model {
         $this->db->from('coupon_code');
         $this->db->where('company_id', $this->session->userdata('company_id'));
         if ($search_string_array != "") {
-            $this->db->like('name', $search_string_array->search_string);
+            $this->db->like('name', $search_string_array->name);
+            $this->db->like('is_active', $search_string_array->is_active);
+            if (!empty($search_string_array->start_date)) {
+                $this->db->like('start_date', date("Y-m-d", strtotime($search_string_array->start_date)));
+            }
+            if (!empty($search_string_array->end_date)) {
+                $this->db->like('end_date', date("Y-m-d", strtotime($search_string_array->end_date)));
+            }
         }
         $this->db->order_by("$sidx $sord");
         if ($count == false) {

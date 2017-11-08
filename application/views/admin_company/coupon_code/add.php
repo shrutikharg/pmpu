@@ -76,7 +76,7 @@ jQuery( document ).ready(function( $ ) {
                     </div>
                     <div class="widget-content">
                         <?php
-                        $is_active_array=array('Y'=>'Yes','N'=>'No');
+                        $is_active_array=array(''=>'Select','Y'=>'Yes','N'=>'No');
                         $attributes = array('class' => 'form-horizontal', 'id' => '');
 
                         //form validation

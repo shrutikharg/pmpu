@@ -1,4 +1,5 @@
-<script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>   
 <style>
     .ajax-loader {
         visibility: hidden;
@@ -19,18 +20,28 @@
         left:45%;
 
 
-    } 
+    }
+    .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover {
+        background-color: #99D9EA;
+    }
 </style>
 <script>var is_search = false, page = 1, search_string_array = "";
-
-    $(document).ready(function () {
+    $.noConflict();
+    jQuery(document).ready(function ($) {
         fetch_list(page);
-
+        $(".datepicker").datepicker({
+            dateFormat: "dd-mm-yy",
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+        });
 
 
         $("#search").click(function () {
             is_search = true;
-            search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
+            search_string_array = {'name': $("#name").val(), 'start_date': $("#start_date").val(), 'end_date': $("#end_date").val(), 'is_active': $("#is_active").val()};
             search_string_array = JSON.stringify(search_string_array);
 
             fetch_list(page);
@@ -127,25 +138,49 @@
                         <?php
                         $attributes = array('class' => 'form-horizontal row-border', 'id' => 'searchform');
 
-                      
+
                         echo form_open('#', $attributes);
 
                         echo '<div class="form-group">';
-                        echo "<label class='col-md-3 col-sm-3  control-label'>" . $this->lang->line('lbl_coupon_code') . "</label>";
+                        echo "<label class='col-md-1 col-sm-3  control-label'>" . $this->lang->line('lbl_coupon_code') . "</label>";
 
-                        echo '<div class="col-md-4 col-sm-5">';
+                        echo '<div class="col-md-2 col-sm-5">';
                         $data_search = array(
-                            'name' => 'search_string',
-                            'id' => 'search_string',
+                            'name' => 'name',
+                            'id' => 'name',
                             'class' => 'form-control',
                             'placeholder' => $this->lang->line('lbl_coupon_code')
                         );
                         echo form_input($data_search);
                         echo '</div>';
+                        echo "<label class='col-md-1 col-sm-3  control-label'>" . $this->lang->line('lbl_start_date') . "</label>";
 
-                      
+                        echo '<div class="col-md-2 col-sm-5">';
+                        $data_start_date = array(
+                            'name' => 'start_date',
+                            'id' => 'start_date',
+                            'class' => 'form-control datepicker',
+                            'placeholder' => $this->lang->line('lbl_start_date')
+                        );
+                        echo form_input($data_start_date);
+                        echo '</div>';
+                        echo "<label class='col-md-1 col-sm-3  control-label'>" . $this->lang->line('lbl_end_date') . "</label>";
 
+                        echo '<div class="col-md-2 col-sm-5">';
+                        $data_end_date = array(
+                            'name' => 'end_date',
+                            'id' => 'end_date',
+                            'class' => 'form-control datepicker',
+                            'placeholder' => $this->lang->line('lbl_end_date')
+                        );
+                        echo form_input($data_end_date);
+                        echo '</div>';
+                        echo "<label class='col-md-1 col-sm-3  control-label'>" . $this->lang->line('lbl_is_active') . "</label>";
 
+                        echo '<div class="col-md-1 col-sm-5">';
+                        $is_active_array = array('' => 'Select', 'Y' => 'Yes', 'N' => 'No');
+                        echo form_dropdown('is_active', $is_active_array, '', 'class="form-control" id="is_active"');
+                        echo '</div>';
                         $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => $this->lang->line('btn_search'));
 
                         echo '<div class="col-md-2 col-sm-2 searchbtn" >';
