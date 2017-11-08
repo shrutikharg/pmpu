@@ -536,11 +536,7 @@ class Employee_courses extends CI_Controller {
 //update
 
     public function empcomments() {
-        //$this->output->enable_profiler(TRUE);
-        $userid = $this->session->userdata('id');
-        $usernm = $this->session->userdata('user_name');
-        $empcompid = $this->session->userdata('emp_companyuseradmin');
-        $coursedispid = $this->uri->segment(4);
+     
         //if save button was clicked, get the data sent via post
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             //form validation

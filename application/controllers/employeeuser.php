@@ -206,6 +206,13 @@ class Employeeuser extends CI_Controller {
 
     function payment_success() {
         $this->company_details = $this->domain->get_company_byDomain();
+        /*
+          udf1-'registeratiojn id'
+         * udf2-'registeratiojn  company id'
+         * udf3-'coupon code'
+         * udf4-original price
+         * udf5-off
+         */
         $status = $_POST["status"];
         $firstname = $_POST["firstname"];
         $amount = $_POST["amount"];
@@ -470,24 +477,22 @@ class Employeeuser extends CI_Controller {
     function apply_couponcode() {
         $this->load->model('companycoupon_model');
         $coupon_code = trim($this->input->post('coupon_code'));
-        $company_details = $this->config->item('company_details');  
-        $result= $this->companycoupon_model->apply_coupon($coupon_code, $company_details->id);
-        $response=new stdClass();
- 
-        if(!empty($result)){
-            $response->status='Success' ;
-             $response->original_cost=$company_details->price;
-               $response->discount_cost=($company_details->price)*(1-(((float)$result->percentage_off)/100)) ;
-           $response->coupon_code=$result->name ;
-           $response->percentage_off=$result->percentage_off;
-        }
-        else{
-             $response->status='Fail' ;
-             $response->original_cost=$company_details->price;
-               $response->discount_cost=$company_details->price ;
-           $response->coupon_code='';
-           $response->percentage_off=0;
-       
+        $company_details = $this->config->item('company_details');
+        $result = $this->companycoupon_model->apply_coupon($coupon_code, $company_details->id);
+        $response = new stdClass();
+
+        if (!empty($result)) {
+            $response->status = 'Success';
+            $response->original_cost = $company_details->price;
+            $response->discount_cost = ($company_details->price) * (1 - (((float) $result->percentage_off) / 100));
+            $response->coupon_code = $result->name;
+            $response->percentage_off = $result->percentage_off;
+        } else {
+            $response->status = 'Fail';
+            $response->original_cost = $company_details->price;
+            $response->discount_cost = $company_details->price;
+            $response->coupon_code = '';
+            $response->percentage_off = 0;
         }
         echo json_encode($response);
     }

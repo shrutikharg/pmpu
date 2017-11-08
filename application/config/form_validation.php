@@ -218,14 +218,14 @@ $config = array(
         array(
             'field' => 'percentage_off',
             'label' => 'lang:lbl_coupon_percentage_off',
-            'rules' => 'required|numeric|max_length[4]'
+            'rules' => 'required|numeric|max_length[10]|callback_check_min_max_off'
         ),
         array('field' => 'start_date',
             'label' => 'lang:lbl_start_date',
             'rules' => 'required'),
         array('field' => 'end_date',
             'label' => 'lang:lbl_end_date',
-            'rules' => 'required'),
+            'rules' => 'required|callback_compareDate'),
         array('field' => 'is_active',
             'label' => 'lang:lbl_is_active',
             'rules' => "required"),
@@ -239,14 +239,14 @@ $config = array(
         array(
             'field' => 'percentage_off',
             'label' => 'lang:lbl_coupon_percentage_off',
-            'rules' => 'required|numeric|max_length[4]'
+            'rules' => 'required|numeric|max_length[10]|callback_check_min_max_off'
         ),
         array('field' => 'start_date',
             'label' => 'lang:lbl_start_date',
             'rules' => 'required'),
         array('field' => 'end_date',
             'label' => 'lang:lbl_end_date',
-            'rules' => 'required'),
+            'rules' => 'required|callback_compareDate'),
         array('field' => 'is_active',
             'label' => 'lang:lbl_is_active',
             'rules' => "required"),

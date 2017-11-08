@@ -121,7 +121,8 @@ $route['admin_company/courses/delete/(:any)'] = 'admin_companycourses/delete/$1'
 $route['admin_company/courses/(:any)'] = 'admin_companycourses/index/$1'; //$1 = page number
 $route['admin_company/courses/dropdown_list'] = 'admin_companycourses/course_dropdown_list';
 $route['admin_company/courses/search_by_name'] = 'admin_companycourses/search_by_name';
-$route['admin_company/courses/set_user_chapter_comments']= 'admin_companycourses/set_user_chapter_comments';
+$route['admin_company/courses/set_user_comments']= 'admin_companycourses/set_user_chapter_comments';
+$route['admin_company/courses/get_user_comments']= 'admin_companycourses/get_user_comments';
 $route['admin_company/question_bank'] = 'admin_Companyquestionbank/index';
 $route['admin_company/question_bank/list'] = 'admin_Companyquestionbank/questionbank_list';
 $route['admin_company/question_bank/chapterquestion_list'] = 'admin_Companyquestionbank/chapterquestion_list';
@@ -253,7 +254,7 @@ $route['employee_company/courses/update/(:any)'] = 'employee_courses/update/$1';
 $route['employee_company/courses/delete/(:any)'] = 'employee_courses/delete/$1';
 
 $route['employee_company/supportmailemp'] = 'employee_courses/supportmailemp';
-$route['employee_company/courses/empcomments'] = 'employee_courses/empcomments';
+$route['employee_company/courses/set_comments'] = 'employee_courses/set_empcomments';
 
 $route['employee_company/courses/schedulecourse'] = 'employee_courses/schedulecourselist';
 $route['employee_company/courses/schedulecoursetime'] = 'employee_courses/schedulecoursetime';

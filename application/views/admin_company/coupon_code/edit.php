@@ -2,16 +2,16 @@
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
     $.noConflict();
-jQuery( document ).ready(function( $ ) {
-  $( ".datepicker" ).datepicker({
-    dateFormat: "dd/mm/yyyy",
-    showOtherMonths: true,
-    selectOtherMonths: true,
-    autoclose: true,
-    changeMonth: true,
-    changeYear: true,
-  });
-});
+    jQuery(document).ready(function ($) {
+        $(".datepicker").datepicker({
+            dateFormat: "dd-mm-yy",
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+        });
+    });
 </script> 
 <style type="text/css">
     .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover, .ui-datepicker td .ui-state-active {
@@ -26,15 +26,15 @@ jQuery( document ).ready(function( $ ) {
                 <li>
                     <a href="#">
                         <?php echo $this->lang->line('brd_organization'); ?>
-                                
+
                     </a> 
-                  
+
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                       <?php echo $this->lang->line('nav_coupon_code'); ?>
+                        <?php echo $this->lang->line('nav_coupon_code'); ?>
                     </a> 
-                    
+
                 </li>
                 <li class="active">
                     <a href="#">  <?php echo $this->lang->line('brd_edit'); ?></a>
@@ -46,28 +46,27 @@ jQuery( document ).ready(function( $ ) {
         <!-- /Breadcrumbs line -->
 
         <!--=== Page Header ===-->
-  
+
         <!-- /Page Header -->
 
         <!--=== Page Content ===-->
         <!--=== Statboxes ===-->
-       <!-- /.row -->
+        <!-- /.row -->
         <!-- /Statboxes -->
         <!--=== Normal ===-->
         <div class="row">
-           <?php
-      //flash messages
-    
-                               if(isset($message)){
-      //flash messages
+            <?php
+            //flash messages
 
-          echo '<div class="alert alert-danger">';
-            echo '<a class="close" data-dismiss="alert">×</a>';
-            echo '<strong>'.$message;
-              echo '</div>'; 
-        }
-      
-      ?>
+            if (isset($message)) {
+                //flash messages
+
+                echo '<div class="alert alert-danger">';
+                echo '<a class="close" data-dismiss="alert">×</a>';
+                echo '<strong>' . $message;
+                echo '</div>';
+            }
+            ?>
             <div class="col-md-12">
                 <div class="widget box">
                     <div class="widget-header">
@@ -75,45 +74,54 @@ jQuery( document ).ready(function( $ ) {
                     </div>
                     <div class="widget-content">
                         <?php
-                        $is_active_array=array('Y'=>'Yes','N'=>'No');
+                        $is_active_array = array('Y' => 'Yes', 'N' => 'No');
                         $attributes = array('class' => 'form-horizontal', 'id' => '');
 
                         //form validation
-                      
+
 
                         echo form_open('admin_company/coupon_code/update', $attributes);
                         ?>
                         <div class="form-group required">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_coupon_code'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text"  name="name" pattern="[a-zA-Z]+.{2,}"   required title="Enter Department Name 3 characters minimum,Special characters not allowed" required    class="form-control" value="<?php  echo $couponcode_data['name'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text"  name="name" pattern="[a-zA-Z]+.{2,}"   required title="Enter Department Name 3 characters minimum,Special characters not allowed" required    class="form-control" value="<?php echo $couponcode_data['name']; ?>"></div>
                         </div>  
-                       <div class="form-group required">
+                        <div class="form-group required">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_coupon_percentage_off'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text"  required  name="percentage_off" id="percentage_off" class="form-control" value="<?php echo $couponcode_data['percentage_off'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text"  required  name="percentage_off" id="percentage_off" class="form-control" value="<?php echo $couponcode_data['percentage_off']; ?>"></div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_start_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker" value="<?php echo $couponcode_data['start_date'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker" value="<?php
+                                if (isset($message)) {
+                                    echo $couponcode_data['start_date'];
+                                } else
+                                    echo date("d-m-Y", strtotime($couponcode_data['start_date']));
+                                ?>"></div>
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker" value="<?php echo $couponcode_data['end_date'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker" value="<?php
+                                                                   if (isset($message)) {
+                                                                       echo $couponcode_data['end_date'];
+                                                                   } else
+                                                                       echo date("d-m-Y", strtotime($couponcode_data['end_date']));
+                                ?>"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_is_active'); ?></label>
-                            <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array,  $couponcode_data['is_active']); ?></div>
+                            <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array, $couponcode_data['is_active']); ?></div>
                         </div>
-              <div class="form-group">
-                                   <div class="col-md-6 col-xs-10"><input type="hidden" name="couponcode_id" class="form-control" value="<?php echo $couponcode_id;?>"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-xs-10"><input type="hidden" name="couponcode_id" class="form-control" value="<?php echo $couponcode_id; ?>"></div>
                         </div>
 
                         <div class="form-actions">                                    	
                             <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('btn_save'); ?></button>                          
-                            <button type="reset" class="btn btn-primary"><?php echo $this->lang->line('btn_reset'); ?></button>
-                           
+                            <a href="<?php echo base_url(); ?>admin_company/coupon_code">   <button  class="btn btn-primary"><?php echo $this->lang->line('btn_cancel'); ?></a>   
                         </div>
-                        <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                     </div>
                 </div>
             </div>

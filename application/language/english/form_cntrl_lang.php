@@ -163,6 +163,7 @@ $lang['lbl_company_desc']="About Company";
 $lang['lbl_comp_phone_no']="Phone No.";
 $lang['lbl_comp_overview']="In Short About Company";
 $lang['lbl_comp_logo']="Logo Image";
+$lang['lbl_comp_subscription_price']="Subscription Price";
 
 //form control for  comments
 $lang['nav_comment']="Comments";
@@ -174,6 +175,8 @@ $lang['lbl_comment_list']="Comment List For";
 
 //form control for  company cms page
 $lang['nav_cms']="Setting CMS Page";
+$lang['lbl_edit_cms']="Edit CMS Page";
+$lang['lbl_add_cms']="Add CMS Page";
 
 
 //form control for  coupon_code

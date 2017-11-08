@@ -134,8 +134,8 @@ class admin_companycouponcode extends CI_Controller {
                 $data_to_store = array(
                     'name' => $this->input->post('name'),
                     'percentage_off' => $this->input->post('percentage_off'),
-                    'start_date' => $this->input->post('start_date'),
-                    'end_date' => $this->input->post('end_date'),
+                    'start_date'=> date('Y-m-d', strtotime( $this->input->post('start_date'))),
+                    'end_date' => date('Y-m-d', strtotime($this->input->post('end_date'))),
                     'is_active' => $this->input->post('is_active'),
                 );
                 $trim_insert_array = trim_array($data_to_store);
@@ -163,6 +163,28 @@ class admin_companycouponcode extends CI_Controller {
         $data['main_content'] = 'admin_company/coupon_code/edit';
         $this->load->view('includes/template', $data);
     }
-  
+
+    function compareDate() {
+        $startDate = strtotime($this->input->post('start_date'));
+        $endDate = strtotime($this->input->post('end_date'));
+
+        if ($endDate >=$startDate)
+            return True;
+        else {
+            $this->form_validation->set_message('compareDate', '%s should be greater than  Start Date.');
+            return False;
+        }
+    }
+
+    function check_min_max_off($percentage_off_val) {
+        if ($percentage_off_val < 0) {
+            $this->form_validation->set_message('check_min_max_off', '%s should be greater than 0.');
+            return False;
+        } elseif ($percentage_off_val > 100) {
+            $this->form_validation->set_message('check_min_max_off', '%s should be less than 100.');
+            return False;
+        }
+        return TRUE;
+    }
 
 }

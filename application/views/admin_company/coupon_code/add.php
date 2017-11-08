@@ -5,7 +5,7 @@
     $.noConflict();
 jQuery( document ).ready(function( $ ) {
   $( ".datepicker" ).datepicker({
-    dateFormat: "dd/mm/yyyy",
+    dateFormat: "dd-mm-yy",
     showOtherMonths: true,
     selectOtherMonths: true,
     autoclose: true,
@@ -90,20 +90,20 @@ jQuery( document ).ready(function( $ ) {
                         </div>  
                        <div class="form-group required">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_coupon_percentage_off'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text"  required  name="percentage_off" id="percentage_off" class="form-control" value="<?php echo set_value('name');?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text"  required  name="percentage_off" id="percentage_off" class="form-control" value="<?php echo set_value('percentage_off');?>"></div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_start_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker""></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker" value="<?php echo set_value('start_date');?>""></div>
                         </div>
                          <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker""></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker" value="<?php echo set_value('end_date');?>""></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_is_active'); ?></label>
-                            <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array,  $emp_details->is_active); ?></div>
+                            <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array,  set_value('is_active')); ?></div>
                         </div>
 
                         <div class="form-actions">                                    	

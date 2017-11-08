@@ -317,19 +317,19 @@ class Admin_companycourses extends CI_Controller {
         echo $count;
     }
        public function set_user_chapter_comments() {
-        $course_id = $this->input->post('chapter_id');
+        $course_id = $this->input->post('course_id');
         $chapter_comment = $this->input->post('comment');
         $commment_obj = new stdClass();
         $commment_obj->comment_text = $chapter_comment;
         $commment_obj->comment_by = $this->session->userdata('empuser_name');
         $commment_obj->commented_at = date('Y-m-d');
-        $course_specific_comment_array = $this->companycourses_model->get_user_course_comments($course_id);
-
+        $course_specific_comment_array = $this->companycourses_model->get_user_comments($course_id);
+      
         if (empty($course_specific_comment_array) || is_null($course_specific_comment_array)) {
             $course_comment_array = json_encode(array($commment_obj));
             
         } else {
-
+            
             $course_comment_array = json_decode($course_specific_comment_array);
             array_push($course_comment_array, $commment_obj);
             $course_comment_array = json_encode($course_comment_array);
@@ -337,7 +337,7 @@ class Admin_companycourses extends CI_Controller {
 
         $comment_details_array = array('comments' => $course_comment_array, 'id' => $course_id);
         $this->companycourses_model->update_courses($course_id, $comment_details_array);
-        $query = $this->companycourses_model->get_user_course_comments($course_id);
+        $query = $this->companycourses_model->get_user_comments($course_id);
         $comments_array = json_decode($query);
         // print_r($comments_array);
 
@@ -349,6 +349,51 @@ class Admin_companycourses extends CI_Controller {
         } else {
             $response->status = "Fail";
         }
+        echo json_encode($response);
+    }
+    public function get_user_comments(){
+        $page = $this->input->post('page');
+        $course_id = $this->input->post('course_id');
+
+        $comments= json_decode($this->companycourses_model->get_user_comments($course_id));
+        $response = new stdClass();
+
+        if ($comments != null) {
+            $response->status = 'Success';
+            $limit =5; //no. of rows
+           
+            $page = trim($this->input->post('page'));
+            if ($page == "") {
+                $page = 1;
+            }
+            $count = sizeof($comments);
+            if (!$sidx) {
+                $sidx = 1;
+            }
+            if ($count > 0 && $limit > 0) {
+                $totalpages = ceil($count / $limit);
+            } else {
+                $totalpages = 0;
+            }
+            if ($page > $totalpages) {
+                $page = $totalpages;
+            }
+            $start = ($limit * $page) - $limit;
+
+            if ($start < 0) {
+                $start = 0;
+            }
+            $response = new stdClass();
+            $response->page = $page;
+            $response->rows = array_slice(array_reverse($comments), $start, $limit);
+            $response->total = $totalpages;
+            $response->records = $count;
+            $response->start = $start + 1;
+            $response->end = $start + $limit;
+        } else {
+            $response->status = "Fail";
+        }
+
         echo json_encode($response);
     }
 
