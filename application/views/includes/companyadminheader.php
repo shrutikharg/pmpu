@@ -377,7 +377,7 @@ function time_elapsed_string($ptime)
 
 			<!-- Only visible on smartphones, menu toggle -->
 			<ul class="nav navbar-nav">
-				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="fa fa-reorder"></i></a></li>
 			</ul>
 
 	
@@ -413,7 +413,7 @@ function time_elapsed_string($ptime)
 
 			<!-- Sidebar Toggler -->
 			<a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
-				<i class="icon-reorder"></i>
+				<i class="fa fa-reorder"></i>
 			</a>
 			<!-- /Sidebar Toggler -->
 
@@ -606,7 +606,7 @@ function time_elapsed_string($ptime)
 
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-			<i class="icon-envelope"></i>
+			<i class="fa fa-envelope"></i>
 
 			<?php if(mysqli_num_rows($res_LC) > 0) { ?>
 
@@ -781,15 +781,15 @@ function time_elapsed_string($ptime)
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						
-						<i class="icon-male"></i>
+						<i class="fa fa-user"></i>
 						<span id="username" class="username"><?php //var_dump($this->session->userdata('user_name')); 
 						echo $this->session->userdata('user_name'); ?></span>
-						<i class="icon-caret-down small"></i>
+						<i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo base_url(); ?>admin_company/userprofile"><i class="icon-user"></i> My Profile</a></li>
+						<li><a href="<?php echo base_url(); ?>admin_company/userprofile"><i class="fa fa-user"></i> My Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="<?php echo base_url(); ?>admin_company/logout"><i class="icon-key"></i> Log Out</a></li>
+						<li><a href="<?php echo base_url(); ?>admin_company/logout"><i class="fa fa-key"></i> Log Out</a></li>
 					</ul>
 				</li>
 				<!-- /user login dropdown -->
@@ -809,19 +809,19 @@ function time_elapsed_string($ptime)
 <ul id="nav">
     <li <?php if(($this->uri->segment(2) == 'brandings') || ($this->uri->segment(2) == 'cmspage')){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);">
-							<i class="icon-cogs"></i>
+							<i class="fa fa-cogs"></i>
 							<?php echo $this->lang->line('nav_master');?>
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'brandings'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/brandings/addtheme">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('nav_comapny');?>
 								</a>
 							</li>
 							<li <?php if($this->uri->segment(2) == 'cmspage'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/cmspage">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('nav_cms');?>
 								</a>
 							</li>
@@ -829,19 +829,19 @@ function time_elapsed_string($ptime)
 					</li>
 					<li <?php if(($this->uri->segment(2) == 'category') || ($this->uri->segment(2) == 'subcategory')){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);">
-							<i class="icon-list"></i>
+							<i class="fa fa-list"></i>
 							<?php echo $this->lang->line('brd_organization');?>
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'category'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/category">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('brd_department');?>
 								</a>
 							</li>
 							<li <?php if($this->uri->segment(2) == 'subcategory'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/subcategory">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('brd_subdepartment');?>
 								</a>
 							</li>
@@ -850,37 +850,37 @@ function time_elapsed_string($ptime)
 					
 					<li <?php if(($this->uri->segment(2) == 'courses') || ($this->uri->segment(3) == 'schedulecourse')||($this->uri->segment(2) == 'chapters') || ($this->uri->segment(2) == 'coursesassign'|| ($this->uri->segment(2) == 'coupon_code'))){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);" >
-							<i class="icon-facetime-video"></i>
+							<i class="fa fa-video-camera"></i>
 							<?php echo $this->lang->line('brd_courses');?>
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'courses'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/courses">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('nav_course');?>
 								</a>
 							</li>
 							 <li <?php if($this->uri->segment(2) == 'chapters'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/chapters">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								<?php echo $this->lang->line('nav_chapter');?>
 								</a>
 							</li>
 							 <li <?php if($this->uri->segment(2) == 'coursesassign'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/coursesassign">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  <?php echo $this->lang->line('nav_course_assignment');?>
 								</a>
 							</li>	
                                                        <li <?php if($this->uri->segment(2) == 'coursesassign'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/coursesassign">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  <?php echo $this->lang->line('nav_course_assignment');?>
 								</a>
 							</li>	
                                                          <li <?php if($this->uri->segment(2) == 'coupon_code'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>admin_company/coupon_code">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  <?php echo $this->lang->line('nav_coupon_code');?>
 								</a>
 							</li>
