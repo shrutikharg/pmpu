@@ -15,8 +15,8 @@ jQuery( document ).ready(function( $ ) {
 });
 </script> 
 <style type="text/css">
-    .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover {
-        background-color: #99D9EA;
+    .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover, .ui-datepicker td .ui-state-active {
+        background-color: #99D9EA !important;
     }
 </style>
 <div id="content">

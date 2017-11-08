@@ -1,4 +1,23 @@
- 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    $.noConflict();
+jQuery( document ).ready(function( $ ) {
+  $( ".datepicker" ).datepicker({
+    dateFormat: "dd/mm/yyyy",
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    autoclose: true,
+    changeMonth: true,
+    changeYear: true,
+  });
+});
+</script> 
+<style type="text/css">
+    .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover, .ui-datepicker td .ui-state-active {
+        background-color: #99D9EA !important;
+    }
+</style>
 <div id="content">
     <div class="container">
         <!-- Breadcrumbs line -->
@@ -75,11 +94,11 @@
 
                         <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_start_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="date" name="start_date" class="form-control" value="<?php echo $couponcode_data['start_date'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker" value="<?php echo $couponcode_data['start_date'];?>"></div>
                         </div>
                          <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="date" name="end_date" class="form-control" value="<?php echo $couponcode_data['end_date'];?>"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker" value="<?php echo $couponcode_data['end_date'];?>"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_is_active'); ?></label>
