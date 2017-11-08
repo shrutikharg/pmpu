@@ -107,7 +107,7 @@
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                        <?php echo $this->lang->line('brd_department'); ?>
+                        <?php echo $this->lang->line('nav_coupon_code'); ?>
                     </a> 
 
                 </li>>
@@ -127,31 +127,27 @@
                         <?php
                         $attributes = array('class' => 'form-horizontal row-border', 'id' => 'searchform');
 
-                        $options_category = array('name' => 'Department Name');
+                      
                         echo form_open('#', $attributes);
 
                         echo '<div class="form-group">';
-                        echo "<label class='col-md-3 col-sm-3  control-label'>" . $this->lang->line('lbl_department') . "</label>";
+                        echo "<label class='col-md-3 col-sm-3  control-label'>" . $this->lang->line('lbl_coupon_code') . "</label>";
 
                         echo '<div class="col-md-4 col-sm-5">';
                         $data_search = array(
                             'name' => 'search_string',
                             'id' => 'search_string',
                             'class' => 'form-control',
-                            'placeholder' => $this->lang->line('lbl_department')
+                            'placeholder' => $this->lang->line('lbl_coupon_code')
                         );
                         echo form_input($data_search);
                         echo '</div>';
 
-                        //echo '<label class="col-md-2 col-sm-2  control-label">Order by:</label>';
+                      
 
 
                         $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => $this->lang->line('btn_search'));
 
-                        //echo '<div class="col-md-2 col-sm-4"  >';
-                        // $options_order_type = array('Select' => 'Select', 'Asc' => 'Asc', 'Desc' => 'Desc');
-                        // echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="form-control" id="order"');
-                        //echo '</div>';
                         echo '<div class="col-md-2 col-sm-2 searchbtn" >';
                         echo form_input($data_submit);
                         echo '</div>';
@@ -177,7 +173,7 @@
                 <p>&nbsp;</p>
                 <div class="widget box">
                     <div class="widget-header">
-                        <h4> <?php echo $this->lang->line('lbl_department_lst'); ?></h4>								
+                        <h4> <?php echo $this->lang->line('lbl_coupon_code_lst'); ?></h4>								
                     </div>
 
                     <div class="res_table">

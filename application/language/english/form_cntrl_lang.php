@@ -177,9 +177,10 @@ $lang['nav_cms']="Setting CMS Page";
 
 
 //form control for  coupon_code
-$lang['nav_coupon_code']="Coupon";
+$lang['nav_coupon_code']="Coupon Code";
 $lang['lbl_coupon_code']="Coupon Code";
 $lang['lbl_coupon_percentage_off']="Percentage Off";
+$lang['lbl_coupon_code_lst']="Coupon Code List";
 $lang['msg_dept_insert_success']="Coupon Code Added Successfully";
 $lang['msg_dept_edit_success']="Coupon Code Updated Successfully";
 

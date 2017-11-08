@@ -13,12 +13,12 @@
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                       <?php echo $this->lang->line('brd_department'); ?>
+                       <?php echo $this->lang->line('nav_coupon_code'); ?>
                     </a> 
                     
                 </li>
                 <li class="active">
-                    <a href="#">  <?php echo $this->lang->line('brd_add'); ?></a>
+                    <a href="#">  <?php echo $this->lang->line('brd_edit'); ?></a>
                 </li>
             </ul>				      
         </div>
@@ -86,8 +86,7 @@
                             <div class="col-md-4"> <?php echo form_dropdown('is_active', $is_active_array,  $couponcode_data['is_active']); ?></div>
                         </div>
               <div class="form-group">
-                            <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="hidden" name="couponcode_id" class="form-control" value="<?php echo $couponcode_id;?>"></div>
+                                   <div class="col-md-6 col-xs-10"><input type="hidden" name="couponcode_id" class="form-control" value="<?php echo $couponcode_id;?>"></div>
                         </div>
 
                         <div class="form-actions">                                    	

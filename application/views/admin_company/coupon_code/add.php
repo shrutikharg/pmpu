@@ -26,14 +26,14 @@ jQuery( document ).ready(function( $ ) {
             <ul class="breadcrumb">
                 <li>
                     <a href="#">
-                        <?php echo $this->lang->line('brd_organization'); ?>
+                        <?php echo $this->lang->line('brd_courses'); ?>
                                 
                     </a> 
                   
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
-                       <?php echo $this->lang->line('brd_department'); ?>
+                       <?php echo $this->lang->line('nav_coupon_code'); ?>
                     </a> 
                     
                 </li>
@@ -95,11 +95,11 @@ jQuery( document ).ready(function( $ ) {
 
                         <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_start_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="start_date" class="form-control datepicker""></div>
                         </div>
                          <div class="form-group">
                             <label class="col-md-2 col-xs-10 control-label"><?php echo $this->lang->line('lbl_end_date'); ?></label>
-                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker"></div>
+                            <div class="col-md-6 col-xs-10"><input type="text" name="end_date" class="form-control datepicker""></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_is_active'); ?></label>
