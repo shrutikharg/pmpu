@@ -24,7 +24,7 @@ class Companycmspage_model extends CI_Model {
 		return $query->row(); 
     }
 	
-	 public function list_cmspage($userid,$usernm)
+	 public function list_cmspage()
 	{
 		$this->db->select('*');
 		$this->db->from('cmspage');

@@ -131,6 +131,8 @@ class Employeeuser extends CI_Controller {
             $company_id = $this->company_details->id;
             $email = $this->input->post('email');
             $user_details = $this->employeeuser_model->get_employee_by_email($email);
+            $company_details=$this->config->item('company_details');
+           
             if (!empty($user_details)) {
 
                 $registeration_data = array(
@@ -140,7 +142,9 @@ class Employeeuser extends CI_Controller {
                     'reg_phone' => $user_details->phone,
                     'reg_id' => $this->encryption->encrypt($user_details->id),
                     'reg_message' => 'User is already registered,left with  subscription',
-                    'reg_company_id' => $this->encryption->encrypt($company_id)
+                    'reg_company_id' => $this->encryption->encrypt($company_id),
+                     'reg_price' =>$company_details->price ,
+                    
                 );
                 $this->session->set_userdata('registeration_data', $registeration_data);
                 redirect('employee/payment_subscribe');
@@ -182,7 +186,8 @@ class Employeeuser extends CI_Controller {
                         'reg_phone' => $this->input->post('phone'),
                         'reg_id' => $this->encryption->encrypt($insert_id),
                         'reg_message' => 'Registered Successfully',
-                        'reg_company_id' => $this->encryption->encrypt($company_id)
+                        'reg_company_id' => $this->encryption->encrypt($company_id),
+                            'reg_price' =>$company_details->price 
                     );
                     $this->session->set_userdata('registeration_data', $registeration_data);
                     redirect('employee/payment_subscribe');
@@ -464,9 +469,27 @@ class Employeeuser extends CI_Controller {
 
     function apply_couponcode() {
         $this->load->model('companycoupon_model');
-        $coupon_code = $this->input->post('coupon_code');
+        $coupon_code = trim($this->input->post('coupon_code'));
         $company_details = $this->config->item('company_details');  
-        $query = $this->companycoupon_model->apply_coupon($coupon_code, $company_details->id);
+        $result= $this->companycoupon_model->apply_coupon($coupon_code, $company_details->id);
+        $response=new stdClass();
+ 
+        if(!empty($result)){
+            $response->status='Success' ;
+             $response->original_cost=$company_details->price;
+               $response->discount_cost=($company_details->price)*(1-(((float)$result->percentage_off)/100)) ;
+           $response->coupon_code=$result->name ;
+           $response->percentage_off=$result->percentage_off;
+        }
+        else{
+             $response->status='Fail' ;
+             $response->original_cost=$company_details->price;
+               $response->discount_cost=$company_details->price ;
+           $response->coupon_code='';
+           $response->percentage_off=0;
+       
+        }
+        echo json_encode($response);
     }
 
 }

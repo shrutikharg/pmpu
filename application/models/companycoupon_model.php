@@ -62,9 +62,9 @@ class companycoupon_model extends CI_Model {
         $this->db->where('start_date <=', date('Y-m-d'));
         $this->db->where('end_date >=', date('Y-m-d'));
         $this->db->where('name', $coupon_code);
-        $this->db->where('is_ative', 'Y');
+        $this->db->where('is_active', 'Y');
         $query=$this->db->get();
-        return $query->result();
+        return $query->row();
     }
 
     //put your code here
