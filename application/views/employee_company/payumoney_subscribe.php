@@ -59,6 +59,7 @@ $action = 'payment_success';
     <head>
         <title>Sign Up Page of E-Learning</title>
         <meta charset="utf-8">
+        <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets/css/style.css">
         <link href="<?php echo base_url(); ?>assets/assets/css/form.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -73,6 +74,51 @@ $action = 'payment_success';
                 var payuForm = document.forms.payuForm;
                 payuForm.submit();
             }
+
+            $(document).ready(function () {
+                $('a#coupenText').unbind('click').bind('click', function () {
+                    $(this).parent().parent().hide();
+                    $('.coupenDiv').show();
+                });
+                $('#applyCoupen').unbind('click').bind('click', function () {
+                    if ($('#coupon_code').val() == '') {
+                        alert('Please enter promocode');
+                        return false;
+                    }
+                    $('#DisableDiv').fadeTo('slow', .6);
+                    $('#DisableDiv').append('<img src="<?php echo base_url(); ?>assets/images/loading.gif">');
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url(); ?>employee/coupon_code/check",
+                        data: {'coupon_code': $('#coupon_code').val()},
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.status == 'Success') {
+                                $('#DisableDiv').hide();
+                                $('#msgDiv').show();
+                                $("#amount").val(data.discount_cost);
+                                $("#original_price").val(data.original_cost);
+                                $("#coupon_code").val(data.coupon_code);
+                                $("#percentage_off").val(data.percentage_off);
+                                $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupen Applied</p>');
+                            } else if (data.status == 'Fail') {
+                                $('#msgDiv').show();
+                                $('#DisableDiv').hide();
+                                $("#amount").val(data.discount_cost);
+                                $("#original_price").val(data.original_cost);
+                                $("#coupon_code").val(data.coupon_code);
+                                $("#percentage_off").val(data.percentage_off);
+                                $('#msgDiv > td:last-child').html('<p style="color: maroon;font-size: 1em; font-weight: 700;">Please Enter correct coupen Code</p>');
+                            }
+                        },
+                        error: function () {
+                            $('#msgDiv').show();
+                            $('#msgDiv > td:last-child').text('technical error please contact to system admin');
+                        }
+                    });
+                });
+            });
+
         </script>
     </head>
     <body onload="submitPayuForm()" class="bg">
@@ -125,53 +171,8 @@ $action = 'payment_success';
                                     <td>&nbsp;</td>
                                     <td colspan="3"><input type="button" id="applyCoupen" name="coupenCode" value="Apply" class="btn btn-primary"></td>
                                 </tr>
-                                <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-                                <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $('a#coupenText').unbind('click').bind('click', function(){
-                                            $(this).parent().parent().hide();
-                                            $('.coupenDiv').show();
-                                        });
-                                        $('#applyCoupen').unbind('click').bind('click', function() {
-                                            if($('#coupon_code').val() == '') {
-                                                alert('Please enter promocode');
-                                                return false;
-                                            }
-                                            $('#DisableDiv').fadeTo('slow', .6);
-                                            $('#DisableDiv').append('<img src="<?php echo base_url();?>assets/images/loading.gif">');
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "<?php echo base_url(); ?>employee/coupon_code/check",
-                                                data: {'coupon_code': $('#coupon_code').val()},
-                                                dataType: 'json',
-                                                success: function (data) {
-                                                    if (data.status == 'Success') {
-                                                        $('#DisableDiv').hide();
-                                                        $('#msgDiv').show();
-                                                        $("#amount").val(data.discount_cost);
-                                                        $("#original_price").val(data.original_cost);
-                                                        $("#coupon_code").val(data.coupon_code);
-                                                        $("#percentage_off").val(data.percentage_off);
-                                                        $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupen Applied</p>');
-                                                    } 
-                                                    else if (data.status == 'Fail') {
-                                                        $('#msgDiv').show();
-                                                        $('#DisableDiv').hide();
-                                                        $("#amount").val(data.discount_cost);
-                                                        $("#original_price").val(data.original_cost);
-                                                        $("#coupon_code").val(data.coupon_code);
-                                                        $("#percentage_off").val(data.percentage_off);
-                                                        $('#msgDiv > td:last-child').html('<p style="color: maroon;font-size: 1em; font-weight: 700;">Please Enter correct coupen Code</p>');
-                                                    }
-                                                },
-                                                error: function () {
-                                                    $('#msgDiv').show();
-                                                    $('#msgDiv > td:last-child').text('technical error please contact to system admin');
-                                                }
-                                            });
-                                        });
-                                    });
-                                </script>
+                            
+                      
                                 <tr>
                                     <td colspan="3"><input type="hidden" name="surl" value="<?php echo base_url() . 'employee/'; ?>success.php" size="64" /></td>
                                     <td colspan="3"><input type="hidden" name="furl" value="http://coolacharya.com/payumoney/failure.php" size="64" /></td>

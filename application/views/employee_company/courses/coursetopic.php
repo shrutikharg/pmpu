@@ -3,8 +3,89 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/datepicker/jquery.datetimepicker.css"/>
 <script>
+    var course_id = "<?php echo $course_id; ?>";
+    var page = 1;
     $(document).ready(function (e) {
-    });
+        $('#comment_form').submit(function (e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url() ?>admin_company/courses/set_user_comments",
+                data: {'course_id': course_id, "comment": $("#comment_text").val()},
+                dataType: "json",
+                success: function (data) {
+
+                    var comment_details = JSON.parse(data.comments);
+                    $('#comment_text').val('');
+                    $('.media-grids').empty();
+                    $.each(comment_details, function (i, row) {
+                        var category_id = '"' + row['id'] + '"';
+                        $(".media-grids").append("<div class='media'><div class='media-body'>\n\
+                 <p>" + row['comment_text'] + "</p>\n\
+<span class='pull-left'><b>Comment By:</b>" + row.comment_by + "</span>\n\
+<span class='pull-right'>" + row['commented_at'] + "</span></div></div>");
+
+
+
+                    });
+
+
+
+                },
+                error: function () {
+
+                }
+            });
+
+
+        });
+        $('#nxt_comment, #prev_comment').click(function () {
+            if ($(this).attr('id') == 'nxt_comment') {
+
+                page = page + 1;
+            } else {
+                if (page != 1) {
+                    page = page - 1;
+                }
+
+            }
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url() ?>admin_company/courses/get_user_comments",
+                data: {'course_id': course_id, 'page': page},
+                dataType: "json",
+                success: function (data) {
+                    if (data.total == page) {
+                        // $("#nxt_comment").hide();
+                    } else {
+                        // $("#nxt_comment").show();
+
+                    }
+                    $("#comment_text").attr("value", "");
+                    $('.media-grids').empty();
+                    $.each(data.rows, function (i, row) {
+
+                        $(".media-grids").append("<div class='media'><div class='media-body'>\n\
+                 <p>" + row.comment_text + "</p>\n\
+<span class='pull-left'><b>Comment By:</b>" + row.comment_by + "</span>\n\
+<span class='pull-right'>" + row.commented_at + "</span></div></div>");
+
+
+                    });
+
+
+
+                },
+                error: function () {
+
+                }
+            });
+
+        });
+    })
+
 </script>
 <script>
     function view_chapter(chapter_id,course_id) {
@@ -94,54 +175,54 @@
                        }
                    }
             ?>
-               <br/>
-                <?php  if(!(empty($topiclist))) {               
-                      foreach ($topiclist as $row) {                
-                 ?>
-                <div class="col-md-3 col-sm-4 col-xs-6">
-                    <div class="widget box" id="<?php echo $row['chapterid']; ?>">
-                        <div class="chaptername" id="<?php echo $row['chaptername']; ?>">
-                            <div class="courseid" id="<?php echo $row['courseid']; ?>">
-                                <div class="chaptervideo" id="<?php echo $row['chaptervideo'] ?>">                                  
-                                    <div class="widget-content no-padding">
-                                        <div class="chapterimg">
-                                            <div class="hover-div"> 
-                                                <a href="#" > 
-                                                     <?php
-                                                          echo '<button type="button" id="couurse_id" class="chapter_start" onClick="view_chapter(' . $row['chapterid'] .",".$row['courseid']. ')"  > <span class="glyphicon glyphicon-play-circle"> </span></button>';
-                                                      ?>                                                  
-                                                </a>
-                                              </div>                                            
-                                                    <?php                                             
-                                                            if (isset($row['chapterimage'])) {
-                                                       ?>
-                                                       <img src="<?php echo base_url().$row['chapterimage']; ?>" >
-                                                       <?php
-                                                       } else {
-                                                        ?>
-                                                       <img src="<?php echo base_url(); ?>assets/chapter_documents/course_image/default_course.jpg" >
-                                                       <?php
-                                                      }
-                                                   ?>  
-                                               </div>
-                                                 </div>
-                                                    <div class="text-content">
-                                                       <h5 class="chapter_title">
-                                                           <?php echo $row['chaptername']; ?></h5>                                                               
-                                                       <h5><?php echo substr($row['chapterdescription'], 0,30); ?>...</h5>
-                                                    </div>                                                              
-                                          </div>
+            <br/>
+            <?php
+            if (!(empty($topiclist))) {
+                foreach ($topiclist as $row) {
+                    ?>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="widget box" id="<?php echo $row['chapterid']; ?>">
+                            <div class="chaptername" id="<?php echo $row['chaptername']; ?>">
+                                <div class="courseid" id="<?php echo $row['courseid']; ?>">
+                                    <div class="chaptervideo" id="<?php echo $row['chaptervideo'] ?>">                                  
+                                        <div class="widget-content no-padding">
+                                            <div class="chapterimg">
+                                                <div class="hover-div"> 
+                                                    <a href="#" > 
+                                                        <?php
+                                                        echo '<button type="button" id="couurse_id" class="chapter_start" onClick="view_chapter(' . $row['chapterid'] . "," . $row['courseid'] . ')"  > <span class="glyphicon glyphicon-play-circle"> </span></button>';
+                                                        ?>                                                  
+                                                    </a>
+                                                </div>                                            
+                                                <?php
+                                                if (isset($row['chapterimage'])) {
+                                                    ?>
+                                                    <img src="<?php echo base_url() . $row['chapterimage']; ?>" >
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <img src="<?php echo base_url(); ?>assets/chapter_documents/course_image/default_course.jpg" >
+                                                    <?php
+                                                }
+                                                ?>  
+                                            </div>
+                                        </div>
+                                        <div class="text-content">
+                                            <h5 class="chapter_title">
+        <?php echo $row['chaptername']; ?></h5>                                                               
+                                            <h5><?php echo substr($row['chapterdescription'], 0, 30); ?>...</h5>
+                                        </div>                                                              
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>                
-               <?php
-                   }
+                    <?php
                 }
-                else{
-                    echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #fff, 3px 3px 5px #ff3f00'>No chapters Added Yet</h2>";
-                }
-              ?>
+            } else {
+                echo "<h2 style='font-weight: bold; color: brown; text-align: center; text-shadow: 1px 1px 1px #fff, 3px 3px 5px #ff3f00'>No chapters Added Yet</h2>";
+            }
+            ?>
         </div>
         <div class="row clearfix" style="margin-top: 20px;">
             <div class="all-comments col-sm-9 col-xs-12 Topic-left">
@@ -240,7 +321,7 @@
                             var idt = $(this).closest('.widget').attr("id");
                             var bla1 = $('#chaptername').val();
                             var div1 = $('.chaptername').attr("id");
-                            var idt2 = $(this).closest('.chaptername').attr("id");SS
+                            var idt2 = $(this).closest('.chaptername').attr("id");
                             var blcsid = $('#courseid').val();
                             var csid1 = $('.courseid').attr("id");
                             var idt3 = $(this).closest('.courseid').attr("id");
