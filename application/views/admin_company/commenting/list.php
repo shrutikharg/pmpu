@@ -124,8 +124,7 @@
 
 							<div class="widget-header">
 
-								<h4><i class="icon-reorder"></i> View All Comments and Ratings</h4>
-
+								<h4><i class="fa fa-reorder"></i> View All Comments and Ratings</h4>
 							</div>
 							<?php
 							foreach($category as $row)
@@ -139,8 +138,8 @@
 
     <small style="font-size:14px !important;"><?php echo $row['course_name']; ?><cite title="Source Title">&nbsp;&nbsp;&nbsp;<?php echo date("d/m/Y", strtotime($row['created_date'])); ?></cite></small><br>
 
-                          <?php echo '<a href="'.site_url("admin_company").'/commenting/update/'.$row['id'].'"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;';
-								echo '<a href="'.site_url("admin_company").'/commenting/delete/'.$row['id'].'"><i class="icon-remove"></i> Delete</a>&nbsp;&nbsp;';
+                          <?php echo '<a href="'.site_url("admin_company").'/commenting/update/'.$row['id'].'"><i class="fa fa-pencil"></i> Edit</a>&nbsp;&nbsp;';
+								echo '<a href="'.site_url("admin_company").'/commenting/delete/'.$row['id'].'"><i class="fa fa-close"></i> Delete</a>&nbsp;&nbsp;';
 								//echo '<a href="'.site_url("admin_company").'/commenting/publishcomment/'.$row['id'].'"><i class="icon-globe"></i> Publish</a>&nbsp;&nbsp;';
 									?>
 
@@ -167,4 +166,4 @@
 				</div>
 				<!-- /Normal -->
 	</div>
-				</div>		
+   </div></div>		

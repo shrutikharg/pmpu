@@ -230,6 +230,16 @@
                    height: calc(100vh - 0px);
                     bottom:0;
              }
+             html, body, .container {
+                 height: 100%;
+             }
+             .container {
+                 display: table;
+             }
+             .container .row {
+                 display: table-cell;
+                 vertical-align: middle;
+             }
         </style>		
     </head>
     <body class="register_bg">

@@ -163,7 +163,8 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         'id' => 'email_address',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Email Address',
-                         'type' => 'email',
+                        'type' => 'email',
+                        'autocomplete' => 'off',
                         'required' => 'required'
                     );
                     echo "<div class='form-group'>";
@@ -203,7 +204,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                     echo "</div></div>";
                     echo "</p>";
                     echo "<hr class='colorgraph2'><div class='row'>";
-                    echo "<div class='col-xs-6 col-md-6'><a href='#' id='reset' class='btn btn-success btn-block btn-lg'>Reset</a></div>";
+                    echo "<div class='col-xs-6 col-md-6'><a id='reset' class='btn btn-success btn-block btn-lg'>Reset</a></div>";
                     echo "<div class='col-xs-6 col-md-6'>";
                     echo form_submit('submit', 'submit', 'id="submit" class="btn btn-lg btn-block btn-primary"');
                     echo"</div>";
@@ -241,6 +242,9 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                 $('#password,#passconf').bind("cut copy paste", function (e) {
                     e.preventDefault();
                 });
+                $('#reset').click(function(){
+                    $('#register_form')[0].reset();
+                })
             });           
             
        // Input field custom validation message

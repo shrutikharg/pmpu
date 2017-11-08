@@ -125,11 +125,11 @@ $action = 'payment_success';
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td><a id="coupenText" style="color: #00b9f5; cursor: pointer; text-decoration: none;">Have a promocode?</a></td>
+                                    <td><a id="couponText" style="color: #00b9f5; cursor: pointer; text-decoration: none;">Have a Coupon code?</a></td>
                                 </tr>
-                                <tr class="coupenDiv" style="display: none;">
-                                    <td><b>Coupen Code: </b> </td>
-                                    <td><input type="text" class="text_style" name="udf3" id="coupon_code"  placeholder="Coupen Code"></td>
+                                <tr class="couponDiv" style="display: none;">
+                                    <td><b>Coupon Code: </b> </td>
+                                    <td><input type="text" class="text_style" name="udf3" id="coupon_code"  placeholder="Coupon Code"></td>
                                     <td><div id="DisableDiv" style="display: block;">
 
                                         </div>
@@ -139,18 +139,18 @@ $action = 'payment_success';
                                     <td>&nbsp;</td>
                                     <td></td>
                                 </tr>
-                                <tr class="coupenDiv" style="display: none;">
+                                <tr class="couponDiv" style="display: none;">
                                     <td>&nbsp;</td>
-                                    <td colspan="3"><input type="button" id="applyCoupen" name="coupenCode" value="Apply" class="btn btn-primary"></td>
+                                    <td colspan="3"><input type="button" id="applyCoupon" name="couponCode" value="Apply" class="btn btn-primary"></td>
                                 </tr>
                                 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
                                 <script type="text/javascript">
                                     $(document).ready(function () {
-                                        $('a#coupenText').unbind('click').bind('click', function(){
+                                        $('a#couponText').unbind('click').bind('click', function(){
                                             $(this).parent().parent().hide();
-                                            $('.coupenDiv').show();
+                                            $('.couponDiv').show();
                                         });
-                                        $('#applyCoupen').unbind('click').bind('click', function() {
+                                        $('#applyCoupon').unbind('click').bind('click', function() {
                                             if($('#coupon_code').val() == '') {
                                                 alert('Please enter promocode');
                                                 return false;
@@ -170,7 +170,7 @@ $action = 'payment_success';
                                                         $("#original_price").val(data.original_cost);
                                                         $("#coupon_code").val(data.coupon_code);
                                                         $("#percentage_off").val(data.percentage_off);
-                                                        $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupen Applied</p>');
+                                                        $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupon Applied</p>');
                                                     } 
                                                     else if (data.status == 'Fail') {
                                                         $('#msgDiv').show();
@@ -179,7 +179,7 @@ $action = 'payment_success';
                                                         $("#original_price").val(data.original_cost);
                                                         $("#coupon_code").val(data.coupon_code);
                                                         $("#percentage_off").val(data.percentage_off);
-                                                        $('#msgDiv > td:last-child').html('<p style="color: maroon;font-size: 1em; font-weight: 700;">Please Enter correct coupen Code</p>');
+                                                        $('#msgDiv > td:last-child').html('<p style="color: maroon;font-size: 1em; font-weight: 700;">Please Enter correct coupon Code</p>');
                                                     }
                                                 },
                                                 error: function () {

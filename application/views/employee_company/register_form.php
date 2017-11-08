@@ -24,9 +24,9 @@
                 display: table-cell;
                 vertical-align: middle;
             }
-            .move-button {
+/*            .move-button {
                 margin-bottom: -20px;
-            }
+            }*/
             a.move {
                 font-size: 16px;
                 text-decoration: none;
@@ -37,6 +37,10 @@
             }
             .custom-button {
                 padding: 6px 35px;
+            }
+            .well > p {
+                color: maroon;
+                font-weight: bold;
             }
         </style>
     </head>
@@ -54,7 +58,7 @@ echo validation_errors();
 $attributes = array('class' => 'form'); 
 
 echo form_open('employee/create_member', $attributes);
-echo '<h2 class="form-signin-heading"> Register </h2>';
+echo '<h2 class="form-signin-heading" style="margin-top:0;"> Register </h2>';
 echo "<hr class='colorgraph2'><div class='form-group'>";
 
 $first_name = array(
@@ -113,10 +117,10 @@ echo "</div>";
 $password = array(
           'name'        => 'password',
           'id'          => 'password',
-          'class'       => 'form-control input-lg',
+          'class'       => 'form-control input-lg pull-left',
           'Placeholder' => 'Password',
         );
-echo "<div class='row'><div class='col-xs-6 col-sm-6 col-md-6'><div class='form-group'>";
+echo "<div class='row'><div class='col-xs-6 col-sm-6 col-md-6' style='padding-left: 0;'><div class='form-group'>";
 echo form_password($password);
 echo "</div></div>";
 
@@ -127,7 +131,7 @@ $password2 = array(
           'class'       => 'form-control input-lg',
           'Placeholder' => 'Confirm Password',
         );
-echo "<div class='col-xs-6 col-sm-6 col-md-6'><div class='form-group'>";
+echo "<div class='col-xs-6 col-sm-6 col-md-6' style='padding-right: 0;'><div class='form-group'>";
 echo form_password($password2);
 echo "</div></div></div>";
 
@@ -135,7 +139,7 @@ echo "</div></div></div>";
 
 echo "<hr class='colorgraph2'><div class='row' style='display: block;'>";
 echo "<div class='col-md-12' style='text-align: center;'>";
-echo form_submit('submit', 'submit', 'class="btn btn-large btn-primary custom-button"');
+echo form_submit('submit', 'Sign Up', 'class="btn btn-large btn-primary custom-button"');
 echo"</div>";
 
 ?>
