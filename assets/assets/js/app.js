@@ -130,7 +130,7 @@ var App = function() {
 
 		var document_height = $(document).height();
 
-		$('body').height(new_height);
+		//$('body').height(new_height);
 	}
 
 	var handleLayout = function() {
