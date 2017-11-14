@@ -1,8 +1,22 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
+<style type="text/css">
+    .ajax-loader {
+        margin-left: auto; 
+        margin-right: auto; 
+        display: block; 
+        text-align: -webkit-center;
+        text-align: -moz-center;
+        text-align: center;
+    }
+</style>
+<script>
+    var is_search = false, page = 1, search_string_array = "";
 
-<script> var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
-        fetch_list(page);
+        setTimeout(function () {
+            fetch_list(page);
+        }, 1800);
+//        fetch_list(page);
         $("#course_report").click(function () {
             var course_id = $(this).attr('id');
             var form = $(document.createElement('form'));
@@ -17,11 +31,8 @@
             is_search = true;
             search_string_array = {'course': $("#course").val(), 'sub_department': $("#sub_department").val(), 'department': $("#department").val(), 'course_by': $("#course_by").val(), 'start_date': $("#start_date").val(), 'end_date': $("#end_date").val()};
             search_string_array = JSON.stringify(search_string_array);
-
             fetch_list(page);
         });
-
-
     });
     function view_course_details(course_id) {
         var form = $(document.createElement('form'));
@@ -40,58 +51,58 @@
             'search_string_array': search_string_array,
             'is_csv': false
         };
-
         $.ajax({
+            beforeSend: function () {
+                $('.ajax-loader').css("visibility", "visible");
+            },
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
             url: '../../admin_company/reports/coursewise_list', // the url where we want to POST
             data: formData, // our data object
             dataType: 'json', // what type of data do we expect back from the server
             encode: true
         })
-                // using the done promise callback
-                .done(function (data) {
-                    $('.res_row').empty();
-                    var i = 0;
-                    $.each(data.rows, function (i, row) {
-                        i++;
-                        var course_id = '"' + row['course_id'] + '"';
-                        $(".res_table").append("<div class='res_row'>\n\
-                <div class='column'  data-label='Sr no'>" + i + "</div>\n\
+        // using the done promise callback
+        .done(function (data) {
+            $('.ajax-loader').css("visibility", "hidden");
+            $('.res_row').empty();
+            var i = 0;
+            $.each(data.rows, function (i, row) {
+                i++;
+                var course_id = '"' + row['course_id'] + '"';
+                $(".res_table").append("<div class='res_row'>\n\
+<div class='column'  data-label='Sr no'>" + i + "</div>\n\
 <div class='column' data-label='Course'>" + row['course'] + "</div>\n\
-        \n\<div class='column' data-label='Contains chapter'>" + row['chapter_count'] + "</div>\n\
-   \n\<div class='column' data-label='Contains chapter'>" + row['user_count'] + "</div>\n\
-<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_details')?>' class='btn btn-info' onclick='view_course_details(" + course_id + ")'></button></div>\n\
+\n\<div class='column' data-label='Contains chapter'>" + row['chapter_count'] + "</div>\n\
+\n\<div class='column' data-label='Contains chapter'>" + row['user_count'] + "</div>\n\
+<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_details') ?>' class='btn btn-info' onclick='view_course_details(" + course_id + ")'></button></div>\n\
 </div>");
-
-                    })
-                    pagination(data);
-                });
-    }</script>
-
-
+            })
+            pagination(data);
+        });
+        $('.ajax-loader').css("visibility", "hidden");
+    }
+    $(document).ready(function(){
+        $('.pagination').before('<div class="ajax-loader"><img src="<?php echo base_url(); ?>assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/></div>');
+    });
+</script>
 <div id="content">
     <div class="container">
         <div class="crumbs">
             <ul class="breadcrumb">
                 <li>
                     <a href="#">
-                        <?php echo $this->lang->line('nav_report'); ?>
-
+<?php echo $this->lang->line('nav_report'); ?>
                     </a> 
-
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/reports/' . $this->uri->segment(3); ?>">
-                        <?php echo $this->lang->line('nav_course_report'); ?>
+<?php echo $this->lang->line('nav_course_report'); ?>
                     </a> 
-
                 </li>>
-
             </ul>				      
         </div>
         <br>
         <div class="row">
-
             <div class="col-md-12">
                 <div class="widget box">
                     <div class="widget-header">
@@ -100,13 +111,9 @@
                     <div class="widget-content">
                         <?php
                         $attributes = array('class' => 'form-horizontal row-border', 'id' => 'myform');
-
-
                         echo form_open('admin_company/chapters', $attributes);
-
                         echo '<div class="form-group">';
                         echo '<label class="col-md-1   control-label">' . $this->lang->line('lbl_course') . '</label>';
-
                         echo '<div class="col-md-3">';
                         $course_data = array(
                             'name' => 'course',
@@ -121,52 +128,45 @@
                         echo '</div>';
                         echo form_close();
                         ?>	
-
                     </div> <!-- /.widget-content -->
                 </div> <!-- /.widget .box -->
             </div> <!-- /.col-md-12 -->
-
         </div> <!-- /.row -->		
         <!-- /Statboxes -->
         <!--=== Normal ===-->
         <div class="row">
- <div class="col-md-12">	
-
-
-            <?php
-            if (isset($flash_message)) {
-                if ($flash_message == TRUE) {
-                    echo '<div class="alert alert-success">';
-                    echo '<a class="close" data-dismiss="alert">�</a>';
-                    echo '<strong>Well done!</strong>Your chapter Deleted with success.';
-                    echo '</div>';
-                } else {
-                    echo '<div class="alert alert-danger">';
-                    echo '<a class="close" data-dismiss="alert">�</a>';
-                    echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
-                    echo '</div>';
+            <div class="col-md-12">	
+                <?php
+                if (isset($flash_message)) {
+                    if ($flash_message == TRUE) {
+                        echo '<div class="alert alert-success">';
+                        echo '<a class="close" data-dismiss="alert">�</a>';
+                        echo '<strong>Well done!</strong>Your chapter Deleted with success.';
+                        echo '</div>';
+                    } else {
+                        echo '<div class="alert alert-danger">';
+                        echo '<a class="close" data-dismiss="alert">�</a>';
+                        echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
+                        echo '</div>';
+                    }
                 }
-            }
-            ?>  
-            <p>&nbsp;</p>
-            <div class="widget box">
-                <div class="widget-header">
-                    <h4><?php echo $this->lang->line('lbl_course_report_list'); ?></h4>								
+                ?>  
+                <p>&nbsp;</p>
+                <div class="widget box">
+                    <div class="widget-header">
+                        <h4><?php echo $this->lang->line('lbl_course_report_list'); ?></h4>				
+                    </div>
+                    <div class="res_table">
+                        <div class="res_table-head">
+                            <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
+                            <div class="column"><?php echo $this->lang->line('lbl_course'); ?></div>                   
+                            <div class="column"><?php echo $this->lang->line('lbl_chpater_count'); ?></div>
+                            <div class="column"><?php echo $this->lang->line('lbl_user_count'); ?></div>
 
-                </div>
-
-                <div class="res_table">
-                    <div class="res_table-head">
-                        <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
-                        <div class="column"><?php echo $this->lang->line('lbl_course'); ?></div>                   
-                        <div class="column"><?php echo $this->lang->line('lbl_chpater_count'); ?></div>
-                        <div class="column"><?php echo $this->lang->line('lbl_user_count'); ?></div>
-
-                        <div class="column"><?php echo $this->lang->line('lbl_action'); ?></div>
-                    </div>     
-
-                </div>
-                       <div class="pagination"> 
+                            <div class="column"><?php echo $this->lang->line('lbl_action'); ?></div>
+                        </div>     
+                    </div>
+                    <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">
                                 <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
@@ -192,32 +192,22 @@
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
                                 <div class="pagination-right">
-                                <span>view</span>
-                                <span ><lable class="pagination-lable" id="rowFrm" > </lable></span>
-                                <span>-</span>
-                                <span><lable class="pagination-lable" id="rowTo" ></lable></span>
-                                <span>view</span>
-                                <span id="totalCount">50 </span>
-                            </div>
+                                    <span>view</span>
+                                    <span ><lable class="pagination-lable" id="rowFrm" > </lable></span>
+                                    <span>-</span>
+                                    <span><lable class="pagination-lable" id="rowTo" ></lable></span>
+                                    <span>view</span>
+                                    <span id="totalCount">50 </span>
+                                </div>
                             </div>
                         </div>                        
                     </div>
-            </div>  
-            <input type="button"  class="btn btn-primary"id="course_report" value="<?php echo $this->lang->line('btn_dwn_course_report'); ?>"/>
-        </div >  
-       
-
-       	<script type="text/javascript">
-            $('tbody').sortable();
-        </script>
-
-
-
-
-
+                </div>  
+                <input type="button"  class="btn btn-primary"id="course_report" value="<?php echo $this->lang->line('btn_dwn_course_report'); ?>"/>
+            </div >  
+            <script type="text/javascript">
+                $('tbody').sortable();
+            </script>
+        </div>
     </div>
-
 </div>
-
-</div>
-		

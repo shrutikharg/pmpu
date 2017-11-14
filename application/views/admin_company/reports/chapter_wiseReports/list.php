@@ -1,9 +1,18 @@
+<style type="text/css">
+    .ajax-loader {
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: center;
+        display: table;
+    }
+</style>
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
 <script>
     var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
-        fetch_list(page);
+        setTimeout(function(){fetch_list(page);}, 1800);
+//        fetch_list(page);
         $("#chapter_report").click(function () {
             var chapter_id = $(this).attr('id');
             var form = $(document.createElement('form'));
@@ -12,11 +21,8 @@
             $(form).append($("<input>").attr("type", "hidden").attr("name", "is_csv").val("true"));
             $(form).submit();
         });
-
-
     });
     function view_chapter_details(chapter_id) {
-
         var form = $(document.createElement('form'));
         $(form).attr("action", "../../admin_company/reports/selected_chapter");
         $(form).attr("method", "POST");
@@ -24,7 +30,6 @@
         var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
         $(form).append($(input));
         $(form).appendTo("body").submit();
-
     }
     function fetch_list(page) {
         var formData = {
@@ -33,6 +38,9 @@
             'search_string_array': search_string_array
         };
         $.ajax({
+            beforeSend: function () {
+                $('.ajax-loader').css("visibility", "visible");
+            },
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
             url: '../../admin_company/reports/chapterwise_list', // the url where we want to POST
             data: formData, // our data object
@@ -41,25 +49,28 @@
         })
                 // using the done promise callback
                 .done(function (data) {
+                    $('.ajax-loader').css("visibility", "hidden");
                     $('.res_row').empty();
                     var i = 0;
                     $.each(data.rows, function (i, row) {
                         i++;
                         var chapter_id = '"' + row['chapter_id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
-                <div class='column'  data-label='Sr no'>" + i + "</div>\n\
+            <div class='column'  data-label='Sr no'>" + i + "</div>\n\
 <div class='column' data-label='Chapter'>" + row['chapter'] + "</div>\n\
 <div class='column' data-label='Course'>" + row['course'] + "</div>\n\
 \n\<div class='column' data-label='Course'>" + row['lesson_status'] + "</div>\n\
 <div class='column' data-label='action'><input type='button'  name='details' value='View Details' class='btn btn-info' onclick='view_chapter_details(" + chapter_id + ")'></button></div>\n\
 </div>");
-
                     })
                     //pagination(data);
                 });
-    }</script>
-
-
+                $('.ajax-loader').css("visibility", "hidden");
+     }
+    $(document).ready(function(){
+        $('.res_table').after('<div class="ajax-loader"><img src="<?php echo base_url(); ?>assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/></div>');
+    });
+</script>
 <div id="content">
     <div class="container">
         <div class="row">
@@ -67,13 +78,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="widget box">
-
                         <div class="widget-content">
                             <?php
                             $attributes = array('class' => 'form-horizontal row-border', 'id' => 'myform');
-
                             echo form_open('admin_company/chapters', $attributes);
-
                             echo '<div class="form-group">';
                             echo '<label class="col-md-1   control-label">' . $this->lang->line('lbl_chapter') . '</label>';
                             echo '<div class="col-md-3">';
@@ -155,15 +163,9 @@
        	<script type="text/javascript">
             $('tbody').sortable();
         </script>
-
-
-
         <?php echo '<div class="pagination">' . $this->pagination->create_links() . '</div>'; ?>
-
     </div>
-
 </div>
-
 </div>
 </div>
 <!-- /Normal -->

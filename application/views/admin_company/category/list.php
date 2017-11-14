@@ -1,46 +1,27 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <style>
-   .ajax-loader {
-  visibility: hidden;
-  background-color: rgba(0,0,0,0.7);
-  position: fixed;
-  top:0%;
-  left:0%;
-  bottom:0%;
-  right:0%;
-  z-index: 1000 !important;
-  width: 100%;
-  height:100%;
-}
-
-.ajax-loader img {
-  
-    top:50%;
-    left:45%;
- 
- 
-} 
-    </style>
+    .ajax-loader {
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: center;
+        display: table;
+    }
+</style>
     <script>var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
-        fetch_list(page);
- 
-
-       
+//        fetch_list(page);
+        setTimeout(function(){ fetch_list(page); }, 1800);
         $("#search").click(function () {
             is_search = true;
             search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
             search_string_array = JSON.stringify(search_string_array);
-           
+
+            //setTimeout(function(){ fetch_list(page); }, 200);
             fetch_list(page);
         });
-      
-
     });
     function edit_category(category_id){
-      
-        
             var form = $(document.createElement('form'));
             $(form).attr("action", "../admin_company/category/update");
             $(form).attr("method", "POST");
@@ -49,7 +30,6 @@
             $(form).append($(input));
        $(form).appendTo("body").submit();
     }
-
     function fetch_list(page) {
         var formData = {
             'search': is_search,
@@ -57,19 +37,19 @@
             'search_string_array': search_string_array,
             'rows':$("#rows").val()
         };
-       
         $.ajax({
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
              beforeSend: function(){
-    $('.ajax-loader').css("visibility", "visible");
-  },
+                    $('.ajax-loader').css("visibility", "visible");
+            },
             url: '../admin_company/category/list', // the url where we want to POST
             data: formData, // our data object
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        })
+                    dataType: 'json', // what type of data do we expect back from the server
+                    encode: true
+                })
                 // using the done promise callback
-                .done(function (data) {$('.ajax-loader').css("visibility", "hidden");
+                .done(function (data) {
+                    $('.ajax-loader').css("visibility", "hidden");
                     $('.res_row').empty();
                     var i = 0;
                     $.each(data.rows, function (i, row) {
@@ -85,10 +65,7 @@
                     pagination(data);
                 });
     }
-
-
 </script>
-
 <div id="content">
     <div class="container">
         <!-- Breadcrumbs line -->
@@ -97,20 +74,15 @@
               <li>
                     <a href="#">
                         <?php echo $this->lang->line('brd_organization'); ?>
-                                
                     </a> 
-                  
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
                        <?php echo $this->lang->line('brd_department'); ?>
                     </a> 
-                    
                 </li>>
-
             </ul>				      
         </div>
-
         <!-- /Breadcrumbs line -->
         <br/>
         <div class="row">
@@ -128,7 +100,6 @@
 
                         echo '<div class="form-group">';
                         echo "<label class='col-md-3 col-sm-3  control-label'>". $this->lang->line('lbl_department')."</label>";
-
                         echo '<div class="col-md-4 col-sm-5">';
                         $data_search = array(
                             'name' => 'search_string',
@@ -138,58 +109,39 @@
                         );
                         echo form_input($data_search);
                         echo '</div>';
-
-                        //echo '<label class="col-md-2 col-sm-2  control-label">Order by:</label>';
-
-
                         $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' =>  $this->lang->line('btn_search'));
-
-                        //echo '<div class="col-md-2 col-sm-4"  >';
-                       // $options_order_type = array('Select' => 'Select', 'Asc' => 'Asc', 'Desc' => 'Desc');
-                       // echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="form-control" id="order"');
-                        //echo '</div>';
                         echo '<div class="col-md-2 col-sm-2 searchbtn" >';
                         echo form_input($data_submit);
                         echo '</div>';
                         echo '</div>';
                         echo form_close();
                         ?>
-
                     </div> <!-- /.widget-content -->
                 </div> <!-- /.widget .box -->
             </div> <!-- /.col-md-12 -->
         </div> <!-- /.row -->		
-
-
         <div class="row">
-            <div class="col-md-12">												
+            <div class="col-md-12">
                 <?php
                 ?>
                 <a  href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>/add" class="btn btn-primary">Add New</a>
                 </h2>
-                <?php /*
-                  }
-                  } */
-                ?>
                 <p>&nbsp;</p>
                 <div class="widget box">
                     <div class="widget-header">
-                        <h4> <?php echo $this->lang->line('lbl_department_lst'); ?></h4>								
+                        <h4> <?php echo $this->lang->line('lbl_department_lst'); ?></h4>
                     </div>
-
                     <div class="res_table">
                         <div class="res_table-head">
                             <div class="column"  data-label="Sr no">  <?php echo $this->lang->line('lbl_sr_no'); ?></div>
                             <div class="column" data-label="Category name"> <?php echo $this->lang->line('lbl_department'); ?></div>
                              <div class="column" data-label="Category name"> <?php echo $this->lang->line('lbl_department_desc'); ?></div>
                              <div class="column" data-label="Action"> <?php echo $this->lang->line('lbl_action'); ?></div>
-
                         </div> 
-
                     </div> 
                     <div class="ajax-loader">
-  <img src="../assets/images/ajax-loader.gif" class="img-responsive" />
-</div>
+                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                    </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">
@@ -226,11 +178,8 @@
                             </div>
                         </div>                        
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
     <!-- /Normal -->

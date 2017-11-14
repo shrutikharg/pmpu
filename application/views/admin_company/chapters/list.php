@@ -3,88 +3,100 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/themes/demo.js"></script>	
 <link href="<?php echo base_url(); ?>assets/themes/popupwindow.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>assets/themes/preview_demo.css" rel="stylesheet" type="text/css" />
-<script>var is_search = false, page = 1, search_string_array = "";
+<script>
+    var is_search = false, page = 1, search_string_array = "";
 
-    $(document).ready(function () {
+        $(document).ready(function () {
         $('#change_sequence_button').click(function () {
             var arr = [];
             $("#sequence_table tr").each(function () {
                 arr.push($(this).find(".td:first").attr("id"));
-            });
-            for (i = 1; i < arr.length; i++)
-            {
-                alert(arr[i]);
-            }
-        });
-        fetch_list(page);
-
-        $("#search").click(function () {
-            is_search = true;
-            search_string_array = {'chapter': $("#chapter").val(), 'course': $("#course").val()};
-            search_string_array = JSON.stringify(search_string_array);
-            fetch_list(page);
-        });
-
-    });
-    function edit_chapter(chapter_id) {
-        var form = $(document.createElement('form'));
-        $(form).attr("action", "../admin_company/chapters/update");
-        $(form).attr("method", "POST");
-        $(form).attr("id", "form1");
-        var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
-        $(form).append($(input));
-        $(form).appendTo("body").submit();
-    }
-      function view_comment(chapter_id) {
-        var form = $(document.createElement('form'));
-        $(form).attr("action", "../admin_company/chapters/comments");
-        $(form).attr("method", "POST");
-        $(form).attr("id", "form1");
-        var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
-        $(form).append($(input));
-        $(form).appendTo("body").submit();
-    }
-
-    function fetch_list(page) {
-        var formData = {
-            'search': is_search,
-            'page': page,
-            'search_string_array': search_string_array,
-            'rows': $("#rows").val()
-        };
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: '../admin_company/chapters/list', // the url where we want to POST
-            data: formData, // our data object
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        })
-                // using the done promise callback
-                .done(function (data) {
-                    $('.res_row').empty();
-                    var i = 0;
-
-                    $.each(data.rows, function (i, row) {
-                        i++;
-                        var chapter_id = '"' + row['id'] + '"';
-                        $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
-                                "</td><td class='column'  data-label='chapter name'>" + row['name'] +
-                                "</td><td class='column' data-label='Course name'>" + row['course'] +
-                                "</td><td class='column' data-label='Description'>" + row['description'] +                                
-                                "</td><td class='column' data-label='action'>\n\
-                                     <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
-                                    \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
-                      </tr>");
-
-                    })
-                    pagination(data);
                 });
-    }
+                for (i = 1; i < arr.length; i++)
+                {
+                    alert(arr[i]);
+                }
+            });
+            setTimeout(function(){ fetch_list(page); }, 1800);
+//            fetch_list(page);
+
+            $("#search").click(function () {
+                is_search = true;
+                search_string_array = {'chapter': $("#chapter").val(), 'course': $("#course").val()};
+                search_string_array = JSON.stringify(search_string_array);
+//                setTimeout(function(){ fetch_list(page); }, 200);
+                fetch_list(page);
+            });
+
+        });
+        function edit_chapter(chapter_id) {
+            var form = $(document.createElement('form'));
+            $(form).attr("action", "../admin_company/chapters/update");
+            $(form).attr("method", "POST");
+            $(form).attr("id", "form1");
+            var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
+            $(form).append($(input));
+            $(form).appendTo("body").submit();
+        }
+        function view_comment(chapter_id) {
+            var form = $(document.createElement('form'));
+            $(form).attr("action", "../admin_company/chapters/comments");
+            $(form).attr("method", "POST");
+            $(form).attr("id", "form1");
+            var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
+            $(form).append($(input));
+            $(form).appendTo("body").submit();
+        }
+        function fetch_list(page) {
+            var formData = {
+                'search': is_search,
+                'page': page,
+                'search_string_array': search_string_array,
+                'rows': $("#rows").val()
+            };
+            $.ajax({
+                beforeSend: function(){
+                    $('.ajax-loader').css("visibility", "visible");
+                },
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: '../admin_company/chapters/list', // the url where we want to POST
+                data: formData, // our data object
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+            // using the done promise callback
+            .done(function (data) {
+                $('.ajax-loader').css("visibility", "hidden");
+                $('.res_row').empty();
+                var i = 0;
+
+                $.each(data.rows, function (i, row) {
+                    i++;
+                    var chapter_id = '"' + row['id'] + '"';
+                    $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
+                            "</td><td class='column'  data-label='chapter name'>" + row['name'] +
+                            "</td><td class='column' data-label='Course name'>" + row['course'] +
+                            "</td><td class='column' data-label='Description'>" + row['description'] +
+                            "</td><td class='column' data-label='action'>\n\
+                             <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
+                            \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
+              </tr>");
+
+                })
+                pagination(data);
+            });
+        }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <style>
+    .ajax-loader {
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: center;
+        display: table;
+    }
     table.primary th
-    {y
+    {
      border-bottom-width: 2px;
      border: 1px solid #ddd;
      padding: 5px;
@@ -235,6 +247,9 @@
 
                         </tbody>
                     </table>
+                    <div class="ajax-loader">
+                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                    </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">

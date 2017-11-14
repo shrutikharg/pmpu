@@ -32,7 +32,6 @@ class Admin_companysubcategory extends CI_Controller {
      * @return void
      */
     public function index() {
-
         $usernm = $this->session->userdata('user_name');
         $userid = $this->session->userdata('id');
         $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);

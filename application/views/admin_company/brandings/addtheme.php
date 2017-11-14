@@ -1,12 +1,14 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/themes/popupwindow.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/themes/demo.js"></script>
-
+<style type="text/css">
+    textarea.form-control {
+        width: 420px;
+        height: 127px;
+    }
+</style>
 <link href="<?php echo base_url(); ?>assets/themes/popupwindow.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>assets/themes/preview_demo.css" rel="stylesheet" type="text/css" />
-
-
-
 <div id="content">
     <div class="container">
         <div class="crumbs">
@@ -61,14 +63,8 @@
 
             echo form_open_multipart('admin_company/brandings/addtheme', $attributes);
             ?>
-
-
-
                     <input type="hidden" id="" readonly name="usertheme" value="<?php echo $this->session->userdata('customcss'); ?>">
-
-
             <!--=== Inline Tabs ===-->
-            
                 <div class="col-md-12">
                     <div class="widget box">
                         <div class="widget-header">
@@ -76,8 +72,6 @@
                         </div>
                         <div class="widget-content">
                             <form   class="form-horizontal row-border" action="#" method="post">
-
-
                                             <div class="form-group required">
                                                 <label class="col-md-3   control-label">Upload your logo:</label>
                                                 <div class="col-md-2">
@@ -97,9 +91,6 @@
                                                     <span><b>(Please upload logo of size (70X50))</b></span>
                                                 </div>			
                                             </div>
-
-
-
                                 <div class="form-group required">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_company_name'); ?></label>
                                     <div class="col-md-3">
@@ -115,20 +106,17 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_email'); ?></label>
                                     <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_course'); ?>"  name="email" id="email" placeholder="<?php echo $this->lang->line('lbl_email'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->email; ?>" />
-
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_comp_phone_no'); ?></label>
                                     <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_comp_phone_no'); ?>"  name="phone" id="phone" placeholder="<?php echo $this->lang->line('lbl_course'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->phone; ?>" />
-
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_subdomain_name'); ?></label>
                                     <div class="col-md-3"><input type="text"  readonly="true" class="form-control"    required title="<?php echo $this->lang->line('lbl_subdomain_name'); ?>"  name="domain_name" id="domain_name" placeholder="<?php echo $this->lang->line('lbl_course'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->domain_name;
             ; ?>" />
-
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -136,29 +124,14 @@
                                     <div class="col-md-6 col-xs-10"><textarea id="" name="description" class="form-control" pattern="[a-zA-Z0-9]+" required ><?php echo $company_details->description;
             ; ?></textarea></div>
                                 </div>
-
                         </div>
-
-
                     </div>											
                 </div>
-
-            						
-
             <div class="form-actions">
-
                 <button class="btn btn-primary" type="submit">Save</button>
                 <a href="<?php echo base_url();?>admin_company/brandings/addtheme">   <button  class="btn btn-primary"><?php echo $this->lang->line('btn_cancel');?></a>
-
-
             </div>
-
-
-
-
-
 <?php echo form_close(); ?>
-
                     </div>
     </div>
 </div>

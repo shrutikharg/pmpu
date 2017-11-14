@@ -1,4 +1,3 @@
- 
 <div id="content">
     <div class="container">
         <!-- Breadcrumbs line -->
@@ -7,15 +6,12 @@
                 <li>
                     <a href="#">
                         <?php echo $this->lang->line('brd_organization'); ?>
-                                
                     </a> 
-                  
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
                        <?php echo $this->lang->line('brd_department'); ?>
                     </a> 
-                    
                 </li>
                 <li class="active">
                     <a href="#">  <?php echo $this->lang->line('brd_add'); ?></a>
@@ -23,7 +19,6 @@
             </ul>				      
         </div>
         <br>
-
         <!-- /Breadcrumbs line -->
 
         <!--=== Page Header ===-->

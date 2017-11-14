@@ -1,89 +1,73 @@
+<!--started work on this file-->
 <style>
     .ajax-loader {
-        visibility: hidden;
-        background-color: rgba(0,0,0,0.7);
-        position: fixed;
-        top:0%;
-        left:0%;
-        bottom:0%;
-        right:0%;
-        z-index: 1000 !important;
-        width: 100%;
-        height:100%;
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: center;
+        display: table;
     }
-
-    .ajax-loader img {
-
-        top:50%;
-        left:45%;
-
-
-    } 
 </style>
-<script>var is_search = false, page = 1, search_string_array = "";
+<script>
+    var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
-        fetch_list(page);
-
-
-
+        setTimeout(function () {
+            fetch_list(page);
+        }, 1800);
+//        fetch_list(page);
         $("#search").click(function () {
             is_search = true;
             search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
             search_string_array = JSON.stringify(search_string_array);
 
             fetch_list(page);
+            });
         });
+        function edit_category(category_id) {
+            var form = $(document.createElement('form'));
+            $(form).attr("action", "../admin_company/category/update");
+            $(form).attr("method", "POST");
+            $(form).attr("id", "form1");
+            var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
+            $(form).append($(input));
+            $(form).appendTo("body").submit();
+        }
+        function view_details(employee_id) {
+            var form = $(document.createElement('form'));
+            $(form).attr("action", "<?php echo base_url(); ?>admin_company/employee_details");
+            $(form).attr("method", "POST");
+            $(form).attr("id", "form1");
+            var input = $("<input>").attr("type", "hidden").attr("name", "employee_id").val(employee_id);
+            $(form).append($(input));
+            $(form).appendTo("body").submit();
+        }
 
+        function fetch_list(page) {
+            var formData = {
+                'search': is_search,
+                'page': page,
+                'search_string_array': search_string_array,
+                'rows': $("#rows").val()
+            };
 
-    });
-    function edit_category(category_id) {
-
-
-        var form = $(document.createElement('form'));
-        $(form).attr("action", "../admin_company/category/update");
-        $(form).attr("method", "POST");
-        $(form).attr("id", "form1");
-        var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
-        $(form).append($(input));
-        $(form).appendTo("body").submit();
-    }
-    function view_details(employee_id) {
-        var form = $(document.createElement('form'));
-        $(form).attr("action", "<?php echo base_url(); ?>admin_company/employee_details");
-        $(form).attr("method", "POST");
-        $(form).attr("id", "form1");
-        var input = $("<input>").attr("type", "hidden").attr("name", "employee_id").val(employee_id);
-        $(form).append($(input));
-        $(form).appendTo("body").submit();
-    }
-
-    function fetch_list(page) {
-        var formData = {
-            'search': is_search,
-            'page': page,
-            'search_string_array': search_string_array,
-            'rows': $("#rows").val()
-        };
-
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            beforeSend: function () {
-                $('.ajax-loader').css("visibility", "visible");
-            },
-            url: '../admin_company/employeelist/list', // the url where we want to POST
-            data: formData, // our data object
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        })
-                // using the done promise callback
-                .done(function (data) {
-                    $('.ajax-loader').css("visibility", "hidden");
-                    $('.res_row').empty();
-                    var i = 1;
-                    $.each(data.rows, function (i, row) {
-                        var employee_id = '"' + row['id'] + '"';
-                        $(".res_table").append("<div class='res_row'>\n\
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                beforeSend: function () {
+                    $('.ajax-loader').css("visibility", "visible");
+                },
+                url: '../admin_company/employeelist/list', // the url where we want to POST
+                data: formData, // our data object
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                    // using the done promise callback
+                    .done(function (data) {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        $('.res_row').empty();
+                        var i = 1;
+                        $.each(data.rows, function (i, row) {
+                            var employee_id = '"' + row['id'] + '"';
+                            $(".res_table").append("<div class='res_row'>\n\
           <div class='column'  data-label='Sr no'>" + (i + 1) + "</div>\n\
 <div class='column' data-label='Category name'>" + row['email'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['first_name'] + "</div>\n\
@@ -92,13 +76,11 @@
 \n\<td class='column' data-label='action'>\n\
 <input type='button'  value=' <?php echo $this->lang->line('btn_details'); ?>' class='btn btn-info' onclick='view_details(" + employee_id + ")'></button> \n\
 \n\ </td></div>");
-                        i++;
+                            i++;
+                        });
+                        pagination(data);
                     });
-                    pagination(data);
-                });
-    }
-
-
+        }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <div id="content">
@@ -178,9 +160,6 @@
                     echo '</div>';
                 }
                 ?>
-
-
-
                 <div class="res_table">
                     <div class="res_table-head">
                         <div class="column" data-label="SR.no"><?php echo $this->lang->line('lbl_sr_no'); ?></div>
@@ -190,7 +169,9 @@
                         <div class="column" data-label="action"><?php echo $this->lang->line('lbl_emp_phone_no'); ?></div>
                         <div class="column" data-label="action"><?php echo $this->lang->line('btn_details'); ?></div>
                     </div>
-
+                </div>
+                <div class="ajax-loader">
+                    <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/>
                 </div>
                 <div class="pagination"> 
                     <div class="pagination-widget">
@@ -228,7 +209,6 @@
                         </div>
                     </div>                        
                 </div>
-
             </div>
         </div>
     </div>

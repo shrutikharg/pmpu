@@ -1,62 +1,72 @@
+<style>
+    .ajax-loader {
+        margin-left: auto; 
+        margin-right: auto; 
+        text-align: center;
+        display: table;
+    }
+</style>
+<script>
+        var is_search = false, page = 1, search_string_array = "";
 
-<script>var is_search = false, page = 1, search_string_array = "";
+        $(document).ready(function () {
+            setTimeout(function () {
+                fetch_list(page);
+            }, 1800);
+//        fetch_list(page);
+            $("#search").click(function () {
+                search_string_array = {'department': $("#department").val(), 'subdepartment': $("#subdepartment").val()};
+                search_string_array = JSON.stringify(search_string_array);
 
-    $(document).ready(function () {
-
-        fetch_list(page);
-        $("#search").click(function () {
-            search_string_array = {'department': $("#department").val(), 'subdepartment': $("#subdepartment").val()};
-            search_string_array = JSON.stringify(search_string_array);
-           
-            fetch_list(page);
+                setTimeout(function () {
+                    fetch_list(page);
+                }, 1800);
+            });
         });
-
-    });
-        function edit_subcategory(subcategory_id){
-      
-        
+        function edit_subcategory(subcategory_id) {
             var form = $(document.createElement('form'));
             $(form).attr("action", "../admin_company/subcategory/update");
             $(form).attr("method", "POST");
- $(form).attr("id", "form1");
+            $(form).attr("id", "form1");
             var input = $("<input>").attr("type", "hidden").attr("name", "id").val(subcategory_id);
             $(form).append($(input));
-       $(form).appendTo("body").submit();
-    }
-
-
-    function fetch_list(page) {
-        var formData = {
-            'search': is_search,
-            'page': page,
-            'search_string_array': search_string_array,
-            'rows':$("#rows").val()
-        };
-        $.ajax({
-            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url: '../admin_company/subcategory/list', // the url where we want to POST
-            data: formData, // our data object
-            dataType: 'json', // what type of data do we expect back from the server
-            encode: true
-        })
-                // using the done promise callback
-                .done(function (data) {
-                    $('.res_row').empty();
-                    var i = 0;
-                    $.each(data.rows, function (i, row) { var subcategory_id='"'+row['id']+'"';
-                        $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (++i) +
-                                "</div> <div class='column' data-label='Category name'>" + row['name'] +
-                                "</div><div class='column' data-label='Category name'>" + row['category'] +
-                                "</div><div class='column' data-label='Description'>" + row['description'] +                               
-                               "</div><div class='column' data-label='action'>\n\
-<input type='button'  value=<?php echo $this->lang->line('btn_edit'); ?> class='btn btn-info' onclick='edit_subcategory("+subcategory_id+")'></button></div>\n\
+            $(form).appendTo("body").submit();
+        }
+        function fetch_list(page) {
+            var formData = {
+                'search': is_search,
+                'page': page,
+                'search_string_array': search_string_array,
+                'rows': $("#rows").val()
+            };
+            $.ajax({
+                beforeSend: function(){
+                    $('.ajax-loader').css("visibility", "visible");
+                },
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url: '../admin_company/subcategory/list', // the url where we want to POST
+                data: formData, // our data object
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                    // using the done promise callback
+                    .done(function (data) {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        $('.res_row').empty();
+                        var i = 0;
+                        $.each(data.rows, function (i, row) {
+                            var subcategory_id = '"' + row['id'] + '"';
+                            $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (++i) +
+                                    "</div> <div class='column' data-label='Category name'>" + row['name'] +
+                                    "</div><div class='column' data-label='Category name'>" + row['category'] +
+                                    "</div><div class='column' data-label='Description'>" + row['description'] +
+                                    "</div><div class='column' data-label='action'>\n\
+<input type='button'  value=<?php echo $this->lang->line('btn_edit'); ?> class='btn btn-info' onclick='edit_subcategory(" + subcategory_id + ")'></button></div>\n\
 </div>");
-                                
-                    })
-                    pagination(data);
-                });
-    }
-
+                        })
+                        pagination(data);
+                    });
+        }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <style type="text/css">
@@ -190,7 +200,10 @@
                             <div class="column" data-label="action"><?php echo $this->lang->line('lbl_action');?></div>
                         </div> 
                         
-                    </div>  
+                    </div>
+                    <div class="ajax-loader">
+                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                    </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">
