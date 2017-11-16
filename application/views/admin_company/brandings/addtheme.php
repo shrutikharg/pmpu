@@ -98,6 +98,12 @@
                                     </div>			
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_comp_product'); ?></label>
+                                    <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_comp_product'); ?>"  name="product_name" id="price" placeholder="<?php echo $this->lang->line('lbl_comp_subscription_price'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->product_name; ?>" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_comp_subscription_price'); ?></label>
                                     <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_comp_subscription_price'); ?>"  name="price" id="price" placeholder="<?php echo $this->lang->line('lbl_comp_subscription_price'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->price; ?>" />
 
@@ -117,6 +123,7 @@
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_subdomain_name'); ?></label>
                                     <div class="col-md-3"><input type="text"  readonly="true" class="form-control"    required title="<?php echo $this->lang->line('lbl_subdomain_name'); ?>"  name="domain_name" id="domain_name" placeholder="<?php echo $this->lang->line('lbl_course'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->domain_name;
             ; ?>" />
+
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -124,16 +131,29 @@
                                     <div class="col-md-6 col-xs-10"><textarea id="" name="description" class="form-control" pattern="[a-zA-Z0-9]+" required ><?php echo $company_details->description;
             ; ?></textarea></div>
                                 </div>
+
                         </div>
+
+
                     </div>											
                 </div>
+
+            						
+
             <div class="form-actions">
+
                 <button class="btn btn-primary" type="submit">Save</button>
                 <a href="<?php echo base_url();?>admin_company/brandings/addtheme">   <button  class="btn btn-primary"><?php echo $this->lang->line('btn_cancel');?></a>
+
+
             </div>
+
+
+
+
+
 <?php echo form_close(); ?>
-                    </div>
+
+        </div>
     </div>
-</div>
-</div>
 </div>

@@ -10,15 +10,16 @@
     <script>var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
-//        fetch_list(page);
-        setTimeout(function(){ fetch_list(page); }, 1800);
+       setTimeout(function () {
+            fetch_list(page);
+        }, 1000);
         $("#search").click(function () {
             is_search = true;
             search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
             search_string_array = JSON.stringify(search_string_array);
 
-            //setTimeout(function(){ fetch_list(page); }, 200);
-            fetch_list(page);
+                fetch_list(page);
+            
         });
     });
     function edit_category(category_id){
@@ -140,8 +141,8 @@
                         </div> 
                     </div> 
                     <div class="ajax-loader">
-                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
-                    </div>
+  <img src="../assets/images/ajax-loader.gif" class="img-responsive" />
+</div>
                     <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">

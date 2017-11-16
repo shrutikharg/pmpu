@@ -164,6 +164,7 @@ $lang['lbl_comp_phone_no']="Phone No.";
 $lang['lbl_comp_overview']="In Short About Company";
 $lang['lbl_comp_logo']="Logo Image";
 $lang['lbl_comp_subscription_price']="Subscription Price";
+$lang['lbl_comp_product']="Product Name";
 
 //form control for  comments
 $lang['nav_comment']="Comments";
@@ -186,6 +187,26 @@ $lang['lbl_coupon_percentage_off']="Percentage Off";
 $lang['lbl_coupon_code_lst']="Coupon Code List";
 $lang['msg_dept_insert_success']="Coupon Code Added Successfully";
 $lang['msg_dept_edit_success']="Coupon Code Updated Successfully";
+
+
+//form control for  coupon_code
+$lang['nav_coupon_code']="Coupon Code";
+$lang['lbl_coupon_code']="Coupon Code";
+$lang['lbl_coupon_percentage_off']="Percentage Off";
+$lang['lbl_coupon_code_lst']="Coupon Code List";
+$lang['msg_dept_insert_success']="Coupon Code Added Successfully";
+$lang['msg_dept_edit_success']="Coupon Code Updated Successfully";
+
+
+
+//form control for messaging
+$lang['nav_message']="Messages";
+$lang['lbl_compose']="Compose";
+$lang['lbl_new_msg']="New Message";
+$lang['lbl_send_msg']="Send Message";
+$lang['lbl_subject']="Subject";
+
+
 
 
 

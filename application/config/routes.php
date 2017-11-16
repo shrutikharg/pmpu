@@ -54,7 +54,7 @@ $route['admin_company/verify'] = 'companyuser/verify_user';
 
 $route['admin_company/login/validate_credentials'] = 'companyuser/validate_credentials';
 $route['admin_company/userprofile'] = 'companyuser/userprofile';
-$route['admin_company/pwdchange/(:any)'] = 'companyuser/pwdchange/$1';
+$route['admin_company/pwdchange'] = 'companyuser/pwdchange';
 $route['admin_company/supportmail'] = 'companyuser/supportmail';
 $route['admin_company/register'] = 'companyuser/register';
 $route['admin_company/create_member'] = 'companyuser/create_member';
@@ -292,6 +292,11 @@ $route['admin_company/coupon_code/list']='admin_companycouponcode/couponcode_lis
 $route['admin_company/coupon_code/add']='admin_companycouponcode/add';
 $route['admin_company/coupon_code/update']='admin_companycouponcode/update';
 $route['employee/coupon_code/check']='employeeuser/apply_couponcode';
+
+$route['admin_company/communication']='communication/index';
+$route['communication/get_users']='communication/get_users';
+$route['communication/send_message']='communication/send_message';
+$route['communication/subject_specific_message']='communication/get_subject_specific_message';
 
 
 

@@ -146,8 +146,8 @@ class Companyuser_model extends CI_Model {
         }
     }
 
-    function update_pwduseradminnew($id, $data) {
-        $this->db->where('id', $id);
+    function update_pwduseradminnew( $data) {
+        $this->db->where('id', $data['id']);
         $this->db->update('users', $data);
         $report = array();
         $report['error'] = $this->db->_error_number();

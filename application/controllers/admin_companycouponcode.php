@@ -186,5 +186,17 @@ class admin_companycouponcode extends CI_Controller {
         }
         return TRUE;
     }
+    function check_coupon_code_availabilty($coupon_code) {
+         $code_id =$this->encryption->decrypt($this->input->post('couponcode_id'));
+       $coupn_code_result = $this->companycoupon_model->check_coupon_code_availabilty($coupon_code,$code_id);
+        if (isset($code_id) && ($code_id!=$coupn_code_result->id) && ($coupon_code==$coupn_code_result->name) ) {
+            $this->form_validation->set_message('check_coupon_code_availabilty', 'Coupon Code is already available');
+            return False;
+        } elseif ((!isset($code_id)) && ($coupon_code==$coupn_code_result->name) ) {
+            $this->form_validation->set_message('check_coupon_code_availabilty', 'Coupon Code is already available');
+            return False;
+        }
+        return TRUE;
+    }
 
 }

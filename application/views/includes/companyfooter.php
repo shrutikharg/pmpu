@@ -73,14 +73,15 @@ if (!empty($footerdata[0]['facebook_link'])) {
                 <div class="form-group"	>
                     <div class="col-md-3" style="text-align: center; ">	
                         <h4><b>Contact:</b> <span id="contact_no"> +91-<?php
-                            if (!empty($footerdata[0]['contactno'])) {
-                                echo $footerdata[0]['contactno'];
-                            }
-                            ?></span></h4>
-                        <h4><b>Email:</b> <a id="contact_email" href="#"><?php if (!empty($footerdata[0]['emailid'])) {
-                                echo $footerdata[0]['emailid'];
-                            }
-                            ?></a></h4>
+                                if (!empty($footerdata[0]['contactno'])) {
+                                    echo $footerdata[0]['contactno'];
+                                }
+                                ?></span></h4>
+                        <h4><b>Email:</b> <a id="contact_email" href="#"><?php
+                                if (!empty($footerdata[0]['emailid'])) {
+                                    echo $footerdata[0]['emailid'];
+                                }
+                                ?></a></h4>
 
                     </div>
                 </div>
@@ -96,7 +97,11 @@ if (!empty($footerdata[0]['facebook_link'])) {
 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
-<!--<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>-->
+<link href="<?php echo base_url(); ?>assets/assets/css/plugins/select2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/select2/select2.min.js"></script>
+
+
+
 <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.js"></script> 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>	

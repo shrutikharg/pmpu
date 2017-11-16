@@ -15,7 +15,9 @@
     var is_search = false, page = 1, search_string_array = "";
     $.noConflict();
     jQuery(document).ready(function ($) {
-        setTimeout(function(){ fetch_list(page); }, 1800);
+        setTimeout(function () {
+            fetch_list(page);
+        }, 1000);
 //        fetch_list(page);
         $(".datepicker").datepicker({
             dateFormat: "dd-mm-yy",
@@ -25,10 +27,13 @@
             changeMonth: true,
             changeYear: true,
         });
+
+
         $("#search").click(function () {
             is_search = true;
             search_string_array = {'name': $("#name").val(), 'start_date': $("#start_date").val(), 'end_date': $("#end_date").val(), 'is_active': $("#is_active").val()};
-                search_string_array = JSON.stringify(search_string_array);
+            search_string_array = JSON.stringify(search_string_array);
+
             fetch_list(page);
             });
         });
@@ -42,33 +47,33 @@
             $(form).appendTo("body").submit();
         }
 
-        function fetch_list(page) {
-            var formData = {
-                'search': is_search,
-                'page': page,
-                'search_string_array': search_string_array,
-                'rows': $("#rows").val()
-            };
+    function fetch_list(page) {
+        var formData = {
+            'search': is_search,
+            'page': page,
+            'search_string_array': search_string_array,
+            'rows': $("#rows").val()
+        };
 
-            $.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                beforeSend: function () {
-                    $('.ajax-loader').css("visibility", "visible");
-                },
-                url: '../admin_company/coupon_code/list', // the url where we want to POST
-                data: formData, // our data object
-                dataType: 'json', // what type of data do we expect back from the server
-                encode: true
-            })
-                    // using the done promise callback
-                    .done(function (data) {
-                        $('.ajax-loader').css("visibility", "hidden");
-                        $('.res_row').empty();
-                        var i = 0;
-                        $.each(data.rows, function (i, row) {
-                            var couponcode_id = '"' + row['id'] + '"';
-                            $(".res_table").append("<div class='res_row'>\n\
-            <div class='column' data-label='Sr no'>" + (i + 1) + "</div>\n\
+        $.ajax({
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            beforeSend: function () {
+                $('.ajax-loader').css("visibility", "visible");
+            },
+            url: '../admin_company/coupon_code/list', // the url where we want to POST
+            data: formData, // our data object
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        })
+                // using the done promise callback
+                .done(function (data) {
+                    $('.ajax-loader').css("visibility", "hidden");
+                    $('.res_row').empty();
+                    var i = data.start;
+                    $.each(data.rows, function (index, row) {
+                        var couponcode_id = '"' + row['id'] + '"';
+                        $(".res_table").append("<div class='res_row'>\n\
+            <div class='column' data-label='Sr no'>" + (i  ) + "</div>\n\
 <div class='column' data-label='Coupon Code'>" + row['name'] + "</div>\n\
 <div class='column' data-label='Percentage Off'>" + row['percentage_off'] + "</div>\n\
 \n\<div class='column' data-label='Start Date'>" + row['start_date'] + "</div>\n\
@@ -76,11 +81,13 @@
 \n\<div class='column' data-label='Is Active'>" + row['is_active'] + "</div>\n\
 <div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_couponcode(" + couponcode_id + ")'></button></div>\n\
 </div>");
-                            i++;
-                        });
-                        pagination(data);
+                        i++;
                     });
-        }
+                    pagination(data);
+                });
+    }
+
+
 </script>
 
 <div id="content">
@@ -203,7 +210,7 @@
 
                     </div> 
                     <div class="ajax-loader">
-                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/>
+                        <img src="../assets/images/ajax-loader.gif" class="img-responsive" />
                     </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">

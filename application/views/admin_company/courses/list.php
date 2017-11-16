@@ -13,17 +13,14 @@
             setTimeout(function () {
                 fetch_list(page);
             }, 1800);
-//            fetch_list(page);
 
-            $("#search").click(function () {
-                is_search = true;
-                search_string_array = {'course': $("#course").val(), 'sub_department': $("#sub_department").val()};
-                search_string_array = JSON.stringify(search_string_array);
-//                fetch_list(page);
-                setTimeout(function () {
-                    fetch_list(page);
-                }, 1800);
-            });
+
+        $("#search").click(function () {
+            is_search = true;
+            search_string_array = {'course': $("#course").val(), 'sub_department': $("#sub_department").val()};
+            search_string_array = JSON.stringify(search_string_array);
+            fetch_list(page);
+        });
 
         });
         function edit_courses(course_id) {
@@ -201,7 +198,7 @@
 
                     </div> 
                     <div class="ajax-loader">
-                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                        <img src="../assets/images/ajax-loader.gif" class="img-responsive" style="max-height: 27px;" />
                     </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">

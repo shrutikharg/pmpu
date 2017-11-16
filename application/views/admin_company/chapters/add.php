@@ -79,16 +79,16 @@
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_chapter'); ?></label>
-                                        <div class="col-md-10"><input type="text" class="form-control" pattern="[a-zA-Z]+.{3,}"   required title="Enter Chapter Name 4 characters minimum" required id="cname" name="name" placeholder="<?php echo $this->lang->line('lbl_chapter'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name." value="<?php echo  set_value('name',$chapter_data[0]['name']);?>" /></div>
+                                        <div class="col-md-10"><input type="text" class="form-control"   required  id="cname" name="name" placeholder="<?php echo $this->lang->line('lbl_chapter'); ?>"  minlength="5" maxlength="100" value="<?php echo  set_value('name',$chapter_data[0]['name']);?>" /></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_chapter_desc'); ?> <br></label>
-                                        <div class="col-md-10"><textarea class="form-control" pattern="[a-zA-Z]+.{20,}"   required title="Enter Chapter Description 21 characters minimum" required  name="description" placeholder="<?php echo $this->lang->line('lbl_chapter_desc'); ?>" cols="5" rows="3"><?php echo  set_value('description',$chapter_data[0]['description']);?></textarea></div>
+                                        <div class="col-md-10"><textarea class="form-control" required  name="description" placeholder="<?php echo $this->lang->line('lbl_chapter_desc'); ?>" cols="5" rows="3"  minlength="10" maxlength="250"><?php echo  set_value('description',$chapter_data[0]['description']);?></textarea></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"><?php echo $this->lang->line('lbl_course'); ?> <br></label>
                                         <div class="col-md-6"><?php
-                                            echo form_dropdown('course_id', $coursedropdown, $chapter_data[0]['course_id']);
+                                            echo form_dropdown('course_id', $coursedropdown, $chapter_data[0]['course_id'],'required="required"');
                                             ?></div>
                                     </div>
                                     <div class="form-group">
@@ -130,7 +130,7 @@
                                                     <!--=== Overview ===-->
                                                     <div class="tab-pane " id="tab_overview">
 
-                                                        <div class="col-md-10"><input type="hidden" id="accessToken" readonly class="form-control" placeholder="Vimeo access token" required value="3a657f2c610bea893d1552070a8a8915"></input>
+                                                        <div class="col-md-10"><input type="hidden" id="accessToken" readonly class="form-control" placeholder="Vimeo access token" required value="5cd517a3fd1f29a66b143b3a765feb79"></input>
                                                             <div class="checkbox">
                                                             </div>
                                                             <br>
@@ -144,7 +144,7 @@
                                                             <div id="results_progress"></div>
                                                             <div id="results"></div>
                                                             <input type="hidden" id="videoidassign" name="videoidassign">	
-                                                            <input type="hidden" id="file_size" name="file_size">
+                                                            <input type="hidden" id="file_size" name="file_size" value="<?php echo  set_value('file_size',$chapter_data[0]['file_size']);?>">
                                                         </div>
                                                     </div>
                                                     <!-- /Overview -->
@@ -160,9 +160,9 @@
                                                 </div> <!-- /.tab-content -->
                                             </div>
                                             <div class="form-group">                                       
-                                                <div class="col-md-10"><input type="text" class="form-control" id="file_type" name="file_type"    /></div>
-                                                <div class="col-md-10"><input type="hidden" class="form-control" id="file_path" name="file_path"   /></div>
-                                                <div class="col-md-10"><input type="hidden" class="form-control" id="video_id" name="video_id"  /></div>
+                                                <div class="col-md-10"><input type="hidden" class="form-control" id="file_type" name="file_type"  value="<?php echo  set_value('file_type',$chapter_data[0]['file_type']);?>"  /></div>
+                                                <div class="col-md-10"><input type="hidden" class="form-control" id="file_path" name="file_path" value="<?php echo  set_value('file_path',$chapter_data[0]['file_path']);?>"   /></div>
+                                                <div class="col-md-10"><input type="hidden" class="form-control" id="video_id" name="video_id" value="<?php echo  set_value('video_id',$chapter_data[0]['video_id']);?>" /></div>
                                             </div>
                                             <!--END TABS-->
                                         </div>

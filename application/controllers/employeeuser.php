@@ -27,7 +27,6 @@ class Employeeuser extends CI_Controller {
         $data['footerdata'] = $this->domain->get_company_cms_bydomain();
         $data['company_details'] = $this->company_details;
 
-        // die();
         $this->load->view('employee_company/home', $data);
     }
 
@@ -42,9 +41,9 @@ class Employeeuser extends CI_Controller {
         $this->load->model('employeeuser_model');
 
 
-        $user_name = $this->input->post('user_name');
-        $password = $this->input->post('password');
-        $user_details = $this->employeeuser_model->validate($user_name, $password);
+        $user_name = trim($this->input->post('user_name'));
+        $password = trim($this->input->post('password'));
+        $user_details = $this->employeeuser_model->validate($user_name,$this->company_details->id);
 
         $response = new stdClass();
         if (!(empty($user_details)) && ($this->encrypt->decrypt_password($user_details->password) == $password)) {
@@ -129,44 +128,44 @@ class Employeeuser extends CI_Controller {
         } else {
 
             $company_id = $this->company_details->id;
-            $email = $this->input->post('email');
+            $email = trim($this->input->post('email'));
             $user_details = $this->employeeuser_model->get_employee_by_email($email);
-            $company_details=$this->config->item('company_details');
-           
+            $company_details = $this->config->item('company_details');
+
             if (!empty($user_details)) {
 
                 $registeration_data = array(
                     'reg_first_name' => $user_details->first_name,
                     'reg_last_name' => $user_details->last_name,
                     'reg_email' => $user_details->email,
-                    'reg_phone' => $user_details->phone,
-                    'reg_id' => $this->encryption->encrypt($user_details->id),
+                    'reg_phone' => $user_details->phone_no,
+                    'reg_id' =>$user_details->id,
                     'reg_message' => 'User is already registered,left with  subscription',
                     'reg_company_id' => $this->encryption->encrypt($company_id),
-                     'reg_price' =>$company_details->price ,
-                    
+                    'reg_price' => $company_details->price,
+                    'reg_product_name'=> $company_details->product_name,
                 );
                 $this->session->set_userdata('registeration_data', $registeration_data);
                 redirect('employee/payment_subscribe');
             } else {
                 $first_name = $this->input->post('first_name');
                 $last_name = $this->input->post('last_name');
-                $email = $this->input->post('email');
-                $new_member_insert_data = array(
+
+                $new_member_insert_data = trim_array(array(
                     'first_name' => $first_name,
                     'last_name' => $last_name,
                     'email' => $email,
-                    'password' => $this->encrypt->encrypt_password($this->input->post('password')),
+                    'password' => $this->encrypt->encrypt_password(trim($this->input->post('password'))),
                     'phone_no' => $this->input->post('phone'),
                     'company_id' => $company_id
-                );
+                ));
 
                 if ($insert_id = $this->employeeuser_model->create_member($new_member_insert_data)) {
                     $user_type_data = array('user_id' => $insert_id,
                         'group_id' => '7',
                         'created_at' => date('Y-m-d'));
                     $subscription_link = 'http://' . $this->company_details->domain_name . '.coolacharya.com';
-                    $subscriber_registeration_format_details = create_user_format($email, ($first_name . ' ' . $last_name), $subscription_link, $this->company_details->domain_name);
+                    $subscriber_registeration_format_details = create_user_format($email, ($first_name . ' ' . $last_name), $subscription_link, $this->company_details);
                     $this->employeeuser_model->insert_user_type($user_type_data);
                     $this->email->from('info@coolacharya.com', $subscriber_registeration_format_details->from_alias);
                     $this->email->to($email);
@@ -182,18 +181,19 @@ class Employeeuser extends CI_Controller {
                     $registeration_data = array(
                         'reg_first_name' => $this->input->post('first_name'),
                         'reg_last_name' => $this->input->post('last_name'),
-                        'reg_email' => $this->input->post('email'),
+                        'reg_email' => trim($this->input->post('email')),
                         'reg_phone' => $this->input->post('phone'),
-                        'reg_id' => $this->encryption->encrypt($insert_id),
+                        'reg_id' =>$insert_id,
                         'reg_message' => 'Registered Successfully',
                         'reg_company_id' => $this->encryption->encrypt($company_id),
-                            'reg_price' =>$company_details->price 
+                        'reg_price' => $company_details->price,
+                        'reg_product_name'=> $company_details->product_name,
                     );
                     $this->session->set_userdata('registeration_data', $registeration_data);
                     redirect('employee/payment_subscribe');
                 } else {
 
-                    $this->load->view('employee_company/payumoney_subscribe');
+                   // $this->load->view('employee_company/payumoney_subscribe');
                 }
             }
         }
@@ -231,15 +231,22 @@ class Employeeuser extends CI_Controller {
             $retHashSeq = $salt . '|' . $status . '|||||||||||' . $email . '|' . $firstname . '|' . $productinfo . '|' . $amount . '|' . $txnid . '|' . $key;
         }
         $hash = hash("sha512", $retHashSeq);
+       
 
-        $insert_data = array('user_id' => $this->encryption->decrypt($this->input->post('udf1')),
+        $insert_data = array('user_id' =>$this->input->post('udf1'),
             'txn_id' => $this->input->post('txnid'),
             'company_id' => $this->encryption->decrypt($this->input->post('udf2')),
             'payment_through' => 'Payu',
             'created_at' => date('Y-m-d H:m:s'),
             'posted_hash' => $posted_hash,
-            'hash' => $hash
+            'hash' => $hash,
+            'coupon_code' => $this->input->post('udf3'),
+            'original_amount' => $this->input->post('udf4'),
+            'percentage_off' => $this->input->post('udf5'),
+            'paid_amount'=>$this->input->post('amount'),
         );
+		
+		
         $user_detail = $this->employeeuser_model->get_employee_by_email($email);
         $password = $this->encrypt->decrypt_password($user_detail->password);
         $this->employeeuser_model->insert_payment_data($insert_data);
@@ -254,7 +261,7 @@ class Employeeuser extends CI_Controller {
         );
         $this->session->unset_userdata($registeration_data);
         $subscription_link = 'http://' . $this->company_details->domain_name . '.coolacharya.com';
-        $subscription_format_details = user_subscription_success_mail_format($email, $firstname, $password, $subscription_link, $this->company_details->domain_name);
+        $subscription_format_details = user_subscription_success_mail_format($email, $firstname, $password, $subscription_link, $this->company_details->domain_name,$txnid,$this->company_details->name);
         //print_r($subscription_format_details);
         $this->email->set_newline("\r\n");
         $this->email->from('info@coolacharya.com', $subscription_format_details->from_alias);
@@ -271,7 +278,7 @@ class Employeeuser extends CI_Controller {
 
     function payment_failure() {
         $data['failed_trans_data'] = $this->input->post();
-        $this->load->view('employee_company/payumoney_failure');
+        $this->load->view('employee_company/payumoney_failure',$data);
     }
 
     /**
@@ -492,7 +499,7 @@ class Employeeuser extends CI_Controller {
             $response->original_cost = $company_details->price;
             $response->discount_cost = $company_details->price;
             $response->coupon_code = '';
-            $response->percentage_off = 0;
+            $response->percentage_off ='';
         }
         echo json_encode($response);
     }

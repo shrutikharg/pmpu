@@ -86,7 +86,7 @@
                             <i class="icon-remove close" data-dismiss="alert"></i>Enter CMS Page link1</div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Course CMS Page link1</label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink1" value="<?php echo $cmspage->cmspagelink1; ?>"  placeholder="Enter CMS Page link1"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink1" value="<?php echo $cmspage->cmspagelink1; ?>"  placeholder="Enter CMS Page link1"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1" /></div>
                         </div>
 
                         <div class="form-group">
@@ -96,7 +96,7 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Enter CMS Page link2</label>
-                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2"  value="<?php echo $cmspage->cmspagelink2; ?>"  placeholder="Enter CMS Page link2"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control"  name="cmspagelink2"  value="<?php echo $cmspage->cmspagelink2; ?>"  placeholder="Enter CMS Page link2"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
                         </div>
 
                         <div class="form-group">
@@ -106,28 +106,28 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Enter CMS Page link3</label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink3" value="<?php echo $cmspage->cmspagelink3; ?>" placeholder="Enter CMS Page link3"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink3" value="<?php echo $cmspage->cmspagelink3; ?>" placeholder="Enter CMS Page link3"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
                         </div>
 
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Facebook Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="fblink"  value="<?php echo $cmspage->facebook_link; ?>"  placeholder="Enter facebook link"  data-rule-required="true"  data-msg-required="Please enter facebook link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="fblink"  value="<?php echo $cmspage->facebook_link; ?>"  placeholder="Enter facebook link"  data-rule-required="true"  data-msg-required="Please enter facebook link" /></div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Google Plus Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="googlepluslink"  value="<?php echo $cmspage->google_link; ?>"  placeholder="Enter Google Plus link"  data-rule-required="true"  data-msg-required="Please enter Google Plus link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="googlepluslink"  value="<?php echo $cmspage->google_link; ?>"  placeholder="Enter Google Plus link"  data-rule-required="true"  data-msg-required="Please enter Google Plus link" /></div>
                         </div>	
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Twitter Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="twitterlink" value="<?php echo $cmspage->twitter_link; ?>"  placeholder="Enter Twitter link"  data-rule-required="true"  data-msg-required="Please enter Twitter link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="twitterlink" value="<?php echo $cmspage->twitter_link; ?>"  placeholder="Enter Twitter link"  data-rule-required="true"  data-msg-required="Please enter Twitter link" /></div>
                         </div>	
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Linkedin Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="linkedinlink"  value="<?php echo $cmspage->linkedin_link; ?>" placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="linkedinlink"  value="<?php echo $cmspage->linkedin_link; ?>" placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
                         </div>	
 
 

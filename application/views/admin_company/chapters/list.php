@@ -7,26 +7,15 @@
     var is_search = false, page = 1, search_string_array = "";
 
         $(document).ready(function () {
-        $('#change_sequence_button').click(function () {
-            var arr = [];
-            $("#sequence_table tr").each(function () {
-                arr.push($(this).find(".td:first").attr("id"));
-                });
-                for (i = 1; i < arr.length; i++)
-                {
-                    alert(arr[i]);
-                }
-            });
-            setTimeout(function(){ fetch_list(page); }, 1800);
-//            fetch_list(page);
+                   setTimeout(function(){ fetch_list(page); }, 1800);
 
-            $("#search").click(function () {
-                is_search = true;
-                search_string_array = {'chapter': $("#chapter").val(), 'course': $("#course").val()};
-                search_string_array = JSON.stringify(search_string_array);
-//                setTimeout(function(){ fetch_list(page); }, 200);
-                fetch_list(page);
-            });
+
+        $("#search").click(function () {
+            is_search = true;
+            search_string_array = {'chapter': $("#chapter").val(), 'course': $("#course").val()};
+            search_string_array = JSON.stringify(search_string_array);
+            fetch_list(page);
+        });
 
         });
         function edit_chapter(chapter_id) {
@@ -70,17 +59,17 @@
                 $('.res_row').empty();
                 var i = 0;
 
-                $.each(data.rows, function (i, row) {
-                    i++;
-                    var chapter_id = '"' + row['id'] + '"';
-                    $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
-                            "</td><td class='column'  data-label='chapter name'>" + row['name'] +
-                            "</td><td class='column' data-label='Course name'>" + row['course'] +
-                            "</td><td class='column' data-label='Description'>" + row['description'] +
-                            "</td><td class='column' data-label='action'>\n\
-                             <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
-                            \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
-              </tr>");
+                    $.each(data.rows, function (i, row) {
+                        i++;
+                        var chapter_id = '"' + row['id'] + '"';
+                        $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
+                                "</td><td class='column'  data-label='chapter name'>" + row['name'].substr(1,10) +
+                                "</td><td class='column' data-label='Course name'>" + row['course'].substr(1,10) +
+                                "</td><td class='column' data-label='Description'>" + row['description'].substr(1,10) +                                
+                                "</td><td class='column' data-label='action'>\n\
+                                     <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
+                                    \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
+                      </tr>");
 
                 })
                 pagination(data);
@@ -248,7 +237,7 @@
                         </tbody>
                     </table>
                     <div class="ajax-loader">
-                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                        <img src="../assets/images/ajax-loader.gif" class="img-responsive" style="max-height: 27px;" />
                     </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">

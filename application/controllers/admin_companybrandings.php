@@ -37,7 +37,8 @@ class Admin_companybrandings extends CI_Controller {
                     'price'=>$this->input->post('price'),
                     'description' => $this->input->post('description'),
                     'email' => $this->input->post('email'),
-                    'phone' => $this->input->post('phone')
+                    'phone' => $this->input->post('phone'),
+                    'product_name' => $this->input->post('product_name'),
                 );
                 if (isset($this->logo_path)) {
                     $data_to_update['logo_path'] = $this->logo_path;

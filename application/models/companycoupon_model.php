@@ -70,7 +70,16 @@ class companycoupon_model extends CI_Model {
         $this->db->where('end_date >=', date('Y-m-d'));
         $this->db->where('name', $coupon_code);
         $this->db->where('is_active', 'Y');
-        $query=$this->db->get();
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function check_coupon_code_availabilty($coupon_code, $code_id) {
+        $this->db->select('name,id');
+        $this->db->from('coupon_code');
+        $this->db->where('name', $coupon_code);
+        $this->db->where('company_id', $this->session->userdata('company_id'));
+        $query = $this->db->get();
         return $query->row();
     }
 

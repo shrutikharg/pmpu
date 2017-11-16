@@ -28,8 +28,8 @@ class Companycmspage_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('cmspage');
-		$this->db->where('created_by', $usernm);
-		$this->db->where('userid', $userid);
+		$this->db->where('company_id', $this->session->userdata('company_id'));
+		
 		$query = $this->db->get();
 		return $query->result_array(); 
     }

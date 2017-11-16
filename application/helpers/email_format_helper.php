@@ -8,53 +8,57 @@
  */
 
 function create_admin_support_mail($user_details, $post_data) {
-    $message = "Hello Coolacharya Support team";
-    $message .="\n";
-    $message .="This mail is sent by " . $user_details->comp_name;
-    $message .="\n";
+    $message = "<b>Hello Coolacharya Support team</b>";
+    $message .="<br>";
+    $message .="This mail is sent by <b> $user_details->comp_name </b>";
+    $message .="<br>";
     $message .="They have following query";
-    $message .="\n";
-    $message .=$post_data['description'];
-    //  $message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."\n"."\n\nThanks\nAdmin Team";
+    $message .="<br>";
+    $message .="<span style='color:blue'>".$post_data['description']."</span>";
+    //  $message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from' => $user_details->email, 'from_alias' => $user_details->comp_name);
 }
 
-function create_user_format($email, $username, $subscribe_link, $from) {
+function create_user_format($email, $username, $subscribe_link, $company_details) {
     $subject = 'Registered Successfully';
-    $from_alias=$from . " Team";
-    $message = "Hello $username";
-    $message .="\n";
-    $message .='Glad to have you on PMIPUNE.';
-    $message .="\n";
+    $from_alias = $company_details->name . " Team";
+    $message = "Hello <b>$username </b>,";
+    $message .="<br>";
+    ;
+    $message .="Glad to have you on $company_details->name.";
+    $message .="<br>";
     $message .=' Thank you for registering with us. Your account has been successfully created. You can now subscribe to any course of your choice on the CoolAcharya portal via our payment gateway.';
-    $message .="\n";
-    $message.='Click here to go<ins> ' . $subscribe_link.'</ins>';
-    $message .="\n";
-    $message.='Regards';
-    $message .="\n";
-    $message.=$from;
+    $message .="<br>";
+    $message.="Click here to go <ins><a href=$subscribe_link>$subscribe_link </a></ins>";
+    $message .="<br>";
+    ;
+    $message.="<b>Regards,</b>";
+    $message .="<br>";
+    $message.="<b>$from</b>";
     return (object) array('message' => $message, 'from_alias' => $from_alias, 'subject' => $subject);
 }
 
-function user_subscription_success_mail_format($email, $username,$password,$subscription_link, $from) {
+function user_subscription_success_mail_format($email, $username, $password, $subscription_link, $from, $transaction_id,$company_name) {
     $subject = 'Subscribed Successfully';
-    $from_alias=$from . " Team";
-    $message = "Hello $username";
-    $message .="\n";
-    $message .='Glad to have you on PMIPUNE.';
-    $message .="\n";
-    $message .="Follow this link  $subscription_link   to start your course ";
-    $message .="\n";
-    $message .="Email:<ins>" . $email.'</ins>';
-    $message .="\n";
-    $message .="Password:<ins>" . $password.'</ins>';
-    $message .="\n";
+    $from_alias = $from . " Team";
+    $message = "<b> Hello $username</b> ,";
+    $message .="<br>";
+    $message .="Glad to have you on $company_name.";
+    $message .="<br>";
+    $message .="Follow this link <ins> <a href=$subscription_link>$subscription_link </a></ins>  to start your course ";
+    $message .="<br>";
+    $message .="Email:<b>  $email </b>";
+    $message .="<br>";
+    $message .="Password:<b> $password </b>";
+    $message .="<br>";
+    $message .="Transaction_id:<b>$transaction_id </b>";
+    $message .="<br>";
     $message .='Use the above credentials to login and access the dashboard and course.';
-    $message .="\n";
-    $message.='Regards';
-    $message .="\n";
-    $message.=$from;
-    //  $message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."\n"."\n\nThanks\nAdmin Team";
+    $message .="<br>";
+    $message.="<b>Regards,</b>";
+    $message .="<br>";
+    $message.="<b>$from</b>";
+    //  $message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from_alias' => $from_alias, 'subject' => $subject);
 }
 
@@ -83,18 +87,18 @@ function create_admin_format($username, $password, $login_link) {
     $from_alias = "Coolacharya  Team";
     $subject = "coolacharya.com - Admin Registered Successfully";
     $message = "Hello $username";
-    $message .="\n";
+    $message .="<br>";
     $message .='Glad to have you on CoolAcharya.';
-    $message .="\n";
+    $message .="<br>";
     $message .="Follow this link  $login_link   to upload your course";
-    $message .="\n";
+    $message .="<br>";
     $message .="Email: " . $username;
-    $message .="\n";
+    $message .="<br>";
     $message .="Password: " . $password;
-    $message .="\n";
+    $message .="<br>";
     $message .='Use the above credentials to login and access the dashboard and course.';
-    $message .="\n";
-    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."\n"."\n\nThanks\nAdmin Team";
+    $message .="<br>";
+    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from' => $from, 'from_alias' => $from_alias, 'subject' => $subject);
 }
 
@@ -106,18 +110,18 @@ function create_company_format($username, $password, $login_link) {
     $from_alias = "Coolacharya  Team";
     $subject = "coolacharya.com - Admin Registered Successfully";
     $message = "Hello $username";
-    $message .="\n";
+    $message .="<br>";
     $message .='Glad to have you on CoolAcharya.';
-    $message .="\n";
+    $message .="<br>";
     $message .="Follow this link  $login_link   to upload your course";
-    $message .="\n";
+    $message .="<br>";
     $message .="Email: " . $username;
-    $message .="\n";
+    $message .="<br>";
     $message .="Password: " . $password;
-    $message .="\n";
+    $message .="<br>";
     $message .='Use the above credentials to login and access the dashboard and course.';
-    $message .="\n";
-    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."\n"."\n\nThanks\nAdmin Team";
+    $message .="<br>";
+    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from' => $from, 'from_alias' => $from_alias, 'subject' => $subject);
 }
 
@@ -127,14 +131,14 @@ function create_forgot_password_format($email) {
     $from_alias = "Coolacharya  Team";
     $subject = "coolacharya.com -Reset Password Code";
     $message = "Hello $email";
-    $message .="\n";
+    $message .="<br>";
     $message .='Please enter follwoing code to change password';
-    $message .="\n";
+    $message .="<br>";
     $message .="Reset Password Code:" . $reset_password_code;
-    $message .="\n";
+    $message .="<br>";
     $message .="Thank You";
 
-    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."\n"."\n\nThanks\nAdmin Team";
+    //$message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from' => $from, 'from_alias' => $from_alias, 'subject' => $subject, 'reset_password_code' => $reset_password_code);
 }
 
@@ -142,25 +146,33 @@ function course_assgnment_format($username, $course_name) {
 
 
     $message = "Hello $username";
-    $message .="\n";
+    $message .="<br>";
     $message .='Glad to have you on CoolAcharya.';
-    $message .="\n";
+    $message .="<br>";
     $message .="$course_name has Assigned to you";
-    $message .="\n";
+    $message .="<br>";
     $message .='Follow this link http://coolacharya.com/companyadminapp/employee  to start your course assignment.';
     return $message;
 }
 
-function employee_support_mail_format($user_email, $subject, $description) {
-    $from = '$user_email';
-    $from_alias = "Coolacharya  Team";
+function employee_support_mail_format($user_email, $subject, $description,$company_details) {
+    $from = $user_email;
+    $from_alias = "$company_details->name Subscriber";
     $subject = $subject;
-    $message = "Hello Admin";
-    $message .="\n";
-    $message .='Sender has send message through coolacharya portal as following';
-    $message .="\n";
-    $message .=$description;
-    $message .="\n";
-    $message .="Thank You";
+    $message = "<b>Hello Admin,</b>";
+    $message .="<br>";
+    $message .="This is mail from  <b>$user_email </b>";
+    $message .="<br>";
+    $message .='Sender has send message through coolacharya portal as following:';
+    $message .="<br>";
+    $message .="<span style='color:blue'><b>$description</b></span>";
+    $message .="<br>";
+    $message .="                  Thank You.";
+    $message .="<br>";
+    $message .="<br>";
+    $message .="<br>";
+    $message.="<b>Regards,</b>";
+    $message .="<br>";
+    $message.="<b>Coolacharya Team</b>";
     return (object) array('message' => $message, 'from' => $from, 'from_alias' => $from_alias, 'subject' => $subject, 'reset_password_code' => $reset_password_code);
 }

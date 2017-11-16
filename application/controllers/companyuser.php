@@ -24,8 +24,8 @@ class Companyuser extends CI_Controller {
      * @return void
      */
     function validate_credentials() {
-        $user_name = $this->input->post('user_name');
-        $password = $this->input->post('password');
+        $user_name = trim($this->input->post('user_name'));
+        $password = trim($this->input->post('password'));
 
         $user_details = $this->Companyuser_model->validate($user_name, $password);
 
@@ -196,8 +196,7 @@ class Companyuser extends CI_Controller {
      */
     function pwdchange() {
         //product id 
-        $id = $this->uri->segment(3);
-
+      
         $this->load->model('Companyuser_model');
         //if save button was clicked, get the data sent via post
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
@@ -209,15 +208,16 @@ class Companyuser extends CI_Controller {
             //if the form has passed through the validation
             if ($this->form_validation->run()) {
 
-                $nepassword = $this->__encrip_password($this->input->post('new_password'));
+                $nepassword = $this->encrypt->encrypt_password($this->input->post('new_password'));
                 $data_to_store = array(
                     'password' => $nepassword,
-                    'modify_date' => date('Y-m-d'),
-                    'modify_by' => $this->session->userdata('user_name'),
-                    'IsActive' => 'Y',
+                    'updated_at' => date('Y-m-d H:i:s'),
+                    'updated_by' =>$this->session->userdata('id'),
+                    'id'=>$this->session->userdata('id'),
+                   
                 );
                 //if the insert has returned true then we show the flash message
-                if ($this->Companyuser_model->update_pwduseradminnew($id, $data_to_store) == TRUE) {
+                if ($this->Companyuser_model->update_pwduseradminnew( $data_to_store) == TRUE) {
                     $this->session->set_flashdata('flash_message', 'updated');
                     $this->session->sess_destroy();
                     redirect('admin_company');
@@ -269,8 +269,7 @@ class Companyuser extends CI_Controller {
                 } else {
                     $this->session->set_flashdata('flash_message', 'not_send');
                     echo $this->email->print_debugger();
-                    
-                  
+                   
                 }
                 redirect('admin_company/supportmail');
             }else{

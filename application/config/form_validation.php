@@ -194,6 +194,11 @@ $config = array(
             'label' => 'lang:lbl_company_name',
             'rules' => 'required|trim|min_length[2]|max_length[45]'
         ),
+         array(
+            'field' => 'product_name',
+            'label' => 'lang:lbl_comp_product',
+            'rules' => 'required|trim|min_length[2]|max_length[50]'
+        ),
         array(
             'field' => 'email',
             'label' => 'lang:lbl_email',
@@ -213,7 +218,7 @@ $config = array(
         array(
             'field' => 'name',
             'label' => 'lang:lbl_coupon_code',
-            'rules' => 'required|trim|min_length[4]|max_length[45]'
+            'rules' => 'required|trim|min_length[4]|max_length[45]|callback_check_coupon_code_availabilty'
         ),
         array(
             'field' => 'percentage_off',
@@ -234,7 +239,7 @@ $config = array(
         array(
             'field' => 'name',
             'label' => 'lang:lbl_coupon_code',
-            'rules' => 'required|trim|min_length[4]|max_length[45]'
+            'rules' => 'required|trim|min_length[4]|max_length[45]|callback_check_coupon_code_availabilty'
         ),
         array(
             'field' => 'percentage_off',

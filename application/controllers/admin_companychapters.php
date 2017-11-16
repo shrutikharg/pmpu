@@ -147,7 +147,7 @@ class Admin_companychapters extends CI_Controller {
                             $course_chapter_image_path_data = array('image_path' => substr($user_course_chapter_image_path, 2),
                                 'image_size' => $upload_data['details']['file_size'] * 1024);
                             $this->companychapters_model->update_chapters($inserted_chapter_id, $course_chapter_image_path_data);
-                            $this->upload->update_space_availability($userid, $_FILES['chapterimage']['size']);
+                            $this->upload->update_space_availability($this->session->userdata('company_id'), $_FILES['chapterimage']['size']);
                         } else {
                             $data['error_message'] = $upload_data['details'];
                         }
@@ -237,7 +237,7 @@ class Admin_companychapters extends CI_Controller {
                                     'file_type' => 'pdf',
                                     'file_path' => substr($chapter_directory . '/' . $upload_data['details']['raw_name'] . '.pdf', 2));
                                 $this->companychapters_model->update_chapters($inserted_chapter_id, $pdf_file_array); //update chapters slide details
-                                $this->upload->update_space_availability($userid, $_FILES['pdf_file_to_upload']['size']);
+                                $this->upload->update_space_availability($this->session->userdata('company_id'), $_FILES['pdf_file_to_upload']['size']);
                             } else {
                                 
                             }
@@ -316,7 +316,7 @@ class Admin_companychapters extends CI_Controller {
                             $course_chapter_image_path_data = array('image_path' => substr($user_course_chapter_image_path, 2),
                                 'image_size' => $upload_data['details']['file_size'] * 1024);
                             $this->companychapters_model->update_chapters($updated_chapter_id, $course_chapter_image_path_data);
-                            $this->upload->update_space_availability($userid, $_FILES['chapterimage']['size'], $data['chapter_data'][0]['image_size']);
+                            $this->upload->update_space_availability($this->session->userdata('company_id'), $_FILES['chapterimage']['size'], $data['chapter_data'][0]['image_size']);
                         } else {
                             $data['error_message'] = $upload_data['details'];
                         }

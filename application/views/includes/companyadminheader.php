@@ -1095,20 +1095,12 @@ function time_elapsed_string($ptime)
 						</ul>
 					</li>
 					
-					<li <?php if(($this->uri->segment(2) == 'commenting')){echo 'class="current open"';}?>>
-						<a>							
+					<li <?php if(($this->uri->segment(2) == 'message')){echo 'class="current open"';}?>>
+                                            <a href="<?php echo base_url(); ?>admin_company/communication">							
 							<i class="icon-commenting"></i>
-							Comments
+							<?php echo $this->lang->line('nav_message');?>
 						</a>
-						<ul class="sub-menu">
-			<li <?php if($this->uri->segment(2) == 'commenting'){echo 'class="current_menu"';}?>>
-							<a href="<?php echo base_url(); ?>admin_company/commenting">
-								<i class="icon-angle-right"></i>
-									View Comments
-								</a>
-							</li>
-													
-						</ul>
+					
 					</li>
 					
 				</ul>

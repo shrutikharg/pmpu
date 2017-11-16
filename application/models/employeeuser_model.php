@@ -8,13 +8,13 @@ class Employeeuser_model extends CI_Model {
      * @param string $password
      * @return void
      */
-    function validate($user_name) {
+    function validate($user_name,$company_id) {
         $this->db->select('u.id,u.company_id,u.password,u.email,u.first_name,u.last_name,u.phone_no as phone ,u.password,u.is_active,s.id as subscription_id');
         $this->db->from('users u');
         $this->db->join('users_groups ug', 'ug.user_id=u.id');
         $this->db->join('subscription s', 's.user_id=u.id', 'left');
         $this->db->where('u.email', $user_name);
-        //   $this->db->where('u.password', $password);
+        $this->db->where('u.company_id', $company_id);
         $this->db->where('u.is_active', 'Y');
         $this->db->where('ug.group_id', '7');
         $query = $this->db->get();
@@ -148,7 +148,7 @@ class Employeeuser_model extends CI_Model {
     }
 
     function get_employee_by_email($email) {
-        $this->db->select('u.email,u.password,u.first_name,u.last_name,u.id,u.created_at');
+        $this->db->select('u.email,u.phone_no,u.password,u.first_name,u.last_name,u.id,u.created_at');
         $this->db->from('users u');
         $this->db->where('u.email', $email);
         $query = $this->db->get();

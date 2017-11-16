@@ -23,19 +23,19 @@
         <br>
         <div class="row">
 
-                <?php
-                //flash messages
-                if (isset($message)) {
-                    echo '<div class="alert alert-danger">';
-                    echo '<strong>' . $message;
-                    echo '</div>';
-                }
-                if(!empty($this->session->flashdata('flash_message'))){
-                   echo '<div class="alert alert-danger">';
-                    echo '<strong>' . $this->session->flashdata('flash_message');
-                    echo '</div>';  
-                }
-                ?>
+            <?php
+            //flash messages
+            if (isset($message)) {
+                echo '<div class="alert alert-danger">';
+                echo '<strong>' . $message;
+                echo '</div>';
+            }
+            if (!empty($this->session->flashdata('flash_message'))) {
+                echo '<div class="alert alert-danger">';
+                echo '<strong>' . $this->session->flashdata('flash_message');
+                echo '</div>';
+            }
+            ?>
 
             <!--=== Inline Tabs ===-->
 
@@ -81,45 +81,45 @@
                             <i class="icon-remove close" data-dismiss="alert"></i>Enter CMS Page link1</div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Course CMS Page link1</label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink1" placeholder="Enter CMS Page link1"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink1" placeholder="Enter CMS Page link1"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1" /></div>
                         </div>
 
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Enter CMS Page link2 name</label>
-                                    <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2_name"   placeholder="Enter CMS Page link2 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2 name" /></div>
-                                </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Enter CMS Page link2 name</label>
+                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2_name"   placeholder="Enter CMS Page link2 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2 name" /></div>
+                        </div>
 
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Enter CMS Page link2</label>
-                                    <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2"   placeholder="Enter CMS Page link2"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
-                                </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Enter CMS Page link2</label>
+                            <div class="col-md-10"><input type="url" class="form-control"  name="cmspagelink2"   placeholder="Enter CMS Page link2"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                        </div>
 
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Enter CMS Page link3 name</label>
-                                    <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink3_name"   placeholder="Enter CMS Page link3 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link3 name" /></div>
-                                </div>				
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Enter CMS Page link3 name</label>
+                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink3_name"   placeholder="Enter CMS Page link3 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link3 name" /></div>
+                        </div>				
 
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Enter CMS Page link3</label>
-                                    <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink3" placeholder="Enter CMS Page link3"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">Facebook Link </label>
-                                    <div class="col-md-10"><input type="text" class="form-control" name="fblink"  placeholder="Enter facebook link"  data-rule-required="true"  data-msg-required="Please enter facebook link" /></div>
-                                </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Enter CMS Page link3</label>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink3" placeholder="Enter CMS Page link3"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Facebook Link </label>
+                            <div class="col-md-10"><input type="url" class="form-control" name="fblink"  placeholder="Enter facebook link"  data-rule-required="true"  data-msg-required="Please enter facebook link" /></div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Google Plus Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="googlepluslink"  placeholder="Enter Google Plus link"  data-rule-required="true"  data-msg-required="Please enter Google Plus link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="googlepluslink"  placeholder="Enter Google Plus link"  data-rule-required="true"  data-msg-required="Please enter Google Plus link" /></div>
                         </div>	
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Twitter Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="twitterlink"  placeholder="Enter Twitter link"  data-rule-required="true"  data-msg-required="Please enter Twitter link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="twitterlink"  placeholder="Enter Twitter link"  data-rule-required="true"  data-msg-required="Please enter Twitter link" /></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Linkedin Link </label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="linkedinlink"  placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="linkedinlink"  placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('btn_save'); ?></button>

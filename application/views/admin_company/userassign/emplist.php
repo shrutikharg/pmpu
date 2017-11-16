@@ -1,4 +1,3 @@
-<!--started work on this file-->
 <style>
     .ajax-loader {
         margin-left: auto; 
@@ -14,7 +13,7 @@
         setTimeout(function () {
             fetch_list(page);
         }, 1800);
-//        fetch_list(page);
+
         $("#search").click(function () {
             is_search = true;
             search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
@@ -171,7 +170,7 @@
                     </div>
                 </div>
                 <div class="ajax-loader">
-                    <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/>
+                    <img src="../assets/images/ajax-loader.gif" class="img-responsive" style="max-height: 27px;"/>
                 </div>
                 <div class="pagination"> 
                     <div class="pagination-widget">

@@ -13,7 +13,7 @@
             setTimeout(function () {
                 fetch_list(page);
             }, 1800);
-//        fetch_list(page);
+
             $("#search").click(function () {
                 search_string_array = {'department': $("#department").val(), 'subdepartment': $("#subdepartment").val()};
                 search_string_array = JSON.stringify(search_string_array);
@@ -202,7 +202,7 @@
                         
                     </div>
                     <div class="ajax-loader">
-                        <img src="../assets/images/loader.gif" class="img-responsive" style="max-height: 27px;" />
+                        <img src="../assets/images/ajax-loader.gif" class="img-responsive" style="max-height: 27px;" />
                     </div>
                     <div class="pagination"> 
                         <div class="pagination-widget">

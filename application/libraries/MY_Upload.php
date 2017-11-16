@@ -34,8 +34,8 @@ class MY_Upload extends CI_Upload {
         }
     }
 
-    function update_space_availability($user_id, $updated_document_size, $previous_document_size = 0) {
-        $query = $this->CI->companyuser_model->update_space_availability($user_id, $updated_document_size, $previous_document_size);
+    function update_space_availability($company_id, $updated_document_size, $previous_document_size = 0) {
+        $query = $this->CI->companyuser_model->update_space_availability($company_id, $updated_document_size, $previous_document_size);
     }
 
     public function do_my_upload($file_name,$config) {

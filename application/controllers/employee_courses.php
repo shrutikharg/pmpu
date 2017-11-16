@@ -511,9 +511,9 @@ class Employee_courses extends CI_Controller {
             $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
             $company_details = $this->company_model->get_company_details();
             if ($this->form_validation->run()) {
-                $emp_support_mail = employee_support_mail_format($this->session->userdata('empuser_name'), $this->input->post('subname'), $this->input->post('description'));
+                $emp_support_mail = employee_support_mail_format($this->session->userdata('empuser_name'), $this->input->post('subname'), $this->input->post('description'),$company_details);
 
-                $this->email->from($company_details->from, $company_details->from_alias);
+                $this->email->from('info@coolacharya.com', $emp_support_mail->from_alias);
                 $this->email->to($company_details->email);
                 $this->email->subject($emp_support_mail->subject);
                 $this->email->message($emp_support_mail->message);
