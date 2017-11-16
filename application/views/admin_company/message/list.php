@@ -89,11 +89,11 @@
                     // using the done promise callback
                     .done(function (data) {
                         $('.ajax-loader').css("visibility", "hidden");
-                        $('.parent dave').empty();
+                        $('.parent').empty();
                         var i = 0;
                         $.each(data, function (i, row) {
                             alert(row.full_name);
-                            $(".parent dave").append("<div><div class='msgdetailsbody'>\n\
+                            $(".parent").append("<div><div class='msgdetailsbody'>\n\
                              <div class='row' >\n\
                               <div class='col-md-3'><img src=https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100' alt='View Profile'>\n\
                                <p>" + row.full_name + "</p>\n\
@@ -154,8 +154,8 @@
 
                 </div>
             </div>
-            <div class="col-md-8 msgdetails pull-right">
-                <div class="parent dave">
+            <div class="col-md-9 msgdetails pull-right">
+                <div class="parent">
                     <?php foreach ($subject_specific_msg_list as $row) { ?>
                         <div>
                             <div class="msgdetailsbody">
@@ -227,6 +227,26 @@
         </div>
         <div class="msgsend">
             <input type="button" value="Send Message"  id="send_msg_btn" class="sendmsg pull-right"/>
+        </div>
+    </div>
+    <div class="replyDiv" >
+        <p style="font-size: 1.5em;">
+            Click here to <a onclick="javascript: void(0);" class="replyDiv">Reply</a>
+        </p>
+    </div>
+    <div id="reply" class="reply row" style="display: none;">
+        <div class="msgto">
+            <input type="text" name="replyto">
+        </div>
+        <div class="msgsubject">
+            <input type="text" name="replysubject">
+        </div>
+        <div class="msgcontent">
+            <textarea></textarea>
+        </div>
+        <div class="pull-left" style="display: block; padding-top: 15px;">
+            <input type="button" value="Send" />
+            <input type="button" value="Discard" id="discard"/>
         </div>
     </div>
 </div>
