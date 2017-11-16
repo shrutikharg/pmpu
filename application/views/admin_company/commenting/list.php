@@ -37,59 +37,73 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 msgdetails pull-right">
+            <div class="col-md-9 msgdetails pull-right">
                 <div class="parent dave">
-                <div>
-                    <div class="msgdetailsbody">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
-                                <p>Dave Saraiva</p>
+                    <div>
+                        <div class="msgdetailsbody">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    This is Testing Message written to test the message conversation of two users
+                                    <span>10 Nov 2017 10:05AM</span>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
+                                    <p>Dave Saraiva</p>
+                                </div>
                             </div>
-                            <div class="col-md-9">This is Testing Message written to test the message conversation of two users</div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="msgdetailsbody">
-                        <div class="row">
-                            <div class="col-md-3"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
-                                <p>you</p>
+                    <div>
+                        <div class="msgdetailsbody">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    This is Testing Message written to test the message conversation of two users
+                                    <span>10 Nov 2017 10:15AM</span>
+                                </div>
+                                <div class="col-md-2 text-center"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
+                                    <p>you</p>
+                                </div>
                             </div>
-                            <div class="col-md-9">This is Testing Message written to test the message conversation of two users</div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div class="parent nic">
                     <div>
                         <div class="msgdetailsbody">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
-                                    <p>Nic Rowen</p>
+                                <div class="col-md-10">
+                                    This is Testing Message written to test the message conversation of two users
+                                    <span>10 Nov 2017 10:15AM</span>
                                 </div>
-                                <div class="col-md-9">This is Testing Message written to test the message conversation of two users</div>
+                                <div class="col-md-2 text-center"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
+                                    <p>Nic</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="msgdetailsbody">
                             <div class="row">
-                                <div class="col-md-3"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
+                                <div class="col-md-10">
+                                    This is Testing Message written to test the message conversation of two users
+                                    <span>10 Nov 2017 10:15AM</span>
+                                </div>
+                                <div class="col-md-2 text-center"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
                                     <p>you</p>
                                 </div>
-                                <div class="col-md-9">This is Testing Message written to test the message conversation of two users</div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="msgdetailsbody">
                             <div class="row">
-                                <div class="col-md-3"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
-                                    <p>Nic Rowen</p>
+                                <div class="col-md-10">
+                                    This is Testing Message written to test the message conversation of two users
+                                    <span>10 Nov 2017 10:15AM</span>
                                 </div>
-                                <div class="col-md-9">This is Testing Message written to test the message conversation of two users</div>
+                                <div class="col-md-2 text-center"><img src="https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100" alt="User Name">
+                                    <p>Nic</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,6 +131,26 @@
         </div>
         <div class="msgsend">
             <input type="button" value="Send Message" class="sendmsg pull-right"/>
+        </div>
+    </div>
+    <div class="replyDiv" style="display: none;">
+        <p style="font-size: 1.5em;">
+            Click here to <a onclick="javascript: void(0);" class="replyDiv">Reply</a>
+        </p>
+    </div>
+    <div id="reply" class="reply row" style="display: none;">
+        <div class="msgto">
+            <input type="text" name="replyto">
+        </div>
+        <div class="msgsubject">
+            <input type="text" name="replysubject">
+        </div>
+        <div class="msgcontent">
+            <textarea></textarea>
+        </div>
+        <div class="pull-left" style="display: block; padding-top: 15px;">
+            <input type="button" value="Send" />
+            <input type="button" value="Discard" id="discard"/>
         </div>
     </div>
 </div>
