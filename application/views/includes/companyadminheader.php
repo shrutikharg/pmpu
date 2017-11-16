@@ -908,7 +908,7 @@ function time_elapsed_string($ptime)
 														
 								
 						</ul>
-					</li>
+					</li>-->
                                         <li <?php if(($this->uri->segment(2) == 'quiz') ){echo 'class="current open"';}?>>
 						<a href="javascript:void(0);" >
 							<i class="icon-question-sign"></i>
@@ -931,7 +931,7 @@ function time_elapsed_string($ptime)
 														
 								
 						</ul>
-					</li>-->
+					</li>
                                         <li <?php if(($this->uri->segment(2) == 'employeelist')){echo 'class="current open"';}?>>
 						<a>
 							<i class="icon-employeegroup"></i>
