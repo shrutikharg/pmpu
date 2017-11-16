@@ -130,7 +130,8 @@
 
 	<!-- Forms -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/uniform/jquery.uniform.min.js"></script>
-	
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/select2/select2.min.js"></script>
+
 	<!-- App -->
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/app.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/plugins.js"></script>
