@@ -36,10 +36,9 @@
             formatSelection: formatSelection,
         });
         $("#send_msg_btn").click(function () {
+            $('#msgcontainer').hide();
             if ($("#user_select").select2('data').length == 0) {
                 alert('please select recepient');
-
-
             } else {
                 var user_list_array = [];
                 console.log($("#user_select").select2('data'));
@@ -59,7 +58,6 @@
                 })
                         // using the done promise callback
                         .done(function (data) {
-
                             $('.res_row').empty();
                             var i = 0;
                             $.each(data.rows, function (i, row) {
@@ -89,11 +87,11 @@
                     // using the done promise callback
                     .done(function (data) {
                         $('.ajax-loader').css("visibility", "hidden");
-                        $('.parent dave').empty();
+                        $('.parent').empty();
                         var i = 0;
                         $.each(data, function (i, row) {
-                            alert(row.full_name);
-                            $(".parent dave").append("<div><div class='msgdetailsbody'>\n\
+//                            alert(row.full_name);
+                            $(".parent").append("<div><div class='msgdetailsbody'>\n\
                              <div class='row' >\n\
                               <div class='col-md-3'><img src=https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100' alt='View Profile'>\n\
                                <p>" + row.full_name + "</p>\n\
@@ -153,9 +151,43 @@
                     <?php } ?>
 
                 </div>
+                <div class="col-md-12 pagination clearfix">
+                    <span id="first_pager" class="glyphicon glyphicon-fast-backward"></span>
+                    <span id="previous_pager" class="glyphicon glyphicon-step-backward"></span>
+                    <span>Page</span>
+                    <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo" value="1" style="display: inline-block;"></span>
+                    <span>of </span>
+                    <span><lable class="pagination-lable" id="pageOf">2</lable></span>
+                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
+                    <span id="last_pager" class="glyphicon glyphicon-fast-forward"></span>
+                    <span> 
+                        <select id="rows" style="margin-left: 10px">
+                            <option value="10">10 </option>
+                            <option value="20"> 20</option>
+                            <option value="25"> 25</option>
+                        </select>
+                    </span>
+                </div>
             </div>
-            <div class="col-md-8 msgdetails pull-right">
-                <div class="parent dave">
+            <div class="col-md-9 msgdetails pull-right">
+                <div class="col-md-12 pagination clearfix text-right">
+                    <span id="first_pager" class="glyphicon glyphicon-fast-backward"></span>
+                    <span id="previous_pager" class="glyphicon glyphicon-step-backward"></span>
+                    <span>Page</span>
+                    <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo" value="1" style="display: inline-block;"></span>
+                    <span>of </span>
+                    <span><lable class="pagination-lable" id="pageOf">2</lable></span>
+                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
+                    <span id="last_pager" class="glyphicon glyphicon-fast-forward"></span>
+                    <span> 
+                        <select id="rows" style="margin-left: 10px">
+                            <option value="10">10 </option>
+                            <option value="20"> 20</option>
+                            <option value="25"> 25</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="parent">
                     <?php foreach ($subject_specific_msg_list as $row) { ?>
                         <div>
                             <div class="msgdetailsbody">
@@ -169,7 +201,11 @@
                             </div>
                         </div>
                     <?php } ?>
-
+                </div>
+                <div class="replyDiv">
+                    <p style="font-size: 1.5em;">
+                        Click here to <a onclick="javascript: void(0);" class="replyDiv">Reply</a>
+                    </p>
                 </div>
                 <!--  <div class="parent nic">
                       <div>
@@ -227,6 +263,21 @@
         </div>
         <div class="msgsend">
             <input type="button" value="Send Message"  id="send_msg_btn" class="sendmsg pull-right"/>
+        </div>
+    </div>
+    <div id="reply" class="reply row" style="display: none;">
+        <div class="msgto">
+            <input type="text" name="replyto">
+        </div>
+        <div class="msgsubject">
+            <input type="text" name="replysubject">
+        </div>
+        <div class="msgcontent">
+            <textarea></textarea>
+        </div>
+        <div class="pull-left" style="display: block; padding-top: 15px;">
+            <input type="button" value="Send" />
+            <input type="button" value="Discard" id="discard"/>
         </div>
     </div>
 </div>

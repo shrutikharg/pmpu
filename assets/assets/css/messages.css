@@ -143,7 +143,7 @@ and open the template in the editor.
         width: 100%;
         margin: 0 auto;
     }
-    .parent > div.replyDiv {
+    .msgdetails > div.replyDiv {
         background: #fff;
         border: 1px solid;
         padding: 12px;
@@ -156,4 +156,11 @@ and open the template in the editor.
         margin-top: 15px;
         font-weight: bold;
         font-style: italic;
+    }
+    .column[data-label="Name"] {
+        border-left: 0px !important;
+        border-right: 0px !important;
+    }
+    .pagination .glyphicon {
+        cursor: pointer!important;
     }

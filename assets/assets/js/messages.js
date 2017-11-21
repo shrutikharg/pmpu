@@ -77,19 +77,19 @@ $(document).ready(function () {
     }
 
     $('.res_row:eq(0)').addClass('active');
-    $('.msgdetails > div:first-child').append($('div.replyDiv').show());
-    $('.msgdetails > div:not(.msgdetails > div:first-child)').hide();
-    $('.res_row > div').each(function () {
-        $(this).on('click', function () {
-            $('.res_row').removeClass('active');
-            $(this).parent().addClass('active');
-//            $('.msgdetails > div').find('div.replyDiv').remove();
-            var chatHead = $(this).attr('data-label');
-            $('.msgdetails > div').removeClass('active').hide();
-            $('.msgdetails > div.' + chatHead).addClass('active').show();
-            $('.msgdetails > div.' + chatHead).append($('div.replyDiv').show());
-        });
-    });
+//    $('.msgdetails > div:first-child').append($('div.replyDiv').show());
+//    $('.msgdetails > div:not(.msgdetails > div:first-child)').hide();
+//    $('.res_row > div').each(function () {
+//        $(this).on('click', function () {
+//            $('.res_row').removeClass('active');
+//            $(this).parent().addClass('active');
+////            $('.msgdetails > div').find('div.replyDiv').remove();
+//            var chatHead = $(this).attr('data-label');
+//            $('.msgdetails > div').removeClass('active').hide();
+//            $('.msgdetails > div.' + chatHead).addClass('active').show();
+//            $('.msgdetails > div.' + chatHead).append($('div.replyDiv').show());
+//        });
+//    });
     $('.replyDiv').click(function(){
 	$(this).hide();
 	$(this).parent().append($('#reply').show());
