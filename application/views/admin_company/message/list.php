@@ -246,40 +246,22 @@
 
                 </div>
                 <div class="col-md-12 pagination clearfix">
-                    <span id="first_pager" class="glyphicon glyphicon-fast-backward"></span>
                     <span id="previous_pager" class="glyphicon glyphicon-step-backward"></span>
+                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
                     <span>Page</span>
                     <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo" value="1" style="display: inline-block;"></span>
                     <span>of </span>
                     <span><lable class="pagination-lable" id="pageOf">2</lable></span>
-                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
-                    <span id="last_pager" class="glyphicon glyphicon-fast-forward"></span>
-                    <span> 
-                        <select id="rows" style="margin-left: 10px">
-                            <option value="10">10 </option>
-                            <option value="20"> 20</option>
-                            <option value="25"> 25</option>
-                        </select>
-                    </span>
                 </div>
             </div>
             <div class="col-md-9 msgdetails pull-right">
                 <div class="col-md-12 pagination clearfix text-right">
-                    <span id="first_pager" class="glyphicon glyphicon-fast-backward"></span>
                     <span id="previous_pager" class="glyphicon glyphicon-step-backward"></span>
+                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
                     <span>Page</span>
                     <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo" value="1" style="display: inline-block;"></span>
                     <span>of </span>
                     <span><lable class="pagination-lable" id="pageOf">2</lable></span>
-                    <span id="next_pager" class="glyphicon glyphicon-step-forward"> </span>
-                    <span id="last_pager" class="glyphicon glyphicon-fast-forward"></span>
-                    <span> 
-                        <select id="rows" style="margin-left: 10px">
-                            <option value="10">10 </option>
-                            <option value="20"> 20</option>
-                            <option value="25"> 25</option>
-                        </select>
-                    </span>
                 </div>
                 <div class="parent">
                     <?php foreach ($subject_specific_msg_list as $row) { ?>
