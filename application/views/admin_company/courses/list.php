@@ -56,9 +56,9 @@
                     .done(function (data) {
                         $('.ajax-loader').css("visibility", "hidden");
                         $('.res_row').empty();
-                        var i = 0;
-                        $.each(data.rows, function (i, row) {
-                            i++
+                    var i = data.start;
+                    $.each(data.rows, function (index, row) {
+
                             var course_id = '"' + row['id'] + '"';
                             $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (i) +
                                     "</div><div class='column' data-label='Course name'>" + row['name'] +
@@ -68,11 +68,15 @@
                                     "</div><div class='column' data-label='Description'>" + row['enddate'] +
                                     "</div><div class='column' data-label='action'><input type='button' name='edit'value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info'  onclick='edit_courses(" + course_id + ")'></button></div>\n\
 </div>");
-                            ;
+                        i++;
                         })
-                        pagination(data);
-                    });
-        }
+                    pagination(data);
+                }).fail(function (data) {
+            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+        });
+    }
+
+
 </script>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>

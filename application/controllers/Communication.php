@@ -34,6 +34,7 @@ class Communication extends CI_Controller {
     }
 
     public function send_message() {
+        $response = new stdClass();
         $receiver_array = array();
         $master_id = $this->input->post('master_id');
         if (empty($this->input->post('master_id'))) {
@@ -52,7 +53,13 @@ class Communication extends CI_Controller {
         foreach ($this->input->post('users') as $user) {
             array_push($receiver_array, array('message_id' => $message_id, 'msg_master_id' => $master_id, 'receiver_id' => $user));
         }
-        $this->communcation_model->save_message_receiver($receiver_array);
+        $query = $this->communcation_model->save_message_receiver($receiver_array);
+        if ($query == NULL) {
+            $response->status = 'Success';
+        } else {
+            $response->status = 'Fail';
+        }
+        echo json_encode($response);
     }
 
     public function get_subject_specific_message() {
@@ -60,7 +67,30 @@ class Communication extends CI_Controller {
         $master_id = $this->input->post('master_id');
         $message_result = $this->communcation_model->get_subject_specific_message($master_id);
         echo json_encode($message_result);
-        
+    }
+
+    public function get_message_receipient() {
+        $response = new stdClass();
+        $master_id = $this->input->post('master_id');
+        $recever_list = $this->communcation_model->get_message_receipient($master_id);
+        echo json_encode($recever_list);
+    }
+
+    public function send_reply() {
+
+        $master_id = $this->input->post('master_id');
+        $message_data = array('msg_master_id' => $master_id,
+            'created_by' => $this->session->userdata('id'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'message' => $this->input->post('message'));
+        $message_id = $this->communcation_model->save_message($message_data);
+        $receiver_array = array();
+        foreach ($this->input->post('users') as $user) {
+            array_push($receiver_array, array('message_id' => $message_id, 'msg_master_id' => $master_id, 'receiver_id' => $user));
+        }
+        $this->communcation_model->save_message_receiver($receiver_array);
+        $ubject_specific_msg_list = $this->communcation_model->get_subject_specific_message($master_id);
+        echo json_encode($ubject_specific_msg_list);
     }
 
 }
