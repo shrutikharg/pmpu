@@ -3,17 +3,29 @@
 
 
 <script>var is_search = false, page = 1, search_string_array = "";
+    var master_id = "<?php echo $message_list[0]->master_id; ?>";
+    var msg_recepient_list;
+    var sub_page_no = 1;
+    var message_page_no = 1;
 
 
     $(document).ready(function () {
+        $('#reply_discard').click(function(){
+            $(this).parents().find('div.replyDiv').show();
+            $(this).parent().parent().hide();
+        });
         $('#user_select').select2({
-            minimumInputLength: 5,
+            minimumInputLength: 2,
             width: '100%',
             //allowClear: true,
             multiple: true,
             placeholder: "Enter Email/Name/Phone no",
             id: function (e) {
                 return e.id + ":" + e.title;
+            },
+            initSelection: function (element, callback) {
+                alert()
+
             },
             ajax: {
                 url: '<?php echo base_url(); ?>communication/get_users',
@@ -41,12 +53,12 @@
                 alert('please select recepient');
             } else {
                 var user_list_array = [];
-                console.log($("#user_select").select2('data'));
+
                 $("#user_select").select2('data').forEach(function (user)
                 {
                     user_list_array.push(user.id);
                 });
-
+                user_list_array.push("<?php echo $this->session->userdata('id'); ?>");
 
                 $.ajax({
                     type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -58,29 +70,24 @@
                 })
                         // using the done promise callback
                         .done(function (data) {
+                            $('#msgcontainer').find('input:text').val('');
                             $('.res_row').empty();
                             var i = 0;
-                            $.each(data.rows, function (i, row) {
-                                var category_id = '"' + row['id'] + '"';
-                                $(".res_table").append("<div class='res_row'>\n\
-            <div class='column' data-label='Sr no'>" + (i + 1) + "</div>\n\
-<div class='column' data-label='Category name'>" + row['name'] + "</div>\n\
-<div class='column' data-label='Category name'>" + row['description'] + "</div>\n\
-<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_category(" + category_id + ")'></button></div>\n\
-</div>");
-                                i++;
-                            });
-                            pagination(data);
+                       window.location.href = "<?php echo base_url();?>admin_company/communication";
+
                         });
 
             }
         });
         $(".res_row").find('.column').click(function () {
+            $(".res_row").removeClass(" active");
+            $(this).parent().addClass("active");
+            master_id = $(this).attr('master_id');
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
 
                 url: '<?php echo base_url(); ?>communication/subject_specific_message', // the url where we want to POST
-                data: {'master_id': $(this).attr('master_id')}, // our data object
+                data: {'master_id': master_id}, // our data object
                 dataType: 'json', // what type of data do we expect back from the server
                 encode: true
             })
@@ -90,7 +97,7 @@
                         $('.parent').empty();
                         var i = 0;
                         $.each(data, function (i, row) {
-//                            alert(row.full_name);
+
                             $(".parent").append("<div><div class='msgdetailsbody'>\n\
                              <div class='row' >\n\
                               <div class='col-md-3'><img src=https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100' alt='View Profile'>\n\
@@ -103,6 +110,93 @@
                     });
 
         })
+
+
+        $("#reply_btn").click(function () {
+
+            $('#replyTo').select2({
+                minimumInputLength: 2,
+                width: '100%',
+                //allowClear: true,
+                multiple: true,
+                placeholder: "Enter Email/Name/Phone no",
+                ajax: {
+                    url: '<?php echo base_url(); ?>communication/get_users',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: function (term, page) {
+
+                        return {
+                            name: term,
+                        };
+                    },
+                    results: function (data, page) {
+
+                        return {
+                            results: data.users
+                        };
+                    }
+                },
+                initSelection: function (element, callback) {
+
+
+                    return $.ajax({
+                        url: "<?php echo base_url(); ?>communication/message_receipient",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            master_id: master_id
+                        }
+                    }).done(function (data) {
+                        callback(data);
+                    });
+
+                },
+                formatResult: formatResult,
+                formatSelection: formatSelection,
+            }).select2('val', []);
+        })
+        $("#reply_send").click(function () {
+
+            var user_list_array = [];
+
+            $("#replyTo").select2('data').forEach(function (user)
+            {
+                user_list_array.push(user.id);
+            });
+            user_list_array.push("<?php echo $this->session->userdata('id'); ?>");
+            $.ajax({
+                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+
+                url: '<?php echo base_url(); ?>communication/send_reply', // the url where we want to POST
+                data: {'message': $("#reply_msg").val(), 'master_id': master_id, 'users': user_list_array}, // our data object
+                dataType: 'json', // what type of data do we expect back from the server
+                encode: true
+            })
+                    .done(function (data) {
+
+                        $('.replyDiv').show();
+                        $("#reply").toggle();
+
+                        $('.parent').empty();
+                        var i = 0;
+                        $.each(data, function (i, row) {
+
+                            $(".parent").append("<div><div class='msgdetailsbody'>\n\
+                             <div class='row' >\n\
+                              <div class='col-md-3'><img src=https://placeholdit.imgix.net/~text?txtsize=9&amp;txt=100%C3%97100&amp;w=100&amp;h=100' alt='View Profile'>\n\
+                               <p>" + row.full_name + "</p>\n\
+                             </div> <div class='col-md-9'>" + row.message + "</div>\n\
+                            </div></div></div>");
+                            i++;
+                        });
+
+                    });
+            ;
+
+
+
+        });
 
     });
     function formatResult(item) {
@@ -146,7 +240,7 @@
 
                     <?php foreach ($message_list as $row) { ?>
                         <div class="res_row">
-                            <div class="column" data-label="Name" master_id="<?php echo $row->master_id; ?>" user_id="<?php echo $row->user_id ?>"><?php echo $row->full_name; ?> </div>
+                            <div class="column" data-label="Name" master_id="<?php echo $row->master_id; ?>" user_id="<?php echo $row->user_id ?>"><?php echo $row->subject; ?> </div>
                         </div>
                     <?php } ?>
 
@@ -256,7 +350,7 @@
             <input type="text" id="user_select"/>
         </div>
         <div class="msgsubject">
-            <input type="text" name="msgsubject" id="msgsubject" placeholder="Subject">
+            <input type="text" name="msgsubject" id="msgSubject" placeholder="Subject">
         </div>
         <div class="msgcontent">
             <textarea id="msgContent"></textarea>
@@ -265,19 +359,22 @@
             <input type="button" value="Send Message"  id="send_msg_btn" class="sendmsg pull-right"/>
         </div>
     </div>
+<!--    <div class="replyDiv" >
+        <p style="font-size: 1.5em;">
+            <input type="button"  id="reply_btn" class="replyDiv" value="Reply">
+        </p>
+    </div>-->
     <div id="reply" class="reply row" style="display: none;">
         <div class="msgto">
-            <input type="text" name="replyto">
+            <input type="hidden" name="replyto" id="replyTo">
         </div>
-        <div class="msgsubject">
-            <input type="text" name="replysubject">
-        </div>
+
         <div class="msgcontent">
-            <textarea></textarea>
+            <textarea id="reply_msg"></textarea>
         </div>
         <div class="pull-left" style="display: block; padding-top: 15px;">
-            <input type="button" value="Send" />
-            <input type="button" value="Discard" id="discard"/>
+            <input type="button"  id="reply_send" value="Send" />
+            <input type="button" value="Discard" id="reply_discard"/>
         </div>
     </div>
 </div>
