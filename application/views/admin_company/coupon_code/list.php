@@ -84,7 +84,9 @@
                         i++;
                     });
                     pagination(data);
-                });
+                }).fail(function (data) {
+            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+        });
     }
 
 

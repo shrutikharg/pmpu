@@ -20,7 +20,7 @@ class Company_chapterwisereports_model extends CI_Model {
 
     public function get_chapterwise_report($user_id, $sidx, $sord, $start, $limit, $search_string_array, $count) {
         $this->db->_protect_identifiers = false;
-        $this->db->select("ch.id1 as Chapter_Id,ch.name Chapter_Name,ch.Description,c.name as Course,ch.start_Date as Start_date,ch.end_date End_Date,
+        $this->db->select("ch.id as Chapter_Id,ch.name Chapter_Name,ch.Description,c.name as Course,ch.start_Date as Start_date,ch.end_date End_Date,
                  cast( concat('Not viewed',sum(if(isnull(chapter_id) ,1,0)),'</br>',
                   'Incomplete',sum(if(isnull(completion_details) ,1,0)),'</br>',
                   'Completed-', sum(if(completion_details is not null,1,0)))as char)   AS Status_count ");

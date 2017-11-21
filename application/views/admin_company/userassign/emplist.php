@@ -63,8 +63,8 @@
                     .done(function (data) {
                         $('.ajax-loader').css("visibility", "hidden");
                         $('.res_row').empty();
-                        var i = 1;
-                        $.each(data.rows, function (i, row) {
+                    var i = data.start;
+                    $.each(data.rows, function (index, row) {
                             var employee_id = '"' + row['id'] + '"';
                             $(".res_table").append("<div class='res_row'>\n\
           <div class='column'  data-label='Sr no'>" + (i + 1) + "</div>\n\
@@ -75,11 +75,15 @@
 \n\<td class='column' data-label='action'>\n\
 <input type='button'  value=' <?php echo $this->lang->line('btn_details'); ?>' class='btn btn-info' onclick='view_details(" + employee_id + ")'></button> \n\
 \n\ </td></div>");
-                            i++;
-                        });
-                        pagination(data);
+                        i++;
                     });
-        }
+                    pagination(data);
+                }).fail(function (data) {
+            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+        });
+    }
+
+
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <div id="content">

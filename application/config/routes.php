@@ -297,6 +297,8 @@ $route['admin_company/communication']='communication/index';
 $route['communication/get_users']='communication/get_users';
 $route['communication/send_message']='communication/send_message';
 $route['communication/subject_specific_message']='communication/get_subject_specific_message';
+$route['communication/message_receipient']='communication/get_message_receipient';
+$route['communication/send_reply']='communication/send_reply';
 
 
 

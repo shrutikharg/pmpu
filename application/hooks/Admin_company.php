@@ -14,11 +14,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author a
  */
 class Admin_company {
+    public $ci;
+    public function __construct() {
+       $this->ci =& get_instance(); 
+    }
     //put your code here
     public function get_admin_details() {
-      $ci =& get_instance();
-     $ci->load->library('domain');         
-      $ci->config->set_item('company_details',$ci->domain->get_company_byDomain());
+     $this->ci->load->library('domain');         
+      $this->ci->config->set_item('company_details',$this->ci->domain->get_company_byDomain());
 
+    }
+     function check_session() {
+   $url_without_session_array=array('admin_company/login/validate_credentials');
+
+        if ($this->ci->input->is_ajax_request()){
+        
+        
+           if(!$this->ci->session->userdata('is_logged_in') && (!in_array(str_replace(base_url(), "",  current_url()),$url_without_session_array))){
+         echo 'Session Expired';
+               
+        } 
+        }
     }
 }

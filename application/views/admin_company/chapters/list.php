@@ -57,10 +57,10 @@
             .done(function (data) {
                 $('.ajax-loader').css("visibility", "hidden");
                 $('.res_row').empty();
-                var i = 0;
+                var i = data.start;
 
-                    $.each(data.rows, function (i, row) {
-                        i++;
+                    $.each(data.rows, function (index, row) {
+                        
                         var chapter_id = '"' + row['id'] + '"';
                         $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
                                 "</td><td class='column'  data-label='chapter name'>" + row['name'].substr(1,10) +
@@ -70,11 +70,14 @@
                                      <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
                                     \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
                       </tr>");
+    i++;
 
-                })
-                pagination(data);
-            });
-        }
+                    })
+                    pagination(data);
+                }).fail(function (data) {
+            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+        });
+    }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <style>
