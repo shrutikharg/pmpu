@@ -25,7 +25,7 @@ class Admin_company {
 
     }
      function check_session() {
-   $url_without_session_array=array('admin_company/login/validate_credentials');
+   $url_without_session_array=array('admin_company/login/validate_credentials','employee/login/validate_credentials','admin_company/create_member');
 
         if ($this->ci->input->is_ajax_request()){
         

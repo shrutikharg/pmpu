@@ -16,12 +16,13 @@ class Communication extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('communcation_model');
+        $this->load->model('companyuser_model');
     }
 
     public function index() {
         $data['message_list'] = $this->communcation_model->get_message();
         $data['subject_specific_msg_list'] = $this->communcation_model->get_subject_specific_message($data['message_list'][0]->master_id);
-        $data['main_content'] = 'admin_company/message/list';
+        $data['main_content'] = 'admin_company/communication/list';
         $this->load->view('includes/template', $data);
     }
 
@@ -91,6 +92,40 @@ class Communication extends CI_Controller {
         $this->communcation_model->save_message_receiver($receiver_array);
         $ubject_specific_msg_list = $this->communcation_model->get_subject_specific_message($master_id);
         echo json_encode($ubject_specific_msg_list);
+    }
+
+    function supportmail() {
+        $userid = $this->session->userdata('id');
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+
+            $this->form_validation->set_rules('subname', 'Subject Name', 'trim|required|min_length[3]');
+            $this->form_validation->set_rules('description', 'Description details', 'trim|required|min_length[4]');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
+
+            if ($this->form_validation->run()) {
+                $user_details = $this->companyuser_model->get_userdetails($userid);
+                $support_mail_details = create_admin_support_mail($user_details, $this->input->post());
+                $this->email->from('info@coolacharya.com', $support_mail_details->from_alias);
+                $this->email->to('info@coolacharya.com');
+                $this->email->cc($usernm);
+                $this->email->subject($this->input->post('subname'));
+                $this->email->message($support_mail_details->message);
+                //if the insert has returned true then we show the flash message
+                if ($this->email->send()) {
+                    $this->session->set_flashdata('flash_message', 'send');
+                } else {
+                    $this->session->set_flashdata('flash_message', 'not_send');
+                    echo $this->email->print_debugger();
+                }
+                redirect('admin_company/supportmail');
+            } else {
+                echo validation_errors();
+            }
+        }
+
+        $data['footerdata'] = $this->companycmspage_model->list_cmspage();
+        $data['main_content'] = 'admin_company/communication/supportmail';
+        $this->load->view('includes/template', $data);
     }
 
 }

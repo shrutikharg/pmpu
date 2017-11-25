@@ -53,10 +53,32 @@ class Companyuserassign_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();
     }
-      public function update($data) {
-        $this->db->where('id',$data['id']);
-        $query=  $this->db->update('users',$data);
+
+    public function update($data) {
+        $this->db->where('id', $data['id']);
+        $query = $this->db->update('users', $data);
         return $query;
+    }
+
+    public function get_userdetailspresent($email) {
+        $this->db->select('u.id,u.email,ug.group_id');
+        $this->db->from('users u');
+        $this->db->join('users_groups ug', 'u.id=ug.user_id', 'left');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function insert_csv($data) {
+        $this->db->insert('users', $data);
+        return $this->db->insert_id();
+    }
+
+    function insert_usergroupcsv($data) {
+        $this->db->insert('users_groups', $data);
+    }
+    function insert_subscription($data){
+      $this->db->insert('subscription', $data);   
     }
 
 }
