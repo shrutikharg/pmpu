@@ -1,17 +1,9 @@
-<!----- 
-
-Name of File:register_form.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:registeration form with selected hosting plan
-Update file History :
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <!DOCTYPE html> 
 <html lang="en-US">
     <head>
         <title>Sign Up Page of E-Learning</title>
         <meta charset="utf-8">
+        <link href="favicon.ico" rel="shortcut icon" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets/css/style.css">
         <link href="<?php echo base_url(); ?>assets/assets/css/form.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -90,14 +82,133 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         });
                     }
                 });
+                
+                (function($) {
+                    var tabs =  $(".tabs li a");
+                    tabs.click(function() {
+                          var panels = this.hash.replace('/','');
+                          tabs.removeClass("active");
+                          $(this).addClass("active");
+                          $("#panels > div").hide();
+                          $(panels).fadeIn(200);
+                    });
+                })(jQuery);
             });
         </script>
         <style type="text/css">
             .layer_bg{
                 background:rgba(0,0,0,0.5);
-                   height: calc(100vh - 0px);
+                   min-height: calc(100vh - 0px);
                     bottom:0;
             }
+            
+            ul.tabs {
+                /*width: 600px;*/
+                height: 80px;
+                margin: 0 auto;
+                list-style: none;
+                overflow: hidden;
+                padding: 0;
+              }
+
+              ul.tabs li {
+                float: left;
+                width: 50%;
+              }
+
+              ul.tabs li a {
+                position: relative;
+                display: block;
+                height: 38px;
+                margin-top: 40px;
+                padding: 10px 0 0 0;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 18px;
+                text-align: center;
+                text-decoration: none;
+                color: #ffffff;
+                background: #1abc9c;
+                -webkit-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+                -moz-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+                box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+                border: 0px solid #000000;
+                -webkit-transition: padding 0.2s ease, margin 0.2s ease;
+                -moz-transition: padding 0.2s ease, margin 0.2s ease;
+                -o-transition: padding 0.2s ease, margin 0.2s ease;
+                -ms-transition: padding 0.2s ease, margin 0.2s ease;
+                transition: padding 0.2s ease, margin 0.2s ease;
+              }
+
+              .tabs li:first-child a {
+                z-index: 3;
+                -webkit-border-top-left-radius: 8px;
+                -moz-border-radius-topleft: 8px;
+                border-top-left-radius: 8px;
+              }
+
+              .tabs li:nth-child(2) a { z-index: 2; }
+
+              .tabs li:last-child a {
+                z-index: 1;
+                -webkit-box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
+                -moz-box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
+                box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
+                -webkit-border-top-right-radius: 8px;
+                -moz-border-radius-topright: 8px;
+                border-top-right-radius: 8px;
+              }
+
+              ul.tabs li a:hover {
+                margin: 35px 0 0 0;
+                padding: 10px 0 5px 0;
+              }
+
+              ul.tabs li a.active {
+                margin: 30px 0 0 0;
+                padding: 10px 0 10px 0;
+                background: #0bf7d6;
+                color: #D3FEF5;
+                z-index: 4;
+                outline: none;
+              }
+
+              .group:before,
+              .group:after {
+                content: " "; /* 1 */
+                display: table; /* 2 */
+              }
+
+              .group:after { clear: both; }
+
+              #panels {
+                /*width: 600px;*/
+                //height: 300px;
+                margin: 0 auto;
+                background: #f2f2f2;
+/*                -webkit-box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
+                -moz-box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
+                box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);*/
+                -webkit-border-bottom-right-radius: 8px;
+                -webkit-border-bottom-left-radius: 8px;
+                -moz-border-radius-bottomright: 8px;
+                -moz-border-radius-bottomleft: 8px;
+                border-bottom-right-radius: 8px;
+                border-bottom-left-radius: 8px;
+              }
+
+              #panels p {
+                font-family: 'Open Sans', sans-serif;
+                padding: 30px 40px;
+                color: #ffffff;
+                line-height: 26px;
+                font-size: 18px;
+                margin: 0;
+              }
+
+              #interest { display: none; }
+              a.disable {
+                background-color: #999999;
+              }
         </style>
     </head>
     <body class="register_bg">
@@ -107,17 +218,42 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                 <div class="well col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-top:75px;">
                     <div id="status" style="display:none" class="alert alert-success">
                     </div>
+                    <!--<div class="wrap">
+                        <ul class="tabs group">
+                                <li>
+                                    <a class="active" href="#/general">Personal Infomation</a>
+                                </li>
+                                <li>
+                                    <a href="#/interest">Interest</a>
+                                </li>
+                        </ul>
+                        <div id="panels">
+                                <p id="general">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut hendrerit aliquam mauris, a mattis lectus varius id. Ut dolor tortor, hendrerit et porttitor in, gravida sed felis. Donec vehicula ex nec venenatis pulvinar. Donec vel sodales neque.</p>
+                                <p id="interest">Donec tincidunt tortor ut magna mollis sagittis. Mauris eu nibh non purus gravida hendrerit. Donec enim nisi, pretium eu libero sit amet, bibendum sagittis velit. Pellentesque non dapibus leo. Suspendisse ante tellus, volutpat ac leo eget, venenatis rhoncus sem.</p>
+                        </div>
+                    </div>-->
                     <?php
                     echo validation_errors();
                     $attributes = array('class' => 'form', 'id' => "register_form");
                     echo form_open('admin_company/create_member', $attributes);
                     echo '<h2 class="form-signin-heading"> Sign Up </h2>';
                     echo "<hr class='colorgraph2'><div class='form-group'>";
+                    echo "<div class='wrap'>
+                        <ul class='tabs group'>
+                                <li>
+                                    <a class='active' href='#/general'>Personal Infomation</a>
+                                </li>
+                                <li>
+                                    <a href='#/interest'>Interest</a>
+                                </li>
+                        </ul>";
+                    echo "<div id='panels'><div id='general'>";
                     $first_name = array(
                         'name' => 'first_name',
                         'id' => 'first_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'First Name',
+                        'required' => 'required'
                     );
                     echo "<div class='form-group'>";
                     echo form_input($first_name);
@@ -127,6 +263,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         'id' => 'last_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Last Name',
+                        'required' => 'required'
                     );
                     echo "<div class='form-group'>";
                     echo form_input($last_name);
@@ -136,6 +273,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         'id' => 'web_address',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Web Address',
+                        'required' => 'required'
                     );
                     echo "<div class='form-group'>";
                     echo form_input($web_address);
@@ -145,6 +283,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         'id' => 'comp_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Company Name',
+                        'required' => 'required'
                     );
                     echo "<div class='form-group'>";
                     echo form_input($comp_name);
@@ -154,6 +293,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                         'id' => 'domain_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Sub Domain Name',
+                        'required' => 'required'
                     );
                     echo "<div class='form-group'>";
                     echo form_input($domain_name);
@@ -203,12 +343,44 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                     echo "</div>";
                     echo "</div></div>";
                     echo "</p>";
-                    echo "<hr class='colorgraph2'><div class='row'>";
+                    echo "<hr class='colorgraph2'>";
+                    echo "<div class='row'>";
+                    echo "<div class='col-xs-6 col-md-6'><a id='validate' class='btn btn-success btn-block btn-lg'>Validate Details</a></div>";?>
+                    <div class="col-xs-6 col-md-6"><a onclick="javascript: $('.tabs li a').trigger('click');" id="next" href="#/interest" class="btn btn-success btn-block btn-lg">Save & Next</a></div>                            <?php
+                    echo "</div>";
+                    echo "</div></div><div id='interest'>";
+                    
+                    echo "<div class='form-group'>";
+                    echo "<h3>Type Of Event</h3>";
+                    echo "</div>";
+                    
+                    $options = array(
+                        '' => 'select Event',
+                        'conference' => 'Conference',
+                        'seminar' => 'Seminar',                        
+                        'Team Building Events' => 'Team Building Events',
+                        'Trade Shows' => 'Trade Shows',
+                        'Networking Events' => 'Networking Events',
+                        'Opening Ceremonies' => 'Opening Ceremonies',
+                        'Product Launches' => 'Product Launches',
+                        'Theme Parties' => 'Theme Parties',
+                        'Award Ceremonies' => 'Award Ceremonies',
+                        'Weddings' => 'Weddings',
+                        'Birthdays' => 'Birthdays',
+                        'Wedding Anniversaries' => 'Wedding Anniversaries',
+                        'Family Events' => 'Family Events'
+                    );
+                    $selectVal = '';
+                    echo "<div class='form-group'>";
+                    echo form_dropdown('typeofevents', $options, $selectVal, 'id="typeofevents" class="form-control input-lg"');
+                    echo "</div>";
+                    
+                    echo "<div class='row'>";
                     echo "<div class='col-xs-6 col-md-6'><a id='reset' class='btn btn-success btn-block btn-lg'>Reset</a></div>";
                     echo "<div class='col-xs-6 col-md-6'>";
                     echo form_submit('submit', 'submit', 'id="submit" class="btn btn-lg btn-block btn-primary"');
                     echo"</div>";
-                    echo "</div>";
+                    echo "</div></div></div>";
                     ?>
                     <?php
                     //var_dump($hostingplanselect);
@@ -225,8 +397,7 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                 this.reset();
             });
             // Match Confirm Password with password field javascript code
-            var password = document.getElementById("password")
-                    , passconf = document.getElementById("passconf");
+            var password = document.getElementById("password"), passconf = document.getElementById("passconf");
 
             function validatePassword() {
                 if (password.value !== passconf.value) {
@@ -244,22 +415,50 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
                 });
                 $('#reset').click(function(){
                     $('#register_form')[0].reset();
+                    $('.tabs li a:eq(0)').trigger('click');
                 })
             });           
             
-       // Input field custom validation message
+         // Input field custom validation message
             document.addEventListener("DOMContentLoaded", function() {
-    var mailvalidate = document.getElementById("email_address");
-   
-        mailvalidate.oninvalid = function(e) {
-            e.target.setCustomValidity("");
-            if (!e.target.validity.valid) {
-                e.target.setCustomValidity("Please Enter Valid Email Address");
-               }
-        };
-       mailvalidate.oninput = function(e) {
-            e.target.setCustomValidity("");
-        };   
-   });
+                    var mailvalidate = document.getElementById("email_address");
+
+                   mailvalidate.oninvalid = function(e) {
+                       e.target.setCustomValidity("");
+                       if (!e.target.validity.valid) {
+                           e.target.setCustomValidity("Please Enter Valid Email Address");
+                          }
+                   };
+                  mailvalidate.oninput = function(e) {
+                       e.target.setCustomValidity("");
+                   };   
+              });
+              
+              $('.tabs li:last-child a, #next').css('pointer-events', 'none');
+              $('#next').addClass('disable');
+              $('#validate').unbind('click').bind('click', function(){
+                  validateTab();
+              });
+              function validateTab() {
+                var first_name = $('#first_name').val();
+                var last_name = $('#last_name').val();
+                var web_address = $('#web_address').val();
+                var cmp_name = $('#comp_name').val();
+                var domain_name = $('#domain_name').val();
+                var email_address = $('#email_address').val();
+                var password = $('#password').val();
+                var passconf = $('#passconf').val();
+
+                if(first_name == '' || last_name == '' || web_address == '' || cmp_name == '' || domain_name == '' || email_address == '' || password == '' || passconf == '')
+                        alert('please Enter All Fields');
+                else if (password !== passconf) {
+                    alert("Passwords Don't Match");
+                } else {
+                    alert('Verified Successfully');
+                    $('.tabs li:last-child a, #next').css('pointer-events', 'all');
+                    $('#next').removeClass('disable');
+                }
+            }
         </script>          
     </body>
+</html>
