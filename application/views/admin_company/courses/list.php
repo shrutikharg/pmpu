@@ -54,25 +54,29 @@
             })
                     // using the done promise callback
                     .done(function (data) {
-                        $('.ajax-loader').css("visibility", "hidden");
-                        $('.res_row').empty();
+                    if(data.status=='Session Expired'){
+                        
+                  window.location.href = "<?php echo base_url(); ?>admin_company/login";      
+                }
+                    $('.ajax-loader').css("visibility", "hidden");
+                    $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {
 
-                            var course_id = '"' + row['id'] + '"';
-                            $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (i) +
-                                    "</div><div class='column' data-label='Course name'>" + row['name'] +
-                                    "</div><div class='column' data-label='Description'>" + row['description'].substring(0, 15) +
-                                    "</div><div class='column' data-label='Author name'>" + row['assigner'] +
-                                    "</div><div class='column' data-label='Description'>" + row['startdate'] +
-                                    "</div><div class='column' data-label='Description'>" + row['enddate'] +
-                                    "</div><div class='column' data-label='action'><input type='button' name='edit'value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info'  onclick='edit_courses(" + course_id + ")'></button></div>\n\
+                        var course_id = '"' + row['id'] + '"';
+                        $(".res_table").append("<div class='res_row'><div class='column' data-label='Sr no'>" + (i) +
+                                "</div><div class='column' data-label='Course name'>" + row['name'] +
+                                "</div><div class='column' data-label='Description'>" + row['description'].substring(0, 15) +
+                                "</div><div class='column' data-label='Author name'>" + row['assigner'] +
+                                "</div><div class='column' data-label='Description'>" + row['startdate'] +
+                                "</div><div class='column' data-label='Description'>" + row['enddate'] +
+                                "</div><div class='column' data-label='action'><input type='button' name='edit'value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info'  onclick='edit_courses(" + course_id + ")'></button></div>\n\
 </div>");
                         i++;
-                        })
+                    })
                     pagination(data);
                 }).fail(function (data) {
-            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+          
         });
     }
 
