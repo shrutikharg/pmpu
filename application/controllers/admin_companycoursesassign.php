@@ -456,16 +456,7 @@ $email=  trim($row['email']);
         }
     }
 
-    function download_sample_file() {
-        $file = "./uploads/sample/sample_user.csv";
-       
-        header('Content-Type: text/x-comma-separated-values');
-        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-        header('Cache-Control: private', false); // required for certain browser
-        header('Content-Disposition: attachment; filename="' . $file . '"');
-        ob_clean();      
-        readfile($file);
-    }
+  
 
     public function file_check() {
 

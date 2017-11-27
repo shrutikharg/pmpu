@@ -53,13 +53,15 @@ $route['admin_company/get_hash'] = 'companyuser/get_hash';
 $route['admin_company/verify'] = 'companyuser/verify_user';
 
 $route['admin_company/login/validate_credentials'] = 'companyuser/validate_credentials';
-$route['admin_company/userprofile'] = 'companyuser/userprofile';
-$route['admin_company/pwdchange'] = 'companyuser/pwdchange';
-$route['admin_company/supportmail'] = 'companyuser/supportmail';
+
 $route['admin_company/register'] = 'companyuser/register';
 $route['admin_company/create_member'] = 'companyuser/create_member';
 $route['admin_company/apply_payment'] = 'companyuser/apply_payment_index';
 $route['admin_company/payment_subscribe'] = 'companyuser/payment_subscribe';
+
+
+$route['admin_company/userprofile'] = 'admin_profile/userprofile';
+$route['admin_company/pwdchange'] = 'admin_profile/pwdchange';
 
 
 
@@ -165,7 +167,6 @@ $route['admin_company/coursesassign/assignall'] = 'admin_companycoursesassign/as
 $route['admin_company/coursesassign/assignee'] = 'admin_companycoursesassign/assginee_index';
 $route['admin_company/coursesassign/assignee_list'] = 'admin_companycoursesassign/assginee_list';
 $route['admin_company/coursesassign/update_assignee_active_status'] = 'admin_companycoursesassign/update_assignee_active_status';
-$route['admin_company/coursesassign/download_sample_file'] = 'admin_companycoursesassign/download_sample_file';
 
 $route['admin_company/mycourses'] = 'admin_companymycourses/index';
 $route['admin_company/mycourses/add'] = 'admin_companymycourses/add';
@@ -299,8 +300,11 @@ $route['communication/send_message']='communication/send_message';
 $route['communication/subject_specific_message']='communication/get_subject_specific_message';
 $route['communication/message_receipient']='communication/get_message_receipient';
 $route['communication/send_reply']='communication/send_reply';
+$route['admin_company/supportmail'] = 'communication/supportmail';
 
 
+$route['admin_company/add_user']='admin_companyuserassign/add_user';
+$route['admin_company/add_user/download_sample_file'] = 'admin_companyuserassign/download_sample_file';
 
 
 /* End of file routes.php */

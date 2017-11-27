@@ -96,9 +96,9 @@ $lang['lbl_is_user_active_for_course']="Is Acive";
 $lang['lbl_course_assigned_to']="Assigned To";
 
 //form control for admin and employee
-$lang['brd_employee']="Employee";
-$lang['nav_employee_list']="Employee List";
-$lang['brd_employee']="Employee";
+$lang['brd_employee']="User";
+$lang['nav_employee_list']="User List";
+$lang['brd_employee']="User";
 $lang['lbl_email']="Email";
 $lang['lbl_emp_full_name']="Full Name";
 $lang['lbl_emp_first_name']="First Name";
@@ -206,9 +206,16 @@ $lang['lbl_new_msg']="New Message";
 $lang['lbl_send_msg']="Send Message";
 $lang['lbl_subject']="Subject";
 
+//form_control for mail support
+$lang['nav_support']="Support";
+$lang['nav_mail_support']="Mail Support";
+$lang['lbl_comp_mail']="Compose Mail";
+$lang['lbl_send_mail']="Send";
 
 
 
+//form control for admin user
+$lang['nav_add_user']="Add New User";
 
 
 

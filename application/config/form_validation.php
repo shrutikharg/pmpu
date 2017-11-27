@@ -119,17 +119,8 @@ $config = array(
             'label' => 'lang:lbl_course_by',
             'rules' => 'trim')
     ),
-    'admin_companycoursesassign/update' => array(
-        array(
-            'field' => 'name',
-            'label' => 'lang:lbl_course',
-            'rules' => 'trim'
-        ),
-        array(
-            'field' => 'description',
-            'label' => 'lang:Description',
-            'rules' => 'required'
-        ),
+    'admin_companyuserassign/add_user' => array(
+     
         array('field' => 'userfile',
             'label' => 'lang:lbl_upload_course_assignment_csv',
             'rules' => 'callback_file_check')

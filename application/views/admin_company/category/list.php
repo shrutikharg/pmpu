@@ -7,7 +7,7 @@
         display: table;
     }
 </style>
-    <script>var is_search = false, page = 1, search_string_array = "";
+<script>var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
        setTimeout(function () {
@@ -21,15 +21,19 @@
                 fetch_list(page);
             
         });
+
+
     });
-    function edit_category(category_id){
-            var form = $(document.createElement('form'));
-            $(form).attr("action", "../admin_company/category/update");
-            $(form).attr("method", "POST");
- $(form).attr("id", "form1");
-            var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
-            $(form).append($(input));
-       $(form).appendTo("body").submit();
+    function edit_category(category_id) {
+
+
+        var form = $(document.createElement('form'));
+        $(form).attr("action", "../admin_company/category/update");
+        $(form).attr("method", "POST");
+        $(form).attr("id", "form1");
+        var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
+        $(form).append($(input));
+        $(form).appendTo("body").submit();
     }
     function fetch_list(page) {
         var formData = {
@@ -45,37 +49,42 @@
             },
             url: '../admin_company/category/list', // the url where we want to POST
             data: formData, // our data object
-                    dataType: 'json', // what type of data do we expect back from the server
-                    encode: true
-                })
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        })
                 // using the done promise callback
                 .done(function (data) {
                     $('.ajax-loader').css("visibility", "hidden");
                     $('.res_row').empty();
                     var i = 0;
                     $.each(data.rows, function (i, row) {
-                         var category_id='"'+row['id']+'"';
+                        var category_id = '"' + row['id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
-                <div class='column' data-label='Sr no'>" + (i+1) + "</div>\n\
+            <div class='column' data-label='Sr no'>" + (i + 1) + "</div>\n\
 <div class='column' data-label='Category name'>" + row['name'] + "</div>\n\
 <div class='column' data-label='Category name'>" + row['description'] + "</div>\n\
-<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_category("+category_id+")'></button></div>\n\
+<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_category(" + category_id + ")'></button></div>\n\
 </div>");
                         i++;
                     });
                     pagination(data);
                 });
     }
+
+
 </script>
+
 <div id="content">
     <div class="container">
         <!-- Breadcrumbs line -->
         <div class="crumbs">
             <ul class="breadcrumb">
-              <li>
+                <li>
                     <a href="#">
                         <?php echo $this->lang->line('brd_organization'); ?>
+
                     </a> 
+
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">

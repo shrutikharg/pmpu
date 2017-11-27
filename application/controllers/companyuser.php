@@ -10,7 +10,7 @@ class Companyuser extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Companyuser_model');
-        $this->load->model('company_model');
+       
     }
 
     function index() {
@@ -146,149 +146,6 @@ class Companyuser extends CI_Controller {
         }
     }
 
-    /**
-     * Update item by his id
-     * @return void
-     */
-    function userprofile() {
-        //product id 
-
-
-        $userid = $this->session->userdata('id');
-        $usernm = $this->session->userdata('user_name');
-        //if save button was clicked, get the data sent via post
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            //form validation
-            $this->form_validation->set_rules('umobile', 'User Mobile no', 'trim|required|min_length[4]|numeric');
-            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
-            //if the form has passed through the validation
-            if ($this->form_validation->run()) {
-
-                $data_to_store = array(
-                    'phone_no' => $this->input->post('umobile'),
-                    'modify_date' => date('Y-m-d'),
-                    'modify_by' => $this->session->userdata('user_name'),
-                    'is_active' => 'Y',
-                );
-                //if the insert has returned true then we show the flash message
-                if ($this->Companyuser_model->update_pwduseradminnew($id, $data_to_store) == TRUE) {
-                    $this->session->set_flashdata('flash_message', 'updated');
-                } else {
-                    $this->session->set_flashdata('flash_message', 'not_updated');
-                }
-                redirect('admin_company/userprofile/' . $id . '');
-            }//validation run
-        }
-
-
-        $data['users'] = $this->Companyuser_model->get_userdetails_by_id($this->session->userdata('id'));
-        $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
-        //load the view
-        $data['main_content'] = 'admin_company/profile/edit';
-        $this->load->view('includes/template', $data);
-    }
-
-//update
-
-    /**
-     * Update item by his id
-     * @return void
-     */
-    function pwdchange() {
-        //product id 
-      
-        $this->load->model('Companyuser_model');
-        //if save button was clicked, get the data sent via post
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            //form validation
-            $this->form_validation->set_rules('old_password', 'Old Password', 'required');
-            $this->form_validation->set_rules('new_password', 'Password', 'trim|required|min_length[4]|max_length[16]');
-            $this->form_validation->set_rules('new_password_repeat', 'Password Confirmation', 'trim|required|matches[new_password]');
-            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
-            //if the form has passed through the validation
-            if ($this->form_validation->run()) {
-
-                $nepassword = $this->encrypt->encrypt_password($this->input->post('new_password'));
-                $data_to_store = array(
-                    'password' => $nepassword,
-                    'updated_at' => date('Y-m-d H:i:s'),
-                    'updated_by' =>$this->session->userdata('id'),
-                    'id'=>$this->session->userdata('id'),
-                   
-                );
-                //if the insert has returned true then we show the flash message
-                if ($this->Companyuser_model->update_pwduseradminnew( $data_to_store) == TRUE) {
-                    $this->session->set_flashdata('flash_message', 'updated');
-                    $this->session->sess_destroy();
-                    redirect('admin_company');
-                } else {
-                    $this->session->set_flashdata('flash_message', 'not_updated');
-                }
-
-                redirect('admin_company/userprofile/' . $id . '');
-            }//validation run
-        }
-
-        //if we are updating, and the data did not pass trough the validation
-        //the code below wel reload the current data
-        //product data 
-        //$data['users'] =$this->Companyuser_model->select_authinteciate_user($userid,$user_name);
-        $data['users'] = $this->Companyuser_model->get_userdetails_by_id($id);
-
-        //load the view
-        $data['main_content'] = 'admin_company/profile/edit';
-        $this->load->view('includes/template', $data);
-    }
-
-//update
-
-    function supportmail() {
-     
-       
-        $userid = $this->session->userdata('id');
-        $usernm = $this->session->userdata('user_name');
-
-        //if save button was clicked, get the data sent via post
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
-
-            $this->form_validation->set_rules('subname', 'Subject Name', 'trim|required|min_length[3]');
-            $this->form_validation->set_rules('description', 'Description details', 'trim|required|min_length[4]');
-            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
-
-            if ($this->form_validation->run()) {
-                $user_details = $this->Companyuser_model->get_userdetails($userid);
-                $support_mail_details = create_admin_support_mail($user_details, $this->input->post());
-                $this->email->from('info@coolacharya.com', $support_mail_details->from_alias);
-                $this->email->to('info@coolacharya.com');
-               $this->email->cc($usernm);
-                $this->email->subject($this->input->post('subname'));
-                $this->email->message($support_mail_details->message);
-                //if the insert has returned true then we show the flash message
-                if ($this->email->send()) {
-                    $this->session->set_flashdata('flash_message', 'send');
-                } else {
-                    $this->session->set_flashdata('flash_message', 'not_send');
-                    echo $this->email->print_debugger();
-                   
-                }
-                redirect('admin_company/supportmail');
-            }else{
-               echo validation_errors();
-               
-            }
-        }
-       
-        $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
-        $data['main_content'] = 'admin_company/profile/supportmail';
-        $this->load->view('includes/template', $data);
-    }
-
-//update
-
-    /**
-     * Destroy the session, and logout the user.
-     * @return void
-     */
     function logout() {
         $this->session->sess_destroy();
         redirect('admin_company/login');
@@ -429,11 +286,18 @@ class Companyuser extends CI_Controller {
     }
 
     public function check_domain_exist($domain) {
-        $domain_count = $this->company_model->check_domain_availability($domain);
-        if ($domain_count !== 0) {
+        $domain_result = $this->domain->check_domain_availability($domain.'.coolacharya.com');
+       
+       
+        if (!empty($domain_result)) {
+                      
             $this->form_validation->set_message('check_domain_exist', 'Doamin is alaready exist,please enter another Domain');
             return false;
         }
+        
+       
+        $this->domain->create_subdomain($domain);
+         
         return true;
     }
 

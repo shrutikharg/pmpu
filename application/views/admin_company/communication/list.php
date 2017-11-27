@@ -48,9 +48,10 @@
             formatSelection: formatSelection,
         });
         $("#send_msg_btn").click(function () {
-            $('#msgcontainer').hide();
             if ($("#user_select").select2('data').length == 0) {
                 alert('please select recepient');
+
+
             } else {
                 var user_list_array = [];
 
