@@ -37,17 +37,17 @@ $(document).ready(function () {
 
     dragElement(document.getElementById(("msgcontainer")));
 
-    function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById(elmnt.id + "header")) {
+        function dragElement(elmnt) {
+          var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+          if (document.getElementById(elmnt.id + "header")) {
             /* if present, the header is where you move the DIV from:*/
             document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-        } else {
+          } else {
             /* otherwise, move the DIV from anywhere inside the DIV:*/
             elmnt.onmousedown = dragMouseDown;
-        }
+          }
 
-        function dragMouseDown(e) {
+          function dragMouseDown(e) {
             e = e || window.event;
             // get the mouse cursor position at startup:
             pos3 = e.clientX;
@@ -55,9 +55,9 @@ $(document).ready(function () {
             document.onmouseup = closeDragElement;
             // call a function whenever the cursor moves:
             document.onmousemove = elementDrag;
-        }
+          }
 
-        function elementDrag(e) {
+          function elementDrag(e) {
             e = e || window.event;
             // calculate the new cursor position:
             pos1 = pos3 - e.clientX;
@@ -67,9 +67,9 @@ $(document).ready(function () {
             // set the element's new position:
             elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
             elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
+          }
 
-        function closeDragElement() {
+          function closeDragElement() {
             /* stop moving when mouse button is released:*/
             document.onmouseup = null;
             document.onmousemove = null;
@@ -86,4 +86,5 @@ $(document).ready(function () {
         $(this).parent().parent().prev().show();
         $(this).parent().parent().hide();
     });
+    
 });

@@ -28,10 +28,15 @@ class Admin_company {
    $url_without_session_array=array('admin_company/login/validate_credentials','employee/login/validate_credentials','admin_company/create_member');
 
         if ($this->ci->input->is_ajax_request()){
-        
+           
         
            if(!$this->ci->session->userdata('is_logged_in') && (!in_array(str_replace(base_url(), "",  current_url()),$url_without_session_array))){
-         echo 'Session Expired';
+        $response=new stdClass();
+        
+        $response->status="Session Expired";
+        
+        echo json_encode($response);
+        exit();
                
         } 
         }

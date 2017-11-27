@@ -295,6 +295,7 @@ $route['admin_company/coupon_code/update']='admin_companycouponcode/update';
 $route['employee/coupon_code/check']='employeeuser/apply_couponcode';
 
 $route['admin_company/communication']='communication/index';
+$route['admin_company/communication/list']='communication/communication_list';
 $route['communication/get_users']='communication/get_users';
 $route['communication/send_message']='communication/send_message';
 $route['communication/subject_specific_message']='communication/get_subject_specific_message';
