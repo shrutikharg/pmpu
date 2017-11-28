@@ -64,7 +64,7 @@ class Companyuser extends CI_Controller {
     function signup() {
         $this->load->model('companyplantable_model');
         $data['hostingdetails'] = $this->companyplantable_model->plantabledetails();
-        //$this->load->view('admin_company/signup_form');	
+        /*$this->load->view('admin_company/signup_form');*/	
         $this->load->view('admin_company/signup_form', $data);
     }
 
@@ -94,6 +94,7 @@ class Companyuser extends CI_Controller {
             $manadate_insert_details = $this->mandate_update->get_insert_admin_details();
 
             $company_id = $this->company_model->insert(array_merge($trim_company_data_array, $manadate_insert_details));
+            $this->domain->create_subdomain($trim_company_data_array['domain_name']);
             $user_data = array(
                 'email' => $email_id,
                 'password' => $this->encrypt->encrypt_password(($this->input->post('password'))),
@@ -223,7 +224,7 @@ class Companyuser extends CI_Controller {
         }
 
         $hash_string .= $SALT;
-        echo $hash_string;
+       
         $hash = (hash('sha512', $hash_string));
         $response = new stdClass();
         $response->hash = $hash;
@@ -296,9 +297,10 @@ class Companyuser extends CI_Controller {
         }
         
        
-        $this->domain->create_subdomain($domain);
+        
          
         return true;
     }
+	
 
 }

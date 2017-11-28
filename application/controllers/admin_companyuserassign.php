@@ -1,6 +1,6 @@
 <?php
 
-class Admin_companyuserassign extends CI_Controller {
+class admin_companyuserassign extends CI_Controller {
 
     /**
      * name of the folder responsible for the views 
@@ -16,11 +16,11 @@ class Admin_companyuserassign extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companyuserassign_model');
 
-
-        if (!$this->session->userdata('is_logged_in')) {
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        } else {
+            $this->load->model('companyuserassign_model');
         }
     }
 
@@ -169,7 +169,7 @@ class Admin_companyuserassign extends CI_Controller {
                                     $this->companyuserassign_model->insert_usergroupcsv(array_merge($user_data_to_update, $manadate_insert_details));
                                     if (!empty($user_id)) {
                                         $company_details = $this->company_model->get_company_details();
-                                        
+
                                         $subscription_link = 'http://' . $this->company_details->domain_name . '.coolacharya.com';
                                         $user_creation_mail_details = create_csv_user_format($email, $password_array['original_password'], $subscription_link, $company_details);
                                         $message = $user_creation_mail_details->message;
@@ -192,7 +192,7 @@ class Admin_companyuserassign extends CI_Controller {
                                 $subscription_data = array(
                                     'user_id' => $user_id,
                                     'payment_through' => 'Free',
-                                    'product_name'=>$company_details->product_name
+                                    'product_name' => $company_details->product_name
                                 );
                                 $manadate_insert_details = $this->mandate_update->get_insert_details();
                                 $query = $this->companyuserassign_model->insert_subscription(array_merge($subscription_data, $manadate_insert_details));
@@ -274,14 +274,15 @@ class Admin_companyuserassign extends CI_Controller {
 
         return FALSE;
     }
-      function download_sample_file() {
+
+    function download_sample_file() {
         $file = "./uploads/sample/sample_user.csv";
-       
+
         header('Content-Type: text/x-comma-separated-values');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
         header('Cache-Control: private', false); // required for certain browser
         header('Content-Disposition: attachment; filename="' . $file . '"');
-        ob_clean();      
+        ob_clean();
         readfile($file);
     }
 

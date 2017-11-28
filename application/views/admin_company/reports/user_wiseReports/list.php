@@ -44,6 +44,10 @@
         })
                 // using the done promise callback
                 .done(function (data) {
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {
@@ -173,16 +177,7 @@
                         );
                         echo form_input($name_control);
                         echo '</div>';
-                        echo '<label class="col-md-1   control-label">' . $this->lang->line('lbl_assigned_course') . '</label>';
-                        echo '<div class="col-md-2">';
-                        $course_assign_control = array(
-                            'name' => 'course_assign',
-                            'id' => 'course_assign',
-                            'class' => 'form-control',
-                            'placeholder' => $this->lang->line('lbl_assigned_course')
-                        );
-                        echo form_input($course_assign_control);
-                        echo '</div>';
+                       
 
                         $data_submit = array('type' => 'button', 'name' => 'mysubmit', 'class' => 'btn btn-primary', 'id' => 'search', 'value' => $this->lang->line('btn_search'));
 

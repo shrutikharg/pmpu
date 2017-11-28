@@ -39,7 +39,10 @@
                     };
                 },
                 results: function (data, page) {
+                    if (data.status === 'Session Expired') {
 
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     return {
                         results: data.users
                     };
@@ -73,6 +76,10 @@
                 })
                         // using the done promise callback
                         .done(function (data) {
+                            if (data.status === 'Session Expired') {
+
+                                window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                            }
                             $('#msgcontainer').find('input:text').val('');
                             $('.res_row').empty();
                             var i = 0;
@@ -109,6 +116,10 @@
                         };
                     },
                     results: function (data, page) {
+                        if (data.status === 'Session Expired') {
+
+                            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                        }
 
                         return {
                             results: data.users
@@ -126,6 +137,10 @@
                             master_id: master_id
                         }
                     }).done(function (data) {
+                        if (data.status === 'Session Expired') {
+
+                            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                        }
                         callback(data);
                     });
 
@@ -152,7 +167,10 @@
                 encode: true
             })
                     .done(function (data) {
+                        if (data.status === 'Session Expired') {
 
+                            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                        }
                         $('.replyDiv').show();
                         $("#reply").toggle();
                         append_message(data);
@@ -184,6 +202,10 @@
         })
                 // using the done promise callback
                 .done(function (data) {
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     $('.ajax-loader').css("visibility", "hidden");
                     $('.res_row').empty();
 
@@ -191,7 +213,7 @@
                         window.location.href = "<?php echo base_url(); ?>admin_company/login";
 
                     }
-master_id=data.rows[0].master_id;
+                    master_id = data.rows[0].master_id;
                     $.each(data.rows, function (index, row) {
 
                         var master_id = '"' + row.master_id + '"';
@@ -216,7 +238,8 @@ master_id=data.rows[0].master_id;
         });
     }
 
-    function msg_fetch_list(message_page_no) {alert(master_id);
+    function msg_fetch_list(message_page_no) {
+        alert(master_id);
         var formData = {
             'search': is_search,
             'page': message_page_no,
@@ -235,6 +258,10 @@ master_id=data.rows[0].master_id;
         })
                 // using the done promise callback
                 .done(function (data) {
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     $('.ajax-loader').css("visibility", "hidden");
 
                     if (data.status == "Session Expired") {

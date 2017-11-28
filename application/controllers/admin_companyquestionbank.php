@@ -28,14 +28,13 @@ class admin_Companyquestionbank extends CI_Controller {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
-        $this->load->model('companyquestionbank_model');
-        $this->load->library('Encryption');
 
 
-        if (!$this->session->userdata('is_logged_in')) {
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        } else {
+            $this->load->model('companyquestionbank_model');
         }
-        
     }
 
     /**
@@ -52,7 +51,7 @@ class admin_Companyquestionbank extends CI_Controller {
 //index
 
     public function questionbank_list() {
-        
+
         $userid = $this->session->userdata('id');
         $limit = 10; //no. of rows
         $sidx = 'id';
@@ -102,7 +101,6 @@ class admin_Companyquestionbank extends CI_Controller {
         echo json_encode($response);
     }
 
-
     public function chapterquestion_list() {
         $chapter_id = $this->encryption->decrypt($this->input->post(chapter_id));
         $question_bank_id = $this->encryption->decrypt($this->input->post(question_bank_id));
@@ -110,19 +108,19 @@ class admin_Companyquestionbank extends CI_Controller {
         $response = new stdClass();
 
         $i = 0;
-if($chapterquestion_data!=NULL){
-        foreach ($chapterquestion_data->result() as $row) {
+        if ($chapterquestion_data != NULL) {
+            foreach ($chapterquestion_data->result() as $row) {
 
 
-            $response->rows[$i] = array('id' => $this->encryption->encrypt($row->id), 'name' => $row->name, 'question_added_status' => $row->status);
-            $i++;
+                $response->rows[$i] = array('id' => $this->encryption->encrypt($row->id), 'name' => $row->name, 'question_added_status' => $row->status);
+                $i++;
+            }
+            echo json_encode($response);
         }
-echo json_encode($response);}
-
     }
 
     public function update_question_list() {
-        $question_bank_id =$this->encryption->decrypt( $this->input->post(question_bank_id));
+        $question_bank_id = $this->encryption->decrypt($this->input->post(question_bank_id));
         $question_bank_chapter_list = array();
         foreach ($this->input->post(chapter_list) as &$value) {
             array_push($question_bank_chapter_list, $this->encryption->decrypt($value));
@@ -145,10 +143,9 @@ echo json_encode($response);}
             'created_by' => $userid = $this->session->userdata('id')
         );
         $query = $this->companyquestionbank_model->add($insert_data);
-        if($query!=NULL){
+        if ($query != NULL) {
             echo "Success";
-        }
-        else{
+        } else {
             echo "Fail";
         }
     }
@@ -156,25 +153,7 @@ echo json_encode($response);}
     public function question_list() {
         $questionbank_id = $this->encryption->decrypt($this->input->post(questionbank_id));
         $questionbank_question_list = $this->companyquestionbank_model->question_list($questionbank_id);
-       $response = new stdClass();
-
-        $i = 0;
-
-        foreach ($questionbank_question_list->result() as $row) {
-
-
-            $response->rows[$i] = array('id' => $this->encryption->encrypt($row->id), 'name' => $row->name);
-            $i++;
-        }
-        echo json_encode($response);
-        
-    }
-    public function get_questionbanks_question_list()
-    {$quiz_based_on=$this->input->post(quiz_based_on);
-    $quiz_based_value=$this->input->post(quiz_based_value);
-         
-        $questionbank_question_list = $this->companyquestionbank_model->get_questionbanks_question_list($$quiz_based_on,$quiz_based_value);
-       $response = new stdClass();
+        $response = new stdClass();
 
         $i = 0;
 
@@ -186,4 +165,23 @@ echo json_encode($response);}
         }
         echo json_encode($response);
     }
+
+    public function get_questionbanks_question_list() {
+        $quiz_based_on = $this->input->post(quiz_based_on);
+        $quiz_based_value = $this->input->post(quiz_based_value);
+
+        $questionbank_question_list = $this->companyquestionbank_model->get_questionbanks_question_list($$quiz_based_on, $quiz_based_value);
+        $response = new stdClass();
+
+        $i = 0;
+
+        foreach ($questionbank_question_list->result() as $row) {
+
+
+            $response->rows[$i] = array('id' => $this->encryption->encrypt($row->id), 'name' => $row->name);
+            $i++;
+        }
+        echo json_encode($response);
+    }
+
 }

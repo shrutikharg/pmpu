@@ -6,8 +6,10 @@
 <script>
     var is_search = false, page = 1, search_string_array = "";
 
-        $(document).ready(function () {
-                   setTimeout(function(){ fetch_list(page); }, 1800);
+    $(document).ready(function () {
+        setTimeout(function () {
+            fetch_list(page);
+        }, 1800);
 
 
         $("#search").click(function () {
@@ -55,27 +57,31 @@
             })
             // using the done promise callback
             .done(function (data) {
-                $('.ajax-loader').css("visibility", "hidden");
-                $('.res_row').empty();
-                var i = data.start;
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
+                    $('.ajax-loader').css("visibility", "hidden");
+                    $('.res_row').empty();
+                    var i = data.start;
 
                     $.each(data.rows, function (index, row) {
-                        
+
                         var chapter_id = '"' + row['id'] + '"';
                         $("tbody").append("<tr class='ui-sortable-handle res_row'><td class='column' data-label='Sr no'>" + i +
-                                "</td><td class='column'  data-label='chapter name'>" + row['name'].substr(1,10) +
-                                "</td><td class='column' data-label='Course name'>" + row['course'].substr(1,10) +
-                                "</td><td class='column' data-label='Description'>" + row['description'].substr(1,10) +                                
+                                "</td><td class='column'  data-label='chapter name'>" + row['name'].substr(1, 10) +
+                                "</td><td class='column' data-label='Course name'>" + row['course'].substr(1, 10) +
+                                "</td><td class='column' data-label='Description'>" + row['description'].substr(1, 10) +
                                 "</td><td class='column' data-label='action'>\n\
                                      <input type='button'  value=' <?php echo $this->lang->line('btn_edit'); ?>' class='btn btn-info' onclick='edit_chapter(" + chapter_id + ")'></button> \n\
                                     \n\  <input type='button'  value=' <?php echo $this->lang->line('lbl_chapt_comment'); ?>' class='btn btn-info' onclick='view_comment(" + chapter_id + ")'></button></td> \n\
                       </tr>");
-    i++;
+                        i++;
 
                     })
                     pagination(data);
                 }).fail(function (data) {
-            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+          
         });
     }
 </script>

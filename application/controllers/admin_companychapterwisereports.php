@@ -5,13 +5,16 @@ class admin_companychapterwisereports extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companychapters_model');
+        
+
+       if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
+            redirect('admin_company/login');
+        }
+        else{
+          $this->load->model('companychapters_model');
         $this->load->model('companycmspage_model');
         $this->load->model('Company_chapterwisereports_model');
-
-
-        if (!$this->session->userdata('is_logged_in')) {
-            redirect('admin_company/login');
+  
         }
     }
 

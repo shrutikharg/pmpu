@@ -20,8 +20,9 @@ class Employee_courses extends CI_Controller {
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
 
-        if (!($this->session->userdata('is_logged_in'))) {
-            redirect('employee/logout');
+       
+       if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
+            redirect('employee/login');
         } else {
             $this->load->model('employeecourses_model');
             $this->load->model('subcategory_model');

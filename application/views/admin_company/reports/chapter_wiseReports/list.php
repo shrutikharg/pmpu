@@ -41,6 +41,10 @@
         })
                 // using the done promise callback
                 .done(function (data) {
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {

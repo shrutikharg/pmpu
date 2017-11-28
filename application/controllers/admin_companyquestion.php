@@ -16,12 +16,13 @@ class admin_companyquestion extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companyquestion_model');
-        $this->load->library('Encryption');
-        $this->load->model('companyquestionbank_model');
 
-        if (!$this->session->userdata('is_logged_in')) {
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        } else {
+            $this->load->model('companyquestion_model');
+            $this->load->library('Encryption');
+            $this->load->model('companyquestionbank_model');
         }
     }
 

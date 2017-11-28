@@ -58,7 +58,7 @@ class Company_coursewisereports_model extends CI_Model {
         }
     }
 
-    public function get_course_specific_report($userid, $course_specific_id, $sidx, $sord, $start, $limit, $search_string_array) {
+    public function get_course_specific_report( $course_specific_id, $sidx, $sord, $start, $limit, $search_string_array) {
         /* $query = "SET @course_specific_user_status = '[]'";
           $this->db->query($query);
           $success = $this->db->query("call course_specific_report(@course_specific_user_status,'$course_specific_id')");

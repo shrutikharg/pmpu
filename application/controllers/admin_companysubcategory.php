@@ -16,9 +16,7 @@ class Admin_companysubcategory extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-
-
-        if ($this->session->userdata('is_logged_in') !== TRUE) {
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
         } else {
             $this->load->model('companysubcategory_model');
@@ -32,6 +30,7 @@ class Admin_companysubcategory extends CI_Controller {
      * @return void
      */
     public function index() {
+
         $usernm = $this->session->userdata('user_name');
         $userid = $this->session->userdata('id');
         $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
@@ -122,7 +121,7 @@ class Admin_companysubcategory extends CI_Controller {
         }
 
         $data['category_list'] = $this->companycategory_model->get_category_list();
-       
+
         $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
         $data['main_content'] = 'admin_company/subcategory/add';
 
@@ -142,7 +141,7 @@ class Admin_companysubcategory extends CI_Controller {
         //if save button was clicked, get the data sent via post
         $data['subcategory_data'] = $this->companysubcategory_model->get_subcategory_by_id($userid, $id); //   
         if (array_key_exists("name", $_POST)) {
-            
+
             //if the form has passed through the validation
             if ($this->form_validation->run()) {
                 $data_to_update = array(

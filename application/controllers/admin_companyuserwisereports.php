@@ -16,17 +16,14 @@ class admin_companyuserwisereports extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companycourses_model');
-        $this->load->model('companysubcategory_model');
-        $this->load->model('companycategory_model');
-        $this->load->model('Companyuser_model');
-        $this->load->model('companycmspage_model');
-        $this->load->model('Company_userwisereports_model');
-        $this->load->library('Encryption');
 
 
-        if (!$this->session->userdata('is_logged_in')) {
+
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        } else {
+            $this->load->model('companycourses_model');
+            $this->load->model('Company_userwisereports_model');
         }
     }
 
@@ -43,7 +40,7 @@ class admin_companyuserwisereports extends CI_Controller {
     public function userwise_report_list() {
         $usernm = $this->session->userdata('user_name');
         $userid = $this->session->userdata('id');
-        $limit =$this->input->post(rows); //no. of rows
+        $limit = $this->input->post(rows); //no. of rows
         $sidx = 'id';
         $sord = "desc";
 
@@ -99,8 +96,8 @@ class admin_companyuserwisereports extends CI_Controller {
     public function user_specific_report() {
         $data['main_content'] = 'admin_company/reports/user_wiseReports/user_specificReports/list';
         $data['user_specific_id'] = $this->input->post('user_id');
-        $data['user_specific_data']=$this->companyuser_model->get_userdetails_by_id($this->encryption->decrypt($data['user_specific_id']));
-       
+        $data['user_specific_data'] = $this->companyuser_model->get_userdetails_by_id($this->encryption->decrypt($data['user_specific_id']));
+
         $this->load->view('includes/template', $data);
     }
 
@@ -109,7 +106,7 @@ class admin_companyuserwisereports extends CI_Controller {
         $user_specific_name = $this->Company_userwisereports_model->get_username($user_specific_id);
         $userid = $this->session->userdata('id');
         $userid = $this->session->userdata('id');
-          $limit =$this->input->post(rows); //no. of rows
+        $limit = $this->input->post(rows); //no. of rows
         $sidx = 'id';
         $sord = "desc";
 
@@ -212,7 +209,7 @@ class admin_companyuserwisereports extends CI_Controller {
             ob_end_clean();
             // Sending headers to force the user to download the file
             header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="'.$this->lang->line('lbl_user_specific_report_list') . $user_specific_name . date('d-M-y H_i_s') . '.xls"');
+            header('Content-Disposition: attachment;filename="' . $this->lang->line('lbl_user_specific_report_list') . $user_specific_name . date('d-M-y H_i_s') . '.xls"');
             header('Cache-Control: max-age=0');
             $objWriter->save('php://output');
         }

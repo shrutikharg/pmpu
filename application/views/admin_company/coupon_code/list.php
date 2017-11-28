@@ -67,13 +67,17 @@
         })
                 // using the done promise callback
                 .done(function (data) {
+                    if (data.status === 'Session Expired') {
+
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
                     $('.ajax-loader').css("visibility", "hidden");
                     $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {
                         var couponcode_id = '"' + row['id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
-            <div class='column' data-label='Sr no'>" + (i  ) + "</div>\n\
+            <div class='column' data-label='Sr no'>" + (i) + "</div>\n\
 <div class='column' data-label='Coupon Code'>" + row['name'] + "</div>\n\
 <div class='column' data-label='Percentage Off'>" + row['percentage_off'] + "</div>\n\
 \n\<div class='column' data-label='Start Date'>" + row['start_date'] + "</div>\n\

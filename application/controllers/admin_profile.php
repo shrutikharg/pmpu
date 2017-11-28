@@ -18,8 +18,8 @@ class admin_profile extends CI_Controller {
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
 
-        if ($this->session->userdata('is_logged_in') !== TRUE) {
-
+       
+       if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
         } else {
            // $this->load->model('admin_profilemodel');

@@ -68,7 +68,7 @@ class Companychapters_model extends CI_Model {
      * @param int $limit_end
      * @return array
      */
-    public function get_chapters($userid, $sidx, $sord, $start, $limit, $search_string_array, $count) {
+    public function get_chapters($sidx, $sord, $start, $limit, $search_string_array, $count) {
         $this->db->_protect_identifiers = false;
         $this->db->select('course_chapter.course_id as courseid');
         $this->db->select('course_chapter.id as chapterid');
@@ -89,8 +89,8 @@ class Companychapters_model extends CI_Model {
         $this->db->join('courses', 'courses.id = course_chapter.course_id');
         $this->db->where('course_chapter.company_id', $this->session->userdata('company_id'));
         if ($search_string_array != "") {
-            $this->db->like('course_chapter.name', $search_string_array->chapter, 'after');
-            $this->db->like('courses.name', $search_string_array->course, 'after');
+            $this->db->like('course_chapter.name', $search_string_array->chapter);
+            $this->db->like('courses.name', $search_string_array->course);
         }
 
         if ($count == false) {
@@ -250,7 +250,7 @@ class Companychapters_model extends CI_Model {
         $this->db->from('course_chapter');
         $this->db->where('id', $chapter_id);
         $query = $this->db->get();
-        $comment_array=  json_decode($query->row()->comments);
+        $comment_array = json_decode($query->row()->comments);
         return $comment_array;
     }
 

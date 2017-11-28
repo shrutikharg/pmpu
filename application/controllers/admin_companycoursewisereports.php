@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,10 +16,7 @@ class admin_companycoursewisereports extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-
-
-
-        if (!$this->session->userdata('is_logged_in')) {
+ if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
         } else {
             $this->load->model('companycourses_model');
@@ -165,7 +163,7 @@ class admin_companycoursewisereports extends CI_Controller {
         if ($page == "") {
             $page = 1;
         }
-        $result = $this->Company_coursewisereports_model->get_course_specific_report($userid, $course_specific_id, $sidx, $sord, 0, $limit, $search_string_array);
+        $result = $this->Company_coursewisereports_model->get_course_specific_report( $course_specific_id, $sidx, $sord, 0, $limit, $search_string_array);
         //  $result = json_decode($query[0]['@course_specific_user_status']);
         $count = count($result);
         if (!$sidx) {

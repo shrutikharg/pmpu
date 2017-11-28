@@ -16,7 +16,7 @@
 
         $("#search").click(function () {
             is_search = true;
-            search_string_array = {'search_string': $("#search_string").val(), 'order': $("#order").val()};
+            search_string_array = {'email': $("#email").val(), 'phone': $("#phone").val(),'full_name': $("#full_name").val()};
             search_string_array = JSON.stringify(search_string_array);
 
             fetch_list(page);
@@ -61,13 +61,16 @@
             })
                     // using the done promise callback
                     .done(function (data) {
-                        $('.ajax-loader').css("visibility", "hidden");
-                        $('.res_row').empty();
+                    if (data.status === 'Session Expired') {
+                        window.location.href = "<?php echo base_url(); ?>admin_company/login";
+                    }
+                    $('.ajax-loader').css("visibility", "hidden");
+                    $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {
                             var employee_id = '"' + row['id'] + '"';
                             $(".res_table").append("<div class='res_row'>\n\
-          <div class='column'  data-label='Sr no'>" + (i + 1) + "</div>\n\
+          <div class='column'  data-label='Sr no'>" + i  + "</div>\n\
 <div class='column' data-label='Category name'>" + row['email'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['first_name'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['last_name'] + "</div>\n\
@@ -79,7 +82,7 @@
                     });
                     pagination(data);
                 }).fail(function (data) {
-            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+          
         });
     }
 
@@ -116,32 +119,41 @@
                         echo form_open('admin_company/userassign', $attributes);
 
                         echo '<div class="form-group">';
-                        echo '<label class="col-md-1   control-label">Search:</label>';
+                        echo '<label class="col-md-1 col-sm-2   control-label">'.$this->lang->line('lbl_email').'</label>';
 
-                        echo '<div class="col-md-3">';
-                        $data_search = array(
-                            'name' => 'search_string',
-                            'id' => 'search_string',
+                        echo '<div class="col-md-2 col-sm-4">';
+                        $email_search = array(
+                            'name' => 'email',
+                            'id' => 'email',
                             'class' => 'form-control',
-                            'placeholder' => 'Enter Employee name',
+                            'placeholder' => $this->lang->line('lbl_email'),
                         );
-                        echo form_input($data_search, $search_string_selected);
+                        echo form_input($email_search);
                         echo '</div>';
-
-                        echo '<label class="col-md-2   control-label">Order by:</label>';
-                        //echo form_input('search_string', $search_string_selected);
-                        echo '<div class="col-md-2" style="padding-left:0px !important; padding-right:0px !important;">';
-                        echo form_dropdown('order', $options_category, $order, 'class="form-control"');
+                        echo '<label class="col-md-1 col-sm-2   control-label">'.$this->lang->line('lbl_emp_full_name').'</label>';
+                        echo '<div class="col-md-2 col-sm-4">';
+                        $name_search = array(
+                            'name' => 'full_name',
+                            'id' => 'full_name',
+                            'class' => 'form-control',
+                            'placeholder' => $this->lang->line('lbl_emp_full_name'),
+                        );
+                        echo form_input($name_search);
                         echo '</div>';
-
-
-
-                        echo '<div class="col-md-1" style="padding-left:0px !important; padding-right:0px !important;">';
-                        $options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
-                        echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="form-control"');
+                        echo '<label class="col-md-1 col-sm-2   control-label">'.$this->lang->line('lbl_emp_phone_no').'</label>';
+                        echo '<div class="col-md-2 col-sm-4">';
+                        $phone_search = array(
+                            'name' => 'phone',
+                            'id' => 'phone',
+                            'class' => 'form-control',
+                            'placeholder' => $this->lang->line('lbl_emp_phone_no'),
+                        );
+                        echo form_input($phone_search);
                         echo '</div>';
                         $data_submit = array('type' => "button", 'name' => 'mysubmit', 'id' => 'search', 'class' => 'btn btn-primary', 'value' => $this->lang->line('btn_search'));
-                        echo form_input($data_submit);
+                        echo '<div class="col-md-2 col-sm-2 searchbtn">';
+                        echo form_submit($data_submit);
+                        echo '</div>';
                         echo '</div>';
                         echo form_close();
                         ?>

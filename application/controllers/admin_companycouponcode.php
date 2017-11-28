@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -16,11 +17,11 @@ class admin_companycouponcode extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companycoupon_model');
-        $this->load->model('companycourses_model');
-
-        if (!$this->session->userdata('is_logged_in')) {
+        if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        } else {
+            $this->load->model('companycoupon_model');
+            $this->load->model('companycourses_model');
         }
     }
 
@@ -134,7 +135,7 @@ class admin_companycouponcode extends CI_Controller {
                 $data_to_store = array(
                     'name' => $this->input->post('name'),
                     'percentage_off' => $this->input->post('percentage_off'),
-                    'start_date'=> date('Y-m-d', strtotime( $this->input->post('start_date'))),
+                    'start_date' => date('Y-m-d', strtotime($this->input->post('start_date'))),
                     'end_date' => date('Y-m-d', strtotime($this->input->post('end_date'))),
                     'is_active' => $this->input->post('is_active'),
                 );
@@ -168,7 +169,7 @@ class admin_companycouponcode extends CI_Controller {
         $startDate = strtotime($this->input->post('start_date'));
         $endDate = strtotime($this->input->post('end_date'));
 
-        if ($endDate >=$startDate)
+        if ($endDate >= $startDate)
             return True;
         else {
             $this->form_validation->set_message('compareDate', '%s should be greater than  Start Date.');
@@ -186,13 +187,14 @@ class admin_companycouponcode extends CI_Controller {
         }
         return TRUE;
     }
+
     function check_coupon_code_availabilty($coupon_code) {
-         $code_id =$this->encryption->decrypt($this->input->post('couponcode_id'));
-       $coupn_code_result = $this->companycoupon_model->check_coupon_code_availabilty($coupon_code,$code_id);
-        if (isset($code_id) && ($code_id!=$coupn_code_result->id) && ($coupon_code==$coupn_code_result->name) ) {
+        $code_id = $this->encryption->decrypt($this->input->post('couponcode_id'));
+        $coupn_code_result = $this->companycoupon_model->check_coupon_code_availabilty($coupon_code, $code_id);
+        if (isset($code_id) && ($code_id != $coupn_code_result->id) && ($coupon_code == $coupn_code_result->name)) {
             $this->form_validation->set_message('check_coupon_code_availabilty', 'Coupon Code is already available');
             return False;
-        } elseif ((!isset($code_id)) && ($coupon_code==$coupn_code_result->name) ) {
+        } elseif ((!isset($code_id)) && ($coupon_code == $coupn_code_result->name)) {
             $this->form_validation->set_message('check_coupon_code_availabilty', 'Coupon Code is already available');
             return False;
         }

@@ -29,7 +29,10 @@ class Companyuserassign_model extends CI_Model {
         $this->db->from('users');
         $this->db->where('company_id', $this->session->userdata('company_id'));
         if ($search_string_array != "") {
-            $this->db->like('name', $search_string_array->search_string);
+            $this->db->like('email', $search_string_array->email);
+            $this->db->like('phone_no', $search_string_array->phone);
+            $this->db->like("concat_ws(first_name,' ',last_name)", $search_string_array->full_name);
+           
         }
         $this->db->order_by("$sidx $sord");
         if ($count == false) {

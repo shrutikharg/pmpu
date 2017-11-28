@@ -16,12 +16,15 @@ class Admin_companyuserprofile extends CI_Controller {
     {
         parent::__construct();
 	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        $this->load->model('companycourses_model');		
-        $this->load->model('companysubcategory_model');
-		$this->load->model('companycategory_model');
+    
 
-        if(!$this->session->userdata('is_logged_in')){
+       if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
+        }
+        else{
+              $this->load->model('companycourses_model');		
+        $this->load->model('companysubcategory_model');
+		$this->load->model('companycategory_model');  
         }
     }
  

@@ -1,6 +1,6 @@
 <?php
 
-class Admin_companycoursesassign extends CI_Controller {
+class admin_companycoursesassign extends CI_Controller {
 
     /**
      * name of the folder responsible for the views 
@@ -16,7 +16,7 @@ class Admin_companycoursesassign extends CI_Controller {
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-        if (!$this->session->userdata('is_logged_in')) {
+       if ((!$this->session->userdata('is_logged_in')) && (!$this->input->is_ajax_request())) {
             redirect('admin_company/login');
         } else {
             $this->load->model('companycoursesassign_model');
