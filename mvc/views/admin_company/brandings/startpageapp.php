@@ -1,14 +1,3 @@
-<!----- 
-
-Name of File:startpage.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:After logins get first page to display look webapp.
-
-Update file History :
-
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="<?php echo base_url(); ?>assets/assets/css/prices.css" rel="stylesheet" type="text/css" />

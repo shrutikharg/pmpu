@@ -1,14 +1,3 @@
-<!----- 
-
-Name of File:register_form.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:registeration form with selected hosting plan
-
-Update file History :
-
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <!DOCTYPE html> 
 <html lang="en-US">
     <head>

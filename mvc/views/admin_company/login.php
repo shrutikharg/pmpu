@@ -1,14 +1,3 @@
-<!----- 
-
-Name of File:Login.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:login form where user can login view
-
-Update file History :
-
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 	<!--=== JavaScript ===-->
@@ -44,14 +33,14 @@ Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
 	if(isset($message_error) && $message_error)
 	{
           echo '<div class="alert alert-danger">';
-            echo '<a class="close" data-dismiss="alert">×</a>';
+            echo '<a class="close" data-dismiss="alert">ï¿½</a>';
             echo '<strong>Oh snap!</strong> Change a few things up and try submitting again.';
           echo '</div>';             
       }
       elseif($errorlink=='Error_expire')
       {
       	echo '<div class="alert alert-danger">';
-            echo '<a class="close" data-dismiss="alert">×</a>';
+            echo '<a class="close" data-dismiss="alert">ï¿½</a>';
             echo '<strong>Sorry!</strong> Your Trial period of Free Expire.';
           echo '</div>';   
       }	

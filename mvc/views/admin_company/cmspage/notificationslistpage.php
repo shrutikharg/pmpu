@@ -1,14 +1,3 @@
-<!----- 
-
-Name of File:notificationlist.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:Notifiaction of the data
-
-Update file History :
-
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <style>
 table.primary th
 {

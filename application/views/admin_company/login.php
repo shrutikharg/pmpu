@@ -1,11 +1,3 @@
-<!----- 
-Name of File:Login.php
-Date Of Creation:1st Dec 2015
-Created By :Shridhar K. Sawant.
-Purpose of file:login form where user can login view
-Update file History :
-Copyright(C)  2015-2016 Coolacharya.com All rights Reserved.
------>
 <link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <!--=== JavaScript ===-->
