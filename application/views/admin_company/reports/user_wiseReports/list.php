@@ -91,6 +91,41 @@
     table.primary tr.deactivate{
         background-color: #ffc;
     }
+    @media(max-width: 560px) {
+        .res_row > .column {
+            width: 100%;
+            display: block;            
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 40%;
+            text-align: left;
+        }
+        .res_table-head > .column {
+            display: none;
+        }
+        .res_row > .column:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 35%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+	}
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No"; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Email"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Full Name"; 
+        }
+    }
 </style>
 <div id="content">
     <div class="container">
@@ -169,6 +204,7 @@
                     <div class="widget-header">
                         <h4><?php echo $this->lang->line('lbl_user_report_list'); ?></h4>				
                     </div>
+                    <div class="widget-content">
                     <div class="res_table">
                         <div class="res_table-head">
                             <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
@@ -216,7 +252,7 @@
                                 </div>
                             </div>
                         </div>                        
-                    </div></div>  </div>   
+                    </div></div></div>  </div>   
         </div >    
     </div>
 </div>

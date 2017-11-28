@@ -7,6 +7,47 @@
         text-align: -moz-center;
         text-align: center;
     }
+    @media(max-width: 560px) {
+        .res_row > .column {
+            width: 100%;
+            display: block;            
+            border: none;
+            border-bottom: 1px solid #eee; 
+            position: relative;
+            padding-left: 40%;
+            text-align: left;
+        }
+        .res_table-head > .column {
+            display: none;
+        }
+        .res_row > .column:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 35%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+	}
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Course"; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Chapter"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Status"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Attempted Percentage"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Deatils"; 
+        }
+    }
 </style>
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script type="text/javascript">
@@ -169,7 +210,8 @@
             <div class="col-md-12">
                 <div class="widget box">
                     <div class="widget-header">
-                        <h4><?php echo $this->lang->line('lbl_user_specific_report_list').$user_specific_data->email;?></h4>			</div>
+                        <h4><?php echo $this->lang->line('lbl_user_specific_report_list').$user_specific_data->email;?></h4>        </div>
+                    <div class="widget-content">
                     <div class="res_table">
                         <div class="res_table-head">
                             <div class="column"><?php echo $this->lang->line('lbl_course');?></div>
@@ -215,7 +257,7 @@
                                 </div>
                             </div>
                         </div>                        
-                  </div></div>     
+                  </div></div></div>     
                 <input type="button" id="csv" class="btn btn-primary" value="g<?php echo $this->lang->line('lbl_dwn_report');?>"/>
             </div >    
         </div>

@@ -20,4 +20,5 @@ $planidusers=$this->session->userdata('userplan_id');
 
 		</div>		
 </div>		
-	
+</div>
+</div>	
