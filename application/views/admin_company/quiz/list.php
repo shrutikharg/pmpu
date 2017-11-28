@@ -20,7 +20,7 @@
     }
     function add_question(quiz_id) {
 
-     var form = $(document.createElement('form'));
+        var form = $(document.createElement('form'));
         $(form).attr("action", "../admin_company/quiz/add_question");
         $(form).attr("method", "POST");
         $(form).attr("id", "form1");
@@ -66,26 +66,33 @@
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <div id="content">
-    <section class="content-header">
+<!--    <section class="content-header">
         <div class="col-md-12">
             <h4> Quiz </h4>
         </div>
-    </section>
+    </section>-->
     <!-- Main content -->
-    <section class="content">        
+    <section class="container">        <br/>
         <!-- left column -->
-        <div class="col-md-12">                
-            <div class="res_table">
-                <div class="res_table-head">
-                    <div class="column" style="display:none;" data-label="Sr no"> Sr No</div>
-                    <div class="column" data-label="Quiz name">Name</div>
-                    <div class="column" data-label="Quiz Description">Description</div>
-                    <div class="column" data-label="Quiz start Date">Start date</div>
-                    <div class="column" data-label="Quiz End Date name">End Date</div>
-                    <div class="column" data-label="Quiz Questions ">Questions</div>
-                    <div class="column" data-label="Action">Action</div>
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="widget-header">
+                    <h4>Quiz</h4>
                 </div>
-            </div>
-        </div><!-- /.box-body -->
-    </section><!-- /.content -->
+                <div class="widget-content">
+                    <div class="res_table">
+                        <div class="res_table-head">
+                            <div class="column" style="display:none;" data-label="Sr no"> Sr No</div>
+                            <div class="column" data-label="Quiz name">Name</div>
+                            <div class="column" data-label="Quiz Description">Description</div>
+                            <div class="column" data-label="Quiz start Date">Start date</div>
+                            <div class="column" data-label="Quiz End Date name">End Date</div>
+                            <div class="column" data-label="Quiz Questions ">Questions</div>
+                            <div class="column" data-label="Action">Action</div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+</div><!-- /.box-body -->
+</section><!-- /.content -->
 </div>

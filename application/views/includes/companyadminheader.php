@@ -25,7 +25,7 @@
 		}elseif(($this->session->userdata('csstheme'))=='2')
 		{
 		?>
-			<link href="<?php echo base_url(); ?>assets/css/admin/globalblue.css" rel="stylesheet" type="text/css">
+			<link href="<?php echo base_url(); ?>assets/assets/css/blue.css" rel="stylesheet" type="text/css">
 			<link href="<?php echo base_url(); ?>assets/assets/css/blue.css" rel="stylesheet" type="text/css" />
 		<?php
 		}
