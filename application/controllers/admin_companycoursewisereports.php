@@ -45,7 +45,7 @@ class admin_companycoursewisereports extends CI_Controller {
         if ($page == "") {
             $page = 1;
         }
-        $count = $this->Company_coursewisereports_model->get_coursewise_report($userid, $sidx, $sord, 0, $limit, $search_string_array, $is_count = true);
+        $count = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, 0, $limit, $search_string_array, $is_count = true);
 
         if (!$sidx) {
             $sidx = 1;
@@ -64,7 +64,7 @@ class admin_companycoursewisereports extends CI_Controller {
             $start = 0;
         }
 
-        $query = $this->Company_coursewisereports_model->get_coursewise_report($userid, $sidx, $sord, $start, $limit, $search_string_array, $is_count = false);
+        $query = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, $start, $limit, $search_string_array, $is_count = false);
 
 
         if ($this->input->post('is_csv') == 'false') {
