@@ -52,7 +52,7 @@
                         var chapter_id = '"' + row['chapter_id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
                 <div class='column'  data-label='Sr no'>" + i + "</div>\n\
-<div class='column' data-label='Chapter'>" + row['chapter'].substr(0,15) + "</div>\n\
+<div class='column' data-label='Chapter'>" + row['chapter'].substr(0, 15) + "</div>\n\
 <div class='column' data-label='Course'>" + row['course'] + "</div>\n\
 \n\<div class='column' data-label='Course'>" + row['lesson_status'] + "</div>\n\
 <div class='column' data-label='action'><input type='button'  name='details' value='View Details' class='btn btn-info' onclick='view_chapter_details(" + chapter_id + ")'></button></div>\n\
@@ -119,54 +119,57 @@
                 <div class="widget-header">
                     <h4>View All Chapters</h4>								
                 </div>
+                <div class="widget-content">    
+                    <div class="res_table">
+                        <div class="res_table-head">
+                            <div class="column" data-label="Sr no"> Sr no</div>
+                            <div class="column">Chapter</div>
+                            <div class="column">Course</div>                       
+                            <div class="column">Status Count</div>
+                            <div class="column">Action</div>
+                        </div>     
 
-                <div class="res_table">
-                    <div class="res_table-head">
-                        <div class="column" data-label="Sr no"> Sr no</div>
-                        <div class="column">Chapter</div>
-                        <div class="column">Course</div>                       
-                        <div class="column">Status Count</div>
-                        <div class="column">Action</div>
-                    </div>     
-
-                </div> 
-                <div class="pagination"> 
-                    <div class="pagination-widget">
-                        <div class="col-md-3 col-sm-1 col-xs-2">
-                            <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
-                        </div>
-                        <div class="col-md-5 col-sm-6 col-xs-10">
-                            <span id="first_pager" class="glyphicon glyphicon-fast-backward" > </span>
-                            <span id="previous_pager" class="glyphicon glyphicon-step-backward">  </span>
-                            <span>Page </span>
-                            <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"   /></span>
-                            <span>  of </span>
-                            <span><lable class="pagination-lable" id="pageOf" >2 </lable></span>
-                            </span>
-                            <span id="next_pager"class="glyphicon glyphicon-step-forward" > </span>
-
-                            <span id="last_pager"class="glyphicon glyphicon-fast-forward" >      </span>
-                            <span> 
-                                <select id='rows' style="margin-left: 10px">
-                                    <option value="10">10 </option>
-                                    <option value="20"> 20</option>
-                                    <option value="25"> 25</option>
-                                </select>
-                            </span>
-                        </div>
-                        <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
-                            <div class="pagination-right">
-                                <span>view</span>
-                                <span ><lable class="pagination-lable" id="rowFrm" >11 </lable></span>
-                                <span>-</span>
-                                <span><lable class="pagination-lable" id="rowTo" >20</lable></span>
-                                <span>view</span>
-                                <span id="totalCount">50 </span>
+                    </div> 
+                    <div class="pagination"> 
+                        <div class="pagination-widget">
+                            <div class="col-md-3 col-sm-1 col-xs-2">
+                                <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
                             </div>
-                        </div>
-                    </div>                        
-                </div></div>     
-        </div >    <input type="button" id="chapter_report" value="Get Chapter Report"/>
+                            <div class="col-md-5 col-sm-6 col-xs-10">
+                                <span id="first_pager" class="glyphicon glyphicon-fast-backward" > </span>
+                                <span id="previous_pager" class="glyphicon glyphicon-step-backward">  </span>
+                                <span>Page </span>
+                                <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"   /></span>
+                                <span>  of </span>
+                                <span><lable class="pagination-lable" id="pageOf" >2 </lable></span>
+                                </span>
+                                <span id="next_pager"class="glyphicon glyphicon-step-forward" > </span>
+
+                                <span id="last_pager"class="glyphicon glyphicon-fast-forward" >      </span>
+                                <span> 
+                                    <select id='rows' style="margin-left: 10px">
+                                        <option value="10">10 </option>
+                                        <option value="20"> 20</option>
+                                        <option value="25"> 25</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
+                                <div class="pagination-right">
+                                    <span>view</span>
+                                    <span ><lable class="pagination-lable" id="rowFrm" >11 </lable></span>
+                                    <span>-</span>
+                                    <span><lable class="pagination-lable" id="rowTo" >20</lable></span>
+                                    <span>view</span>
+                                    <span id="totalCount">50 </span>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>     
+        </div>   
+        <input type="button" id="chapter_report" class="btn btn-primary" value="Get Chapter Report"/>
 
        	<script type="text/javascript">
             $('tbody').sortable();

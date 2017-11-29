@@ -57,7 +57,7 @@
                     var i = 0;
                     $.each(data.rows, function (i, row) {
                         i++;
-                   
+
                         $(".res_table").append("<div class='res_row'>\n\
                 <div class='column' s data-label='Sr no'>" + i + "</div>\n\
 <div class='column' data-label='Category name'>" + row['user'] + "</div>\n\
@@ -76,7 +76,6 @@
     <div class="container">
         <div class="row">
             <br/>
-            <div class="row">
                 <div class="col-md-12">
                     <div class="widget box">
                         <div class="widget-header">
@@ -143,11 +142,10 @@
                         </div> <!-- /.widget-content -->
                     </div> <!-- /.widget .box -->
                 </div> <!-- /.col-md-12 -->
-            </div> <!-- /.row -->		
         </div> <!-- /.row -->		
         <!-- /Statboxes -->
         <!--=== Normal ===-->
-        <div class="row">
+        <div class="col-md-12">
             <div class="col-md-12">												
                 <?php
                 //echo ($sessionuserdata[0]['space_filled']);
@@ -180,20 +178,21 @@
             <p>&nbsp;</p>
             <div class="widget box">
                 <div class="widget-header">
-                    <h4><i class="icon-reorder"></i>View All Chapters</h4>								
+                    <h4><i class="icon-reorder"></i>View All Chapters</h4>					
                 </div>
-
-                <div class="res_table">
-                    <div class="res_table-head">
-                        <div class="column" data-label="Sr no"> Sr no</div>
-                        <div class="column" data-label="User"> User</div>
-                        <div class="column" data-label="Percentage">Percentage</div>
-                        <div class="column" data-label="Status">Status</div>
-                        <div class="column" data-label="Completed Date">Completed Date</div>                       
-                     
-                    </div>     
-
-                </div> </div>     <input type="button" id="csv" value="get report"/>
+                <div class="widget-content">
+                    <div class="res_table">
+                        <div class="res_table-head">
+                            <div class="column" data-label="Sr no"> Sr no</div>
+                            <div class="column" data-label="User"> User</div>
+                            <div class="column" data-label="Percentage">Percentage</div>
+                            <div class="column" data-label="Status">Status</div>
+                            <div class="column" data-label="Completed Date">Completed Date</div>
+                        </div>     
+                    </div>
+                </div> 
+            </div>     
+            <input type="button" id="csv" value="get report"/>
         </div >    
 
 

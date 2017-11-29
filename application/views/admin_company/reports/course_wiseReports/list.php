@@ -1,6 +1,7 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 
-<script> var is_search = false, page = 1, search_string_array = "";
+<script type="text/javascript"> 
+    var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);
         $("#course_report").click(function () {
@@ -57,21 +58,39 @@
                     $('.res_row').empty();
                     var i = data.start;
                     $.each(data.rows, function (index, row) {
-                       
+
                         var course_id = '"' + row['course_id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
                 <div class='column'  data-label='Sr no'>" + i + "</div>\n\
-<div class='column' data-label='Course'>" + row['course'].substr(0,15)+ "</div>\n\
+<div class='column' data-label='Course'>" + row['course'].substr(0, 15) + "</div>\n\
         \n\<div class='column' data-label='Contains chapter'>" + row['chapter_count'] + "</div>\n\
- <div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_details')?>' class='btn btn-info' onclick='view_course_details(" + course_id + ")'></button></div>\n\
+ <div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_details') ?>' class='btn btn-info' onclick='view_course_details(" + course_id + ")'></button></div>\n\
 </div>");
- i++;
+                        i++;
                     })
                     pagination(data);
                 }).fail(function (data) {
-            
+
         });
-    }</script>
+    }
+</script>
+<style type="text/css">
+    @media(max-width: 560px) {
+        .res_row > .column:last-child {
+            padding-left: 20px;
+            text-align: center;
+        }
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Course"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Chapter Count"; 
+        }
+    }
+</style>
 
 
 <div id="content">

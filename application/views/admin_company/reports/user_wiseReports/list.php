@@ -96,30 +96,6 @@
         background-color: #ffc;
     }
     @media(max-width: 560px) {
-        .res_row > .column {
-            width: 100%;
-            display: block;            
-            border: none;
-            border-bottom: 1px solid #eee; 
-            position: relative;
-            padding-left: 40%;
-            text-align: left;
-        }
-        .res_table-head > .column {
-            display: none;
-        }
-        .res_row > .column:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 35%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-	}
         .res_row > .column:nth-of-type(1):before { 
             content: "Sr No"; 
         }

@@ -375,6 +375,45 @@
     width: 100% !important;
   }
 }
+@media(max-width: 560px) {
+    .res_row > .column {
+        width: auto !important;
+    }
+    .widget.box .widget-header h4 {
+        padding: 15px;
+    }
+    .res_table {
+        display: block;
+    }
+    .res_row > .column {
+        width: 100%;
+        display: block;            
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 40%;
+        text-align: left;
+        word-wrap: break-word;
+    }
+    .res_row {
+        display: block;
+    }
+    .res_table-head > .column {
+        display: none;
+    }
+    .res_row > .column:before { 
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 35%; 
+            padding-right: 10px; 
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+    }
+}
 @media (max-width: 480px) {
   .page-header {
     text-align: center;

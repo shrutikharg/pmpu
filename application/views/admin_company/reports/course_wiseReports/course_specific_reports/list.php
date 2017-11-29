@@ -1,7 +1,8 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
 
-<script>var is_search = false, page = 1, search_string_array = "";
+<script>
+    var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);
 
@@ -70,7 +71,24 @@
                 });
 
 
-    }</script>
+    }
+</script>
+<style type="text/css">
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Email"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Status"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Completed On"; 
+        }
+    }
+</style>
 
 
 <div id="content">
