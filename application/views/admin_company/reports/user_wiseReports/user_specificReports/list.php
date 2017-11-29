@@ -7,7 +7,35 @@
         text-align: -moz-center;
         text-align: center;
     }
+    .res_row > .column {
+        padding: 10px 0px;
+        word-break: break-all;
+    }
+    .res_row > .column:nth-of-type(1) {
+        width: 10%;
+    }
+    .res_row > .column:nth-of-type(2) {
+        width: 20%;
+    }
+    .res_row > .column:nth-of-type(3) {
+        width: 30%;
+    }
+    .res_row > .column:nth-of-type(4) {
+        width: 25%;
+    }
+    .res_row > .column:nth-of-type(5) {
+        width: 15%;
+    }
     @media(max-width: 560px) {
+        .res_row > .column {
+            width: auto !important;
+        }
+        .widget.box .widget-header h4 {
+            padding: 15px;
+        }
+        .res_table {
+            display: block;
+        }
         .res_row > .column {
             width: 100%;
             display: block;            
@@ -16,6 +44,10 @@
             position: relative;
             padding-left: 40%;
             text-align: left;
+            word-wrap: break-word;
+        }
+        .res_row {
+            display: block;
         }
         .res_table-head > .column {
             display: none;
@@ -41,10 +73,10 @@
         .res_row > .column:nth-of-type(3):before { 
             content: "Status"; 
         }
-        .res_row > .column:nth-of-type(3):before { 
-            content: "Attempted Percentage"; 
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Attempted %"; 
         }
-        .res_row > .column:nth-of-type(3):before { 
+        .res_row > .column:nth-of-type(5):before { 
             content: "Deatils"; 
         }
     }
