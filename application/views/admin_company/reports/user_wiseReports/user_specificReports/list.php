@@ -117,20 +117,18 @@
                     $(".res_table").append("<div class='res_row'>\n\
 <div class='column' data-label='Category name'>" + i + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['course'] + "</div>\n\
-\n\<div class='column' data-label='Category name'>" + row['chapter'] + "</div>\n\
+\n\<div class='column' data-label='Category name'>" + row['chapter'].substr(0,15) + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['lesson_status'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + row['course_attempt'] + "</div>\n\
 \n\<div class='column' data-label='Category name'>" + slide_details + "</div>\n\
 </div>");
-                    i++;
-                })
-                pagination(data);
-            });
-        }
-        $(document).ready(function(){
-            $('.pagination').before('<div class="ajax-loader"><img src="<?php echo base_url(); ?>assets/images/loader.gif" class="img-responsive" style="max-height: 27px;"/></div>');
-        });
-</script>
+i++;
+                    })
+                    pagination(data);
+                });
+    }</script>
+
+
 <div id="content">
     <div class="container">
         <div class="crumbs">
@@ -211,10 +209,12 @@
             <div class="col-md-12">
                 <div class="widget box">
                     <div class="widget-header">
-                        <h4><?php echo $this->lang->line('lbl_user_specific_report_list').$user_specific_data->email;?></h4>        </div>
-                    <div class="widget-content">
+                        <h4><?php echo $this->lang->line('lbl_user_specific_report_list').$user_specific_data->email;?></h4>								
+                    </div>
+
                     <div class="res_table">
                         <div class="res_table-head">
+                            <div class="column" data-label="Sr no"><?php echo $this->lang->line('lbl_sr_no');?></div>                         
                             <div class="column"><?php echo $this->lang->line('lbl_course');?></div>
                             <div class="column"><?php echo $this->lang->line('lbl_chapter');?></div>
                             <div class="column"><?php echo $this->lang->line('lbl_user_chapter_status');?></div>
@@ -258,8 +258,7 @@
                                 </div>
                             </div>
                         </div>                        
-                  </div></div></div>     
-                <input type="button" id="csv" class="btn btn-primary" value="g<?php echo $this->lang->line('lbl_dwn_report');?>"/>
+                  </div></div>     <input type="button" id="csv" class="btn btn-primary" value="<?php echo $this->lang->line('lbl_dwn_report');?>"/>
             </div >    
         </div>
     </div>

@@ -30,7 +30,7 @@ class Company_coursewisereports_model extends CI_Model {
         WHEN  ISNULL(c.end_date ) THEN ""
         ELSE c.end_date 
     END AS End_Date');
-        if ($is_csv == false) {
+        if ($is_csv == 'false') {
             $this->db->select('c.id as course_id');
         }
         $this->db->from('courses c ');
@@ -39,11 +39,11 @@ class Company_coursewisereports_model extends CI_Model {
         $this->db->join("$chapter_count_query ch", 'ch.course_id=c.id', 'left');
         //$this->db->join("$assigned_users_count_query acd", 'acd.course_id=c.id', 'left');
         $this->db->where('c.company_id', $this->session->userdata('company_id'));
-        if ($is_csv == false) {
+        if ($is_csv == 'false') {
             if ($search_string_array != "") {
                 $this->db->like('c.name', $search_string_array->course);
             }
-            if ($count == false) {
+            if ($count == false ) {
                 $this->db->limit($limit, $start);
             }
         }

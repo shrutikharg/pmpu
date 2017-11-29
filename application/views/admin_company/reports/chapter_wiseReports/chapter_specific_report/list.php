@@ -1,7 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
-<script type="text/javascript">
-    var is_search = false, page = 1, search_string_array = "";
+<script>var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);
 
@@ -14,16 +13,12 @@
         });
 
         $("#csv").click(function () {
-            alert();
-
             var form = $(document.createElement('form'));
             $(form).attr("action", "../../admin_company/reports/selected_chapter_list");
             $(form).attr("method", "POST");
             $(form).attr("id", "form1");
             var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val("<?php echo $chapter_specific_id; ?>");
             $(form).append(input);
-            $(form).append($("<input>").attr("type", "hidden").attr("name", "is_csv").val("yes"));
-
             $(form).append($("<input>").attr("type", "hidden").attr("name", "is_csv").val("yes"));
             $(form).append($("<input>").attr("type", "hidden").attr("name", "search").val(false));
             $(form).append($("<input>").attr("type", "hidden").attr("name", "page").val(1));
@@ -68,7 +63,7 @@
 </div>");
 
                     })
-                    // pagination(data);
+                    pagination(data);
                 });
     }
 </script>
@@ -93,8 +88,26 @@
 </style>
 <div id="content">
     <div class="container">
-        <div class="row">
-            <br/>
+           <div class="crumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <?php echo $this->lang->line('nav_report'); ?>
+                    </a> 
+
+                </li>
+                <li>
+                    <a href="<?php  $this->uri->segment(3); ?>">
+                        <?php echo $this->lang->line('nav_chapter_report'); ?>
+                    </a> 
+
+                </li>
+
+            </ul>	
+        </div>
+        <br>
+      
+            <div class="row">
                 <div class="col-md-12">
                     <div class="widget box">
                         <div class="widget-header">
@@ -109,17 +122,7 @@
                             echo form_open('admin_company/chapters', $attributes);
 
                             echo '<div class="form-group">';
-                            echo '<label class="col-md-1   control-label">Course</label>';
-
-                            echo '<div class="col-md-3">';
-                            $course_data = array(
-                                'name' => 'course',
-                                'id' => 'course',
-                                'class' => 'form-control',
-                                'placeholder' => 'Enter Course',
-                            );
-                            echo form_input($course_data);
-                            echo '</div>';
+                       
                             echo '<label class="col-md-1   control-label">User</label>';
 
                             echo '<div class="col-md-3">';
@@ -131,27 +134,7 @@
                             );
                             echo form_input($user_name_data);
                             echo '</div>';
-                            echo '<label class="col-md-1   control-label">Chapter</label>';
-
-                            echo '<div class="col-md-3">';
-                            $chapter_data = array(
-                                'name' => 'chapter',
-                                'id' => 'chapter',
-                                'class' => 'form-control',
-                                'placeholder' => 'Enter Chapter',
-                            );
-                            echo form_input($chapter_data);
-                            echo '</div>';
-                            echo '<label class="col-md-1   control-label">Lesson Status</label>';
-
-                            echo '<div class="col-md-3">';
-                            $lesson_status_data = array(
-                                'name' => 'lesson_status',
-                                'id' => 'lesson_status',
-                                'class' => 'form-control',
-                                'placeholder' => 'Enter Lesson Status',
-                            );
-                            echo form_input($lesson_status_data);
+                         
                             $data_submit = array('type' => 'button', 'name' => 'mysubmit', 'class' => 'btn btn-primary', 'id' => 'search', 'value' => 'Search');
                             echo form_submit($data_submit);
                             echo '</div>';
@@ -161,60 +144,69 @@
                         </div> <!-- /.widget-content -->
                     </div> <!-- /.widget .box -->
                 </div> <!-- /.col-md-12 -->
-        </div> <!-- /.row -->		
+            </div> <!-- /.row -->		
+     		
         <!-- /Statboxes -->
         <!--=== Normal ===-->
-        <div class="col-md-12">
-            <div class="col-md-12">												
-                <?php
-                //echo ($sessionuserdata[0]['space_filled']);
-                if ($sessionuserdata[0]['available_disk_space'] !== 0) {
-                    ?>	  
-                    <a  href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>/add" class="btn btn-primary">Add a new</a> <?php
-                }
-                ?> 
-
-
-                <!-- /Page Stats -->
-            </div>
-            <br/><br/><br/>
-
-            <?php
-            if (isset($flash_message)) {
-                if ($flash_message == TRUE) {
-                    echo '<div class="alert alert-success">';
-                    echo '<a class="close" data-dismiss="alert">�</a>';
-                    echo '<strong>Well done!</strong>Your chapter Deleted with success.';
-                    echo '</div>';
-                } else {
-                    echo '<div class="alert alert-danger">';
-                    echo '<a class="close" data-dismiss="alert">�</a>';
-                    echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
-                    echo '</div>';
-                }
-            }
-            ?>  
-            <p>&nbsp;</p>
+        <div class="row">
+          
             <div class="widget box">
                 <div class="widget-header">
-                    <h4><i class="icon-reorder"></i>View All Chapters</h4>					
+                    <h4>View All Chapters</h4>								
                 </div>
-                <div class="widget-content">
-                    <div class="res_table">
-                        <div class="res_table-head">
-                            <div class="column" data-label="Sr no"> Sr no</div>
-                            <div class="column" data-label="User"> User</div>
-                            <div class="column" data-label="Percentage">Percentage</div>
-                            <div class="column" data-label="Status">Status</div>
-                            <div class="column" data-label="Completed Date">Completed Date</div>
-                        </div>     
-                    </div>
+
+                <div class="res_table">
+                    <div class="res_table-head">
+                        <div class="column" data-label="Sr no"> Sr no</div>
+                        <div class="column" data-label="User"> User</div>
+                        <div class="column" data-label="Percentage">Percentage</div>
+                        <div class="column" data-label="Status">Status</div>
+                        <div class="column" data-label="Completed Date">Completed Date</div>                       
+                     
+                    </div>     
+
                 </div> 
-            </div>     
-            <input type="button" id="csv" class="btn btn-primary fa fa-openid" value="get report"/>
-        </div >    
-        <?php echo '<div class="pagination">' . $this->pagination->create_links() . '</div>'; ?>
-    </div>
+            <div class="pagination"> 
+                    <div class="pagination-widget">
+                        <div class="col-md-3 col-sm-1 col-xs-2">
+                            <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-xs-10">
+                            <span id="first_pager" class="glyphicon glyphicon-fast-backward" > </span>
+                            <span id="previous_pager" class="glyphicon glyphicon-step-backward">  </span>
+                            <span>Page </span>
+                            <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"   /></span>
+                            <span>  of </span>
+                            <span><lable class="pagination-lable" id="pageOf" >2 </lable></span>
+                            </span>
+                            <span id="next_pager"class="glyphicon glyphicon-step-forward" > </span>
+
+                            <span id="last_pager"class="glyphicon glyphicon-fast-forward" >      </span>
+                            <span> 
+                                <select id='rows' style="margin-left: 10px">
+                                    <option value="10">10 </option>
+                                    <option value="20"> 20</option>
+                                    <option value="25"> 25</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
+                            <div class="pagination-right">
+                                <span>view</span>
+                                <span ><lable class="pagination-lable" id="rowFrm" >11 </lable></span>
+                                <span>-</span>
+                                <span><lable class="pagination-lable" id="rowTo" >20</lable></span>
+                                <span>view</span>
+                                <span id="totalCount">50 </span>
+                            </div>
+                        </div>
+                    </div>                        
+                </div></div>     
+        </div >    <input type="button" id="csv" value="get report"/>
+
+
+     </div>
+
 </div>
 </div>
 </div>

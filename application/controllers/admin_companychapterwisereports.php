@@ -39,7 +39,12 @@ class admin_companychapterwisereports extends CI_Controller {
         if ($page == "") {
             $page = 1;
         }
-        $count = $this->Company_chapterwisereports_model->get_chapterwise_report($userid, $sidx, $sord, 0, $limit, $search_string_array, $is_count = true);
+        if (array_key_exists("is_csv", $_POST)) {
+            $is_csv = TRUE;
+        } else {
+            $is_csv = false;
+        }
+        $count = $this->Company_chapterwisereports_model->get_chapterwise_report( $sidx, $sord, 0, $limit, $search_string_array, $is_count = true,$is_csv);
 
         if (!$sidx) {
             $sidx = 1;
@@ -58,7 +63,7 @@ class admin_companychapterwisereports extends CI_Controller {
             $start = 0;
         }
 
-        $query = $this->Company_chapterwisereports_model->get_chapterwise_report($userid, $sidx, $sord, $start, $limit, $search_string_array, $is_count = false);
+        $query = $this->Company_chapterwisereports_model->get_chapterwise_report( $sidx, $sord, $start, $limit, $search_string_array, $is_count = false,$is_csv);
         if (!array_key_exists("is_csv", $_POST)) {
             $response = new stdClass();
             $response->page = $page;
@@ -76,6 +81,7 @@ class admin_companychapterwisereports extends CI_Controller {
             }
             echo json_encode($response);
         } else {
+            
             $this->load->library('excel');
             $objPHPExcel = new PHPExcel();
             $objPHPExcel->getProperties()->setTitle("export")->setDescription("none");

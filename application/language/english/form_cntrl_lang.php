@@ -139,6 +139,13 @@ $lang['lbl_user_specific_report_list']="Userspecific Report for:- ";
 $lang['lbl_dwn_report']="Download Report";
 $lang['nav_user_specific_report']="User Specific";
 
+
+//form control for  chapter reports
+$lang['nav_chapter_report']="Chapterwise";
+$lang['nav_chapter_specific_report']="Chapter Specific";
+$lang['lbl_chapter_report_list']="Chapterwise Report List";
+
+
 //form control for  subscribers
 $lang['nav_subscriber']="Subscriber";
 $lang['nav_subscriber_list']="Employee List";
@@ -216,6 +223,11 @@ $lang['lbl_send_mail']="Send";
 
 //form control for admin user
 $lang['nav_add_user']="Add New User";
+
+
+
+
+
 
 
 

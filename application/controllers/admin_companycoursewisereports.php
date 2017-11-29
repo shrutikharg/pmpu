@@ -27,6 +27,8 @@ class admin_companycoursewisereports extends CI_Controller {
 
     public function index() {
         $data['main_content'] = 'admin_company/reports/course_wiseReports/list';
+         $data['footerdata'] = $this->companycmspage_model->list_cmspage();
+
         $this->load->view('includes/template', $data);
     }
 
@@ -37,6 +39,7 @@ class admin_companycoursewisereports extends CI_Controller {
         $limit = 10; //no. of rows
         $sidx = 'id';
         $sord = "desc";
+        $is_csv=$this->input->post('is_csv');
 
         if ($this->input->post('search') == 'true') {
             $search_string_array = json_decode($this->input->post('search_string_array'));
@@ -45,7 +48,8 @@ class admin_companycoursewisereports extends CI_Controller {
         if ($page == "") {
             $page = 1;
         }
-        $count = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, 0, $limit, $search_string_array, $is_count = true);
+       
+        $count = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, 0, $limit, $search_string_array, $is_count = true,$is_csv);
 
         if (!$sidx) {
             $sidx = 1;
@@ -64,7 +68,7 @@ class admin_companycoursewisereports extends CI_Controller {
             $start = 0;
         }
 
-        $query = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, $start, $limit, $search_string_array, $is_count = false);
+        $query = $this->Company_coursewisereports_model->get_coursewise_report( $sidx, $sord, $start, $limit, $search_string_array, $is_count = false,$is_csv);
 
 
         if ($this->input->post('is_csv') == 'false') {
@@ -96,9 +100,9 @@ class admin_companycoursewisereports extends CI_Controller {
             $fields = $query->list_fields();
             $col = 0;
             foreach ($fields as $field) {
-                if ($col != 0) {
+              
                     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, 1, $field);
-                }
+               
                 $style['red_text'] = array(
                     'name' => 'Arial',
                     'color' => array(
@@ -119,9 +123,9 @@ class admin_companycoursewisereports extends CI_Controller {
             foreach ($query->result() as $data) {
                 $col = 0;
                 foreach ($fields as $field) {
-                    if ($col != 0) {
+                   
                         $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $data->$field);
-                    }
+                  
                     $col++;
                 }
 
@@ -141,6 +145,8 @@ class admin_companycoursewisereports extends CI_Controller {
     }
 
     public function course_specific_index() {
+         $data['footerdata'] = $this->companycmspage_model->list_cmspage();
+
         $data['main_content'] = 'admin_company/reports/course_wiseReports/course_specific_reports/list';
         $data['course_specific_id'] = $this->input->post('course_id');
         $data['course_data'] = $this->companycourses_model->get_courses_by_id($this->input->post('course_id'));

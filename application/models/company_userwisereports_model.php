@@ -17,22 +17,24 @@ class Company_userwisereports_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_userwise_report( $sidx, $sord, $start, $limit, $search_string_array, $count) {
+    public function get_userwise_report( $sidx, $sord, $start, $limit, $search_string_array, $count,$is_csv) {
         $this->db->select('u.id,email');
         $this->db->select('concat_ws(" ",first_name,last_name ) as full_name');
         $this->db->select('group_concat(distinct(name)ORDER BY c.id DESC SEPARATOR "," ) as courses_assigned', FALSE);
         $this->db->from('users u');
         $this->db->join('courses c', 'u.company_id=c.company_id');
         $this->db->where('u.company_id', $this->session->userdata('company_id'));
-        if ($search_string_array != "") {
-            $this->db->like('concat_ws(" ",first_name,last_name )', $search_string_array->name);
+     
+             if ($is_csv == false) {
+            if ($search_string_array != "") {
+                  $this->db->like('concat_ws(" ",first_name,last_name )', $search_string_array->name);
             $this->db->like('email', $search_string_array->email_id);
-           // $this->db->like('group_concat(distinct(name)ORDER BY courses.id DESC SEPARATOR "," ) ', $search_string_array->course_assign);
+            }
+            if ($count == false ) {
+                $this->db->limit($limit, $start);
+            }
         }
 
-        if ($count == false) {
-            $this->db->limit($limit, $start);
-        }
         $this->db->group_by('u.id');
         $this->db->order_by("u.id",'Desc');
         $query = $this->db->get();
@@ -44,7 +46,7 @@ class Company_userwisereports_model extends CI_Model {
         }
     }
 
-    public function get_user_specific_report( $user_specific_id, $sidx, $sord, $start, $limit, $search_string_array, $count) {
+    public function get_user_specific_report( $user_specific_id, $sidx, $sord, $start, $limit, $search_string_array, $count,$is_csv) {
         $this->db->_protect_identifiers = false;
         $this->db->select('u.email as User,c.name as Course,
             CASE
@@ -74,15 +76,15 @@ class Company_userwisereports_model extends CI_Model {
         $this->db->where('u.company_id', $this->session->userdata('company_id'));
         $this->db->where('u.id', $user_specific_id);
          $this->db->where('u.id', $user_specific_id);
-     //   $this->db->where('ch.file_path is NOT NULL', NULL, FALSE);
-       if ($search_string_array != "") {
-          
-             $this->db->like('c.name', $search_string_array->course);
+   
+           if ($is_csv == false) {
+            if ($search_string_array != "") {
+                 $this->db->like('c.name', $search_string_array->course);
               $this->db->like('ch.name', $search_string_array->chapter);
-              // $this->db->like('chd.cmi_core_lesson_status', $search_string_array->lesson_status);
-        }
-        if ($count == false) {
-            $this->db->limit($limit, $start);
+            }
+            if ($count == false ) {
+                $this->db->limit($limit, $start);
+            }
         }
         $this->db->order_by('C.ID,ch.ID DESC');
         $query = $this->db->get();
