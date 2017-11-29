@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<style>
 <style type="text/css">
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
 
