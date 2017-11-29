@@ -1,7 +1,7 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
 
-<script>
+<script type="text/javascript">
     var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);

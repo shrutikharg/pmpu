@@ -1,6 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
-<script>
+<script type="text/javascript">
     var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);
@@ -63,9 +63,24 @@
                 }).fail(function (data) {
             //window.location.href = "<?php echo base_url(); ?>admin_company/login";
         });
-    }</script>
-
-
+    }
+</script>
+<style type="text/css">
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Chapter"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Course"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Status Count"; 
+        }
+    }
+</style>
 <div id="content">
     <div class="container">
         <div class="row">

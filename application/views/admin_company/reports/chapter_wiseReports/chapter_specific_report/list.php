@@ -1,6 +1,7 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_ui_1.9.1.js"></script> 
-<script>var is_search = false, page = 1, search_string_array = "";
+<script type="text/javascript">
+    var is_search = false, page = 1, search_string_array = "";
     $(document).ready(function () {
         fetch_list(page);
 
@@ -69,9 +70,27 @@
                     })
                     // pagination(data);
                 });
-    }</script>
-
-
+    }
+</script>
+<style type="text/css">
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "User"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Percentage"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Status"; 
+        }
+        .res_row > .column:nth-of-type(5):before { 
+            content: "Completed dt"; 
+        }
+    }
+</style>
 <div id="content">
     <div class="container">
         <div class="row">
@@ -192,18 +211,11 @@
                     </div>
                 </div> 
             </div>     
-            <input type="button" id="csv" value="get report"/>
+            <input type="button" id="csv" class="btn btn-primary fa fa-openid" value="get report"/>
         </div >    
-
-
-
-
         <?php echo '<div class="pagination">' . $this->pagination->create_links() . '</div>'; ?>
-
     </div>
-
 </div>
-
 </div>
 </div>
 <!-- /Normal -->
