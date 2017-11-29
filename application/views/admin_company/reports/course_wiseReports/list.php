@@ -69,7 +69,7 @@
                     })
                     pagination(data);
                 }).fail(function (data) {
-            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+            
         });
     }</script>
 
@@ -80,18 +80,23 @@
             <ul class="breadcrumb">
                 <li>
                     <a href="#">
-<?php echo $this->lang->line('nav_report'); ?>
+                        <?php echo $this->lang->line('nav_report'); ?>
+
                     </a> 
+
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/reports/' . $this->uri->segment(3); ?>">
-<?php echo $this->lang->line('nav_course_report'); ?>
+                        <?php echo $this->lang->line('nav_course_report'); ?>
                     </a> 
+
                 </li>>
+
             </ul>				      
         </div>
         <br>
         <div class="row">
+
             <div class="col-md-12">
                 <div class="widget box">
                     <div class="widget-header">
@@ -100,9 +105,13 @@
                     <div class="widget-content">
                         <?php
                         $attributes = array('class' => 'form-horizontal row-border', 'id' => 'myform');
+
+
                         echo form_open('admin_company/chapters', $attributes);
+
                         echo '<div class="form-group">';
                         echo '<label class="col-md-1   control-label">' . $this->lang->line('lbl_course') . '</label>';
+
                         echo '<div class="col-md-3">';
                         $course_data = array(
                             'name' => 'course',
@@ -117,44 +126,51 @@
                         echo '</div>';
                         echo form_close();
                         ?>	
+
                     </div> <!-- /.widget-content -->
                 </div> <!-- /.widget .box -->
             </div> <!-- /.col-md-12 -->
+
         </div> <!-- /.row -->		
         <!-- /Statboxes -->
         <!--=== Normal ===-->
         <div class="row">
-            <div class="col-md-12">	
-                <?php
-                if (isset($flash_message)) {
-                    if ($flash_message == TRUE) {
-                        echo '<div class="alert alert-success">';
-                        echo '<a class="close" data-dismiss="alert">�</a>';
-                        echo '<strong>Well done!</strong>Your chapter Deleted with success.';
-                        echo '</div>';
-                    } else {
-                        echo '<div class="alert alert-danger">';
-                        echo '<a class="close" data-dismiss="alert">�</a>';
-                        echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
-                        echo '</div>';
-                    }
-                }
-                ?>  
-                <p>&nbsp;</p>
-                <div class="widget box">
-                    <div class="widget-header">
-                        <h4><?php echo $this->lang->line('lbl_course_report_list'); ?></h4>				
-                    </div>
-                    <div class="res_table">
-                        <div class="res_table-head">
-                            <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
-                            <div class="column"><?php echo $this->lang->line('lbl_course'); ?></div>                   
-                            <div class="column"><?php echo $this->lang->line('lbl_chpater_count'); ?></div>
+ <div class="col-md-12">	
 
-                            <div class="column"><?php echo $this->lang->line('lbl_action'); ?></div>
-                        </div>     
-                    </div>
-                    <div class="pagination"> 
+
+            <?php
+            if (isset($flash_message)) {
+                if ($flash_message == TRUE) {
+                    echo '<div class="alert alert-success">';
+                    echo '<a class="close" data-dismiss="alert">�</a>';
+                    echo '<strong>Well done!</strong>Your chapter Deleted with success.';
+                    echo '</div>';
+                } else {
+                    echo '<div class="alert alert-danger">';
+                    echo '<a class="close" data-dismiss="alert">�</a>';
+                    echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
+                    echo '</div>';
+                }
+            }
+            ?>  
+            <p>&nbsp;</p>
+            <div class="widget box">
+                <div class="widget-header">
+                    <h4><?php echo $this->lang->line('lbl_course_report_list'); ?></h4>								
+
+                </div>
+
+                <div class="res_table">
+                    <div class="res_table-head">
+                        <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
+                        <div class="column"><?php echo $this->lang->line('lbl_course'); ?></div>                   
+                        <div class="column"><?php echo $this->lang->line('lbl_chpater_count'); ?></div>
+                      
+                        <div class="column"><?php echo $this->lang->line('lbl_action'); ?></div>
+                    </div>     
+
+                </div>
+                       <div class="pagination"> 
                         <div class="pagination-widget">
                             <div class="col-md-3 col-sm-1 col-xs-2">
                                 <span id="reload"  class="glyphicon glyphicon-refresh" > </span>
@@ -180,22 +196,32 @@
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
                                 <div class="pagination-right">
-                                    <span>view</span>
-                                    <span ><lable class="pagination-lable" id="rowFrm" > </lable></span>
-                                    <span>-</span>
-                                    <span><lable class="pagination-lable" id="rowTo" ></lable></span>
-                                    <span>view</span>
-                                    <span id="totalCount">50 </span>
-                                </div>
+                                <span>view</span>
+                                <span ><lable class="pagination-lable" id="rowFrm" > </lable></span>
+                                <span>-</span>
+                                <span><lable class="pagination-lable" id="rowTo" ></lable></span>
+                                <span>view</span>
+                                <span id="totalCount">50 </span>
+                            </div>
                             </div>
                         </div>                        
                     </div>
-                </div>  
-                <input type="button"  class="btn btn-primary"id="course_report" value="<?php echo $this->lang->line('btn_dwn_course_report'); ?>"/>
-            </div >  
-            <script type="text/javascript">
-                $('tbody').sortable();
-            </script>
-        </div>
+            </div>  
+            <input type="button"  class="btn btn-primary"id="course_report" value="<?php echo $this->lang->line('btn_dwn_course_report'); ?>"/>
+        </div >  
+       
+
+       	<script type="text/javascript">
+            $('tbody').sortable();
+        </script>
+
+
+
+
+
     </div>
+
 </div>
+
+</div>
+		

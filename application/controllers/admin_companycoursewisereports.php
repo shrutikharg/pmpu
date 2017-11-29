@@ -192,11 +192,11 @@ class admin_companycoursewisereports extends CI_Controller {
             $response->total = $totalpages;
             $response->records = $count;
             $response->start = $start + 1;
-            $response->rows = $result;
+           
             $response->end = $start + $limit;
             $i = 0;
 
-            /* foreach (array_slice($result,$start,$limit) as $row) {
+             foreach (array_slice($result,$start,$limit) as $row) {
               if (is_null($row->completed_on)) {
               $completion_date = "";
               } else {
@@ -205,7 +205,7 @@ class admin_companycoursewisereports extends CI_Controller {
 
               $response->rows[$i] = array('user' => $row->user_name, 'completion_status' => $row->completion_status,'completed_on'=>$completion_date);
               $i++;
-              } */
+              } 
             echo json_encode($response);
         } else {
             $this->load->library('excel');

@@ -55,17 +55,15 @@
                         window.location.href = "<?php echo base_url(); ?>admin_company/login";
                     }
                     $('.res_row').empty();
-                    var i = 0;
-                    $.each(data.rows, function (i, row) {
-                        i++;
-
-
-                        $(".res_table").append("<div class='res_row'>\n\
+                    var i = data.start;
+                    $.each(data.rows, function (index, row) {
+                       $(".res_table").append("<div class='res_row'>\n\
                 <div class='column' s data-label='Sr no'>" + i + "</div>\n\
-<div class='column' data-label='User'>" + row['user_name'] + "</div>\n\
+<div class='column' data-label='User'>" + row['user'] + "</div>\n\
 \n\<div class='column' data-label='Completion Status'>" + row['completion_status'] + "</div>\n\
 <div class='column' data-label='Completion Date'>" + row['completed_on'] + "</div>\n\
 </div>");
+                        i++;
 
                     });
                     pagination(data);
@@ -159,10 +157,10 @@
 
                     <div class="res_table">
                         <div class="res_table-head">
-                            <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no');?></div>
-                            <div class="column"><?php echo $this->lang->line('lbl_email');?></div>
-                            <div class="column"><?php echo $this->lang->line('lbl_user_course_status');?></div>
-                            <div class="column"><?php echo $this->lang->line('lbl_course_cmplt_date');?></div>
+                            <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no'); ?></div>
+                            <div class="column"><?php echo $this->lang->line('lbl_email'); ?></div>
+                            <div class="column"><?php echo $this->lang->line('lbl_user_course_status'); ?></div>
+                            <div class="column"><?php echo $this->lang->line('lbl_course_cmplt_date'); ?></div>
 
                         </div>     
 
