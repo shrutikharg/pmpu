@@ -13,7 +13,13 @@
             $(form).submit();
         });
 
+ $("#search").click(function () {
+            is_search = true;
+            search_string_array = {'course': $("#course").val(), 'chapter': $("#chapter").val()};
+            search_string_array = JSON.stringify(search_string_array);
 
+            fetch_list(page);
+        });
     });
     function view_chapter_details(chapter_id) {
 
@@ -83,7 +89,23 @@
 </style>
 <div id="content">
     <div class="container">
-        <div class="row">
+            <div class="crumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <?php echo $this->lang->line('nav_report'); ?>
+                    </a> 
+
+                </li>
+                <li>
+                    <a href="<?php  $this->uri->segment(3); ?>">
+                        <?php echo $this->lang->line('nav_chapter_report'); ?>
+                    </a> 
+
+                </li>
+
+            </ul>	
+        </div>
             <br/>
             <div class="row">
                 <div class="col-md-12">
@@ -125,24 +147,24 @@
                     </div> <!-- /.widget .box -->
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->		
-        </div> <!-- /.row -->		
+       	
         <!-- /Statboxes -->
         <!--=== Normal ===-->
         <div class="row">
 
             <div class="widget box">
                 <div class="widget-header">
-                    <h4>View All Chapters</h4>								
+                    <h4><?php echo $this->lang->line('lbl_chapter_report_list');?></h4>								
                 </div>
-                <div class="widget-content">    
-                    <div class="res_table">
-                        <div class="res_table-head">
-                            <div class="column" data-label="Sr no"> Sr no</div>
-                            <div class="column">Chapter</div>
-                            <div class="column">Course</div>                       
-                            <div class="column">Status Count</div>
-                            <div class="column">Action</div>
-                        </div>     
+
+                <div class="res_table">
+                    <div class="res_table-head">
+                        <div class="column" data-label="Sr no"> Sr no</div>
+                        <div class="column">Chapter</div>
+                        <div class="column">Course</div>                       
+                        <div class="column">Status Count</div>
+                        <div class="column">Action</div>
+                    </div>     
 
                     </div> 
                     <div class="pagination"> 
@@ -180,16 +202,17 @@
                                 </div>
                             </div>
                         </div>                        
-                    </div>
-                </div>
-            </div>     
-        </div>   
-        <input type="button" id="chapter_report" class="btn btn-primary" value="Get Chapter Report"/>
+                </div></div>     
+        </div >    <input type="button" class="btn btn-primary" id="chapter_report" value="Get Chapter Report"/>
 
        	<script type="text/javascript">
             $('tbody').sortable();
         </script>
-        <?php echo '<div class="pagination">' . $this->pagination->create_links() . '</div>'; ?>
+
+
+
+       
+
     </div>
 </div>
 </div>

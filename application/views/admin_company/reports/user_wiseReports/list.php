@@ -15,6 +15,20 @@
 
             fetch_list(page);
         });
+           $("#csv").click(function () {
+            
+            var form = $(document.createElement('form'));
+            $(form).attr("action", "../../admin_company/reports/userwise_list");
+            $(form).attr("method", "POST");
+            $(form).attr("id", "form1");
+           
+            $(form).append($("<input>").attr("type", "hidden").attr("name", "is_csv").val("yes"));
+            $(form).append($("<input>").attr("type", "hidden").attr("name", "search").val(false));
+            $(form).append($("<input>").attr("type", "hidden").attr("name", "page").val(1));
+            $(form).append($("<input>").attr("type", "hidden").attr("name", "search_string_array").val(""));
+            $(form).appendTo("body").submit();
+
+        });
 
     });
     function view_user_details(user_id) {
@@ -63,7 +77,7 @@
                     })
                     pagination(data);
                 }).fail(function (data) {
-            window.location.href = "<?php echo base_url(); ?>admin_company/login";
+           
         });
     }</script>
 <style>
@@ -223,7 +237,7 @@
                                 </div>
                             </div>
                         </div>                        
-                    </div></div></div>  </div>   
+                    </div></div></div> <input type="button" id="csv" class="btn btn-primary" value="<?php echo $this->lang->line('lbl_dwn_report');?>"/> </div>   
         </div >    
     </div>
 </div>

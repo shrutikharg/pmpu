@@ -18,7 +18,7 @@ class Company_chapterwisereports_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_chapterwise_report($user_id, $sidx, $sord, $start, $limit, $search_string_array, $count) {
+    public function get_chapterwise_report($sidx, $sord, $start, $limit, $search_string_array, $count, $is_csv) {
         $this->db->_protect_identifiers = false;
         $this->db->select("ch.id as Chapter_Id,ch.name Chapter_Name,ch.Description,c.name as Course,ch.start_Date as Start_date,ch.end_date End_Date,
                  cast( concat('Not viewed',sum(if(isnull(chapter_id) ,1,0)),'</br>',
@@ -30,12 +30,24 @@ class Company_chapterwisereports_model extends CI_Model {
         $this->db->join("$status_count_query chd", 'chd.chapter_id=ch.id', 'left');
         $this->db->join("users u", 'u.id=chd.user_id', 'left');
         $this->db->where('ch.company_id', $this->session->userdata('company_id'));
+        if ($is_csv == false) {
+            if ($search_string_array != "") {
+                $this->db->like('c.name', $search_string_array->course);
+                 $this->db->like('ch.name', $search_string_array->chapter);
+            }
+            if ($count == false) {
+                $this->db->limit($limit, $start);
+            }
+        }
         $this->db->order_by('c.id desc,ch.id desc');
         $this->db->group_by('ch.id');
         $query = $this->db->get();
+        if ($count == false) {
+            return $query;
+        } else {
+            return $query->num_rows();
+        }
         $this->db->_protect_identifiers = false;
-
-        return $query;
     }
 
     public function get_chapter_specific_report($userid, $chapter_specific_id, $sidx, $sord, $start, $limit, $search_string_array, $count) {
@@ -64,7 +76,7 @@ class Company_chapterwisereports_model extends CI_Model {
         $chapter_query = "((SELECT * FROM course_chapter where id=$chapter_specific_id ) )";
         $this->db->join("$chapter_query ch", 'ecd.chapter_id=ch.id', 'right');
         $this->db->join('users u', 'u.id=ecd.user_id', 'right');
-        $this->db->where('admin_id', $userid);
+        $this->db->where('u.company_id', $this->session->userdata('company_id'));
 
         if ($search_string_array != "") {
             $this->db->like('user_name', $search_string_array->email);
