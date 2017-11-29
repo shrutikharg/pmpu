@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/themes/demo.js"></script>	
 <link href="<?php echo base_url(); ?>assets/themes/popupwindow.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>assets/themes/preview_demo.css" rel="stylesheet" type="text/css" />
-<script>
+<script type="text/javascript">
     var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
@@ -86,7 +86,7 @@
     }
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
-<style>
+<style type="text/css">
     .ajax-loader {
         margin-left: auto; 
         margin-right: auto; 
@@ -125,7 +125,26 @@
     table.primary tr.deactivate{
         background-color: #ffc;
     }
-
+    @media(max-width: 560px) {
+        .row_header {
+            display: none;
+        }
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Chapter"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Course"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Description"; 
+        }
+        tbody {
+            display: block;
+        }
+    }
 </style>
 <div id="content">
     <div class="container">

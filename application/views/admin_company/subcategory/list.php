@@ -73,7 +73,7 @@
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <style type="text/css">
-    .form-horizontal select{
+    .form-horizontal select {
         background-color: #fff;
         border: 1px solid #ccc;
 
@@ -87,6 +87,20 @@
         transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
         vertical-align: middle;
         width: 100%;
+    }
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Subdepartment"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Department"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Description"; 
+        }
     }
 </style>
 <div id="content">
@@ -192,8 +206,9 @@
                 <p>&nbsp;</p>
                 <div class="widget box">
                     <div class="widget-header">
-                        <h4><?php echo $this->lang->line('lbl_subdepartment_lst');?></h4>								
+                        <h4><?php echo $this->lang->line('lbl_subdepartment_lst');?></h4>			
                     </div>
+                    <div class="widget-content">
                     <div class="res_table">
                         <div class="res_table-head">
                             <div class="column" data-label="Sr no"> <?php echo $this->lang->line('lbl_sr_no');?></div>
@@ -243,6 +258,7 @@
                                 </div>
                             </div>
                         </div>                        
+                    </div>
                     </div>
                 </div>
             </div>
