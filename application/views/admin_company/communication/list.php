@@ -2,7 +2,8 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/messages.js"></script>
 
 
-<script>var is_search = false, page = 1, search_string_array = "";
+<script>
+    var is_search = false, page = 1, search_string_array = "";
     var master_id;
     var msg_recepient_list;
     var sub_page_no = 1;
@@ -90,10 +91,11 @@
             }
         });
         $(document).on('click', '.column', function () {
+            $('.column').parent().removeClass('active');
+            $(this).parent().addClass('active');
             message_page_no = 1;
             master_id = $(this).attr('master_id');
             msg_fetch_list(message_page_no);
-
         });
 
 
@@ -215,19 +217,14 @@
                     }
                     master_id = data.rows[0].master_id;
                     $.each(data.rows, function (index, row) {
-
                         var master_id = '"' + row.master_id + '"';
                         var user_id = '"' + row['user_id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
                          <div class='column' data-label='Name' master_id=" + master_id +
                                 "user_id=" + user_id +
                                 ">" + row.subject + "</div></div>");
-
-
-
-
-
                     });
+                    $('.res_row').eq(0).addClass('active');
                     pagination(data);
                     msg_data = {'page': data.msg_page, 'records': data.msg_records, 'start': data.msg_start, 'total': data.msg_total, 'message': data.message};
                     append_message(msg_data);
@@ -301,9 +298,11 @@
             i++;
         });
         msg_pagination(data);
-
     }
 </script>
+<style type="text/css">
+
+</style>
 <div id="content">
     <div class="container">
         <div class="crumbs">
@@ -325,7 +324,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="res_table">
                     <div class="res_table-head">
                         <div class="column" data-label="Name"><?php echo $this->lang->line('lbl_subject'); ?> </div>
@@ -347,7 +346,7 @@
                     <span><label class="pagination-label" id="pageOf">2</label></span>
                 </div>
             </div>
-            <div class="col-md-9 msgdetails pull-right">
+            <div class="col-md-9 col-sm-12 col-xs-12 msgdetails pull-right">
                 <div class="col-md-12 pagination clearfix text-right">
                     <span id="msg_previous_pager" class="glyphicon glyphicon-step-backward"></span>
                     <span id="msg_next_pager" class="glyphicon glyphicon-step-forward"> </span>

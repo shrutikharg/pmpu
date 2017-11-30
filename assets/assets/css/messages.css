@@ -164,3 +164,10 @@ and open the template in the editor.
     .pagination .glyphicon {
         cursor: pointer!important;
     }
+    .res_row > div.column[data-label="Name"] {
+        cursor: pointer;
+    }
+    .res_row > div.column[data-label="Name"]:hover {
+        background-color: #7ae6ff;
+        font-weight: bold;
+    }
