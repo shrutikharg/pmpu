@@ -1,12 +1,29 @@
-<style>
+<style type="text/css">
     .ajax-loader {
         margin-left: auto; 
         margin-right: auto; 
         text-align: center;
         display: table;
     }
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Email"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "First Name"; 
+        }
+        .res_row > .column:nth-of-type(4):before { 
+            content: "Last Name"; 
+        }
+        .res_row > .column:nth-of-type(5):before { 
+            content: "Phone No."; 
+        }
+    }
 </style>
-<script>
+<script type="text/javascript">
     var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
@@ -85,8 +102,6 @@
           
         });
     }
-
-
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/pagination.js"></script>
 <div id="content">

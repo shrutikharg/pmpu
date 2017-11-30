@@ -1,4 +1,24 @@
-<script>var is_search = false, page = 1, search_string_array = "";
+<style type="text/css">
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before {
+            content: 'Name';
+        }
+        .res_row > .column:nth-of-type(2):before {
+            content: 'Description';
+        }
+        .res_row > .column:nth-of-type(3):before {
+            content: 'Start Dt';
+        }
+        .res_row > .column:nth-of-type(4):before {
+            content: 'End Dt';
+        }
+        .res_row > .column:nth-of-type(5):before {
+            content: 'Questions';
+        }
+    }
+</style>
+<script>
+    var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
         fetch_list(page);

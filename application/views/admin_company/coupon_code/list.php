@@ -10,6 +10,26 @@
     .ui-datepicker .ui-datepicker-header, .ui-datepicker td .ui-state-hover {
         background-color: #99D9EA;
     }
+    @media(max-width: 560px) {
+        .res_row .column:nth-of-type(1):before {
+            content: 'Sr No';
+        }
+        .res_row .column:nth-of-type(2):before {
+            content: 'Coupen Code';
+        }
+        .res_row .column:nth-of-type(3):before {
+            content: '% Off';
+        }
+        .res_row .column:nth-of-type(4):before {
+            content: 'Start Dt';
+        }
+        .res_row .column:nth-of-type(5):before {
+            content: 'End Dt';
+        }
+        .res_row .column:nth-of-type(6):before {
+            content: 'Active';
+        }
+    }
 </style>
 <script>
     var is_search = false, page = 1, search_string_array = "";

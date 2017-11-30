@@ -1,27 +1,38 @@
 <script src="<?php echo base_url(); ?>assets/assets/js/demo/jquery_1.9.1.js"></script> 
-<style>
-   .ajax-loader {
-  visibility: hidden;
-  background-color: rgba(0,0,0,0.7);
-  position: fixed;
-  top:0%;
-  left:0%;
-  bottom:0%;
-  right:0%;
-  z-index: 1000 !important;
-  width: 100%;
-  height:100%;
-}
-
-.ajax-loader img {
-  
-    top:50%;
-    left:45%;
- 
- 
-} 
-    </style>
-    <script>var is_search = false, page = 1, search_string_array = "";
+<style type="text/css">
+    .ajax-loader {
+        visibility: hidden;
+        background-color: rgba(0,0,0,0.7);
+        position: fixed;
+        top:0%;
+        left:0%;
+        bottom:0%;
+        right:0%;
+        z-index: 1000 !important;
+        width: 100%;
+        height:100%;
+    }
+    .ajax-loader img {
+        top:50%;
+        left:45%;
+    } 
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before {
+            content: 'Sr No';
+        }
+        .res_row > .column:nth-of-type(2):before {
+            content: 'Comment';
+        }
+        .res_row > .column:nth-of-type(3):before {
+            content: 'By';
+        }
+        .res_row > .column:nth-of-type(4):before {
+            content: 'At';
+        }   
+    }
+</style>
+    <script>
+    var is_search = false, page = 1, search_string_array = "";
 
     $(document).ready(function () {
         fetch_list(page);

@@ -6,6 +6,17 @@
         text-align: center;
         display: table;
     }
+    @media(max-width: 560px) {
+        .res_row > .column:nth-of-type(1):before { 
+            content: "Sr No."; 
+        }
+        .res_row > .column:nth-of-type(2):before { 
+            content: "Department"; 
+        }
+        .res_row > .column:nth-of-type(3):before { 
+            content: "Description"; 
+        }
+    }
 </style>
 <script type="text/javascript">
     var is_search = false, page = 1, search_string_array = "";
@@ -72,19 +83,6 @@
                 });
     }
 </script>
-<style type="text/css">
-    @media(max-width: 560px) {
-        .res_row > .column:nth-of-type(1):before { 
-            content: "Sr No."; 
-        }
-        .res_row > .column:nth-of-type(2):before { 
-            content: "Department"; 
-        }
-        .res_row > .column:nth-of-type(3):before { 
-            content: "Description"; 
-        }
-    }
-</style>
 <div id="content">
     <div class="container">
         <!-- Breadcrumbs line -->
