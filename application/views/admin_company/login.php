@@ -13,10 +13,10 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/login.js"></script>
 <script>
     $(document).ready(function () {
-        $(document).ready(function () {
-            "use strict";
-            Login.init(); // Init login JavaScript
+        "use strict";
+        Login.init(); // Init login JavaScript
             $("#login_form").submit(function (event) {
+                $("#preloader").show();
                 var datastring = $("#login_form").serialize();
                 event.preventDefault();
                 $.ajax({
@@ -25,6 +25,7 @@
                     data: datastring,
                     dataType: 'json',
                     success: function (data) {
+                        $("#preloader").hide();
                         if (data.status === 'Success') {
                             location.href = "<?php echo base_url(); ?>admin_company/brandings/startpageapp";
                         } else if (data.status === "Fail") {
@@ -36,12 +37,11 @@
                         }
                     },
                     error: function () {
-
+                        $("#preloader").show();
                         alert('technical error please contact to system admin');
                     }
                 });
             });
-        });
     });
 </script>
 <style type="text/css">      
@@ -63,6 +63,7 @@
 </div>
 <div class="box">
     <div class="content">
+        <div id="preloader" style="position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center;opacity: 0.7;display: none;"></div>
         <?php
         echo '<div class="content">';
         if (isset($message_error) && $message_error) {
