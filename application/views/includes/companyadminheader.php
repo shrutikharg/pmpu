@@ -943,6 +943,12 @@ function time_elapsed_string($ptime)
 								<?php echo $this->lang->line('nav_employee_list');?>
 								</a>
 							</li>
+							<li <?php if($this->uri->segment(2) == 'add_user'){echo 'class="current_menu"';}?>>
+								<a href="<?php echo base_url(); ?>admin_company/add_user">
+								<i class="icon-angle-right"></i>
+								<?php echo $this->lang->line('nav_add_user');?>
+								</a>
+							</li>
 													
 						</ul>
 					</li>

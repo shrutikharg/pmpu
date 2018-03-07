@@ -12,23 +12,21 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
             var status;
-            var error = false;
+            var error =false;
             $(document).ready(function () {
-                $("#register_form").submit(function (evnt) {
-                    $('#preloader').show();
-                    var datastring = $("#register_form").serialize();
-                    evnt.preventDefault();
+                if($("#plan_id").val()==''){
+                    window.location.href="<?php echo base_url().'admin_company/signup'?>";
+                }
+                $("#submit").submit(function (evnt) {
+                   
+                    
                     var first_name = $('#first_name').val();
                     var last_name = $('#last_name').val();
                     var comp_name = $('#comp_name').val();
-                    //alert ($('#scn_no').val());
+                  
                     var email_address = $('#email_address').val();
                     var password = $('#password').val();
-                    //alert($('#datepicker').val());
-                    //alert(company);
-                    // var message = $('#message').val();
-                    // alert(message);
-                    // Form field validation
+            
                     if (first_name.length == 0) {
                         error = true;
                         //alert("error");
@@ -47,8 +45,9 @@
                         error = true;
                         $("#email_address").addClass("error2");
                     }
-                    if (error === false) {
-                        $.ajax({
+              
+                    if (error === false) {  $("#register_form")[0].submit();
+                        /*$.ajax({
                             type: "POST",
                             url: "../admin_company/create_member",
                             data: datastring,
@@ -58,7 +57,7 @@
                                     $('#preloader').hide();
                                     $('#register_form')[0].reset();
                                     $("#status").css("display", "block");
-                                    $("#status").html("<strong>Well done!</strong> Your Account created Sucessfully");
+                                    $("#status").html("<strong>Congratulation!</strong> Your Account created Sucessfully");
                                     var form = $(document.createElement('form'));
                                     $(form).attr("action", "../admin_company");
                                     $(form).attr("method", "POST");
@@ -83,7 +82,7 @@
                                 $('#preloader').hide();
                                 alert('error handing here');
                             }
-                        });
+                        });*/
                     }
                 });
                 
@@ -186,7 +185,7 @@
 
               #panels {
                 /*width: 600px;*/
-                /*height: 300px;*/
+                //height: 300px;
                 margin: 0 auto;
                 background: #f2f2f2;
 /*                -webkit-box-shadow: 2px 8px 25px -2px rgba(0,0,0,0.3);
@@ -244,7 +243,9 @@
                         'id' => 'first_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'First Name',
-                        'required' => 'required'
+                        'required' => 'required',
+                        'value'=>set_value('first_name')
+                       
                     );
                     echo "<div class='form-group'>";
                     echo form_input($first_name);
@@ -254,7 +255,8 @@
                         'id' => 'last_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Last Name',
-                        'required' => 'required'
+                        'required' => 'required',
+                        'value'=>set_value('last_name')
                     );
                     echo "<div class='form-group'>";
                     echo form_input($last_name);
@@ -264,7 +266,8 @@
                         'id' => 'web_address',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Web Address',
-                        'required' => 'required'
+                        'required' => 'required',
+                        'value'=>set_value('web_address')
                     );
                     echo "<div class='form-group'>";
                     echo form_input($web_address);
@@ -274,7 +277,8 @@
                         'id' => 'comp_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Company Name',
-                        'required' => 'required'
+                        'required' => 'required',
+                         'value'=>set_value('comp_name')
                     );
                     echo "<div class='form-group'>";
                     echo form_input($comp_name);
@@ -284,7 +288,8 @@
                         'id' => 'domain_name',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Sub Domain Name',
-                        'required' => 'required'
+                        'required' => 'required',
+                         'value'=>set_value('domain_name')
                     );
                     echo "<div class='form-group'>";
                     echo form_input($domain_name);
@@ -296,7 +301,8 @@
                         'Placeholder' => 'Email Address',
                         'type' => 'email',
                         'autocomplete' => 'off',
-                        'required' => 'required'
+                        'required' => 'required',
+                          'value'=>set_value('email_address')
                     );
                     echo "<div class='form-group'>";
                     echo form_input($email_address);
@@ -307,7 +313,8 @@
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Password',
                         'type' => 'email',
-                        'required' => 'required'
+                        'required' => 'required',
+                         'value'=>set_value('password')
                     );
                     echo "<div class='row'><div class='col-xs-6 col-sm-6 col-md-6'><div class='form-group'>";
                     echo form_password($password);
@@ -317,20 +324,15 @@
                         'id' => 'passconf',
                         'class' => 'form-control input-lg',
                         'Placeholder' => 'Confirm Password',
-                        'required' => 'required'
+                        'required' => 'required',
+                         'value'=>set_value('passconf')
                     );
                     echo "<div class='col-xs-6 col-sm-6 col-md-6'><div class='form-group'>";
                     echo form_password($password2);
                     echo "</div>";
-                    $plan_id = array(
-                        'type' => 'hidden',
-                        'name' => 'plan_id',
-                        'id' => 'plan_id',
-                        'value' => $selected_plan_id,
-                        'class' => 'form-control input-lg',
-                        );
+                   
                     echo "<div class='col-xs-6 col-sm-6 col-md-6'><div class='form-group'>";
-                    echo form_input($plan_id);
+                    echo form_hidden('plan_id',$selected_plan_id,'id="plan_id",required = "required"');
                     echo "</div>";
                     echo "</div></div>";
                     echo "</p>";
@@ -363,13 +365,13 @@
                     );
                     $selectVal = '';
                     echo "<div class='form-group'>";
-                    echo form_dropdown('typeofevents', $options, $selectVal, 'id="typeofevents" class="form-control input-lg"');
+                    echo form_dropdown('typeofevents', $options, set_value('typeofevents'), 'id="typeofevents" class="form-control input-lg"');
                     echo "</div>";
                     
                     echo "<div class='row'>";
                     echo "<div class='col-xs-6 col-md-6'><a id='reset' class='btn btn-success btn-block btn-lg'>Reset</a></div>";
                     echo "<div class='col-xs-6 col-md-6'>";
-                    echo form_submit('submit', 'submit', 'id="submit" class="btn btn-lg btn-block btn-primary"');
+                    echo form_submit('submit', 'Submit', 'id="submit" class="btn btn-lg btn-block btn-primary"');
                     echo"</div>";
                     echo "</div></div></div>";
                     ?>

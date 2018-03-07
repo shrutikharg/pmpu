@@ -58,6 +58,8 @@ $route['admin_company/register'] = 'companyuser/register';
 $route['admin_company/create_member'] = 'companyuser/create_member';
 $route['admin_company/apply_payment'] = 'companyuser/apply_payment_index';
 $route['admin_company/payment_subscribe'] = 'companyuser/payment_subscribe';
+$route['admin_company/payment_success'] = 'companyuser/payment_success';
+$route['admin_company/payment_failure'] = 'companyuser/payment_failure';
 
 
 $route['admin_company/userprofile'] = 'admin_profile/userprofile';

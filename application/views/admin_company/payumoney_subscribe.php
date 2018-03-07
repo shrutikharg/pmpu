@@ -1,3 +1,4 @@
+
 <?php
 // Merchant key here as provided by Payu
 $key = "xa6Hhr";
@@ -67,13 +68,7 @@ $action = 'payment_success';
         <link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet">
         <script>
             var hash = '<?php echo $hash ?>';
-            function submitPayuForm() {
-                if (hash == '') {
-                    return;
-                }
-                var payuForm = document.forms.payuForm;
-                payuForm.submit();
-            }   
+             
 	         </script>
         <style type="text/css">
             html, body {
@@ -94,47 +89,44 @@ $action = 'payment_success';
             }
         </style>
     </head>
-    <body onload="submitPayuForm()" class="bg">
+    <body  class="bg">
         <div class="container">
             <div class="row">
                 <div class="well col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
                     <form action="<?php echo $action; ?>" method="post" name="payuForm" id="payuForm">
-                        <h2 class="form-signin-heading"><?php echo $this->session->userdata['registeration_data']['reg_message'] ?></h2>
+                        <h2 class="form-signin-heading"><?php echo $this->session->userdata['admin_registeration_data']['message'] ?></h2>
                         <div class='form-group'>
                             <input type="hidden" name="key" value="xa6Hhr" />
                             <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
                             <table style="width: 100%;">
                                 <tr>
                                     <td><b>Amount in Rupees:</b> </td>
-                                    <td><input type="text" name="amount"  id="amount"class="text_style" readonly value="<?php echo $this->session->userdata['registeration_data']['reg_price'] ?>" /></td>
+                                    <td><input type="text" name="amount"  id="amount"class="text_style"  value="<?php echo (empty($posted['amount'])) ? $this->session->userdata['admin_registeration_data']['amount'] : $posted['amount']; ?>" /></td>
                                 </tr> 
                                 <tr>
                                     <td><b>First Name:</b> </td>
-                                    <td><input type="text" name="firstname" maxlength="32" pattern="[A-Za-z]{1,32}"  required id="firstname" class="text_style" value="<?php echo (empty($posted['firstname'])) ? $this->session->userdata['registeration_data']['reg_first_name'] : $posted['firstname']; ?>" /></td>
+                                    <td><input type="text" name="firstname"   required id="firstname" class="text_style" value="<?php echo (empty($posted['firstname'])) ? $this->session->userdata['admin_registeration_data']['first_name'] : $posted['firstname']; ?>" /></td>
                                 <input type="hidden" name="txnid" value="<?php echo $txnid ?>" /></tr>
                                 <tr>
                                     <td><b>Email:</b> </td>
-                                    <td><input type="email" name="email" required id="email" class="text_style" value="<?php echo (empty($posted['email'])) ? $this->session->userdata['registeration_data']['reg_email'] : $posted['email']; ?>" /></td>
+                                    <td><input type="email" name="email" required id="email" class="text_style" value="<?php echo (empty($posted['email'])) ? $this->session->userdata['admin_registeration_data']['email'] : $posted['email']; ?>" /></td>
                                 </tr>
                                 <tr>
                                     <td><b>Phone:</b> </td>
-                                    <td><input type="text" pattern="[0-9]{10}" name="phone" required value="<?php echo (empty($posted['phone'])) ? $this->session->userdata['registeration_data']['reg_phone'] : $posted['phone']; ?>" /></td>
+                                    <td><input type="text" pattern="[0-9]{10}" name="phone" required value="<?php echo (empty($posted['phone'])) ? $this->session->userdata['admin_registeration_data']['phone'] : $posted['phone']; ?>" /></td>
                                 </tr>
                                 <tr>
                                     <td><b>Product Info:</b> </td>
-                                    <td><input type="text" class="text_style" name="productinfo" id="productinfo" readonly value="Sanskrit for Everyone"></td>
+                                    <td><input type="text" class="text_style" name="productinfo" id="productinfo" readonly value=" Coolacharya Post event Management System"></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td><a id="couponText" style="color: #00b9f5; cursor: pointer; text-decoration: none;">Have a Coupon code?</a></td>
                                 </tr>
-                                <tr class="couponDiv" style="display: none;">
-                                    <td><b>Coupon Code: </b> </td>
-                                    <td><input type="text" class="text_style" name="udf3" id="coupon_code"  placeholder="Coupon Code"></td>
-                                    <td><div id="DisableDiv" style="display: block;">
-
-                                        </div>
-                                    </td>
+                                <tr>
+                                    <td><b>Organisation: </b> </td>
+                                    <td><input type="text" class="text_style" name="udf3" id="coupon_code"  placeholder="Organisation" value="<?php echo $this->session->userdata['admin_registeration_data']['company_name'];?>"></td>
+                                    
                                 </tr>
                                 <tr id="msgDiv" style="display: none;">
                                     <td>&nbsp;</td>
@@ -177,9 +169,10 @@ $action = 'payment_success';
                                                     if (data.status == 'Success') {
                                                         $('#DisableDiv').hide();
                                                         $('#msgDiv').show();
-                                                        $("#amount").val(data.discount_cost);
-                                                        $("#original_price").val(data.original_cost);
-                                                        $("#coupon_code").val(data.coupon_code);
+														  $("#amount").val(data.discount_cost);
+                                                      $("#original_price").val(data.original_cost);
+                                                      $("#coupon_code").val(data.coupon_code);
+													
                                                         $("#percentage_off").val(data.percentage_off);
                                                         $('#msgDiv > td:last-child').html('<p style="color: green;font-size: 1.1em; font-weight: 700;background: cyan;padding: 4px 15px;">Coupon Applied</p>');
                                                     } 
@@ -203,19 +196,18 @@ $action = 'payment_success';
                                 </script>
 
                                 <tr>
-                                    <td colspan="3"><input type="hidden" name="surl" value="<?php echo base_url() . 'employee/'; ?>success.php" size="64" /></td>
-                                    <td colspan="3"><input type="hidden" name="furl" value="http://coolacharya.com/payumoney/failure.php" size="64" /></td>
-                                    <td colspan="3"><input type="hidden" name="udf1" value="<?php echo $this->session->userdata['registeration_data']['reg_id'] ?>" size="64" /></td>
-                                    <td colspan="3"><input type="hidden" name="udf2" value="<?php echo $this->session->userdata['registeration_data']['reg_company_id'] ?>" size="64" /></td>
-                                    <td colspan="3"><input type="hidden" name="udf4"  id="original_price"value="<?php echo $this->session->userdata['registeration_data']['reg_price'] ?>" size="64" /></td>
-                                    <td colspan="3"><input type="hidden" name="udf5"  id="percentage_off"  size="64" /></td>
+                                    <td colspan="3"><input type="hidden" name="surl" value="<?php echo base_url() . 'admin_company/payment_success'; ?>" size="64" /></td>
+                                    <td colspan="3"><input type="hidden" name="furl" value="<?php echo base_url() . 'admin_company/payment_failure'; ?>" size="64" /></td>
+                                    <td colspan="3"><input type="hidden" name="udf1" value="<?php echo $this->session->userdata['admin_registeration_data']['id'] ?>" /></td>
+                                    <td colspan="3"><input type="hidden" name="udf2" value="<?php echo $this->session->userdata['admin_registeration_data']['company_id'] ?>"  /></td>  /></td>
+                                    <td colspan="3"><input type="hidden" name="udf5"  id="plan_id"  value="<?php echo $this->session->userdata['admin_registeration_data']['plan_id'] ?>"  /></td>
 
                                     <td><input type="hidden" name="service_provider" value="payu_paisa"  /></td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <?php if (!$hash) { ?>
-                                    <td><br/><input class="btn btn-large btn-primary custom-button" type="submit" style="padding: 6px 35px;" value="Submit" /></td>
+                                    <td><br/><input class="btn btn-large btn-primary custom-button" type="submit" style="padding: 6px 35px;" value="Continue to Payment Gateway" /></td>
                                         <?php } ?>
                                 </tr>
                             </table>

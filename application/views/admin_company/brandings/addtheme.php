@@ -131,6 +131,25 @@
                                     <div class="col-md-6 col-xs-10"><textarea id="" name="description" class="form-control" pattern="[a-zA-Z0-9]+" required ><?php echo $company_details->description;
             ; ?></textarea></div>
                                 </div>
+                                     <div class="form-group required">
+                                    <label class="col-md-3   control-label">Upload your logo:</label>
+                                    <div class="col-md-2">
+                                                    <!--<input type="file" name="theme_logo" id="theme_logo" />--->
+                                        <a class='btn ' href='javascript:;'>
+                                            Choose File...
+                                            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="logo_image" size="40" id="theme_logo"  onchange='$("#upload-file-info").html($(this).val());'>
+                                        </a>	
+                                    </div>
+                                    <div class="col-md-2">				
+
+                                        <img src="<?php echo base_url() . $company_details->logo_path; ?>" height="75" width="75" />
+                                        <input type="hidden"  readonly  name="logo_path" value="<?php echo $company_details->logo_path; ?>" >
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span><b>(Please upload logo of size (70X50))</b></span>
+                                    </div>			
+                                </div>
 
                         </div>
 

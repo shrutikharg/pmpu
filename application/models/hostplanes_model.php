@@ -21,7 +21,7 @@ class Hostplanes_model extends CI_Model {
 		$this->db->from('hostingplan_tbl');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
-		return $query->result_array(); 
+		return $query->row_array(); 
     }    
 
     /**

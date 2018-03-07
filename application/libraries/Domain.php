@@ -15,7 +15,7 @@ class Domain {
 
     private $CI;
     private $root_domain_path ;
-    private $root_domain = 'coolacharya';
+    private $root_domain = 'coolacharya.com';
     private $public_html_dir = '&dir=public_html/companyadminapp1';
     private $and_domain = '&domain=';
     private $localhost = 'coolacharya.com';
@@ -38,7 +38,7 @@ class Domain {
       
         $buildRequest = $this->root_domain_path;
 
-        $openSocket = fsockopen($this->localhost,$this->cpanel_port);
+        $openSocket = fsockopen($this->localhost, $this->cpanel_port);
         if (!$openSocket) {
             return FALSE;
         }

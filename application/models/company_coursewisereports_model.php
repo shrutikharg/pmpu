@@ -20,7 +20,7 @@ class Company_coursewisereports_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_coursewise_report( $sidx, $sord, $start, $limit, $search_string_array, $count, $is_csv=false) {
+    public function get_coursewise_report( $sidx, $sord, $start, $limit, $search_string_array, $count, $is_csv) {
         $this->db->_protect_identifiers = false;
         $this->db->select('c.name as Course,coalesce(ch.Count, 0) as Chapters_Count,          
                  CASE

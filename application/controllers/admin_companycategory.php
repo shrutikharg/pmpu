@@ -31,8 +31,8 @@ class Admin_companycategory extends CI_Controller {
      * Load the main view with all the current model model's data.
      * @return void
      */
-    public function index() {
-        $userid = $this->session->userdata('id');
+    public function index() {               
+       $userid = $this->session->userdata('id');
         $usernm = $this->session->userdata('user_name');
         $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
         $data['main_content'] = 'admin_company/category/list';

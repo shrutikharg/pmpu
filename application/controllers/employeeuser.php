@@ -271,7 +271,7 @@ class Employeeuser extends CI_Controller {
         if ($this->email->send()) {
             
         } else {
-            die();
+            echo "Unable to send Mail";
         }
         $this->load->view('employee_company/payumoney_success', $data);
     }

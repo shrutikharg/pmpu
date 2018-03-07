@@ -54,6 +54,7 @@
             'search_string_array': search_string_array,
             'rows': $("#rows").val()
         };
+
         $.ajax({
             type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
             beforeSend: function () {
