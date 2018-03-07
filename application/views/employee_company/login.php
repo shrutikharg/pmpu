@@ -13,7 +13,8 @@
 	$(document).ready(function(){
 		"use strict";
 
-		         $("#login_form").submit(function (event) {
+             $("#login_form").submit(function (event) {
+                $('#preloader').show();
                 var datastring = $("#login_form").serialize();
                 event.preventDefault();
                 $.ajax({
@@ -22,6 +23,7 @@
                     data: datastring,
                     dataType: 'json',
                     success: function (data) {
+                        $('#preloader').hide();
                         if (data.status === 'Success') {
                             location.href = "<?php echo base_url(); ?>employee_company/dashboard";
                         } else if (data.status === "Fail") {
@@ -38,6 +40,7 @@
                             
                     },
                     error: function () {
+                        $('#preloader').hide();
                         $("#wrongcreadential").css("display", "block");
                             $("#wrongcreadential").text('technical error please contact to system admin');
                         
@@ -96,6 +99,7 @@
     </div>
     <div class="box">
         <div class="content">
+            <div id="preloader" style="position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center;opacity: 0.7;display: none;"></div>
             <?php
             echo '<div class="content">';
             if (isset($message_error) && $message_error) {
