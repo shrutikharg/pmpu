@@ -14,7 +14,7 @@ function create_admin_support_mail($user_details, $post_data) {
     $message .="<br>";
     $message .="They have following query";
     $message .="<br>";
-    $message .="<span style='color:blue'>".$post_data['description']."</span>";
+    $message .="<span style='color:blue'>" . $post_data['description'] . "</span>";
     //  $message.="Dear User,\nPlease click on below URL or paste into your browser to verify your Email Address\n\n http://coolacharya.com/companyadminapp1/verify?user=".$username."&active_link=".sha1($activation_code)."<br>"."\n\nThanks\nAdmin Team";
     return (object) array('message' => $message, 'from' => $user_details->email, 'from_alias' => $user_details->comp_name);
 }
@@ -173,7 +173,7 @@ function course_assgnment_format($username, $course_name) {
     return $message;
 }
 
-function employee_support_mail_format($user_email, $subject, $description,$company_details) {
+function employee_support_mail_format($user_email, $subject, $description, $company_details) {
     $from = $user_email;
     $from_alias = "$company_details->name Subscriber";
     $subject = $subject;

@@ -14,6 +14,9 @@
             var status;
             var error =false;
             $(document).ready(function () {
+                if($("#plan_id").val()==''){
+                    window.location.href="<?php echo base_url().'admin_company/signup'?>";
+                }
                 $("#submit").submit(function (evnt) {
                    
                     
@@ -51,6 +54,7 @@
                             dataType: 'json',
                             success: function (data) {
                                 if (data.status === 'Success') {
+                                    $('#preloader').hide();
                                     $('#register_form')[0].reset();
                                     $("#status").css("display", "block");
                                     $("#status").html("<strong>Congratulation!</strong> Your Account created Sucessfully");
@@ -62,7 +66,8 @@
                                
                                 }
                                     if (data.status === 'Validation_Error') {
-                                   
+                                    
+                                    $('#preloader').hide();
                                     $("#status").css("display", "block");
                                     $("#status").html("<strong>Error!</strong>"+data.message);
                                     var form = $(document.createElement('form'));
@@ -74,6 +79,7 @@
                                 
                             },
                             error: function () {
+                                $('#preloader').hide();
                                 alert('error handing here');
                             }
                         });*/
@@ -211,24 +217,11 @@
     <body class="register_bg">
         <div class="layer_bg">
         <div class="container"> 
+            <div id="preloader" style="position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center;opacity: 0.7;display: none;"></div>
             <div class="row">
                 <div class="well col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-top:75px;">
                     <div id="status" style="display:none" class="alert alert-success">
                     </div>
-                    <!--<div class="wrap">
-                        <ul class="tabs group">
-                                <li>
-                                    <a class="active" href="#/general">Personal Infomation</a>
-                                </li>
-                                <li>
-                                    <a href="#/interest">Interest</a>
-                                </li>
-                        </ul>
-                        <div id="panels">
-                                <p id="general">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut hendrerit aliquam mauris, a mattis lectus varius id. Ut dolor tortor, hendrerit et porttitor in, gravida sed felis. Donec vehicula ex nec venenatis pulvinar. Donec vel sodales neque.</p>
-                                <p id="interest">Donec tincidunt tortor ut magna mollis sagittis. Mauris eu nibh non purus gravida hendrerit. Donec enim nisi, pretium eu libero sit amet, bibendum sagittis velit. Pellentesque non dapibus leo. Suspendisse ante tellus, volutpat ac leo eget, venenatis rhoncus sem.</p>
-                        </div>
-                    </div>-->
                     <?php
                     echo validation_errors();
                     $attributes = array('class' => 'form', 'id' => "register_form");

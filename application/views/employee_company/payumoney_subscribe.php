@@ -148,6 +148,15 @@ $action = 'payment_success';
                                 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
                                 <script type="text/javascript">
                                     $(document).ready(function () {
+										  if (hash == '') {
+                   // return;
+                }
+				else{
+					$("#payuForm").submit();
+				  /* var payuForm = document.forms.payuForm;
+                payuForm.submit();*/	
+				}
+             
                                         $('a#couponText').unbind('click').bind('click', function(){
                                             $(this).parent().parent().hide();
                                             $('.couponDiv').show();

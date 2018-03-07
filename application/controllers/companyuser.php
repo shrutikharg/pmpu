@@ -82,13 +82,9 @@ class Companyuser extends CI_Controller {
             $data['selected_plan_id'] = $this->input->post('plan_id');
              $this->load->view('admin_company/register_form', $data);
         } else {
-            $plan_id = $this->input->post('plan_id');
-            $this->load->model('hostplanes_model');
-            $this->load->model('user_hostingplan_model');
-
-
+                      $plan_id = $this->input->post('plan_id');        
             $email_id = $this->input->post('email_address');
-            $company_data = array('email' => $this->input->post('email_address'),
+                       $company_data = array('email' => $this->input->post('email_address'),
                 'domain_name' => $this->input->post('domain_name'),
                 'web_address' => $this->input->post('web_address'),
                 'name' => $this->input->post('comp_name')
@@ -126,7 +122,7 @@ class Companyuser extends CI_Controller {
                     'email' => $email_id,
                     'phone' => $this->input->post('phone_no'),
                     'id' => $user_id,
-                    'message' => 'Company has registered sucessfully',
+                    'message' => 'Oraganisation registered sucessfully',
                     'company_id' => $this->encryption->encrypt($company_id),
                     'plan_id' => $plan_id,
                     'amount' => $hosting_plan_details['amount'],

@@ -335,6 +335,13 @@ class Companyuser_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();   
     }
+    public function check_company_subscription($email_id){
+     $this->db->select('u.company_id');
+        $this->db->from('users u');     
+        $this->db->where('email',$email_id);
+        $query = $this->db->get();
+        return $query->row();   
+    }
 
     
 
