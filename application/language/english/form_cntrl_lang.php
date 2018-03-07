@@ -163,15 +163,16 @@ $lang['lbl_emp_comp_webaddress']="Web Address";
 
 //form control for  company
 $lang['nav_master']='Master';
-$lang['nav_comapny']='About Company';
-$lang['lbl_company_name']="Company Name";
+$lang['nav_comapny']='About Event';
+$lang['lbl_company_name']="Company/Organizer Name";
 $lang['lbl_subdomain_name']="Subdomain Name";
 $lang['lbl_company_desc']="About Company";
 $lang['lbl_comp_phone_no']="Phone No.";
-$lang['lbl_comp_overview']="In Short About Company";
+$lang['lbl_comp_overview']="In Short About Event";
 $lang['lbl_comp_logo']="Logo Image";
 $lang['lbl_comp_subscription_price']="Subscription Price";
-$lang['lbl_comp_product']="Product Name";
+$lang['lbl_comp_product']="Event Name";
+$lang['lbl_edit_company']="Edit Event";
 
 //form control for  comments
 $lang['nav_comment']="Comments";
