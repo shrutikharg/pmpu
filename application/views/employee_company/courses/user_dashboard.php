@@ -66,6 +66,16 @@
     .glyphicon {
         font-size: 56px;                  
     }
+    @media(max-width: 560px) {
+        .dash-box{
+            width: auto;      
+            float: none;
+            padding: inherit !important;
+        }
+        #piechart, #piechart div, #piechart svg {
+            width: 100% !important;
+        }
+    }
 </style>
 <div id="content" Style="padding-top:30px; background:#e5ebf2;">            
     <div class="container">  

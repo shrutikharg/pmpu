@@ -1,95 +1,104 @@
-<link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-	<!--=== JavaScript ===-->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-	<link href="<?php echo base_url(); ?>assets/assets/css/login.css" rel="stylesheet" type="text/css" />
-		<!-- Bootstrap -->
-<link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url(); ?>assets/css/admin/global.css" rel="stylesheet" type="text/css">
-	<!-- App -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/login.js"></script>
-	<script>
-	$(document).ready(function(){
-		"use strict";
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+            <!--=== JavaScript ===-->
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/libs/jquery-1.10.2.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+            <link href="<?php echo base_url(); ?>assets/assets/css/login.css" rel="stylesheet" type="text/css" />
+                    <!-- Bootstrap -->
+    <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="<?php echo base_url(); ?>assets/css/admin/global.css" rel="stylesheet" type="text/css">
+            <!-- App -->
+            <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/js/login.js"></script>
+            <script>
+            $(document).ready(function(){
+                    "use strict";
 
-             $("#login_form").submit(function (event) {
-                $('#preloader').show();
-                var datastring = $("#login_form").serialize();
-                event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url(); ?>employee/login/validate_credentials",
-                    data: datastring,
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#preloader').hide();
-                        if (data.status === 'Success') {
-                            location.href = "<?php echo base_url(); ?>employee_company/dashboard";
-                        } else if (data.status === "Fail") {
-                           $("#wrongcreadential").css("display", "block");
-                            $("#wrongcreadential").text("Please enter correct email");
-                        }
-                        else if(data.status === "Not Subscribed"){
-                           location.href = "<?php echo base_url(); ?>employee/payment_subscribe"; 
-                        }
-                        else {
+                 $("#login_form").submit(function (event) {
+                    $('#preloader').show();
+                    var datastring = $("#login_form").serialize();
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url(); ?>employee/login/validate_credentials",
+                        data: datastring,
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#preloader').hide();
+                            if (data.status === 'Success') {
+                                location.href = "<?php echo base_url(); ?>employee_company/dashboard";
+                            } else if (data.status === "Fail") {
+                               $("#wrongcreadential").css("display", "block");
+                                $("#wrongcreadential").text("Please enter correct email");
+                            }
+                            else if(data.status === "Not Subscribed"){
+                               location.href = "<?php echo base_url(); ?>employee/payment_subscribe"; 
+                            }
+                            else {
+                                $("#wrongcreadential").css("display", "block");
+                                $("#wrongcreadential").text(data.status);
+                            }
+
+                        },
+                        error: function () {
+                            $('#preloader').hide();
                             $("#wrongcreadential").css("display", "block");
-                            $("#wrongcreadential").text(data.status);
+                                $("#wrongcreadential").text('technical error please contact to system admin');
+
                         }
-                            
-                    },
-                    error: function () {
-                        $('#preloader').hide();
-                        $("#wrongcreadential").css("display", "block");
-                            $("#wrongcreadential").text('technical error please contact to system admin');
-                        
-                    }
+                    });
                 });
             });
-	});
-	</script>
-        <style type="text/css">
-        /***********************************Footer Css Start********************************************/
-        .footer
-        {
-            background: #c0c0c0;
-            width: 100%;
-            float: left;
+            </script>
+            <style type="text/css">
+            /***********************************Footer Css Start********************************************/
+            .footer
+            {
+                background: #c0c0c0;
+                width: 100%;
+                float: left;
 
-        }  
-        .footer_inner
-        {
-            margin-top: 20px;	
-        }
+            }  
+            .footer_inner
+            {
+                margin-top: 20px;	
+            }
 
-        .footer ul
-        {
-            list-style: none;	
-        }
-        .footer li
-        {
-            float: left;
-            padding-left: 4px;	
-        }
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        .footer_2
-        {
-            float:left;	
-            width: 100%;
-            text-align: center;
-            background: #f5f5f5;
-            padding-bottom: 10px;
-            padding-top: 10px;	
-        }
-        /***********************************Footer Css End********************************************/ 
-        </style>
+            .footer ul
+            {
+                list-style: none;	
+            }
+            .footer li
+            {
+                float: left;
+                padding-left: 4px;	
+            }
+            footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+            .footer_2
+            {
+                float:left;	
+                width: 100%;
+                text-align: center;
+                background: #f5f5f5;
+                padding-bottom: 10px;
+                padding-top: 10px;	
+            }
+            @media(max-width: 560px) {
+                footer {
+                    position: static;
+                }
+            }
+            /***********************************Footer Css End********************************************/ 
+            </style>
+    </head>
 <body class="bg">
-    <div class="login">
+    <div class="login clearfix">
         <div id="wrongcreadential" class="alert alert-danger" style="display:none; margin-top:15px;margin-bottom:20px;max-width:700px;margin-left: auto; margin-right: auto;">              
             <strong>sorry !</strong> you have entered wrong Email Id / Password.
         </div>
@@ -175,10 +184,11 @@ if ($query && $query['status'] == 'success') {
     </div>
 </div>
 </div>
-<footer>
+<footer class="clearfix">
     <div class="footer" style="background-color:#99d9ea !important">
         <div class="footer_inner">
-            <div class="container"><div class="row">
+            <div class="container">
+                <div class="row">
                     <div class="col-md-12">     
                         <div class="col-md-4">
                             <?php
@@ -207,7 +217,7 @@ if ($query && $query['status'] == 'success') {
 
                         </div>
                         <div class="col-md-4">    
-                            <ul>
+                            <ul class="socialicons">
                                 <li>
 <?php
 if (!empty($footerdata->facebook_link)) {
@@ -281,5 +291,7 @@ $.get("http://ipinfo.io", function (response) {
     $("#details").html(JSON.stringify(response, null, 4));}, "jsonp");
 
 </script>
+</body>
+</html>
 	
 	

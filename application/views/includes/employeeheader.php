@@ -73,8 +73,9 @@
 	<link href="<?php echo base_url(); ?>assets/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url(); ?>assets/assets/css/icons.css" rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets/css/fontawesome/font-awesome.min.css">
-
+<!--	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/assets/css/fontawesome/font-awesome.min.css">-->
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 	
 	<!--[if IE 7]>
 		<link rel="stylesheet" href="assets/css/fontawesome/font-awesome-ie7.min.css">
@@ -267,7 +268,7 @@ function time_elapsed_string($ptime)
 
 			<!-- Only visible on smartphones, menu toggle -->
 			<ul class="nav navbar-nav">
-				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="fa fa-bars"></i></a></li>
 			</ul>
 
 			<!-- Logo -->
@@ -278,7 +279,7 @@ function time_elapsed_string($ptime)
 
 			<!-- Sidebar Toggler -->
 			<a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
-				<i class="icon-reorder"></i>
+				<i class="fa fa-bars"></i>
 			</a>
 			<!-- /Sidebar Toggler -->
 
@@ -419,7 +420,7 @@ function time_elapsed_string($ptime)
 
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-			<i class="icon-envelope"></i>
+			<i class="fa fa-envelope"></i>
 
 			<?php if(mysqli_num_rows($res_LC) > 0) { ?>
 
@@ -594,17 +595,17 @@ function time_elapsed_string($ptime)
 				<li class="dropdown user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<!--<img alt="" src="assets/img/avatar1_small.jpg" />-->
-						<i class="icon-male"></i>
+						<i class="fa fa-user"></i>
 						<span id="username" class="username">
 						<?php echo $this->session->userdata('empuser_name')	?></span>
-						<i class="icon-caret-down small"></i>
+						<i class="fa fa-caret-down small"></i>
 					</a>
 					<ul class="dropdown-menu">
 		
-				<li><a href="<?php echo base_url(); ?>employee/userprofile"><i class="icon-user"></i> My Profile</a></li>
+				<li><a href="<?php echo base_url(); ?>employee/userprofile"><i class="fa fa-user"></i> My Profile</a></li>
 			
 						<li class="divider"></li>
-						<li><a href="<?php echo base_url(); ?>employee/logout"><i class="icon-key"></i> Log Out</a></li>
+						<li><a href="<?php echo base_url(); ?>employee/logout"><i class="fa fa-key"></i> Log Out</a></li>
 					</ul>
 				</li>
 				
@@ -633,13 +634,13 @@ function time_elapsed_string($ptime)
 				<ul id="nav">
 					<li class="current open">
 						<a href="javascript:void(0);">
-							<i class="icon-facetime-video"></i>
+							<i class="fa fa-video-camera"></i>
 							Courses
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'courses'){echo 'class="current_menu"';}?>>
 								<a href="#">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  My Courses  list
 								</a>
 							</li>
@@ -647,7 +648,7 @@ function time_elapsed_string($ptime)
 		
 			<li <?php if($this->uri->segment(2) == 'schedulecourselist'){echo 'class="disable_menu"';}?>>	
 			<a href="#">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  Schedule Courses  list
 								</a>
 		</li>
@@ -656,13 +657,13 @@ function time_elapsed_string($ptime)
 					
 					<li>
 						<a>
-							<i class="icon-supportmail"></i>
+							<i class="fa fa-support"></i>
 							 Support
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'supportmail'){echo 'class="current_menu"';}?>>
 								<a href="#">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  Contact to Admin
 								</a>
 							</li>						
@@ -685,13 +686,13 @@ else
 				<ul id="nav">
                                     <li >
 						<a>
-							<i class="icon-home"></i>
+							<i class="fa fa-home"></i>
 							Dashboard
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'dashboard'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>employee_company/dashboard">
-								<i class="icon-briefcase"></i>
+								<i class="fa fa-briefcase"></i>
 								 Dashboard
 								</a>
 							</li>
@@ -700,20 +701,20 @@ else
 					</li>
 					<li >
 						<a href="javascript:void(0);">
-							<i class="icon-facetime-video"></i>
+							<i class="fa fa-video-camera"></i>
 							Courses
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'courses'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>employee_company/courses">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  Courses  list
 								</a>
 							</li>
 	
 	<li <?php if($this->uri->segment(2) == 'schedulecourselist'){echo 'class="current_menu"';}?>>
 			<a href="<?php echo base_url(); ?>employee_company/courses/schedulecourse/">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  Schedule Courses  list
 								</a>
 		</li>
@@ -722,13 +723,13 @@ else
 					
 					<li>
 						<a>
-							<i class="icon-supportmail"></i>
+							<i class="fa fa-support"></i>
 							 Support
 						</a>
 						<ul class="sub-menu">
 							<li <?php if($this->uri->segment(2) == 'supportmail'){echo 'class="current_menu"';}?>>
 								<a href="<?php echo base_url(); ?>employee_company/supportmailemp">
-								<i class="icon-angle-right"></i>
+								<i class="fa fa-angle-right"></i>
 								  Contact to Admin
 								</a>
 							</li>
