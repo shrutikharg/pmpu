@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    $(document).ready(function (e) { });
+    $(document).ready(function (e) {  });
 </script>
 <script type="text/javascript">
     function getchapters(course_id) {
@@ -49,7 +49,7 @@
                 </div><?php
                 foreach ($courses as $row) {
                     ?>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="col-md-3">
                         <div class="card"> 
                             <div class="hover-div animated zoomIn"> <a href="#" class="btn btn-success">
                                     <?php echo '<input type="button" id="id" onClick="getchapters(' . $row['id'] . ')" value="View Chapters" class="btn btn-success btn-block"></button>'; ?> </a> </div>

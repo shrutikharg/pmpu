@@ -171,3 +171,7 @@ and open the template in the editor.
         background-color: #7ae6ff;
         font-weight: bold;
     }
+    .msgdetails {
+        max-height: 600px;
+        overflow: auto;
+    }

@@ -80,7 +80,7 @@ if(!empty($footerdata->google_link))
 </li>
 </ul>            
 </div>
-<div class="col-md-4" style="text-align: center; "> 
+<div class="col-md-4 text-center"> 
 
 
 <h4><b>Contact:</b> <span id="contact_no"> +91-<?php 
