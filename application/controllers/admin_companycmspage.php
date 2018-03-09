@@ -29,10 +29,10 @@ class Admin_companycmspage extends CI_Controller {
      */
     public function index() {
 
-        $data['cmspage'] = $this->companycmspage_model->get_cmspage($userid, '', '', $order_type, $config['per_page'], $limit_end);
-        $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
+        $data['cmspage'] = $this->companycmspage_model->get_cmspage();
+        $data['footerdata'] = $this->companycmspage_model->list_cmspage();
         if (empty($data['cmspage'])) {
-             $this->session->set_flashdata('flash_message','You do not have added CMS page yet,Please add it as it reflects at viewer side');
+             $this->session->set_flashdata('flash_message','You do not have added footer contact page yet,Please add it as it reflects at viewer side');
                        redirect('admin_company/cmspage/add');
         }
         //load the view
@@ -43,29 +43,9 @@ class Admin_companycmspage extends CI_Controller {
 //index
 
     public function add() {
-        $userid = $this->session->userdata('id');
-        $usernm = $this->session->userdata('user_name');
-        //if save button was clicked, get the data sent via post
+       
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
-            //form validation
-            $this->form_validation->set_rules('emailid', 'emailid', 'trim|required|min_length[5]|xss_clean');
-            $this->form_validation->set_rules('contactno', 'contactno', 'trim|required|numeric|xss_clean');
-            $this->form_validation->set_rules('cmspagelink1', 'cmspagelink1', 'trim|required|xss_clean');
-            $this->form_validation->set_rules('cmspagelink2', 'cmspagelink2', 'trim|xss_clean');
-            $this->form_validation->set_rules('cmspagelink3', 'cmspagelink3', 'trim|xss_clean');
-            $this->form_validation->set_rules('cmspagelink1_name', 'cmspagelink1_name', 'trim|required|xss_clean');
-            $this->form_validation->set_rules('cmspagelink2_name', 'cmspagelink2_name', 'trim|xss_clean');
-            $this->form_validation->set_rules('cmspagelink3_name', 'cmspagelink3_name', 'trim|xss_clean');
-
-
-            $this->form_validation->set_rules('fblink', 'fblink', 'trim|xss_clean');
-            $this->form_validation->set_rules('googlepluslink', 'googlepluslink', 'trim|xss_clean');
-            $this->form_validation->set_rules('twitterlink', 'twitterlink', 'trim|xss_clean');
-            $this->form_validation->set_rules('linkedinlink', 'linkedinlink', 'trim|xss_clean');
-            $this->form_validation->set_error_delimiters('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
-
-
-            //if the form has passed through the validation
+       
             if ($this->form_validation->run()) {
                 $data_to_store = array(
                     'emailid' => $this->input->post('emailid'),
@@ -86,19 +66,19 @@ class Admin_companycmspage extends CI_Controller {
                 $mandate_insert_details=  $this->mandate_update->get_insert_details();
                 //if the insert has returned true then we show the flash message
                 if ($this->companycmspage_model->store_cmspage(array_merge($data_to_store,$mandate_insert_details))) {
-                   
+                    $this->session->set_flashdata('flash_message', 'updated'); 
                 } else {
                  
                 }
             }
             else{
                 $data['message']=validation_errors();
+               
             }
         }
         //load the view
-        $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
-        $data['count_cmslimit'] = $this->companycmspage_model->count_limitcmspage($userid);
-
+        $data['footerdata'] = $this->companycmspage_model->list_cmspage();
+       
         $data['main_content'] = 'admin_company/cmspage/add';
         $this->load->view('includes/template', $data);
     }
@@ -110,7 +90,7 @@ class Admin_companycmspage extends CI_Controller {
     public function update() {
       
 
-        //if save button was clicked, get the data sent via post
+         $data['cmspage'] = $this->companycmspage_model->get_cmspage();
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             //form validation
             $this->form_validation->set_rules('emailid', 'emailid', 'trim|required|min_length[5]|xss_clean');
@@ -150,19 +130,17 @@ class Admin_companycmspage extends CI_Controller {
                  $mandate_update_details=  $this->mandate_update->get_update_details();
                 //if the insert has returned true then we show the flash message
                 if ($this->companycmspage_model->update_cmspage( array_merge($data_to_store,$mandate_update_details)) == TRUE) {
-                    $this->session->set_flashdata('flash_message', 'updated');
+                    $this->session->set_flashdata('flash_message', $this->lang->line('msg_footer_contact_update_success'));
+                    redirect('admin_company/cmspage/update');
                 } else {
-                    $this->session->set_flashdata('flash_message', 'not_updated');
+                    $this->session->set_flashdata('flash_message', 'false');
                 }
-                redirect('admin_company/cmspage/update/' . $id . '');
+               
             }//validation run
         }
 
-        //if we are updating, and the data did not pass trough the validation
-        //the code below wel reload the current data
-        //product data 
-        $data['cmspage'] = $this->companycmspage_model->get_cmspage();
-        $data['footerdata'] = $this->companycmspage_model->list_cmspage($userid, $usernm);
+       
+        $data['footerdata'] = $this->companycmspage_model->list_cmspage();
 
         //load the view
         $data['main_content'] = 'admin_company/cmspage/edit';

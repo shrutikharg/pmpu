@@ -25,16 +25,16 @@ $lang['error_edit']='Error While updating,Please Contact Coolacharya Support Tea
 //form control for department
 ///$lang['brd_department']="Department";
 $lang['brd_organization']="Organization";
-$lang['brd_department']="Department";
-$lang['lbl_department']="Department";
-$lang['lbl_department_desc']="Department Description";
-$lang['lbl_department_lst']="Department List";
-$lang['lbl_create_department']="Add New department";
-$lang['lbl_edit_department']="Edit department";
-$lang['msg_dept_insert_success']="Department added successfully";
-$lang['msg_dept_update_success']="Department Updated successfully";
-$lang['lbl_create_department']="Add New Department";
-$lang['lbl_edit_department']="Edit Department";
+$lang['brd_department']="Category";
+$lang['lbl_department']="Category";
+$lang['lbl_department_desc']="Category Description";
+$lang['lbl_department_lst']="Category List";
+$lang['lbl_create_department']="Add New Category";
+$lang['lbl_edit_department']="Edit Category";
+$lang['msg_dept_insert_success']="Category added successfully";
+$lang['msg_dept_update_success']="Category Updated successfully";
+$lang['lbl_create_department']="Add New Category";
+$lang['lbl_edit_department']="Edit Category";
 
 
 //form control for subdepartment
@@ -182,10 +182,24 @@ $lang['lbl_comment_at']="Commmented At";
 $lang['lbl_comment_list']="Comment List For";
 
 
-//form control for  company cms page
-$lang['nav_cms']="Setting CMS Page";
-$lang['lbl_edit_cms']="Edit CMS Page";
-$lang['lbl_add_cms']="Add CMS Page";
+//form control for  company footer contact page
+$lang['nav_footer_contact']="Footer Contact";
+$lang['lbl_edit_footer_contact']="Edit Footer Contact";
+$lang['lbl_add_footer_contact']="Add Footer Contact";
+$lang['lbl_footer_email']="Email";
+$lang['lbl_footer_contact']="Contact No";
+$lang['lbl_facebook_link']="Facebook Link";
+$lang['lbl_google_link']="Google Link";
+$lang['lbl_twitter_link']="Twitter Link";
+$lang['lbl_linkedin_link']="Linkedin Link";
+$lang['lbl_footer_link1_nm']="Link1 Name";
+$lang['lbl_footer_link2_nm']="Link2 Name";
+$lang['lbl_footer_link3_nm']="Link3 Name";
+$lang['lbl_footer_link1_url']="Link1 Url";
+$lang['lbl_footer_link2_url']="Link2 Url";
+$lang['lbl_footer_link3_url']="Link3 Url";
+$lang['msg_footer_contact_insert_success']="Footer Contact added successfully";
+$lang['msg_footer_contact_update_success']="Footer Contact Updated successfully";
 
 
 //form control for  coupon_code

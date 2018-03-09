@@ -246,5 +246,73 @@ $config = array(
         array('field' => 'is_active',
             'label' => 'lang:lbl_is_active',
             'rules' => "required"),
-    )
+    ),
+    'admin_companycmspage/add'=>array(
+       array(
+            'field' => 'emailid',
+            'label' => 'lang:lbl_footer_email',
+            'rules' => 'required|trim||valid_email'
+        ),
+        array(
+            'field' => 'contactno',
+            'label' => 'lang:lbl_footer_contact',
+            'rules' => 'required|trim|numeric|max_length[10]|callback_check_min_max_off'
+        ),
+          array(
+            'field' => 'cmspagelink1_name',
+            'label' => 'lang:lbl_footer_link1_nm',
+            'rules' => 'required|trim|min_length[3]|max_length[45]'
+        ),
+          array(
+            'field' => 'cmspagelink1',
+            'label' => 'lang:lbl_footer_link1_url',
+            'rules' => 'required|trim|valid_url'
+        ),
+          array(
+            'field' => 'cmspagelink2_name',
+            'label' => 'lang:lbl_footer_link2_nm',
+            'rules' => 'required|trim|min_length[3]|max_length[45]'
+        ),
+          array(
+            'field' => 'cmspagelink2',
+            'label' => 'lang:lbl_footer_link2_url',
+            'rules' => 'required|trim|valid_url'
+        ),
+         array(
+            'field' => 'cmspagelink3_name',
+            'label' => 'lang:lbl_footer_link3_nm',
+            'rules' => 'required|trim|min_length[3]|max_length[45]'
+        ),
+          array(
+            'field' => 'cmspagelink3',
+            'label' => 'lang:lbl_footer_link3_url',
+            'rules' => 'required|trim|valid_url'
+        ),
+         array(
+            'field' => 'fblink',
+            'label' => 'lang:lbl_facebook_link',
+            'rules' => 'required|trim|valid_url'
+        ),
+         array(
+            'field' => 'googlepluslink',
+            'label' => 'lang:lbl_google_link',
+            'rules' => 'required|trim|valid_url'
+        ),
+        array(
+            'field' => 'twitterlink',
+            'label' => 'lang:lbl_twitter_link',
+            'rules' => 'required|trim|valid_url'
+        ),
+        array(
+            'field' => 'linkedinlink',
+            'label' => 'lang:lbl_linkedin_link',
+            'rules' => 'required|trim|valid_url'
+        ),
+        
+       
+       
+        
+        
+        
+    ),
 );

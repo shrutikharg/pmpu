@@ -53,73 +53,63 @@
 
                         echo form_open_multipart('admin_company/cmspage/add', $attributes);
                         ?>
-                        <div class="alert fade in alert-danger" style="display: none;">
-                            <i class="icon-remove close" data-dismiss="alert"></i>
-                            Enter Contact Emailid
-                        </div>
+                     
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Contact Emailid</label>
-                            <div class="col-md-10"><input type="text" class="form-control" id="" name="emailid" placeholder="Enter Contact Emailid"  data-rule-required="true"  data-msg-required="Please enter Contact Emailid." /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_email')?></label>
+                            <div class="col-md-10"><input type="text" class="form-control" id="" name="emailid" placeholder="<?php echo  $this->lang->line('lbl_footer_email')?>"  value="<?php echo set_value('emailid'); ?>"/></div>
                         </div>
-                        <div class="alert fade in alert-danger" style="display: none;">
-                            <i class="icon-remove close" data-dismiss="alert"></i>
-                            Enter Contact no
-                        </div>
+                      
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Contact no</label>
-                            <div class="col-md-10"><input type="text" class="form-control" id="" name="contactno" placeholder="Enter Contact no"  data-rule-required="true"  data-msg-required="Please enter Contact no" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_contact')?></label>
+                            <div class="col-md-10"><input type="text" class="form-control" id="" name="contactno" placeholder="<?php echo  $this->lang->line('lbl_footer_contact')?>"   value="<?php echo set_value('contactno'); ?>" /></div>
                         </div>
-                        <div class="alert fade in alert-danger" style="display: none;">
-                            <i class="icon-remove close" data-dismiss="alert"></i>
-                            Enter CMS Page Link1 Name
-                        </div>
+                       
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Course CMS Page link1 Name</label>
-                            <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink1_name" placeholder="Enter CMS Page link1 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1 name" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link1_nm')?></label>
+                            <div class="col-md-10"><input type="text" class="form-control" name="cmspagelink1_name" placeholder="<?php echo  $this->lang->line('lbl_footer_link1_nm')?>" value="<?php echo set_value('cmspagelink1_name'); ?>" /></div>
                         </div>
-                        <div class="alert fade in alert-danger" style="display: none;">
-                            <i class="icon-remove close" data-dismiss="alert"></i>Enter CMS Page link1</div>
+                        
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Course CMS Page link1</label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink1" placeholder="Enter CMS Page link1"  data-rule-required="true"  data-msg-required="Please enter CMS Page link1" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link1_url')?></label>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink1" placeholder="<?php echo  $this->lang->line('lbl_footer_link1_url')?>"  value="<?php echo set_value('cmspagelink1'); ?>" /></div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Enter CMS Page link2 name</label>
-                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2_name"   placeholder="Enter CMS Page link2 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2 name" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link2_nm')?></label>
+                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink2_name"   placeholder="<?php echo  $this->lang->line('lbl_footer_link2_nm')?>"  value="<?php echo set_value('cmspagelink2_name'); ?>" /></div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Enter CMS Page link2</label>
-                            <div class="col-md-10"><input type="url" class="form-control"  name="cmspagelink2"   placeholder="Enter CMS Page link2"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link2_url')?></label>
+                            <div class="col-md-10"><input type="url" class="form-control"  name="cmspagelink2"   placeholder="<?php echo  $this->lang->line('lbl_footer_link2_url')?>" value="<?php echo set_value('cmspagelink2'); ?>" /></div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Enter CMS Page link3 name</label>
-                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink3_name"   placeholder="Enter CMS Page link3 name"  data-rule-required="true"  data-msg-required="Please enter CMS Page link3 name" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link3_nm')?></label>
+                            <div class="col-md-10"><input type="text" class="form-control"  name="cmspagelink3_name"   placeholder="<?php echo  $this->lang->line('lbl_footer_link3_nm')?>" value="<?php echo set_value('cmspagelink3_name'); ?>"  /></div>
                         </div>				
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">Enter CMS Page link3</label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink3" placeholder="Enter CMS Page link3"  data-rule-required="true"  data-msg-required="Please enter CMS Page link2" /></div>
+                            <label class="col-md-2 control-label"><?php echo  $this->lang->line('lbl_footer_link3_url')?></label>
+                            <div class="col-md-10"><input type="url" class="form-control" name="cmspagelink3" placeholder="<?php echo  $this->lang->line('lbl_footer_link3_url')?>"  value="<?php echo set_value('cmspagelink3'); ?>" /></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Facebook Link </label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="fblink"  placeholder="Enter facebook link"  data-rule-required="true"  data-msg-required="Please enter facebook link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="fblink"  placeholder="<?php echo  $this->lang->line('lbl_facebook_link')?>" value="<?php echo set_value('fblink'); ?>"  /></div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Google Plus Link </label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="googlepluslink"  placeholder="Enter Google Plus link"  data-rule-required="true"  data-msg-required="Please enter Google Plus link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="googlepluslink"  placeholder="<?php echo  $this->lang->line('lbl_google_link')?>"  value="<?php echo set_value('googlepluslink'); ?>"  /></div>
                         </div>	
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Twitter Link </label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="twitterlink"  placeholder="Enter Twitter link"  data-rule-required="true"  data-msg-required="Please enter Twitter link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="twitterlink"  placeholder="<?php echo  $this->lang->line('lbl_twitter_link')?>" value="<?php echo set_value('twitterlink'); ?>"   /></div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Linkedin Link </label>
-                            <div class="col-md-10"><input type="url" class="form-control" name="linkedinlink"  placeholder="Enter Linkedin link"  data-rule-required="true"  data-msg-required="Please enter Linkedin link" /></div>
+                            <div class="col-md-10"><input type="url" class="form-control" name="linkedinlink"  placeholder="<?php echo  $this->lang->line('lbl_linkedin_link')?>"  value="<?php echo set_value('linkedinlink'); ?>"  /></div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary"><?php echo $this->lang->line('btn_save'); ?></button>

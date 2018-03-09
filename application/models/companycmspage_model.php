@@ -36,7 +36,7 @@ class Companycmspage_model extends CI_Model {
 	
 	
 	
-	public function get_cmspage_list($userid)
+	public function get_cmspage_list()
 	{
 	    $this->db->from('cmspage');
 		$this->db->where('userid', $userid);
