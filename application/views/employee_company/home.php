@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title> </title>
+<title> Coolacharya Learning Solution </title>
 <head>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/emp_home.css">
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />  
@@ -112,6 +112,226 @@
             <?php } ?>
 
         </div>-->
+        <div class="row dailyevnt text-center">
+            <div class="col-md-4">
+                <div class="inner-speakers">
+                    <h2>Day 1</h2>
+                    <h3>Friday, February 13, 2015</h3>
+                    <h3>15:00 hrs - Inaugural Session</h3>
+                    <ul>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Awaz Uthane Do, a musical feature by<br>Sharvari Jamenis</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                    </ul>
+                </div>
+                <button class="btn btn-warning showmore" style="margin-top: 10px;width: 100%;">Show More</button>
+            </div>
+            <div class="col-md-4">
+                <div class="inner-speakers">
+                    <h2>Day 2</h2>
+                    <h3>Saturday, February 14, 2015 </h3>
+                    <h3>09:00 hrs- Presentations by</h3>
+                    <ul>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Awaz Uthane Do, a musical feature by<br>Sharvari Jamenis</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                    </ul>
+                </div>
+               <button class="btn btn-warning showmore" style="margin-top: 10px;width: 100%;">Show More</button> 
+            </div>
+            <div class="col-md-4">
+                <div class="inner-speakers">
+                    <h2>Day 3</h2>
+                    <h3>Sunday, February 15, 2015</h3>
+                    <h3>09:00 hrs- Musical presentation by Rotaract Club of Enlightened (Do not miss this mesmerizing show)</h3>
+                    <ul>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Awaz Uthane Do, a musical feature by<br>Sharvari Jamenis</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                        <li>Chair, Convenor PRID Shekhar Mehta</li>
+                        <li>National Anthems of Sri Lanka and India</li>
+                    </ul>
+                </div>
+                <button class="btn btn-warning showmore" style="margin-top: 10px;width: 100%;">Show More</button>
+            </div>
+        </div>
+        <div class="row clearfix" style="margin: 25px 0;">
+            <div class="panel with-nav-tabs panel-info">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1info" data-toggle="tab">Day 1</a></li>
+                            <li><a href="#tab2info" data-toggle="tab">Day 2</a></li>
+                            <li><a href="#tab3info" data-toggle="tab">Day 3</a></li>
+                            <!--li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#tab4info" data-toggle="tab">Day 4</a></li>
+                                    <li><a href="#tab5info" data-toggle="tab">Day 5</a></li>
+                                </ul>
+                            </li-->
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1info">
+                            <h1>Day 1</h1>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab2info">
+                            <h1>Day 2</h1>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="inner-content">
+                                    <h4 class="text-center">Day Two Plenary 2&3</h4>
+                                    <img src="uploads/chapter_documents/comp_1/default_image/default_course.jpg">
+                                    <div class="inner-desc">
+                                        <h3>Speaker 1</h3>
+                                        <p>Description of each speaker's</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab3info">Day 3</div>
+                        <!--div class="tab-pane fade" id="tab4info">Day 4</div>
+                        <div class="tab-pane fade" id="tab5info">Day 5</div-->
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row" style="margin-top: 30px;">
             <div class="span12">
                 <div class="well">
@@ -383,7 +603,20 @@ if(!empty($footerdata->contactno))
         box-shadow: none;
     }
 </style>
-</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+       $('.showmore').click(function() {
+            if($(this).parent().find('.inner-speakers').hasClass('mores')) {
+                    $(this).parent().find('.inner-speakers').removeClass('mores');
+                    $(this).text('Show More');
+            }
+            else {
+                    $(this).parent().find('.inner-speakers').addClass('mores');
+                    $(this).text('Show Less');
+            }
+        }); 
+    });
+</script>
 </body>
 </html>
 

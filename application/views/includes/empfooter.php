@@ -1,5 +1,11 @@
+<style type="text/css">
+    @media(max-width: 560px) {
+        .contact-last {
+            clear: both;
+        }
+    }
+</style>
 <div style="margin-left: 0px !important; margin-right: 0px !important;" class="row"> 
-
 <?php
 //var_dump($footerdata);
 ?>   
@@ -37,7 +43,7 @@ if(!empty($footerdata->cmspagelink3))
    
 </div>
 <div class="col-md-4">    
-<ul>
+    <ul style="display: inline;padding: 0;">
 <li>
 <?php 
 if(!empty($footerdata->facebook_link))
@@ -80,9 +86,7 @@ if(!empty($footerdata->google_link))
 </li>
 </ul>            
 </div>
-<div class="col-md-4 text-center"> 
-
-
+<div class="col-md-4 text-center contact-last"> 
 <h4><b>Contact:</b> <span id="contact_no"> +91-<?php 
 if(!empty($footerdata->contactno))
 { echo $footerdata->contactno ;}?></span></h4>

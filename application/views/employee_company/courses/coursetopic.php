@@ -157,8 +157,13 @@
             <h2>
                 <?php echo $this->lang->line('lbl_chapter_lst'); ?> for <ins><?php echo $course_data[0]['name']; ?></ins>
             </h2>
-        </div>        
-        <div class="row">
+        </div>        <
+        <style type="text/css">
+            .chapter-list > div:nth-child(5n+1) {
+                clear: both;
+            }
+        </style>
+        <div class="row chapter-list" style="clear: both;">
             <?php
             //flash messages
             if (isset($flash_message)) {
@@ -180,7 +185,7 @@
             if (!(empty($topiclist))) {
                 foreach ($topiclist as $row) {
                     ?>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="widget box" id="<?php echo $row['chapterid']; ?>">
                             <div class="chaptername" id="<?php echo $row['chaptername']; ?>">
                                 <div class="courseid" id="<?php echo $row['courseid']; ?>">
@@ -224,7 +229,7 @@
             }
             ?>
         </div>
-        <div class="row clearfix" style="margin-top: 20px;">
+        <div class="row clearfix justify-content-start" style="margin-top: 20px;clear: both;background-color: #d7e4e9;">
             <div class="all-comments col-sm-9 col-xs-12 Topic-left">
                 <div class="all-comments-info">
                     <a href="#">Comments</a>
