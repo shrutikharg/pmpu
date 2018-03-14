@@ -73,7 +73,7 @@ class Companycmspage_model extends CI_Model {
     * @param int $limit_end
     * @return array
     */
-    public function get_cmspage($userid,$search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
+    public function get_cmspage()
     {
 	    
 		$this->db->select('*');

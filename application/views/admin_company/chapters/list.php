@@ -19,44 +19,45 @@
             fetch_list(page);
         });
 
-        });
-        function edit_chapter(chapter_id) {
-            var form = $(document.createElement('form'));
-            $(form).attr("action", "../admin_company/chapters/update");
-            $(form).attr("method", "POST");
-            $(form).attr("id", "form1");
-            var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
-            $(form).append($(input));
-            $(form).appendTo("body").submit();
-        }
-        function view_comment(chapter_id) {
-            var form = $(document.createElement('form'));
-            $(form).attr("action", "../admin_company/chapters/comments");
-            $(form).attr("method", "POST");
-            $(form).attr("id", "form1");
-            var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
-            $(form).append($(input));
-            $(form).appendTo("body").submit();
-        }
-        function fetch_list(page) {
-            var formData = {
-                'search': is_search,
-                'page': page,
-                'search_string_array': search_string_array,
-                'rows': $("#rows").val()
-            };
-            $.ajax({
-                beforeSend: function(){
-                    $('.ajax-loader').css("visibility", "visible");
-                },
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '../admin_company/chapters/list', // the url where we want to POST
-                data: formData, // our data object
-                dataType: 'json', // what type of data do we expect back from the server
-                encode: true
-            })
-            // using the done promise callback
-            .done(function (data) {
+    });
+    function edit_chapter(chapter_id) {
+        var form = $(document.createElement('form'));
+        $(form).attr("action", "../admin_company/chapters/update");
+        $(form).attr("method", "POST");
+        $(form).attr("id", "form1");
+        var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
+        $(form).append($(input));
+        $(form).appendTo("body").submit();
+    }
+    function view_comment(chapter_id) {
+        var form = $(document.createElement('form'));
+        $(form).attr("action", "../admin_company/chapters/comments");
+        $(form).attr("method", "POST");
+        $(form).attr("id", "form1");
+        var input = $("<input>").attr("type", "hidden").attr("name", "chapter_id").val(chapter_id);
+        $(form).append($(input));
+        $(form).appendTo("body").submit();
+    }
+
+    function fetch_list(page) {
+        var formData = {
+            'search': is_search,
+            'page': page,
+            'search_string_array': search_string_array,
+            'rows': $("#rows").val()
+        };
+        $.ajax({
+            beforeSend: function () {
+                $('.ajax-loader').css("visibility", "visible");
+            },
+            type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url: '../admin_company/chapters/list', // the url where we want to POST
+            data: formData, // our data object
+            dataType: 'json', // what type of data do we expect back from the server
+            encode: true
+        })
+                // using the done promise callback
+                .done(function (data) {
                     if (data.status === 'Session Expired') {
 
                         window.location.href = "<?php echo base_url(); ?>admin_company/login";
@@ -154,15 +155,15 @@
                     <a href="#">
                         <?php echo $this->lang->line('brd_courses'); ?>
                     </a> 
-                    
+
                 </li>
                 <li>
                     <a href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>">
                         <?php echo $this->lang->line('nav_chapter'); ?>
                     </a> 
-                   
+
                 </li>
-                
+
             </ul>	
         </div>
         <br/>
@@ -215,9 +216,9 @@
         <!--=== Normal ===-->
         <div class="row">
             <div class="col-md-12">												
-              	  
-                    <a  href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>/add" class="btn btn-primary"><?php echo $this->lang->line('btn_add');?></a> 
-               
+
+                <a  href="<?php echo site_url("admin_company") . '/' . $this->uri->segment(2); ?>/add" class="btn btn-primary"><?php echo $this->lang->line('btn_add'); ?></a> 
+
 
                 <!-- /Page Stats -->
 
@@ -230,17 +231,14 @@
                         echo '<a class="close" data-dismiss="alert">�</a>';
                         echo '<strong>Well done!</strong>Your chapter Deleted with success.';
                         echo '</div>';
-                    } 
-                    
+                    }
                 }
-                  if ($this->session->flashdata('upload_message')) {
-                    
-                        echo '<div class="alert alert-danger">';
-                        echo '<a class="close" data-dismiss="alert">�</a>';
-                        echo '<strong>'.$this->session->flashdata('upload_message') ;
-                        echo '</div>';
-                 
-                    
+                if ($this->session->flashdata('upload_message')) {
+
+                    echo '<div class="alert alert-danger">';
+                    echo '<a class="close" data-dismiss="alert">�</a>';
+                    echo '<strong>' . $this->session->flashdata('upload_message');
+                    echo '</div>';
                 }
                 ?>  
                 <div class="widget box">
@@ -304,9 +302,9 @@
                         </div>                        
                     </div>
 
-                   
+
                 </div >            </div>	
-            
+
         </div>
 
     </div>

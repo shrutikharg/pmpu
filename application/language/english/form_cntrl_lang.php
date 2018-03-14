@@ -171,6 +171,7 @@ $lang['lbl_comp_phone_no']="Phone No.";
 $lang['lbl_comp_overview']="In Short About Event";
 $lang['lbl_comp_logo']="Logo Image";
 $lang['lbl_comp_subscription_price']="Subscription Price";
+$lang['lbl_comp_event_days']="No of days for Event";
 $lang['lbl_comp_product']="Event Name";
 $lang['lbl_edit_company']="Edit Event";
 
@@ -239,6 +240,36 @@ $lang['lbl_send_mail']="Send";
 //form control for admin user
 $lang['nav_add_user']="Add New User";
 
+//form_control for mail support
+$lang['nav_support']="Support";
+$lang['nav_mail_support']="Mail Support";
+$lang['lbl_comp_mail']="Compose Mail";
+$lang['lbl_send_mail']="Send";
+
+//form control for speaker
+
+$lang['brd_speaker']="Speaker";
+$lang['lbl_speaker']="Speaker";
+$lang['lbl_speaker_designation']="Speaker Designation";
+$lang['lbl_speaker_desc']="Speaker Description";
+$lang['lbl_speaker_lst']="Speaker List";
+$lang['lbl_create_speaker']="Add New Speaker";
+$lang['lbl_edit_speaker']="Edit Speaker";
+$lang['msg_speaker_insert_success']="Speaker added successfully";
+$lang['msg_speaker_update_success']="Speaker Updated successfully";
+
+
+//form control for speaker
+
+$lang['brd_day']="Day";
+$lang['lbl_day']="Day";
+$lang['lbl_day_desc']="Day Description";
+$lang['lbl_day_no']="Day No.";
+$lang['lbl_day_lst']="Day List";
+$lang['lbl_create_day']="Add New Day";
+$lang['lbl_edit_day']="Edit Day";
+$lang['msg_day_insert_success']="Day added successfully";
+$lang['msg_day_update_success']="Day Updated successfully";
 
 
 

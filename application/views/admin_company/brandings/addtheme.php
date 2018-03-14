@@ -109,6 +109,12 @@
 
                                     </div>
                                 </div>
+                                  <div class="form-group">
+                                    <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_comp_event_days'); ?></label>
+                                    <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_comp_event_days'); ?>"  name="no_of_days" id="price" placeholder="<?php echo $this->lang->line('lbl_comp_event_days'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->no_of_days; ?>" />
+
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"><?php echo $this->lang->line('lbl_email'); ?></label>
                                     <div class="col-md-3"><input type="text" class="form-control"    required title="<?php echo $this->lang->line('lbl_course'); ?>"  name="email" id="email" placeholder="<?php echo $this->lang->line('lbl_email'); ?>"  data-rule-required="true"  data-msg-required="Please enter course name."  required value="<?php echo $company_details->email; ?>" />

@@ -307,12 +307,68 @@ $config = array(
             'field' => 'linkedinlink',
             'label' => 'lang:lbl_linkedin_link',
             'rules' => 'required|trim|valid_url'
+        ),    
+      
         ),
-        
-       
-       
-        
-        
-        
+    
+    'admin_companyspeaker/add' => array(
+        array(
+            'field' => 'name',
+            'label' => 'lang:lbl_speaker',
+            'rules' => 'required|trim|min_length[2]|max_length[100]'
+        ),
+        array(
+            'field' => 'description',
+            'label' => 'lang:Description',
+            'rules' => 'trim'
+        ),
+        array('field' => 'designation',
+            'label' => 'lang:lbl_course_by',
+            'rules' => 'required|trim|min_length[2]|max_length[100]')
+    ),
+    'admin_companyspeaker/update' => array(
+    array(
+            'field' => 'name',
+            'label' => 'lang:lbl_speaker',
+            'rules' => 'required|trim|min_length[2]|max_length[100]'
+        ),
+        array(
+            'field' => 'description',
+            'label' => 'lang:Description',
+            'rules' => 'trim'
+        ),
+        array('field' => 'designation',
+            'label' => 'lang:lbl_course_by',
+            'rules' => 'required|trim|min_length[2]|max_length[100]')
+    ),
+       'admin_companyday/add' => array(
+        array(
+            'field' => 'name',
+            'label' => 'lang:lbl_day',
+            'rules' => 'required|trim|min_length[2]|max_length[100]'
+        ),
+        array(
+            'field' => 'day_no',
+            'label' => 'lang:lbl_day_no',
+            'rules' => 'required|numeric|callback_check_day_availabilty'
+        ),
+        array('field' => 'description',
+            'label' => 'lang:lbl_day_desc',
+            'rules' => 'required|trim|min_length[2]|max_length[250]')
+    ),
+    'admin_companyday/update' => array(
+        array(
+            'field' => 'name',
+            'label' => 'lang:lbl_day',
+            'rules' => 'required|trim|min_length[2]|max_length[100]'
+        ),
+        array(
+            'field' => 'day_no',
+            'label' => 'lang:lbl_day_no',
+            'rules' => 'required|numeric|callback_check_day_availabilty'
+        ),
+        array('field' => 'description',
+            'label' => 'lang:lbl_day_desc',
+            'rules' => 'required|trim|min_length[2]|max_length[250]')
     ),
 );
