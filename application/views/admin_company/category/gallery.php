@@ -94,64 +94,64 @@
                             <div class="row">
                                 <div class='list-group gallery'>
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/216/304/nature">
-                                            <img class="img-responsive" alt="" src="http://lorempixel.com/216/304/nature" />
+                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                            <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
                                             </div> <!-- text-right / end -->
