@@ -73,20 +73,14 @@ class Companycmspage_model extends CI_Model {
     * @param int $limit_end
     * @return array
     */
-    public function get_cmspage($userid,$search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
+    public function get_cmspage()
     {
-	    
-		$this->db->select('*');
-		$this->db->from('cmspage');
-                $this->db->where('company_id',  $this->session->userdata('company_id'));
-		$query = $this->db->get();		
-		return $query->row(); 	
+        $this->db->select('*');
+        $this->db->from('cmspage');
+        $this->db->where('company_id',  $this->session->userdata('company_id'));
+        $query = $this->db->get();		
+        return $query->row(); 	
     }
-
-
-
-
-	
     /**
     * Count the number of rows
     * @param int $search_string
