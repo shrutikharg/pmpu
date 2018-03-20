@@ -40,10 +40,10 @@
 
 
         var form = $(document.createElement('form'));
-        $(form).attr("action", "../admin_company/category/update");
+        $(form).attr("action", "../admin_company/day/update");
         $(form).attr("method", "POST");
         $(form).attr("id", "form1");
-        var input = $("<input>").attr("type", "hidden").attr("name", "category_id").val(category_id);
+        var input = $("<input>").attr("type", "hidden").attr("name", "id").val(category_id);
         $(form).append($(input));
         $(form).appendTo("body").submit();
     }
@@ -60,7 +60,7 @@
             beforeSend: function () {
                 $('.ajax-loader').css("visibility", "visible");
             },
-            url: '../admin_company/category/list', // the url where we want to POST
+            url: '../admin_company/day/list', // the url where we want to POST
             data: formData, // our data object
             dataType: 'json', // what type of data do we expect back from the server
             encode: true
@@ -71,12 +71,13 @@
                     $('.res_row').empty();
                     var i = 0;
                     $.each(data.rows, function (i, row) {
-                        var category_id = '"' + row['id'] + '"';
+                        var day_id = '"' + row['id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\
     <div class='column' data-label='Sr no'>" + (i + 1) + "</div>\n\
 <div class='column' data-label='Category name'>" + row['name'] + "</div>\n\
+\n\<div class='column' data-label='Category name'>" + row['day_no'] + "</div>\n\
 <div class='column' data-label='Category name'>" + row['description'] + "</div>\n\
-<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_category(" + category_id + ")'></button></div>\n\
+<div class='column' data-label='action'><input type='button'  name='edit' value='<?php echo $this->lang->line('btn_edit'); ?>'class='btn btn-info' onclick='edit_category(" + day_id + ")'></button></div>\n\
 </div>");
                         i++;
                     });
@@ -155,8 +156,9 @@
                     <div class="res_table">
                         <div class="res_table-head">
                             <div class="column"  data-label="Sr no">  <?php echo $this->lang->line('lbl_sr_no'); ?></div>
-                            <div class="column" data-label="Category name"> <?php echo $this->lang->line('lbl_department'); ?></div>
-                            <div class="column" data-label="Category name"> <?php echo $this->lang->line('lbl_department_desc'); ?></div>
+                            <div class="column" > <?php echo $this->lang->line('lbl_day_no'); ?></div>
+                            <div class="column" > <?php echo $this->lang->line('lbl_department'); ?></div>
+                            <div class="column"> <?php echo $this->lang->line('lbl_day_desc'); ?></div>
                             <div class="column" data-label="Action"> <?php echo $this->lang->line('lbl_action'); ?></div>
 
                         </div> 

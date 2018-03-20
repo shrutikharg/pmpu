@@ -58,7 +58,7 @@ class Companycourses_model extends CI_Model {
         return $return;
     }
 
-    public function get_courses($userid, $sidx, $sord, $start, $startd, $endd, $limit, $search_string_array, $count) {
+    public function get_courses($userid, $sidx, $sord, $start,$limit, $search_string_array, $count) {
 
         $this->db->select('course.name as course,course.course_by,course.id,course.start_date,course.end_date,course.description as description');
         $this->db->from('courses course');

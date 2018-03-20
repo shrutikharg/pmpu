@@ -85,6 +85,17 @@ $route['admin_company/cmspage'] = 'admin_companycmspage/index';
 $route['admin_company/cmspage/add'] = 'admin_companycmspage/add';
 $route['admin_company/cmspage/update'] = 'admin_companycmspage/update';
 
+$route['admin_company/speaker'] = 'admin_companyspeaker/index';
+$route['admin_company/speaker/list'] = 'admin_companyspeaker/speaker_list';
+$route['admin_company/speaker/add'] = 'admin_companyspeaker/add';
+$route['admin_company/speaker/update'] = 'admin_companyspeaker/update';
+
+$route['admin_company/day'] = 'admin_companyday/index';
+$route['admin_company/day/list'] = 'admin_companyday/day_list';
+$route['admin_company/day/add'] = 'admin_companyday/add';
+$route['admin_company/day/update'] = 'admin_companyday/update';
+
+
 
 $route['admin_company/cmspage/verifyUser'] = 'admin_companycmspage/verifyUser';
 

@@ -96,6 +96,7 @@
             message_page_no = 1;
             master_id = $(this).attr('master_id');
             msg_fetch_list(message_page_no);
+
         });
 
 
@@ -217,6 +218,7 @@
                     }
                     master_id = data.rows[0].master_id;
                     $.each(data.rows, function (index, row) {
+
                         var master_id = '"' + row.master_id + '"';
                         var user_id = '"' + row['user_id'] + '"';
                         $(".res_table").append("<div class='res_row'>\n\

@@ -54,5 +54,12 @@ class Company_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();
     }
+     public function get_event_days() {
+        $this->db->select('no_of_days');
+        $this->db->from('lms_company');        
+       $this->db->where('id', $this->session->userdata('company_id'));
+        $query = $this->db->get();
+        return $query->row();
+    }
 
 }

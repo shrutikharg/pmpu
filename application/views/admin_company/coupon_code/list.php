@@ -55,7 +55,6 @@
             search_string_array = JSON.stringify(search_string_array);
 
             fetch_list(page);
-            });
         });
         function edit_couponcode(couponcode_id) {
             var form = $(document.createElement('form'));

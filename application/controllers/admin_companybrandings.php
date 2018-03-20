@@ -35,6 +35,7 @@ class Admin_companybrandings extends CI_Controller {
                 $data_to_update = array(
                     'name' => $this->input->post('name'),
                     'price'=>$this->input->post('price'),
+                    'no_of_days'=>$this->input->post('no_of_days'),
                     'description' => $this->input->post('description'),
                     'email' => $this->input->post('email'),
                     'phone' => $this->input->post('phone'),

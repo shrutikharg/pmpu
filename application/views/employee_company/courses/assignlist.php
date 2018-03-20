@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    $(document).ready(function (e) {  });
+    $(document).ready(function (e) { });
 </script>
 <script type="text/javascript">
     function getchapters(course_id) {
