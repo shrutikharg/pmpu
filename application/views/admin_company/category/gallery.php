@@ -1,6 +1,3 @@
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <style type="text/css">
     .gallery
     {
@@ -13,14 +10,7 @@
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function(){
-        //FANCYBOX
-        //https://github.com/fancyapps/fancyBox
-        $(".fancybox").fancybox({
-            openEffect: "none",
-            closeEffect: "none"
-        });
-    });
+
 </script>
 <div id="content">
     <div class="container">
@@ -94,7 +84,7 @@
                             <div class="row">
                                 <div class='list-group gallery'>
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -102,7 +92,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -110,7 +100,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -118,7 +108,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -126,7 +116,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -134,7 +124,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -142,7 +132,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -150,7 +140,7 @@
                                         </a>
                                     </div> <!-- col-6 / end -->
                                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                                        <a class="thumbnail fancybox" rel="ligthbox" href="http://lorempixel.com/300/220/nature">
+                                        <a class="thumbnail" data-lightbox="roadtrip" href="http://lorempixel.com/300/220/nature">
                                             <img class="img-responsive" alt="" src="http://lorempixel.com/300/220/nature" />
                                             <div class='text-right'>
                                                 <small class='text-muted'>Image Title</small>
@@ -160,6 +150,43 @@
                                 </div> <!-- list-group / end -->
                             </div> <!-- row / end -->
                         </div> <!-- container / end -->
+                        <div class="pagination"> 
+                            <div class="pagination-widget">
+                                <div class="col-md-3 col-sm-1 col-xs-2">
+                                    <span id="reload" class="glyphicon glyphicon-refresh"> </span>
+                                </div>
+                                <div class="col-md-5 col-sm-6 col-xs-10">
+                                    <span id="first_pager" class="glyphicon glyphicon-fast-backward" style="display: none;"> </span>
+                                    <span id="previous_pager" class="glyphicon glyphicon-step-backward" style="display: none;">  </span>
+                                    <span>Page </span>
+                                    <span><input type="text" class="form-control pagination-input" id="page_no" name="PageNo"></span>
+                                    <span>  of </span>
+                                    <span><lable class="pagination-lable" id="pageOf">1</lable></span>
+
+                                    <span id="next_pager" class="glyphicon glyphicon-step-forward" style="display: none;"> </span>
+
+                                    <span id="last_pager" class="glyphicon glyphicon-fast-forward" style="display: none;">      </span>
+                                    <span> 
+                                        <select id="rows" style="margin-left: 10px">
+                                            <option value="10">10 </option>
+                                            <option value="20"> 20</option>
+                                            <option value="25"> 25</option>
+                                        </select>                                    
+                                    </span>
+                                </div>
+
+                                <div class="col-md-4 col-sm-5 col-xs-12 pagination-right">   
+                                    <div class="pagination-right">
+                                        <span>view</span>
+                                        <span><lable class="pagination-lable" id="rowFrm">1</lable></span>
+                                        <span>-</span>
+                                        <span><lable class="pagination-lable" id="rowTo">1</lable></span>
+                                        <span>view</span>
+                                        <span id="totalCount">1</span>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
